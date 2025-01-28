@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5db739c05796a2a429868748e575615c
+timeCreated: 1461739035
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Prefabs/NonPOT/Bubble_04/Bubble_04_Explosion.prefab
+  uploadId: 114959

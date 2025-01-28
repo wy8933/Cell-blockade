@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b73ff0ad74306ff4a9dff5fcb8d4a0f9
+timeCreated: 1461739806
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Prefabs/POT/Bubble_01/Bubble_01_SqVert.prefab
+  uploadId: 114959

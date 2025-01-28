@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d1075687985cd184d849613e55eadd56
+timeCreated: 1461739935
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Prefabs/POT/Bubble_03/Bubble_03_SqHor.prefab
+  uploadId: 114959

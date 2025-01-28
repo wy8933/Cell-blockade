@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 186c3be7575ccc24bb130ab655e52f8b
+timeCreated: 1461587304
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/NonPOT/Bubble_04/BubbleAnimationSqVert.anim
+  uploadId: 114959

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
+  m_Name: RageBuffData
+  m_EditorClassIdentifier: 
+  id: 3003
+  buffName: Rage
+  description: Increase attack damage by 100%, but reduce movement speed by 25%
+  icon: {fileID: 0}
+  maxStack: 3
+  priority: 0
+  tags: []
+  isForever: 1
+  duration: 0
+  tickTime: 0
+  buffUpdateType: 0
+  buffRemoveStackType: 1
+  OnCreate: {fileID: 11400000, guid: 87f97c0893f48f949b575527a54914b6, type: 2}
+  OnRemove: {fileID: 0}
+  OnTick: {fileID: 0}
+  OnHit: {fileID: 0}
+  OnHurt: {fileID: 0}
+  OnKill: {fileID: 0}
+  OnDeath: {fileID: 0}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dc00703e0bdf7bf4dbf53aede58084ab
+timeCreated: 1461736095
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/POT/Bubble_02_2048x2048/Bubble_02_02.anim
+  uploadId: 114959

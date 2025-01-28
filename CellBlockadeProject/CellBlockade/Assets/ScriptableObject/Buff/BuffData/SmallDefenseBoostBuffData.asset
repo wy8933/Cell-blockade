@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
+  m_Name: SmallDefenseBoostBuffData
+  m_EditorClassIdentifier: 
+  id: 5006
+  buffName: Small Defense Boost
+  description: Each stack reduces incoming damage by 2%
+  icon: {fileID: 0}
+  maxStack: 10
+  priority: 0
+  tags: []
+  isForever: 1
+  duration: 0
+  tickTime: 0
+  buffUpdateType: 0
+  buffRemoveStackType: 0
+  OnCreate: {fileID: 11400000, guid: 6298da3bfd43e9943a0768f01d9937a4, type: 2}
+  OnRemove: {fileID: 0}
+  OnTick: {fileID: 0}
+  OnHit: {fileID: 0}
+  OnHurt: {fileID: 0}
+  OnKill: {fileID: 0}
+  OnDeath: {fileID: 0}

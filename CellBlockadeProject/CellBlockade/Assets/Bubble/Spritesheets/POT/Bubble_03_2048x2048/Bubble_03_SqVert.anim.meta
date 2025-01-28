@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fabb1b19a865988428429e76527f6fc5
+timeCreated: 1461736597
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/POT/Bubble_03_2048x2048/Bubble_03_SqVert.anim
+  uploadId: 114959
