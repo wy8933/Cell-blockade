@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 92586a137eb68c04687b4664561f1baf
+timeCreated: 1461736073
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/POT/Bubble_02_2048x2048/BubbleLoop1_00000.controller
+  uploadId: 114959

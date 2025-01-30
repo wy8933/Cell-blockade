@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2867f6f472976db4e9bc1c8d65d66f9e
+timeCreated: 1461737404
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/POT/Bubble_01_2048x2048/Bubble_01_RoundLoop.anim
+  uploadId: 114959

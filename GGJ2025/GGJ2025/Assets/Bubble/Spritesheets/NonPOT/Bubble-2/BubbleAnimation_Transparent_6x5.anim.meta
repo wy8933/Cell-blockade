@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f88f2cdad99138b4eabffb897db354fa
+timeCreated: 1461697791
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/NonPOT/Bubble-2/BubbleAnimation_Transparent_6x5.anim
+  uploadId: 114959

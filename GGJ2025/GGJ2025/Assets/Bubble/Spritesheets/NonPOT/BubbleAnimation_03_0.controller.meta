@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 96297c3f083eb274cabc8b74f2e09430
+timeCreated: 1461697980
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61608
+  packageName: 2D Bubble animations
+  packageVersion: 1.0
+  assetPath: Assets/Bubble/Spritesheets/NonPOT/BubbleAnimation_03_0.controller
+  uploadId: 114959

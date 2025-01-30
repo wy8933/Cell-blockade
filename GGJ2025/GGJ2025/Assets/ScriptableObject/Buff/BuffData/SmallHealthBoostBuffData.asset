@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
+  m_Name: SmallHealthBoostBuffData
+  m_EditorClassIdentifier: 
+  id: 5005
+  buffName: Small Health Boost
+  description: Each stack increases player's maximum health by 5%
+  icon: {fileID: 0}
+  maxStack: 10
+  priority: 0
+  tags: []
+  isForever: 1
+  duration: 0
+  tickTime: 0
+  buffUpdateType: 0
+  buffRemoveStackType: 1
+  OnCreate: {fileID: 11400000, guid: e4cb7ad7902fa5e4da2757901921f2c9, type: 2}
+  OnRemove: {fileID: 0}
+  OnTick: {fileID: 0}
+  OnHit: {fileID: 0}
+  OnHurt: {fileID: 0}
+  OnKill: {fileID: 0}
+  OnDeath: {fileID: 0}
