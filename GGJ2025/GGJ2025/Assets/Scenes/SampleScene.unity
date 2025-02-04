@@ -3868,7 +3868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffListInspector:
-  - buffData: {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
+  - buffData: {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
     creator: {fileID: 1595879605}
     target: {fileID: 1595879605}
     currentStack: 1

@@ -10,8 +10,16 @@ public class BuffHandler : MonoBehaviour
 
     private void Start()
     {
+        List<BuffInfo> tempList = new List<BuffInfo>();
+
+        foreach (BuffInfo info in buffListInspector) {
+            tempList.Add(info);
+        }
+
+        buffListInspector.Clear();
+
         // Load data into LinkedList
-        foreach (var buff in buffListInspector)
+        foreach (var buff in tempList)
         {
             AddBuff(buff);
         }
@@ -59,6 +67,7 @@ public class BuffHandler : MonoBehaviour
             if(buffInfo.buffData.OnCreate)
                 buffInfo.buffData.OnCreate.Apply(buffInfo);
             buffList.AddLast(buffInfo);
+            buffListInspector.Add(buffInfo);
 
             // Sort the list
             InsertionSort(buffList);
