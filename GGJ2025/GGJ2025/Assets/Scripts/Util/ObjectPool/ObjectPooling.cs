@@ -27,7 +27,8 @@ namespace ObjectPoolings
             return newPool;
         }
 
-        public static (GameObject instance, PrefabPool pool) GetOrCreate(GameObject prefab, Vector3 position, Quaternion rotation, string parent = "Object Pooling")
+        public static (GameObject instance, PrefabPool pool) GetOrCreate(GameObject prefab, Vector3 position, 
+            Quaternion rotation, string parent = "Object Pooling")
         {
             var pool = GetOrCreate(prefab, parent);
             return pool.GetAt(position, rotation);
