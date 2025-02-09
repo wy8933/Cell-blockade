@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5005
   buffName: Small Health Boost
-  description: Each stack increases player's maximum health by 10
+  description: Each stack increases player's maximum health by 5%
   icon: {fileID: 0}
   maxStack: 10
   priority: 0

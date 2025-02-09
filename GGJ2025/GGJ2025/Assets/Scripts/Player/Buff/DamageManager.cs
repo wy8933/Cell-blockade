@@ -22,7 +22,7 @@ public class DamageManager : MonoBehaviour
         BuffHandler targetBuffHandler = damageInfo.target?.GetComponent<BuffHandler>();
 
         if (creatorBuffHandler) {
-            foreach (var buffInfo in creatorBuffHandler.ActiveBuffs) {
+            foreach (var buffInfo in creatorBuffHandler.buffList) {
                 buffInfo.target = targetBuffHandler.gameObject;
                 if (buffInfo.buffData.OnHit) { 
                     buffInfo.buffData.OnHit.Apply(buffInfo,damageInfo);
@@ -33,7 +33,7 @@ public class DamageManager : MonoBehaviour
         }
         if (targetBuffHandler)
         {
-            foreach (var buffInfo in targetBuffHandler.ActiveBuffs)
+            foreach (var buffInfo in targetBuffHandler.buffList)
             {
                 if (buffInfo.buffData.OnHurt) {
                     buffInfo.buffData.OnHurt.Apply(buffInfo, damageInfo);

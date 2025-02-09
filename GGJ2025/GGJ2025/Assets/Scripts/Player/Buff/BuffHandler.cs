@@ -1,23 +1,17 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuffHandler : MonoBehaviour
 {
-    [SerializeField] private List<BuffInfo> _initialBuffs = new List<BuffInfo>();
-    private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
-    private BuffComparer _buffComparer = new BuffComparer();
+    [SerializeField] public List<BuffInfo> buffListInspector = new List<BuffInfo>();
 
-    public List<BuffInfo> ActiveBuffs
-    {
-        get => _activeBuffs;
-        private set => _activeBuffs = value;
-    }
+    // Linked List has more efficient insertions and deletions at runtime
+    public LinkedList<BuffInfo> buffList = new LinkedList<BuffInfo>();
 
-    #region Core Buff Management
     private void Start()
     {
-        foreach (var buff in _initialBuffs)
+        // Load data into LinkedList
+        foreach (var buff in buffListInspector)
         {
             AddBuff(buff);
         }
@@ -25,189 +19,173 @@ public class BuffHandler : MonoBehaviour
 
     private void Update()
     {
-        UpdateBuffDurations();
-        ProcessBuffTicks();
+        // Buff tick
+        BuffUpdate();
     }
 
-    public void AddBuff(BuffInfo newBuff)
+
+    public void AddBuff(BuffInfo buffInfo)
     {
-        BuffInfo clonedBuff = CloneBuff(newBuff);
-        clonedBuff.Initialize();
-
-        BuffInfo existing = FindBuff(clonedBuff.buffData.id);
-
-        if (existing != null)
+        // Check if player alreay have the buff
+        BuffInfo findBuffInfo = FindBuff(buffInfo.buffData.id);
+        if (findBuffInfo != null)
         {
-            HandleStacking(existing, clonedBuff);
-            return;
-        }
-        else
-        {
-            existing = clonedBuff;
-        }
-
-        InsertSorted(clonedBuff);
-        ExecuteModule(existing.buffData.OnCreate, clonedBuff);
-    }
-
-    private BuffInfo CloneBuff(BuffInfo source)
-    {
-        return new BuffInfo
-        {
-            buffData = source.buffData,
-            creator = source.creator,
-            target = source.target,
-            currentStack = source.currentStack,
-            durationTimer = source.durationTimer,
-            tickTimer = source.tickTimer
-        };
-    }
-    #endregion
-
-    #region Stacking & Sorting
-    private void HandleStacking(BuffInfo existing, BuffInfo newBuff)
-    {
-        if (existing.currentStack >= existing.buffData.maxStack) return;
-
-        existing.currentStack++;
-        ExecuteModule(existing.buffData.OnCreate, existing);
-
-        switch (existing.buffData.buffUpdateType)
-        {
-            case BuffUpdateTimeType.Add:
-                existing.durationTimer += newBuff.buffData.duration;
-                break;
-            case BuffUpdateTimeType.Replace:
-                existing.durationTimer = newBuff.buffData.duration;
-                break;
-        }
-    }
-
-    private void InsertSorted(BuffInfo buff)
-    {
-        int index = _activeBuffs.BinarySearch(buff, _buffComparer);
-        _activeBuffs.Insert(index < 0 ? ~index : index, buff);
-    }
-    #endregion
-
-    #region Duration & Tick Management
-    private void UpdateBuffDurations()
-    {
-        List<BuffInfo> toRemove = new List<BuffInfo>();
-
-        foreach (var buff in _activeBuffs)
-        {
-            if (!buff.buffData.isForever)
+            // If buff exist
+            if (findBuffInfo.currentStack < buffInfo.buffData.maxStack)
             {
-                buff.durationTimer -= Time.deltaTime;
-                if (buff.durationTimer <= 0) toRemove.Add(buff);
+                findBuffInfo.currentStack += 1;
+
+                // Determine how the buff duration will be calculated
+                switch (findBuffInfo.buffData.buffUpdateType)
+                {
+                    case BuffUpdateTimeType.Add:
+                        findBuffInfo.durationTimer += findBuffInfo.buffData.duration;
+                        break;
+                    case BuffUpdateTimeType.Replace:
+                        findBuffInfo.durationTimer = findBuffInfo.buffData.duration;
+                        break;
+                    case BuffUpdateTimeType.Keep:
+                        // Do nothing with duration
+                        break;
+                    default:
+                        break;
+                }
+                if (findBuffInfo.buffData.OnCreate)
+                    findBuffInfo.buffData.OnCreate.Apply(findBuffInfo);
+            }
+        }
+        else {
+            buffInfo.durationTimer = buffInfo.buffData.duration;
+            if(buffInfo.buffData.OnCreate)
+                buffInfo.buffData.OnCreate.Apply(buffInfo);
+            buffList.AddLast(buffInfo);
+
+            // Sort the list
+            InsertionSort(buffList);
+        }
+    
+    }
+
+    public void RemoveBuff(BuffInfo buffInfo)
+    {
+        switch (buffInfo.buffData.buffRemoveStackType) {
+            case BuffRemoveStackUpdateType.Clear:
+                if (buffInfo.buffData.OnRemove) 
+                { 
+                    buffInfo.buffData.OnRemove.Apply(buffInfo);
+                }
+
+                buffList.Remove(buffInfo);
+                break;
+            case BuffRemoveStackUpdateType.Reduce:
+                buffInfo.currentStack -= 1; 
+                
+                if (buffInfo.buffData.OnRemove)
+                {
+                    buffInfo.buffData.OnRemove.Apply(buffInfo);
+                }
+                
+                if (buffInfo.currentStack <= 0)
+                {
+                    buffList.Remove(buffInfo);
+                }
+                else { 
+                    buffInfo.durationTimer = buffInfo.buffData.duration;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private BuffInfo FindBuff(int buffDataID)
+    {
+        foreach (BuffInfo buffInfo in buffList) {
+            if (buffInfo.buffData.id == buffDataID) { 
+                return buffInfo;
             }
         }
 
-        RemoveBuffs(toRemove);
+        return default;
     }
 
-    private void ProcessBuffTicks()
-    {
-        foreach (var buff in _activeBuffs)
+    /// <summary>
+    /// 
+    /// </summary>
+    private void BuffUpdate() {
+
+        LinkedListNode<BuffInfo> node = buffList.First;
+
+        while (node != null)
         {
-            if (buff.buffData.OnTick != null)
+            LinkedListNode<BuffInfo> nextNode = node.Next;
+
+            BuffInfo buffInfo = node.Value;
+
+            // Update buff's tick first so the effect will still apply before the buff has been removed
+            if (buffInfo.buffData.OnTick != null)
             {
-                buff.tickTimer -= Time.deltaTime;
-                if (buff.tickTimer <= 0)
+                if (buffInfo.tickTimer < 0)
                 {
-                    ExecuteModule(buff.buffData.OnTick, buff);
-                    buff.tickTimer = buff.buffData.tickTime;
+                    buffInfo.buffData.OnTick.Apply(buffInfo);
+                    buffInfo.tickTimer = buffInfo.buffData.tickTime;
+                }
+                else
+                {
+                    buffInfo.tickTimer -= Time.deltaTime;
                 }
             }
-        }
-    }
-    #endregion
 
-    #region Module Execution
-    private void ExecuteModule(BaseBuffModule module, BuffInfo buff, DamageInfo damageInfo = null)
-    {
-        if (module != null)
-        {
-            module.Apply(buff, damageInfo);
-        }
-    }
-
-    #endregion
-
-    #region Public Interface
-    public void RemoveBuff(BuffInfo buff)
-    {
-        switch (buff.buffData.buffRemoveStackType)
-        {
-            case BuffRemoveStackUpdateType.Clear:
-                _activeBuffs.Remove(buff);
-                ExecuteModule(buff.buffData.OnRemove, buff);
-                break;
-
-            case BuffRemoveStackUpdateType.Reduce:
-                buff.currentStack--;
-                ExecuteModule(buff.buffData.OnRemove, buff);
-
-                if (buff.currentStack <= 0)
-                    _activeBuffs.Remove(buff);
+            // Update buff's duration and remove if expired
+            if (!buffInfo.buffData.isForever) {
+                if (buffInfo.durationTimer <= 0)
+                {
+                    buffList.Remove(node);
+                    RemoveBuff(buffInfo);
+                }
                 else
-                    buff.durationTimer = buff.buffData.duration;
-                break;
+                {
+                    buffInfo.durationTimer -= Time.deltaTime;
+                }
+            }
+
+            node = nextNode;
         }
+
     }
 
-    public void TriggerOnHit(BuffInfo buff, DamageInfo damageInfo)
+    void InsertionSort(LinkedList<BuffInfo> list)
     {
-        ExecuteModule(buff.buffData.OnHit, buff, damageInfo);
-    }
-
-    public void TriggerOnHurt(BuffInfo buff, DamageInfo damageInfo)
-    {
-        ExecuteModule(buff.buffData.OnHurt, buff, damageInfo);
-    }
-
-    public void TriggerOnKill(BuffInfo buff)
-    {
-        ExecuteModule(buff.buffData.OnKill, buff);
-    }
-
-    public void TriggerOnDeath(BuffInfo buff)
-    {
-        ExecuteModule(buff.buffData.OnDeath, buff);
-    }
-    #endregion
-
-    #region Helper Methods
-    private BuffInfo FindBuff(int buffId)
-    {
-        return _activeBuffs.Find(b => b.buffData.id == buffId);
-    }
-
-    private void RemoveBuffs(List<BuffInfo> toRemove)
-    {
-        foreach (var buff in toRemove)
+        if (list == null || list.First == null)
         {
-            RemoveBuff(buff);
+            return; 
         }
-    }
 
-    private class BuffComparer : IComparer<BuffInfo>
-    {
-        public int Compare(BuffInfo a, BuffInfo b)
+        LinkedListNode<BuffInfo> current = list.First.Next;
+
+        while (current != null)
         {
-            return b.buffData.priority.CompareTo(a.buffData.priority);
+            LinkedListNode<BuffInfo> next = current.Next;
+            LinkedListNode<BuffInfo> prev = current.Previous;
+
+            while (prev != null && prev.Value.buffData.priority > current.Value.buffData.priority)
+            {
+                prev = prev.Previous;
+            }
+
+            if (prev == null)
+            {
+                list.Remove(current);
+                list.AddFirst(current);
+            }
+            else
+            {
+                list.Remove(current);
+                list.AddAfter(prev, current);
+            }
+
+            current = next;
         }
     }
-    #endregion
-}
 
-public static class BuffInfoExtensions
-{
-    public static void Initialize(this BuffInfo buff)
-    {
-        buff.durationTimer = buff.buffData.duration;
-        buff.tickTimer = buff.buffData.tickTime;
-        buff.currentStack = 1;
-    }
 }
