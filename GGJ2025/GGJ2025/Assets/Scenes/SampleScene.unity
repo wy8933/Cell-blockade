@@ -3924,8 +3924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff29b8ab937e494db6a3fe47ddccd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffListInspector:
-  - buffData: {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
+  _initialBuffs:
+  - buffData: {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
     creator: {fileID: 1595879605}
     target: {fileID: 1595879605}
     currentStack: 1
