@@ -2990,9 +2990,9 @@ GameObject:
   - component: {fileID: 1483653854}
   - component: {fileID: 1483653856}
   - component: {fileID: 1483653857}
-  - component: {fileID: 1483653858}
   - component: {fileID: 1483653859}
   - component: {fileID: 1483653860}
+  - component: {fileID: 1483653861}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3058,18 +3058,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingsPanel: {fileID: 648843414}
   CreditsPanel: {fileID: 1467017846}
---- !u!114 &1483653858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483653853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf5649101b57de43a6bfa33620d88b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1483653859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3192,6 +3180,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea746ecbd1a83ae44af842855aadb4c1, type: 2}
   - {fileID: 11400000, guid: ce037ff8fadc3da4c96690745cdd1057, type: 2}
   _buffHandler: {fileID: 1595879614}
+--- !u!114 &1483653861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483653853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996dba921c3eb4f49a1e8deb2ff9f75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffTable:
+    entries:
+    - value: {fileID: 0}
+      chance: 1
+      rarity: 1
+    - value: {fileID: 0}
+      chance: 1
+      rarity: 1
+    - value: {fileID: 0}
+      chance: 1
+      rarity: 0
+    - value: {fileID: 0}
+      chance: 1
+      rarity: 1
+  commonChance: 0.6
+  uncommonChance: 0.2
+  rareChance: 0.1
+  epicChance: 0.07
+  legendaryChance: 0.03
 --- !u!1001 &1498417248
 PrefabInstance:
   m_ObjectHideFlags: 0

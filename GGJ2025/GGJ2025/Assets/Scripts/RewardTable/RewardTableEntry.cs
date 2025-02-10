@@ -9,21 +9,17 @@ namespace RewardTables
     public class RewardTableEntry<T>
     {
         public T value;
+
         [Range(0, 1f)]
-        public float chance;
+        public float chance = 1f;
 
-        public int minCount = 1;
-        public int maxCount = 1;
-
+        public RarityLevel rarity = RarityLevel.Common;
 
         public bool Roll() => Random.value <= chance;
-        public int DropCount() => Random.Range(minCount, maxCount + 1);
 
         public IEnumerable<T> Drop()
         {
-            var count = DropCount();
-            for (var i = 0; i < count; i++)
-                yield return value;
+            yield return value;
         }
     }
 }
