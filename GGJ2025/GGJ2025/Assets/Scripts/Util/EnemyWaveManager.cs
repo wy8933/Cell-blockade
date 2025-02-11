@@ -23,7 +23,7 @@ public class EnemyWaveManager : MonoBehaviour
     [Header("Wave Settings")]
     public List<Wave> waves;
     public int currentWaveIndex = 0;
-    private bool _isWaveActive = false;
+    public bool isWaveActive = false;
 
     [Header("Scaling Difficulty")]
     public float enemyIncreaseFactor = 1.2f;

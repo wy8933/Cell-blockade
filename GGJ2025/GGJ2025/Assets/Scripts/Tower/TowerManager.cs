@@ -3,7 +3,24 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
+    public static TowerManager Instance;
+
     [SerializeField] private List<GameObject> towers;
+
+    public void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+
+    }
 
     public List<GameObject> Towers
     {
