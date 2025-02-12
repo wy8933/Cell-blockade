@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    protected TowerStats stats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

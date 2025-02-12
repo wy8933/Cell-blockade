@@ -5,7 +5,7 @@ public class TowerManager : MonoBehaviour
 {
     public static TowerManager Instance;
 
-    [SerializeField] private List<GameObject> towers;
+    //[SerializeField] private List<GameObject> towers;
 
     public void Awake()
     {
@@ -22,12 +22,13 @@ public class TowerManager : MonoBehaviour
 
     }
 
+    /*
     public List<GameObject> Towers
     {
         get { return towers; }
         set { towers = value; }
     }
-
+    */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -85,7 +85,7 @@ public class EnemyWaveManager : MonoBehaviour
         _enemiesRemainingToSpawn = scaledEnemyCount;
         _enemiesRemainingAlive = _enemiesRemainingToSpawn;
 
-        _isWaveActive = true;
+        isWaveActive = true;
 
         // Start spawning enemies
         WaveStarted?.Invoke(currentWaveIndex);
@@ -115,7 +115,7 @@ public class EnemyWaveManager : MonoBehaviour
             yield return new WaitForSeconds(wave.spawnInterval);
         }
 
-        _isWaveActive = false;
+        isWaveActive = false;
         StartCoroutine(WaitForNextWave());
     }
 
