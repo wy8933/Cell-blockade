@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SmallHealBoostBuffModule
   m_EditorClassIdentifier: 
   stats:
-    MaxHealth: 0
-    Health: 0
+    MaxHealth: 10
+    Health: 10
     MovementSpeed: 0
     RotationSpeed: 0
     SprintSpeed: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
     BlockChance: 0
     SlowResistance: 0
     SizeMultiplier: 0
-    HealthMultiplier: 0.05
+    HealthMultiplier: 0
     AtkMultiplier: 0
     DamageReductionMultiplier: 0
     ResistanceMultiplier: 0

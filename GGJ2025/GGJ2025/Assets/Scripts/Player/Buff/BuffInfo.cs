@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public enum BuffUpdateTimeType
@@ -19,6 +20,6 @@ public class BuffInfo {
     public GameObject creator;
     public GameObject target;
     public int currentStack = 1;
-    public float durationTimer;
-    public float tickTimer;
+    [ReadOnly] public float durationTimer;
+    [ReadOnly] public float tickTimer;
 }

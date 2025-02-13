@@ -18,8 +18,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   maxStack: 10
   priority: 0
-  tags: []
-  isForever: 0
+  tags:
+  - Defense
+  - Permanent
+  isForever: 1
   duration: 0
   tickTime: 0
   buffUpdateType: 0
