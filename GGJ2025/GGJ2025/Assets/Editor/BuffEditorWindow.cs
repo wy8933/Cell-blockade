@@ -308,8 +308,12 @@ public class BuffEditorWindow : EditorWindow
         priorityField.SetValueWithoutNotify(buff.priority);
         foreverToggle.SetValueWithoutNotify(buff.isForever);
         durationField.SetValueWithoutNotify(buff.duration);
-        tickTimeField.SetValueWithoutNotify(buff.tickTime);
+        tickTimeField.SetValueWithoutNotify(buff.tickTime);;
+
+        buffUpdateField.Init(buff.buffUpdateType);
         buffUpdateField.SetValueWithoutNotify(buff.buffUpdateType);
+
+        buffRemoveField.Init(buff.buffRemoveStackType);
         buffRemoveField.SetValueWithoutNotify(buff.buffRemoveStackType);
 
         onCreateField.SetValueWithoutNotify(buff.OnCreate);

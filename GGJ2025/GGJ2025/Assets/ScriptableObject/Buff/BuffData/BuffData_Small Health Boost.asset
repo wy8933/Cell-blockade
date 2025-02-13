@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Small Health Boost
   description: Each stack increases player's maximum health by 10
   icon: {fileID: 0}
-  maxStack: 10
+  maxStack: 11
   priority: 0
   tags: []
   isForever: 1
