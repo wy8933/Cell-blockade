@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1001
   buffName: Scatter
-  description: Choose the default scatter playstyle, increasing attack damage to
-    200%.  window.
+  description: 'Choose the default scatter playstyle, increasing attack damage to
+    200%. '
   icon: {fileID: 0}
   maxStack: 1
   priority: 0

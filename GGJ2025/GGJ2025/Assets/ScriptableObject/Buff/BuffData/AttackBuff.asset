@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
   m_Name: AttackBuff
   m_EditorClassIdentifier: 
-  id: 2006
-  buffName: Attack Buff boost
-  description: Attack Buff boost
+  id: 323
+  buffName: test123
+  description: Increase the attack damage
   icon: {fileID: 0}
-  maxStack: 10
+  maxStack: 1
   priority: 0
   tags: []
   isForever: 1
-  duration: 0
-  tickTime: 0
+  duration: 111
+  tickTime: 111
   buffUpdateType: 0
-  buffRemoveStackType: 1
-  OnCreate: {fileID: 11400000, guid: 1bf345ab7ca6f8344bb6982de27e5959, type: 2}
+  buffRemoveStackType: 0
+  OnCreate: {fileID: 11400000, guid: 0e9567c873c4eaf418435232cf40f8e6, type: 2}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 0}
-  OnHit: {fileID: 0}
+  OnHit: {fileID: 11400000, guid: 1bf345ab7ca6f8344bb6982de27e5959, type: 2}
   OnHurt: {fileID: 0}
   OnKill: {fileID: 0}
   OnDeath: {fileID: 0}
