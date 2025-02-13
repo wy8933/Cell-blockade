@@ -59,6 +59,21 @@ public class BuffEditorWindow : EditorWindow
             return;
         }
 
+        // Assign Buttons
+        Button addButton = root.Q<Button>("AddButton");
+        Button deleteButton = root.Q<Button>("DeleteButton");
+
+        if (addButton != null)
+        {
+            addButton.clicked -= OnAddBuffClicked;
+            addButton.clicked += OnAddBuffClicked;
+        }
+        if (deleteButton != null)
+        {
+            deleteButton.clicked -= OnDeleteBuffClicked;
+            deleteButton.clicked += OnDeleteBuffClicked;
+        }
+
         // Load BuffData assets
         LoadBuffs();
 
@@ -162,30 +177,77 @@ public class BuffEditorWindow : EditorWindow
         buffListView.onSelectionChange += OnListSelectionChange;
     }
 
+    private void RenameActiveBuffAsset()
+    {
+        string assetPath = AssetDatabase.GetAssetPath(activeBuff);
+        if (string.IsNullOrEmpty(assetPath))
+        {
+            Debug.LogError("Asset path not found for buff: " + activeBuff.buffName);
+            return;
+        }
+
+        // Rename asset
+        string errorMessage = AssetDatabase.RenameAsset(assetPath, "BuffData_" + activeBuff.buffName);
+
+        if (string.IsNullOrEmpty(errorMessage))
+        {
+            Debug.Log("Renamed buff asset to: " + activeBuff.buffName);
+            EditorUtility.SetDirty(activeBuff);
+            AssetDatabase.SaveAssets();
+        }
+        else
+        {
+            Debug.LogError("Failed to rename buff asset: " + errorMessage);
+        }
+    }
 
 
     private void OnAddBuffClicked()
     {
+        // Create a new BuffData asset
         BuffData newBuff = ScriptableObject.CreateInstance<BuffData>();
         newBuff.buffName = "New Buff";
-        string path = AssetDatabase.GenerateUniqueAssetPath("Assets/NewBuff.asset");
+        newBuff.id = buffList.Count > 0 ? buffList.Max(b => b.id) + 1 : 1; // Auto-increment ID
+
+        // Save asset in Unity project
+        string path = AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObject/Buff/BuffData/NewBuff.asset");
         AssetDatabase.CreateAsset(newBuff, path);
         AssetDatabase.SaveAssets();
 
+        // Add to list and refresh UI
         buffList.Add(newBuff);
         buffListView.Rebuild();
+
+        Debug.Log("Created new buff: " + newBuff.buffName);
     }
+
 
     private void OnDeleteBuffClicked()
     {
-        if (activeBuff != null)
+        if (activeBuff == null)
         {
-            string assetPath = AssetDatabase.GetAssetPath(activeBuff);
-            buffList.Remove(activeBuff);
-            AssetDatabase.DeleteAsset(assetPath);
-            buffListView.Rebuild();
-            buffDetailsSection.visible = false;
+            Debug.LogWarning("No buff selected for deletion.");
+            return;
         }
+
+        string assetPath = AssetDatabase.GetAssetPath(activeBuff);
+
+        // Remove from list and delete the asset
+        buffList.Remove(activeBuff);
+        AssetDatabase.DeleteAsset(assetPath);
+        AssetDatabase.SaveAssets();
+
+        // Clear UI if no buffs are left
+        if (buffList.Count == 0)
+        {
+            buffDetailsSection.visible = false;
+            activeBuff = null;
+        }
+
+        // Refresh UI
+        buffListView.Rebuild();
+
+        Debug.Log("Deleted buff: " + activeBuff?.buffName);
     }
 
     private void OnListSelectionChange(IEnumerable<object> selectedItems)
@@ -228,8 +290,15 @@ public class BuffEditorWindow : EditorWindow
         ObjectField onKillField = buffDetailsSection.Q<ObjectField>("OnKill");
         ObjectField onDeathField = buffDetailsSection.Q<ObjectField>("OnDeath");
 
+        Button saveButton = buffDetailsSection.Q<Button>("SaveButton");
 
-        // Assign Buff Values to UI Fields
+        if (saveButton == null)
+        {
+            Debug.LogError("SaveButton not found in BuffEditorWindow.uxml! Check UI Builder.");
+            return;
+        }
+
+        // Assign Buff Values to UI Fields (without saving immediately)
         nameField.SetValueWithoutNotify(buff.buffName);
         idField.SetValueWithoutNotify(buff.id);
         descriptionField.SetValueWithoutNotify(buff.description);
@@ -251,47 +320,58 @@ public class BuffEditorWindow : EditorWindow
         onKillField.SetValueWithoutNotify(buff.OnKill);
         onDeathField.SetValueWithoutNotify(buff.OnDeath);
 
-        // Auto Save Changes on Edit
-        nameField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.buffName = evt.newValue));
-        idField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.id = evt.newValue));
-        descriptionField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.description = evt.newValue));
-        iconField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.icon = (Sprite)evt.newValue));
-
-        maxStackField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.maxStack = evt.newValue));
-        priorityField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.priority = evt.newValue));
-        foreverToggle.RegisterValueChangedCallback(evt => SaveBuffChange(() =>
+        // Store user edits but don't apply them yet
+        saveButton.clicked -= () => { };
+        saveButton.clicked += () =>
         {
-            buff.isForever = evt.newValue;
-            durationField.style.display = tickTimeField.style.display = buff.isForever ? DisplayStyle.None : DisplayStyle.Flex;
-        }));
+            Debug.Log("Saving Buff: " + activeBuff.buffName);
 
-        durationField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.duration = evt.newValue));
-        tickTimeField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.tickTime = evt.newValue));
-        buffUpdateField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.buffUpdateType = (BuffUpdateTimeType)evt.newValue));
-        buffRemoveField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.buffRemoveStackType = (BuffRemoveStackUpdateType)evt.newValue));
+            activeBuff.buffName = nameField.value;
+            activeBuff.id = idField.value;
+            activeBuff.description = descriptionField.value;
+            activeBuff.icon = (Sprite)iconField.value;
 
-        onCreateField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnCreate = (BaseBuffModule)evt.newValue));
-        onRemoveField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnRemove = (BaseBuffModule)evt.newValue));
-        onTickField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnTick = (BaseBuffModule)evt.newValue));
-        onHitField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnHit = (BaseBuffModule)evt.newValue));
-        onHurtField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnHurt = (BaseBuffModule)evt.newValue));
-        onKillField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnKill = (BaseBuffModule)evt.newValue));
-        onDeathField.RegisterValueChangedCallback(evt => SaveBuffChange(() => buff.OnDeath = (BaseBuffModule)evt.newValue));
+            activeBuff.maxStack = maxStackField.value;
+            activeBuff.priority = priorityField.value;
+            activeBuff.isForever = foreverToggle.value;
+            activeBuff.duration = durationField.value;
+            activeBuff.tickTime = tickTimeField.value;
+            activeBuff.buffUpdateType = (BuffUpdateTimeType)buffUpdateField.value;
+            activeBuff.buffRemoveStackType = (BuffRemoveStackUpdateType)buffRemoveField.value;
+
+            activeBuff.OnCreate = (BaseBuffModule)onCreateField.value;
+            activeBuff.OnRemove = (BaseBuffModule)onRemoveField.value;
+            activeBuff.OnTick = (BaseBuffModule)onTickField.value;
+            activeBuff.OnHit = (BaseBuffModule)onHitField.value;
+            activeBuff.OnHurt = (BaseBuffModule)onHurtField.value;
+            activeBuff.OnKill = (BaseBuffModule)onKillField.value;
+            activeBuff.OnDeath = (BaseBuffModule)onDeathField.value;
+
+            // Save the changes
+            SaveBuff();
+        };
 
         // Force UI to refresh
         buffDetailsSection.MarkDirtyRepaint();
     }
 
-    private void SaveBuffChange(Action updateBuffAction)
+    private void SaveBuff()
     {
-        // Apply the change to the selected buff
-        updateBuffAction?.Invoke();
+        if (activeBuff == null)
+        {
+            Debug.LogError("SaveBuff() called but no active buff is selected!");
+            return;
+        }
 
-        // Mark the asset dirty so Unity knows it changed
+        // Save the asset changes
         EditorUtility.SetDirty(activeBuff);
         AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        RenameActiveBuffAsset();
+        // Refresh ListView so the new buff name appears if changed
+        buffListView.Rebuild();
+
+        Debug.Log("Buff saved successfully: " + activeBuff.buffName);
     }
-
-
 }
 #endif

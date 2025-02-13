@@ -8,9 +8,11 @@
             <ui:ListView focusable="true" name="BuffListView" reorderable="true" show-add-remove-footer="false" show-border="true" fixed-item-height="60" style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); height: 100%;" />
         </ui:VisualElement>
         <ui:ScrollView name="BuffDetailsSection" style="flex-grow: 1; width: 70%;">
-            <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; justify-content: space-between; height: auto;">
+            <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; justify-content: space-between; height: auto; align-items: flex-start;">
                 <ui:Label tabindex="-1" text="Details Information" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                <ui:VisualElement style="flex-grow: 1;" />
                 <ui:Button text="Delete" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255);" />
+                <ui:Button text="Save" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SaveButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255); white-space: pre-wrap;" />
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1;">
                 <ui:VisualElement name="Row1" style="flex-grow: 1; margin-right: 0; margin-bottom: 0; margin-top: 0; padding-top: 3px; padding-right: 1px; padding-bottom: 3px; margin-left: 0; padding-left: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
