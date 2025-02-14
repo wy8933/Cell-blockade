@@ -23,7 +23,7 @@ public class CursorControl : MonoBehaviour
         
     }
 
-    public Vector3 GetMousePosTile()
+    public Vector3 GetMousePos()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -39,4 +39,5 @@ public class CursorControl : MonoBehaviour
 
 
     }
+
 }

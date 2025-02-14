@@ -3094,6 +3094,7 @@ MonoBehaviour:
     bossType: 1
     isBuffWave: 1
   currentWaveIndex: 0
+  isWaveActive: 0
   enemyIncreaseFactor: 1.1
   timeBetweenWaves: 5
   enemySpawners:
@@ -3782,8 +3783,9 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   playerAnimator: {fileID: 2143712103}
   _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _fireAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _pauseAction: {fileID: -2202334956473425637, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _primaryAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _secondaryAction: {fileID: 6270289825445974247, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &1595879607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3818,6 +3820,7 @@ MonoBehaviour:
     GoldDropMultiplier: 1
   weaponType: 0
   playerModel: {fileID: 2143712102}
+  isBuildingMode: 0
   maxSpeed: 10
   moveDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}

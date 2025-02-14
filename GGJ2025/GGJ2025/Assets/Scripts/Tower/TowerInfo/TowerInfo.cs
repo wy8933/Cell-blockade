@@ -18,9 +18,8 @@ public class TowerInfo : ScriptableObject
         Support,
     }
 
-
     [field: SerializeField] public string towerName { get; private set; }
-    [field: SerializeField] public string towerId { get; private set; }
+    [field: SerializeField] public int towerId { get; private set; }
     [field: SerializeField] public GameObject towerPrefab { get; private set; }
     [field: SerializeField] public string towerDescription { get; private set; }
     [field: SerializeField] public TowerType towerType { get; private set; }

@@ -1,6 +1,7 @@
 using ObjectPoolings;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using static UnityEngine.Timeline.DirectorControlPlayable;
 
@@ -12,11 +13,13 @@ public class PlayerInputManager : MonoBehaviour
 
     public Animator playerAnimator;
 
+    [SerializeField] private TowerPlacement _towerPlacement;
+
     [Header("Input Action References")]
     [SerializeField] private InputActionReference _moveAction;
-    [SerializeField] private InputActionReference _primaryAction;
     [SerializeField] private InputActionReference _pauseAction;
 
+    [SerializeField] private InputActionReference _primaryAction;
     [SerializeField] private InputActionReference _secondaryAction;
 
     private void Start()
@@ -95,9 +98,9 @@ public class PlayerInputManager : MonoBehaviour
                 _player.isShooting = true;
             }
         }
-        else
+        else if(_player.isBuildingMode)
         {
-
+            
         }
     }
 
@@ -117,6 +120,8 @@ public class PlayerInputManager : MonoBehaviour
     private void OnPausePerformed(InputAction.CallbackContext context) { 
         //GameManager.Instance.Pause();
     }
+
+    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 }
 
 
