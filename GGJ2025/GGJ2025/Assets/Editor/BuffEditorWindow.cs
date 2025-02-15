@@ -173,7 +173,7 @@ public class BuffEditorWindow : EditorWindow
             }
         };
 
-        buffListView.fixedItemHeight = 40;
+        buffListView.fixedItemHeight = 60;
         buffListView.onSelectionChange += OnListSelectionChange;
     }
 

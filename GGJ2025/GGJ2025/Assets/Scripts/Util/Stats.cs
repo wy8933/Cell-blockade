@@ -9,7 +9,7 @@ public enum WeaponType
 
 
 [System.Serializable]
-public struct PlayerStats
+public class PlayerStats
 {
     [Header("Basic Stats")]
     public float MaxHealth;

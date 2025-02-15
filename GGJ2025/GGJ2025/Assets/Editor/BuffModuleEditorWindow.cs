@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Recorder.OutputPath;
 
 
 public class BuffModuleEditorWindow : EditorWindow
@@ -58,7 +59,19 @@ public class BuffModuleEditorWindow : EditorWindow
 
         Button addButton = root.Q<Button>("AddButton");
         Button deleteButton = root.Q<Button>("DeleteButton");
+        Button loadButton = root.Q<Button>("LoadButton");
+        Button saveButton = root.Q<Button>("SaveButton");
 
+        if (saveButton != null)
+        {
+            saveButton.clicked -= OnSaveButtonClicked;
+            saveButton.clicked += OnSaveButtonClicked;
+        }
+        if (loadButton != null)
+        {
+            loadButton.clicked -= OnLoadModuleClicked;
+            loadButton.clicked += OnLoadModuleClicked;
+        }
         if (addButton != null)
         {
             addButton.clicked -= OnAddModuleClicked;
@@ -70,48 +83,144 @@ public class BuffModuleEditorWindow : EditorWindow
             deleteButton.clicked += OnDeleteModuleClicked;
         }
 
-        LoadModules();
+        LoadModules(typeof(ModifyStatsBuffModule));
         GenerateListView();
     }
 
-    private void LoadModules()
+    private void OnLoadModuleClicked()
+    {
+        GenericMenu menu = new GenericMenu();
+
+        menu.AddItem(new GUIContent("All Modules"), false, () => LoadModules(null));
+        menu.AddItem(new GUIContent("Modify Stats Module"), false, () => LoadModules(typeof(ModifyStatsBuffModule)));
+
+        // Future Module Types: Add new menu options here when adding new Buff Modules
+        // menu.AddItem(new GUIContent("NewBuffModuleType"), false, () => LoadModules(typeof(NewBuffModuleType)));
+
+        menu.ShowAsContext();
+    }
+
+
+    private void LoadModules(Type moduleType)
     {
         moduleList.Clear();
+
+        // Find all BaseBuffModule
         string[] guids = AssetDatabase.FindAssets("t:BaseBuffModule");
+        Debug.Log("Found " + guids.Length + " BaseBuffModule.");
+
+        // Load all the buff modules
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            BaseBuffModule module = AssetDatabase.LoadAssetAtPath<BaseBuffModule>(path);
-            if (module != null)
-                moduleList.Add(module);
+            BaseBuffModule asset = AssetDatabase.LoadAssetAtPath<BaseBuffModule>(path);
+
+            Debug.Log("Found Buff Module: " + asset.moduleName + " | Type: " + asset.GetType());
+
+            // If no specific type is selected, load all modules; otherwise, filter
+            if (moduleType == null || asset.GetType() == moduleType)
+            {
+                moduleList.Add(asset);
+            }
+            
         }
+
+        Debug.Log("Loaded " + moduleList.Count + " Buff Modules.");
+        moduleListView.itemsSource = moduleList;
+        moduleListView.Rebuild();
     }
+
 
     private void GenerateListView()
     {
         moduleListView.itemsSource = moduleList;
-        moduleListView.makeItem = () => moduleRowTemplate.CloneTree();
-        moduleListView.bindItem = (element, index) =>
+    
+        moduleListView.makeItem = () =>
         {
-            BaseBuffModule module = moduleList[index];
-            Label moduleNameLabel = element.Q<Label>("ModuleName");
-            if (moduleNameLabel != null)
-                moduleNameLabel.text = module.moduleName;
+            var row = moduleRowTemplate.CloneTree();
+            if (row == null)
+            {
+                Debug.LogError("moduleRowTemplate is null! Check BuffModuleRowTemplate.uxml.");
+            }
+            return row;
         };
 
-        moduleListView.fixedItemHeight = 40;
+        moduleListView.bindItem = (element, index) =>
+        {
+            if (index < 0 || index >= moduleList.Count)
+            {
+                Debug.LogError($"Invalid index {index}! Module list has {moduleList.Count} items.");
+                return;
+            }
+
+            BaseBuffModule module = moduleList[index];
+
+            // Find the label inside the row template
+            Label moduleNameLabel = element.Q<Label>("BuffModuleName");
+            if (moduleNameLabel != null)
+            {
+                moduleNameLabel.text = module.moduleName;
+            }
+            else
+            {
+                Debug.LogError("ModuleName label not found in row template! Check BuffModuleRowTemplate.uxml.");
+            }
+        };
+
         moduleListView.onSelectionChange += OnListSelectionChange;
+        moduleListView.fixedItemHeight = 60;
+        moduleListView.Rebuild();
     }
+
 
     private void OnAddModuleClicked()
     {
-        BaseBuffModule newModule = ScriptableObject.CreateInstance<BaseBuffModule>();
-        newModule.moduleName = "New Buff Module";
-        string path = AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObject/Buff/BuffModule/NewBuffModule.asset");
+        // Ask the user which module type they want to create
+        GenericMenu menu = new GenericMenu();
+
+        menu.AddItem(new GUIContent("Modify Stats Module"), false, () => CreateModule(typeof(ModifyStatsBuffModule)));
+
+        menu.ShowAsContext();
+    }
+
+    private void CreateModule(Type moduleType)
+    {
+        // Ensure the module type is a subclass of BaseBuffModule
+        if (!typeof(BaseBuffModule).IsAssignableFrom(moduleType))
+        {
+            Debug.LogError("Invalid module type: " + moduleType.Name);
+            return;
+        }
+
+        // Create an instance of the selected module type
+        BaseBuffModule newModule = (BaseBuffModule)ScriptableObject.CreateInstance(moduleType);
+        newModule.moduleName = "New " + moduleType.Name;
+
+        // Ensure the directory exists
+        string folderPath = "Assets/ScriptableObject/Buff/BuffModule/";
+        if (!AssetDatabase.IsValidFolder(folderPath))
+        {
+            Debug.LogError("Invalid module path: " + folderPath);
+        }
+
+        // Generate a unique path for the asset
+        string path = AssetDatabase.GenerateUniqueAssetPath($"{folderPath}/{newModule.moduleName}.asset");
+
+        if (string.IsNullOrEmpty(path))
+        {
+            Debug.LogError("Failed to generate a valid asset path.");
+            return;
+        }
+
+        // Save the new module as an asset
         AssetDatabase.CreateAsset(newModule, path);
         AssetDatabase.SaveAssets();
-        moduleList.Add(newModule);
-        moduleListView.Rebuild();
+        AssetDatabase.Refresh();
+
+        Debug.Log("Created new module: " + newModule.moduleName + " at " + path);
+
+        // Refresh the editor UI
+        LoadModules(typeof(ModifyStatsBuffModule));
     }
 
     private void OnDeleteModuleClicked()
@@ -129,6 +238,7 @@ public class BuffModuleEditorWindow : EditorWindow
     private void OnListSelectionChange(IEnumerable<object> selectedItems)
     {
         activeModule = selectedItems.First() as BaseBuffModule;
+
         if (activeModule != null)
         {
             ShowModuleDetails(activeModule);
@@ -151,7 +261,7 @@ public class BuffModuleEditorWindow : EditorWindow
         moduleTypeField.RegisterValueChangedCallback(evt =>
         {
             module.moduleType = (BuffModuleType)evt.newValue;
-            ShowModuleDetails(module); // Refresh UI to show relevant fields
+            ShowModuleDetails(module); 
         });
         moduleDetailsSection.Add(moduleTypeField);
 
@@ -162,54 +272,104 @@ public class BuffModuleEditorWindow : EditorWindow
             statsLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             moduleDetailsSection.Add(statsLabel);
 
-            AddStatField(moduleDetailsSection, "Max Health", statsModule, nameof(PlayerStats.MaxHealth));
-            AddStatField(moduleDetailsSection, "Health", statsModule, nameof(PlayerStats.Health));
-            AddStatField(moduleDetailsSection, "Movement Speed", statsModule, nameof(PlayerStats.MovementSpeed));
-            AddStatField(moduleDetailsSection, "Sprint Speed", statsModule, nameof(PlayerStats.SprintSpeed));
-            AddStatField(moduleDetailsSection, "Resistance", statsModule, nameof(PlayerStats.Resistance));
+            // Use the class reference directly
+            PlayerStats stats = statsModule.stats;
 
-            AddStatField(moduleDetailsSection, "Shield", statsModule, nameof(PlayerStats.Shield));
-            AddStatField(moduleDetailsSection, "Damage Reduction", statsModule, nameof(PlayerStats.DamageReduction));
-            AddStatField(moduleDetailsSection, "Block Chance", statsModule, nameof(PlayerStats.BlockChance));
+            FloatField maxHealthField = AddStatField(moduleDetailsSection, "Max Health", stats, nameof(PlayerStats.MaxHealth));
+            FloatField healthField = AddStatField(moduleDetailsSection, "Health", stats, nameof(PlayerStats.Health));
+            FloatField movementSpeedField = AddStatField(moduleDetailsSection, "Movement Speed", stats, nameof(PlayerStats.MovementSpeed));
+            FloatField sprintSpeedField = AddStatField(moduleDetailsSection, "Sprint Speed", stats, nameof(PlayerStats.SprintSpeed));
+            FloatField resistanceField = AddStatField(moduleDetailsSection, "Resistance", stats, nameof(PlayerStats.Resistance));
 
-            AddStatField(moduleDetailsSection, "Slow Resistance", statsModule, nameof(PlayerStats.SlowResistance));
+            FloatField shieldField = AddStatField(moduleDetailsSection, "Shield", stats, nameof(PlayerStats.Shield));
+            FloatField damageReductionField = AddStatField(moduleDetailsSection, "Damage Reduction", stats, nameof(PlayerStats.DamageReduction));
+            FloatField blockChanceField = AddStatField(moduleDetailsSection, "Block Chance", stats, nameof(PlayerStats.BlockChance));
 
-            AddStatField(moduleDetailsSection, "Size Multiplier", statsModule, nameof(PlayerStats.SizeMultiplier));
-            AddStatField(moduleDetailsSection, "Health Multiplier", statsModule, nameof(PlayerStats.HealthMultiplier));
-            AddStatField(moduleDetailsSection, "Attack Multiplier", statsModule, nameof(PlayerStats.AtkMultiplier));
-            AddStatField(moduleDetailsSection, "Damage Reduction Multiplier", statsModule, nameof(PlayerStats.DamageReductionMultiplier));
-            AddStatField(moduleDetailsSection, "Resistance Multiplier", statsModule, nameof(PlayerStats.ResistanceMultiplier));
-            AddStatField(moduleDetailsSection, "Speed Multiplier", statsModule, nameof(PlayerStats.SpeedMultiplier));
-            AddStatField(moduleDetailsSection, "Gold Drop Multiplier", statsModule, nameof(PlayerStats.GoldDropMultiplier));
+            FloatField slowResistanceField = AddStatField(moduleDetailsSection, "Slow Resistance", stats, nameof(PlayerStats.SlowResistance));
+
+            FloatField sizeMultiplierField = AddStatField(moduleDetailsSection, "Size Multiplier", stats, nameof(PlayerStats.SizeMultiplier));
+            FloatField healthMultiplierField = AddStatField(moduleDetailsSection, "Health Multiplier", stats, nameof(PlayerStats.HealthMultiplier));
+            FloatField atkMultiplierField = AddStatField(moduleDetailsSection, "Attack Multiplier", stats, nameof(PlayerStats.AtkMultiplier));
+            FloatField damageReductionMultiplierField = AddStatField(moduleDetailsSection, "Damage Reduction Multiplier", stats, nameof(PlayerStats.DamageReductionMultiplier));
+            FloatField resistanceMultiplierField = AddStatField(moduleDetailsSection, "Resistance Multiplier", stats, nameof(PlayerStats.ResistanceMultiplier));
+            FloatField speedMultiplierField = AddStatField(moduleDetailsSection, "Speed Multiplier", stats, nameof(PlayerStats.SpeedMultiplier));
+            FloatField goldDropMultiplierField = AddStatField(moduleDetailsSection, "Gold Drop Multiplier", stats, nameof(PlayerStats.GoldDropMultiplier));
         }
-
-        // Save Button
-        Button saveButton = new Button(() => SaveModule(module)) { text = "Save Module" };
-        moduleDetailsSection.Add(saveButton);
     }
 
-    private void AddStatField(VisualElement parent, string label, ModifyStatsBuffModule module, string statName)
+    private FloatField AddStatField(VisualElement parent, string label, PlayerStats stats, string statName)
     {
         FloatField statField = new FloatField(label);
 
-        // Get the current value using reflection
-        float currentValue = (float)typeof(PlayerStats).GetField(statName).GetValue(module.stats);
+        // Get the field 
+        var fieldInfo = typeof(PlayerStats).GetField(statName);
+        if (fieldInfo == null)
+        {
+            Debug.LogError($"Field {statName} not found in PlayerStats!");
+            return null;
+        }
+
+        // Get the current value and set it to the UI field
+        float currentValue = (float)fieldInfo.GetValue(stats);
         statField.value = currentValue;
 
-        // Register callback to update the correct stat field
+        // Register callback to update the correct stat field in PlayerStats
         statField.RegisterValueChangedCallback(evt =>
         {
-            typeof(PlayerStats).GetField(statName).SetValue(module.stats, evt.newValue);
+            fieldInfo.SetValue(stats, evt.newValue);
+            EditorUtility.SetDirty(activeModule); 
         });
 
         parent.Add(statField);
+        return statField;
     }
 
-    private void SaveModule(BaseBuffModule module)
+    private void OnSaveButtonClicked()
     {
-        EditorUtility.SetDirty(module);
+        if (activeModule == null)
+        {
+            Debug.LogWarning("No active module selected to save.");
+            return;
+        }
+
+        Debug.Log("Saving module: " + activeModule.moduleName);
+
+        // Mark ScriptableObject dirty to persist changes
+        EditorUtility.SetDirty(activeModule);
         AssetDatabase.SaveAssets();
-        Debug.Log("Saved module: " + module.moduleName);
+        AssetDatabase.Refresh();
+
+        RenameActiveBuffAsset();
+
+        // Refresh ListView after renaming
+        moduleListView.Rebuild();
+
+        Debug.Log("Module saved successfully: " + activeModule.moduleName);
+    }
+
+
+    private void RenameActiveBuffAsset()
+    {
+        string assetPath = AssetDatabase.GetAssetPath(activeModule);
+        if (string.IsNullOrEmpty(assetPath))
+        {
+            Debug.LogError("Asset path not found for buff: " + activeModule.moduleName);
+            return;
+        }
+
+        // Rename asset
+        string errorMessage = AssetDatabase.RenameAsset(assetPath, "BuffModule_" + activeModule.moduleName);
+
+        if (string.IsNullOrEmpty(errorMessage))
+        {
+            Debug.Log("Renamed buff asset to: " + activeModule.moduleName);
+            EditorUtility.SetDirty(activeModule);
+            AssetDatabase.SaveAssets();
+        }
+        else
+        {
+            Debug.LogError("Failed to rename buff asset: " + errorMessage);
+        }
     }
 }
 #endif
