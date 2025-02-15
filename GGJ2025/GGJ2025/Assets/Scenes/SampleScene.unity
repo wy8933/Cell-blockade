@@ -5502,6 +5502,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7077520152189061098, guid: 07707c8434b059d42bc42930e7f34cd2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077520152189061098, guid: 07707c8434b059d42bc42930e7f34cd2, type: 3}
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}

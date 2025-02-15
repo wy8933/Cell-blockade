@@ -1,105 +1,12 @@
 {
     "nodes": [
         {
-            "GUID": "ac649b39-08cf-4a67-8018-543d3f167eae",
+            "GUID": "7f959c3a-41f1-44e2-a1a6-3502b61d81cd",
             "title": "New Skill",
-            "posX": 435.0,
-            "posY": 213.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "54135c1c-0da4-410c-a41e-ddc667b91da7",
-            "title": "New Skill",
-            "posX": 759.0,
-            "posY": 346.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "title": "New Skill",
-            "posX": 1071.0,
-            "posY": 213.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "0c07c4bf-4223-426f-8d77-f0c016f25905",
-            "title": "New Skill",
-            "posX": 759.0,
-            "posY": 65.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "93ee24e7-d02c-417f-ad36-e1e7cd75ae40",
-            "title": "New Skill",
-            "posX": 1535.0,
-            "posY": 207.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "f17df946-117e-4f55-ade5-faf867a54974",
-            "title": "New Skill",
-            "posX": 1535.0,
-            "posY": 487.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "66f3ad91-ed2d-403e-8aeb-1b8c5fe26c3d",
-            "title": "New Skill",
-            "posX": 1535.0,
-            "posY": -12.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "526430df-01c5-4fad-8980-a9628b9aeda1",
-            "title": "New Skill",
-            "posX": 1535.0,
-            "posY": -248.0,
-            "buffDataPath": ""
-        },
-        {
-            "GUID": "3e727444-6df6-4367-b1b4-d728792c2ad9",
-            "title": "New Skill",
-            "posX": 1535.0,
-            "posY": 695.0,
+            "posX": 282.6666564941406,
+            "posY": 147.3333282470703,
             "buffDataPath": ""
         }
     ],
-    "connections": [
-        {
-            "outputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "inputNodeGUID": "526430df-01c5-4fad-8980-a9628b9aeda1"
-        },
-        {
-            "outputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "inputNodeGUID": "66f3ad91-ed2d-403e-8aeb-1b8c5fe26c3d"
-        },
-        {
-            "outputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "inputNodeGUID": "93ee24e7-d02c-417f-ad36-e1e7cd75ae40"
-        },
-        {
-            "outputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "inputNodeGUID": "f17df946-117e-4f55-ade5-faf867a54974"
-        },
-        {
-            "outputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928",
-            "inputNodeGUID": "3e727444-6df6-4367-b1b4-d728792c2ad9"
-        },
-        {
-            "outputNodeGUID": "0c07c4bf-4223-426f-8d77-f0c016f25905",
-            "inputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928"
-        },
-        {
-            "outputNodeGUID": "54135c1c-0da4-410c-a41e-ddc667b91da7",
-            "inputNodeGUID": "e1c7f30b-6b76-4df1-bb45-efe1051cd928"
-        },
-        {
-            "outputNodeGUID": "ac649b39-08cf-4a67-8018-543d3f167eae",
-            "inputNodeGUID": "54135c1c-0da4-410c-a41e-ddc667b91da7"
-        },
-        {
-            "outputNodeGUID": "ac649b39-08cf-4a67-8018-543d3f167eae",
-            "inputNodeGUID": "0c07c4bf-4223-426f-8d77-f0c016f25905"
-        }
-    ]
+    "connections": []
 }

@@ -15,11 +15,11 @@ public class SkillTreeNode : ScriptableObject
     public string uniqueID;
 
     [Header("Connections")]
-    // Direct references to prerequisite nodes (runtime use)
+    // Direct references to prerequisite nodes
     public List<SkillTreeNode> prerequisites;
 
     [Header("Buff Reference")]
-    // Reference to a BuffData from your buff system (applied when this node is unlocked)
+    // Reference to a BuffData from your buff system 
     public BuffData buffData;
 
     [HideInInspector]
