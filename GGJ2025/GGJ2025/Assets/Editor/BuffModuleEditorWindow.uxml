@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Container" focusable="false" style="flex-grow: 1; flex-direction: row; align-items: stretch; font-size: 12px; color: rgb(255, 255, 255); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgb(56, 56, 56);">
+        <ui:VisualElement name="BuffList" style="flex-grow: 1; height: 100%; flex-direction: column; width: 30%; align-items: stretch; justify-content: flex-start;">
+            <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; justify-content: space-between; height: auto;">
+                <ui:Label tabindex="-1" text="Buff List" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                <ui:Button text="Add" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255);" />
+                <ui:Button text="Load" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:ListView focusable="true" name="BuffModuleListView" reorderable="true" show-add-remove-footer="false" show-border="true" fixed-item-height="60" style="flex-grow: 1; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); height: 100%;" />
+        </ui:VisualElement>
+        <ui:ScrollView name="DetailsSection" style="flex-grow: 1; width: 70%;">
+            <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; justify-content: space-between; height: auto; align-items: flex-start;">
+                <ui:Label tabindex="-1" text="Details Information" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                <ui:VisualElement style="flex-grow: 1;" />
+                <ui:Button text="Delete" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255);" />
+                <ui:Button text="Save" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SaveButton" style="align-self: flex-start; border-left-color: rgb(27, 27, 27); border-right-color: rgb(27, 27, 27); border-top-color: rgb(27, 27, 27); border-bottom-color: rgb(27, 27, 27); background-color: rgb(56, 56, 56); -unity-text-outline-color: rgba(27, 27, 27, 0); color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:ScrollView name="BuffModuleDetailsSection" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

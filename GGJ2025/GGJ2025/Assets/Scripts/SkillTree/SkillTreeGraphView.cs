@@ -1,0 +1,217 @@
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+using UnityEngine.UIElements;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+
+public class SkillTreeGraphView : GraphView
+{
+    public SkillTreeGraphView()
+    {
+        StyleSheet styleSheet = Resources.Load<StyleSheet>("SkillTreeGraphViewStyle");
+        if (styleSheet != null)
+        {
+            styleSheets.Add(styleSheet);
+        }
+        else
+        {
+            Debug.LogWarning("StyleSheet 'SkillTreeGraphViewStyle' not found.");
+        }
+
+        SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
+
+        // Enable dragging and selection
+        this.AddManipulator(new ContentDragger());
+        this.AddManipulator(new SelectionDragger());
+        this.AddManipulator(new RectangleSelector());
+
+        GridBackground grid = new GridBackground();
+        Insert(0, grid);
+        grid.StretchToParentSize();
+
+        // Hook up the callback to handle new edges
+        this.graphViewChanged += OnGraphViewChanged;
+    }
+
+    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    {
+        // Return all ports that are not on the same node and have opposite directions
+        return ports.ToList().Where(port => port != startPort && port.direction != startPort.direction).ToList();
+    }
+
+    public void CreateNode(string nodeName)
+    {
+        SkillTreeNodeElement nodeElement = new SkillTreeNodeElement
+        {
+            title = nodeName,
+            GUID = Guid.NewGuid().ToString()
+        };
+
+        // Set a default size and position for the node
+        nodeElement.SetPosition(new Rect(Vector2.zero, new Vector2(150, 200)));
+        AddElement(nodeElement);
+    }
+
+    public void ConnectNodes(Port outputPort, Port inputPort)
+    {
+        // Create the edge and assign ports.
+        Edge edge = new Edge
+        {
+            output = outputPort,
+            input = inputPort
+        };
+
+        // Connect the edge to both ports.
+        edge.input.Connect(edge);
+        edge.output.Connect(edge);
+
+        // Add the edge to the GraphView so it appears visually.
+        AddElement(edge);
+    }
+
+    public GraphViewChange OnGraphViewChanged(GraphViewChange change)
+    {
+        if (change.edgesToCreate != null)
+        {
+            Debug.Log($"Attempting to create {change.edgesToCreate.Count} edge(s)");
+            foreach (Edge edge in change.edgesToCreate)
+            {
+                Debug.Log("Connecting edge between " + edge.output.portName + " and " + edge.input.portName);
+                edge.input.Connect(edge);
+                edge.output.Connect(edge);
+            }
+        }
+        return change;
+    }
+
+    public void SaveGraph()
+    {
+        SkillTreeGraphSaveData saveData = new SkillTreeGraphSaveData();
+        saveData.nodes = new List<SkillNodeData>();
+        saveData.connections = new List<SkillConnectionData>();
+
+        // Save nodes
+        foreach (var node in nodes.ToList())
+        {
+            if (node is SkillTreeNodeElement skillNode)
+            {
+                SkillNodeData nodeData = new SkillNodeData();
+                nodeData.GUID = skillNode.GUID;
+                nodeData.title = skillNode.title;
+                Rect nodeRect = skillNode.GetPosition();
+                nodeData.posX = nodeRect.x;
+                nodeData.posY = nodeRect.y;
+                if (skillNode.buffData != null)
+                {
+                    nodeData.buffDataPath = AssetDatabase.GetAssetPath(skillNode.buffData);
+                }
+                else
+                {
+                    nodeData.buffDataPath = "";
+                }
+                saveData.nodes.Add(nodeData);
+            }
+        }
+
+        // Save connections and edges
+        foreach (var edge in edges.ToList())
+        {
+            SkillTreeNodeElement outputNode = edge.output.node as SkillTreeNodeElement;
+            SkillTreeNodeElement inputNode = edge.input.node as SkillTreeNodeElement;
+            if (outputNode != null && inputNode != null)
+            {
+                SkillConnectionData connectionData = new SkillConnectionData();
+                connectionData.outputNodeGUID = outputNode.GUID;
+                connectionData.inputNodeGUID = inputNode.GUID;
+                saveData.connections.Add(connectionData);
+            }
+        }
+
+        string json = JsonUtility.ToJson(saveData, true);
+        System.IO.File.WriteAllText("Assets/Saves/SkillTreeGraphData.json", json);
+        Debug.Log("Graph saved to Assets/Saves/SkillTreeGraphData.json");
+    }
+
+    public void LoadGraph()
+    {
+        string filePath = "Assets/Saves/SkillTreeGraphData.json";
+        if (!System.IO.File.Exists(filePath))
+        {
+            Debug.LogWarning("Save file not found: " + filePath);
+            return;
+        }
+
+        // Clear existing nodes and edges
+        foreach (var element in graphElements.ToList())
+        {
+            RemoveElement(element);
+        }
+
+        string json = System.IO.File.ReadAllText(filePath);
+        SkillTreeGraphSaveData saveData = JsonUtility.FromJson<SkillTreeGraphSaveData>(json);
+
+        // Recreate nodes
+        Dictionary<string, SkillTreeNodeElement> nodeLookup = new Dictionary<string, SkillTreeNodeElement>();
+        foreach (var nodeData in saveData.nodes)
+        {
+            SkillTreeNodeElement nodeElement = new SkillTreeNodeElement();
+            nodeElement.title = nodeData.title;
+            nodeElement.GUID = nodeData.GUID;
+            Rect rect = new Rect(nodeData.posX, nodeData.posY, 150, 200);
+            nodeElement.SetPosition(rect);
+            if (!string.IsNullOrEmpty(nodeData.buffDataPath))
+            {
+                nodeElement.buffData = AssetDatabase.LoadAssetAtPath<BuffData>(nodeData.buffDataPath);
+            }
+            AddElement(nodeElement);
+            nodeLookup[nodeElement.GUID] = nodeElement;
+        }
+
+        // Recreate edges (connections)
+        foreach (var connectionData in saveData.connections)
+        {
+            if (nodeLookup.TryGetValue(connectionData.outputNodeGUID, out SkillTreeNodeElement outputNode) &&
+                nodeLookup.TryGetValue(connectionData.inputNodeGUID, out SkillTreeNodeElement inputNode))
+            {
+                // Assume first output/input port is used
+                Port outputPort = outputNode.outputContainer[0] as Port;
+                Port inputPort = inputNode.inputContainer[0] as Port;
+                Edge edge = new Edge
+                {
+                    output = outputPort,
+                    input = inputPort
+                };
+                edge.input.Connect(edge);
+                edge.output.Connect(edge);
+                AddElement(edge);
+            }
+        }
+        Debug.Log("Graph loaded from " + filePath);
+    }
+}
+
+[System.Serializable]
+public class SkillTreeGraphSaveData
+{
+    public List<SkillNodeData> nodes;
+    public List<SkillConnectionData> connections;
+}
+
+[System.Serializable]
+public class SkillNodeData
+{
+    public string GUID;
+    public string title;
+    public float posX;
+    public float posY;
+    public string buffDataPath;
+}
+
+[System.Serializable]
+public class SkillConnectionData
+{
+    public string outputNodeGUID;
+    public string inputNodeGUID;
+}

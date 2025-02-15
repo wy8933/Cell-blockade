@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ModifyStatsBuffModule", menuName = "BuffSystem/ModifyStatsBuffModule")]
 public class ModifyStatsBuffModule : BaseBuffModule
 {
-    public Stats stats;
+    public PlayerStats stats;
 
     public override void Apply(BuffInfo buffInfo, DamageInfo damageInfo = null)
     {
@@ -14,7 +14,6 @@ public class ModifyStatsBuffModule : BaseBuffModule
             player.Stats.MaxHealth += stats.MaxHealth;
             player.Stats.Health += stats.Health;
             player.Stats.MovementSpeed += stats.MovementSpeed;
-            player.Stats.RotationSpeed += stats.RotationSpeed;
             player.Stats.SprintSpeed += stats.SprintSpeed;
             player.Stats.Resistance += stats.Resistance;
 
