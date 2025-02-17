@@ -5,13 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// This isn't currently used
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     //[SerializeField] private Camera cam;
-
-    [SerializeField] private Transform camPos;
-
-    [SerializeField] private Transform playerLoc;
 
     //[SerializeField] private Transform customCursor;
 
@@ -23,18 +22,4 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float xThreshold;
     [SerializeField] private float yThreshold;
 
-    private void Awake()
-    {
-
-    }
-
-    private void Update()
-    {
-        FollowPlayer();
-    }
-
-    private void FollowPlayer()
-    {
-        camPos.position = new Vector3(playerLoc.position.x, 10.0f, playerLoc.position.z - 5);
-    }
 }

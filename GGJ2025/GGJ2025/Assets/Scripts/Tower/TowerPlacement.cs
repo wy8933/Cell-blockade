@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 
 public class TowerPlacement : MonoBehaviour
 {
-    [SerializeField] private TowerManager _towerManager;
+    public static TowerPlacement Instance;
 
-    [SerializeField] private PlayerInputManager _playerInputManager;
+    //[SerializeField] private PlayerInputManager _playerInputManager;
 
 [Header("TileMap Variables")]
     //[SerializeField] private List<GameObject> turretSelect;
@@ -28,20 +29,28 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private int selectedTower = -1;
 
 
-    private void Start()
+    public void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         StopPlacement();
+
     }
 
-    public void StartPlacement(int ID)
+    /// <summary>
+    /// 
+    /// </summary>
+    public void StartPlacement()
     {
         StopPlacement();
-        Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
-        selectedTower = towerInfo.TowerList.FindIndex(data => data.towerId == ID);
-        if (selectedTower < 0)
-        {
-            return;
-        }
         gridVisualiztion.SetActive(true);
         cellIndicator.SetActive(true);
     }
@@ -55,40 +64,46 @@ public class TowerPlacement : MonoBehaviour
 
     public void PlaceTower()
     {
-        if (_playerInputManager.IsPointerOverUI())
+        Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
+        if (IsPointerOverUI())
         {
             return;
         }
-        Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
         GameObject newObject = Instantiate(towerInfo.TowerList[selectedTower].towerPrefab);
         newObject.transform.position = grid.CellToWorld(gridPos);
+    }
+
+    public void GetTowerPrefab(int ID)
+    {
+        int temp;
+        if ((temp = towerInfo.TowerList.FindIndex(data => data.towerId == ID)) > 0)
+        {
+            selectedTower = temp;
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (!EnemyWaveManager.Instance.isWaveActive)
-        {
-            
-        }
-        */
+        
         HighlightTile();
+
+        if (selectedTower != -1)
+        {
+            StartPlacement();
+        }
     }
 
 
     
     private void HighlightTile()
     {
-        if (selectedTower < 0 || !EnemyWaveManager.Instance.isWaveActive)
-        {
-
-        }
         Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
 
         cellIndicator.transform.position = grid.CellToWorld(gridPos);
 
     }
 
-    
+    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 }

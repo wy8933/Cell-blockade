@@ -900,7 +900,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 231544045}
-  - component: {fileID: 231544046}
   - component: {fileID: 231544047}
   m_Layer: 0
   m_Name: CursorController
@@ -924,22 +923,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1422344939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &231544046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231544044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af5a930d7a3d174fb3d48511ca1cdab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 427607215}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!114 &231544047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,8 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ea75111bde2b54c84efa80974ab567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camPos: {fileID: 463335599}
-  playerLoc: {fileID: 1921548018}
   cutscene: 0
   isPaused: 0
   xThreshold: 0
@@ -1060,7 +1041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f792f068d467464b9164c2c79833bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerManager: {fileID: 240572770}
+  _towerManager: {fileID: 0}
+  _playerInputManager: {fileID: 0}
   grid: {fileID: 367840541}
   turretTilemap: {fileID: 1098594816}
   cellIndicator: {fileID: 1560363111}
@@ -1347,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 427607213}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: -7.48, y: 9.563079, z: 0.6596283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1436,38 +1418,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2876168289200965576, guid: 6a48e793df76aeb428c656291c32a26d, type: 3}
   m_PrefabInstance: {fileID: 1119189207}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &463335598
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 463335599}
-  m_Layer: 0
-  m_Name: CameraHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &463335599
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463335598}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 742497784}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &484936711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1922,8 +1872,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 1921548018}
+  m_Follow: {fileID: 1921548018}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -1952,12 +1902,12 @@ Transform:
   m_GameObject: {fileID: 742497782}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.48, y: 9.563079, z: 0.6596283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1963338731}
-  m_Father: {fileID: 463335599}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!1001 &766727745
 PrefabInstance:
@@ -4262,9 +4212,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -4596,7 +4546,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 427607216}
-  - {fileID: 463335599}
+  - {fileID: 742497784}
   - {fileID: 1422344939}
   - {fileID: 97289672}
   - {fileID: 367840542}

@@ -100,7 +100,7 @@ public class PlayerInputManager : MonoBehaviour
         }
         else if(_player.isBuildingMode)
         {
-            
+            TowerPlacement.Instance.StartPlacement();
         }
     }
 
@@ -110,7 +110,15 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        _player.isShooting = false;
+        if (!_player.isBuildingMode)
+        {
+            _player.isShooting = false;
+
+        }
+        else if (_player.isBuildingMode)
+        {
+            TowerPlacement.Instance.StopPlacement();
+        }
     }
 
     /// <summary>
@@ -120,8 +128,6 @@ public class PlayerInputManager : MonoBehaviour
     private void OnPausePerformed(InputAction.CallbackContext context) { 
         //GameManager.Instance.Pause();
     }
-
-    public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 }
 
 
