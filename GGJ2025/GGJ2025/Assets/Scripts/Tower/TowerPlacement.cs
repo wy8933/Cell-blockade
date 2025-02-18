@@ -28,6 +28,7 @@ public class TowerPlacement : MonoBehaviour
     //-1 means null there's isn't a tower selected 
     [SerializeField] private int selectedTower = -1;
 
+    [SerializeField] private GridData towerData;
 
     public void Awake()
     {
@@ -57,7 +58,7 @@ public class TowerPlacement : MonoBehaviour
 
     public void StopPlacement()
     {
-        selectedTower = -1;
+        //selectedTower = -1;
         gridVisualiztion.SetActive(false);
         cellIndicator.SetActive(false);
     }
@@ -76,11 +77,17 @@ public class TowerPlacement : MonoBehaviour
     public void GetTowerPrefab(int ID)
     {
         int temp;
-        if ((temp = towerInfo.TowerList.FindIndex(data => data.towerId == ID)) > 0)
+
+        //Debug.Log(ID);
+
+        temp = towerInfo.TowerList.FindIndex(data => data.towerId == ID);
+
+        //Debug.Log(towerInfo.TowerList.FindIndex(data => data.towerId == ID));
+
+        if (temp >= 0)
         {
             selectedTower = temp;
         }
-
     }
 
     // Update is called once per frame

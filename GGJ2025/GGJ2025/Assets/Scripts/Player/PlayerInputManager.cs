@@ -100,7 +100,7 @@ public class PlayerInputManager : MonoBehaviour
         }
         else if(_player.isBuildingMode)
         {
-            TowerPlacement.Instance.StartPlacement();
+            TowerPlacement.Instance.PlaceTower();
         }
     }
 
