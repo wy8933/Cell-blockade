@@ -8,7 +8,7 @@ using UnityEngine.Rendering.Universal;
 [RequireComponent(typeof(NavMeshAgent))]
 public class BaseEnemy : MonoBehaviour
 {
-    public Stats Stats;
+    public EnemyStats Stats;
     public Transform player;
     public NavMeshAgent agent;
     public PrefabPool pool;
@@ -114,7 +114,6 @@ public class BaseEnemy : MonoBehaviour
         Stats.MaxHealth *= scalingFactor * Stats.HealthMultiplier;
         Stats.Health = Stats.MaxHealth;
         Stats.MovementSpeed *= scalingFactor * Stats.SpeedMultiplier;
-        Stats.RotationSpeed *= scalingFactor * Stats.SpeedMultiplier;
         Stats.SprintSpeed *= scalingFactor * Stats.SpeedMultiplier;
         Stats.Resistance *= scalingFactor * Stats.ResistanceMultiplier;
         Stats.Shield *= scalingFactor * Stats.DamageReductionMultiplier;

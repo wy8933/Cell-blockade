@@ -1,0 +1,12 @@
+{
+    "nodes": [
+        {
+            "GUID": "7f959c3a-41f1-44e2-a1a6-3502b61d81cd",
+            "title": "New Skill",
+            "posX": 282.6666564941406,
+            "posY": 147.3333282470703,
+            "buffDataPath": ""
+        }
+    ],
+    "connections": []
+}
