@@ -15,7 +15,7 @@ MonoBehaviour:
   moduleName: HealthBoost
   moduleType: 0
   stats:
-    MaxHealth: 0
+    MaxHealth: 100
     Health: 0
     MovementSpeed: 0
     SprintSpeed: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     BlockChance: 0
     SlowResistance: 0
     SizeMultiplier: 0
-    HealthMultiplier: 0.2
+    HealthMultiplier: 0.3
     AtkMultiplier: 0
     DamageReductionMultiplier: 0
     ResistanceMultiplier: 0

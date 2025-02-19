@@ -1,15 +1,20 @@
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using UnityEditor;
 
 public class SkillTreeGraphView : GraphView
 {
+    // Default file path using the new base folder "Assets/Saves"
+    public string filePath = "Assets/Saves/SkillTreeGraphData.json";
+
     public SkillTreeGraphView()
     {
+        // Load the style sheet from Resources
         StyleSheet styleSheet = Resources.Load<StyleSheet>("SkillTreeGraphViewStyle");
         if (styleSheet != null)
         {
@@ -27,20 +32,19 @@ public class SkillTreeGraphView : GraphView
         this.AddManipulator(new SelectionDragger());
         this.AddManipulator(new RectangleSelector());
 
+        // Add a grid background for visual guidance
         GridBackground grid = new GridBackground();
         Insert(0, grid);
         grid.StretchToParentSize();
 
-        // Hook up the callback to handle new edges
+        // Register callback to process new edge connections
         this.graphViewChanged += OnGraphViewChanged;
     }
 
-    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
-    {
-        // Return all ports that are not on the same node and have opposite directions
-        return ports.ToList().Where(port => port != startPort && port.direction != startPort.direction).ToList();
-    }
-
+    /// <summary>
+    /// Creates a new skill node element.
+    /// </summary>
+    /// <param name="nodeName">The display name for the new node.</param>
     public void CreateNode(string nodeName)
     {
         SkillTreeNodeElement nodeElement = new SkillTreeNodeElement
@@ -75,10 +79,9 @@ public class SkillTreeGraphView : GraphView
     {
         if (change.edgesToCreate != null)
         {
-            Debug.Log($"Attempting to create {change.edgesToCreate.Count} edge(s)");
+            Debug.Log($"Creating {change.edgesToCreate.Count} new edge(s).");
             foreach (Edge edge in change.edgesToCreate)
             {
-                Debug.Log("Connecting edge between " + edge.output.portName + " and " + edge.input.portName);
                 edge.input.Connect(edge);
                 edge.output.Connect(edge);
             }
@@ -86,6 +89,9 @@ public class SkillTreeGraphView : GraphView
         return change;
     }
 
+    /// <summary>
+    /// Saves the current graph data to a JSON file.
+    /// </summary>
     public void SaveGraph()
     {
         SkillTreeGraphSaveData saveData = new SkillTreeGraphSaveData();
@@ -115,7 +121,7 @@ public class SkillTreeGraphView : GraphView
             }
         }
 
-        // Save connections and edges
+        // Save connections/edges
         foreach (var edge in edges.ToList())
         {
             SkillTreeNodeElement outputNode = edge.output.node as SkillTreeNodeElement;
@@ -130,14 +136,16 @@ public class SkillTreeGraphView : GraphView
         }
 
         string json = JsonUtility.ToJson(saveData, true);
-        System.IO.File.WriteAllText("Assets/Saves/SkillTreeGraphData.json", json);
-        Debug.Log("Graph saved to Assets/Saves/SkillTreeGraphData.json");
+        File.WriteAllText(filePath, json);
+        Debug.Log("Graph saved to " + filePath);
     }
 
+    /// <summary>
+    /// Loads graph data from a JSON file.
+    /// </summary>
     public void LoadGraph()
     {
-        string filePath = "Assets/Saves/SkillTreeGraphData.json";
-        if (!System.IO.File.Exists(filePath))
+        if (!File.Exists(filePath))
         {
             Debug.LogWarning("Save file not found: " + filePath);
             return;
@@ -149,7 +157,7 @@ public class SkillTreeGraphView : GraphView
             RemoveElement(element);
         }
 
-        string json = System.IO.File.ReadAllText(filePath);
+        string json = File.ReadAllText(filePath);
         SkillTreeGraphSaveData saveData = JsonUtility.FromJson<SkillTreeGraphSaveData>(json);
 
         // Recreate nodes
@@ -192,14 +200,16 @@ public class SkillTreeGraphView : GraphView
     }
 }
 
-[System.Serializable]
+// Serializable data classes
+
+[Serializable]
 public class SkillTreeGraphSaveData
 {
     public List<SkillNodeData> nodes;
     public List<SkillConnectionData> connections;
 }
 
-[System.Serializable]
+[Serializable]
 public class SkillNodeData
 {
     public string GUID;
@@ -209,7 +219,7 @@ public class SkillNodeData
     public string buffDataPath;
 }
 
-[System.Serializable]
+[Serializable]
 public class SkillConnectionData
 {
     public string outputNodeGUID;
