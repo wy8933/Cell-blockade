@@ -18,11 +18,11 @@ public class TowerInfo : ScriptableObject
         Support,
     }
 
-    [field: SerializeField] public string towerName { get; private set; }
+    [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int ID { get; private set; }
-    [field: SerializeField] public Vector2Int size { get; private set; }
-    [field: SerializeField] public GameObject towerPrefab { get; private set; }
-    [field: SerializeField] public string towerDescription { get; private set; }
-    [field: SerializeField] public TowerType towerType { get; private set; }
+    [field: SerializeField] public Vector2Int Size { get; private set; }
+    [field: SerializeField] public GameObject TowerPrefab { get; private set; }
+    [field: SerializeField] public string TowerDescription { get; private set; }
+    [field: SerializeField] public TowerType Type { get; private set; }
 }
 

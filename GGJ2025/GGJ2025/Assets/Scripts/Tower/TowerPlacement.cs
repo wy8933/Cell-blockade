@@ -26,13 +26,13 @@ public class TowerPlacement : MonoBehaviour
 
     [Header("TowerPlacement")]
 
-    [SerializeField] private TowerInfo towerInfo;
+    [SerializeField] private TowerInfo towerDataBase;
     //-1 means null there's isn't a tower selected 
     [SerializeField] private int selectedTowerIndex = -1;
 
     [SerializeField] private GridData towerData;
 
-    private List<GameObject> placedGameObjects = new();
+    [SerializeField] private List<GameObject> placedGameObjects = new List<GameObject>();
 
     public void Awake()
     {
@@ -47,6 +47,8 @@ public class TowerPlacement : MonoBehaviour
         }
 
         StopPlacement();
+
+        towerData = new GridData();
 
     }
 
@@ -82,20 +84,20 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        GameObject newObject = Instantiate(towerInfo.TowerList[selectedTowerIndex].towerPrefab);
+        GameObject newObject = Instantiate(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab);
         newObject.transform.position = grid.CellToWorld(gridPos);
 
-        placedGameObjects.Add( newObject );
+        placedGameObjects.Add(newObject);
 
-        GridData selectedData = towerInfo.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
-        selectedData.AddObjectAt(gridPos, towerInfo.TowerList[selectedTowerIndex].size, towerInfo.TowerList[selectedTowerIndex].ID,placedGameObjects.Count - 1);
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
+        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID,placedGameObjects.Count - 1);
     }
 
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
     {
-        GridData selectedData = towerInfo.TowerList[selectedTowerIndex].ID == 0 ? towerData: towerData;
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData: towerData;
 
-        return selectedData.CanPlaceObjectAt(gridPos, towerInfo.TowerList[selectedTowerIndex].size);
+        return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
     } 
 
     public void GetTowerPrefab(int ID)
@@ -104,7 +106,7 @@ public class TowerPlacement : MonoBehaviour
 
         //Debug.Log(ID);
 
-        temp = towerInfo.TowerList.FindIndex(data => data.ID == ID);
+        temp = towerDataBase.TowerList.FindIndex(data => data.ID == ID);
 
         //Debug.Log(towerInfo.TowerList.FindIndex(data => data.ID == ID));
 
@@ -118,11 +120,12 @@ public class TowerPlacement : MonoBehaviour
     void Update()
     {
         
-        HighlightTile();
+        
 
         if (selectedTowerIndex != -1)
         {
             StartPlacement();
+            HighlightTile();
         }
     }
 
@@ -130,6 +133,8 @@ public class TowerPlacement : MonoBehaviour
     
     private void HighlightTile()
     {
+
+
         Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
 
         bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);

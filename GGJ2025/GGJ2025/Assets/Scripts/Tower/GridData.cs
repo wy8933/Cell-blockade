@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GridData : MonoBehaviour
 {
-    Dictionary<Vector3Int, PlacementData> placedObjects = new();
+    Dictionary<Vector3Int, PlacementData> placedObjects = new Dictionary<Vector3Int, PlacementData>();
 
     public void AddObjectAt(Vector3Int gridPos, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
@@ -16,7 +16,7 @@ public class GridData : MonoBehaviour
         {
             if (placedObjects.ContainsKey(pos))
             {
-                throw new Exception($"THeres already a tower at{pos}");
+                throw new Exception($"Theres already a tower at{pos}");
             }
 
             placedObjects[pos] = data;
@@ -25,7 +25,7 @@ public class GridData : MonoBehaviour
 
     private List<Vector3Int> CalculatePositions(Vector3Int gridPos, Vector2Int objectSize)
     {
-        List<Vector3Int> returnVal = new();
+        List<Vector3Int> returnVal = new List<Vector3Int>();
 
         for (int x = 0; x < objectSize.x; x++)
         {
