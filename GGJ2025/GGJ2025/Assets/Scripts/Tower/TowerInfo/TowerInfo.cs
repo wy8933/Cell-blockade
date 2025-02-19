@@ -10,19 +10,13 @@ public class TowerInfo : ScriptableObject
 
 [Serializable] public class TowerData 
 {
-    public enum TowerType
-    {
-        Direct,
-        Indirect,
-        AOE,
-        Support,
-    }
+    
 
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int ID { get; private set; }
     [field: SerializeField] public Vector2Int Size { get; private set; }
     [field: SerializeField] public GameObject TowerPrefab { get; private set; }
     [field: SerializeField] public string TowerDescription { get; private set; }
-    [field: SerializeField] public TowerType Type { get; private set; }
+    
 }
 
