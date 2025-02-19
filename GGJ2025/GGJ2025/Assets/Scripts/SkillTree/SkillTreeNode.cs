@@ -14,6 +14,10 @@ public class SkillTreeNode : ScriptableObject
     // Unique identifier used for saving/loading the tree structure
     public string uniqueID;
 
+    // Position in the editor (GraphView)
+    public float positionX;
+    public float positionY;
+
     [Header("Connections")]
     // Direct references to prerequisite nodes
     public List<SkillTreeNode> prerequisites;

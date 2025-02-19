@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
-  m_Name: BuffData_Small Health Boost
+  m_Name: NewBuff
   m_EditorClassIdentifier: 
-  id: 5005
-  buffName: Small Health Boost
-  description: Each stack increases player's maximum health by 10
+  id: 5006
+  buffName: New Buff
+  description: 
   icon: {fileID: 0}
-  maxStack: 11
+  maxStack: 0
   priority: 0
   tags: []
-  isForever: 1
+  isForever: 0
   duration: 0
   tickTime: 0
   buffUpdateType: 0
-  buffRemoveStackType: 1
-  OnCreate: {fileID: 11400000, guid: e4cb7ad7902fa5e4da2757901921f2c9, type: 2}
+  buffRemoveStackType: 0
+  OnCreate: {fileID: 0}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 0}
   OnHit: {fileID: 0}
