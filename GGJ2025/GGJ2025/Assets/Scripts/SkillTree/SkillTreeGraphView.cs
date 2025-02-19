@@ -41,10 +41,15 @@ public class SkillTreeGraphView : GraphView
         this.graphViewChanged += OnGraphViewChanged;
     }
 
+    public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+    {
+        return ports.ToList().Where(port => port != startPort && port.direction != startPort.direction).ToList();
+    }
+
     /// <summary>
-    /// Creates a new skill node element.
+    /// Creates a new skill node element
     /// </summary>
-    /// <param name="nodeName">The display name for the new node.</param>
+    /// <param name="nodeName">The display name for the new node</param>
     public void CreateNode(string nodeName)
     {
         SkillTreeNodeElement nodeElement = new SkillTreeNodeElement
@@ -60,18 +65,18 @@ public class SkillTreeGraphView : GraphView
 
     public void ConnectNodes(Port outputPort, Port inputPort)
     {
-        // Create the edge and assign ports.
+        // Create the edge and assign ports
         Edge edge = new Edge
         {
             output = outputPort,
             input = inputPort
         };
 
-        // Connect the edge to both ports.
+        // Connect the edge to both ports
         edge.input.Connect(edge);
         edge.output.Connect(edge);
 
-        // Add the edge to the GraphView so it appears visually.
+        // Add the edge to the GraphView so it appears visually
         AddElement(edge);
     }
 
@@ -90,7 +95,7 @@ public class SkillTreeGraphView : GraphView
     }
 
     /// <summary>
-    /// Saves the current graph data to a JSON file.
+    /// Saves the current graph data to a JSON file
     /// </summary>
     public void SaveGraph()
     {
@@ -98,7 +103,10 @@ public class SkillTreeGraphView : GraphView
         saveData.nodes = new List<SkillNodeData>();
         saveData.connections = new List<SkillConnectionData>();
 
-        // Save nodes
+        // Create node data objects for each node
+        // and store them in a dictionary for easy lookup by GUID
+        Dictionary<string, SkillNodeData> nodeDict = new Dictionary<string, SkillNodeData>();
+
         foreach (var node in nodes.ToList())
         {
             if (node is SkillTreeNodeElement skillNode)
@@ -109,39 +117,46 @@ public class SkillTreeGraphView : GraphView
                 Rect nodeRect = skillNode.GetPosition();
                 nodeData.posX = nodeRect.x;
                 nodeData.posY = nodeRect.y;
-                if (skillNode.buffData != null)
-                {
-                    nodeData.buffDataPath = AssetDatabase.GetAssetPath(skillNode.buffData);
-                }
-                else
-                {
-                    nodeData.buffDataPath = "";
-                }
+                nodeData.cost = skillNode.cost;
+                nodeData.buffDataPath = (skillNode.buffData != null)
+                    ? AssetDatabase.GetAssetPath(skillNode.buffData)
+                    : "";
+                nodeData.isUnlocked = false;
+                nodeData.prerequisiteIDs = new List<string>();
+
                 saveData.nodes.Add(nodeData);
+                nodeDict[nodeData.GUID] = nodeData;
             }
         }
 
-        // Save connections/edges
         foreach (var edge in edges.ToList())
         {
             SkillTreeNodeElement outputNode = edge.output.node as SkillTreeNodeElement;
             SkillTreeNodeElement inputNode = edge.input.node as SkillTreeNodeElement;
             if (outputNode != null && inputNode != null)
             {
+                // Store the edge in connections
                 SkillConnectionData connectionData = new SkillConnectionData();
                 connectionData.outputNodeGUID = outputNode.GUID;
                 connectionData.inputNodeGUID = inputNode.GUID;
                 saveData.connections.Add(connectionData);
+
+                // Also set prerequisites: "input node" has "output node" as a prerequisite
+                if (nodeDict.TryGetValue(inputNode.GUID, out SkillNodeData inputNodeData))
+                {
+                    inputNodeData.prerequisiteIDs.Add(outputNode.GUID);
+                }
             }
         }
 
+        // Serialize to JSON and write to file
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(filePath, json);
         Debug.Log("Graph saved to " + filePath);
     }
 
     /// <summary>
-    /// Loads graph data from a JSON file.
+    /// Loads graph data from a JSON file
     /// </summary>
     public void LoadGraph()
     {
@@ -165,14 +180,35 @@ public class SkillTreeGraphView : GraphView
         foreach (var nodeData in saveData.nodes)
         {
             SkillTreeNodeElement nodeElement = new SkillTreeNodeElement();
-            nodeElement.title = nodeData.title;
             nodeElement.GUID = nodeData.GUID;
+            nodeElement.title = nodeData.title;
             Rect rect = new Rect(nodeData.posX, nodeData.posY, 150, 200);
             nodeElement.SetPosition(rect);
+
+            // Restore skill name in the TextFiele
+            if (nodeElement.skillNameField != null)
+            {
+                nodeElement.skillNameField.value = nodeData.title;
+            }
+
+            // Restore cost value
+            nodeElement.cost = nodeData.cost;
+            if (nodeElement.costField != null)
+            {
+                nodeElement.costField.value = nodeData.cost;
+            }
+
+            // Restore BuffData asset if available
             if (!string.IsNullOrEmpty(nodeData.buffDataPath))
             {
                 nodeElement.buffData = AssetDatabase.LoadAssetAtPath<BuffData>(nodeData.buffDataPath);
+                // Update the ObjectField so it shows the loaded BuffData
+                if (nodeElement.buffObjectField != null)
+                {
+                    nodeElement.buffObjectField.value = nodeElement.buffData;
+                }
             }
+
             AddElement(nodeElement);
             nodeLookup[nodeElement.GUID] = nodeElement;
         }
@@ -180,6 +216,12 @@ public class SkillTreeGraphView : GraphView
         // Recreate edges (connections)
         foreach (var connectionData in saveData.connections)
         {
+            if (string.IsNullOrEmpty(connectionData.outputNodeGUID) || string.IsNullOrEmpty(connectionData.inputNodeGUID))
+            {
+                Debug.LogWarning("Skipping connection with null or empty GUID");
+                continue;
+            }
+
             if (nodeLookup.TryGetValue(connectionData.outputNodeGUID, out SkillTreeNodeElement outputNode) &&
                 nodeLookup.TryGetValue(connectionData.inputNodeGUID, out SkillTreeNodeElement inputNode))
             {
@@ -196,32 +238,7 @@ public class SkillTreeGraphView : GraphView
                 AddElement(edge);
             }
         }
+
         Debug.Log("Graph loaded from " + filePath);
     }
-}
-
-// Serializable data classes
-
-[Serializable]
-public class SkillTreeGraphSaveData
-{
-    public List<SkillNodeData> nodes;
-    public List<SkillConnectionData> connections;
-}
-
-[Serializable]
-public class SkillNodeData
-{
-    public string GUID;
-    public string title;
-    public float posX;
-    public float posY;
-    public string buffDataPath;
-}
-
-[Serializable]
-public class SkillConnectionData
-{
-    public string outputNodeGUID;
-    public string inputNodeGUID;
 }

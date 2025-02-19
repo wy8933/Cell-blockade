@@ -1,44 +1,56 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 
 public class SkillTreeManager : MonoBehaviour
 {
+    public static SkillTreeManager Instance { get; private set; }
+
     [Header("Skill Tree Setup")]
-    // List of all available skill tree nodes
     public List<SkillTreeNode> allNodes;
 
-    // File path for JSON persistence (adjust the path as needed)
-    public string jsonFilePath = "Assets/SkillTreeData.json";
+    // Use the same JSON file as the editor for the whole skill tree system
+    public string jsonFilePath = "Assets/Saves/SkillTreeGraphData.json";
 
     [Header("Integration")]
-    // The player GameObject (which should have a BuffHandler component)
     public GameObject player;
 
-    private void Start()
+    [Header("Currency")]
+    public int playerCurrency = 100;
+
+    private void Awake()
     {
-        LoadSkillTree();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        LoadSkillTreeData();
         ApplyUnlockedBuffs();
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
+
     /// <summary>
-    /// Unlocks a skill tree node if all prerequisites are met.
-    /// Also applies the buff associated with this node.
+    /// Unlocks a skill tree node if all prerequisites are met
+    /// And applies the buff associated with this node
     /// </summary>
     public bool UnlockNode(SkillTreeNode node)
     {
         if (node.isUnlocked)
         {
-            Debug.Log($"{node.nodeName} is already unlocked.");
+            Debug.Log($"{node.nodeName} is already unlocked");
             return false;
         }
 
-        // Check prerequisites
         foreach (SkillTreeNode pre in node.prerequisites)
         {
             if (!pre.isUnlocked)
             {
-                Debug.Log($"Cannot unlock {node.nodeName}. Prerequisite {pre.nodeName} is not unlocked.");
+                Debug.Log($"Cannot unlock {node.nodeName}. Prerequisite {pre.nodeName} is not unlocked");
                 return false;
             }
         }
@@ -46,7 +58,6 @@ public class SkillTreeManager : MonoBehaviour
         node.isUnlocked = true;
         Debug.Log($"{node.nodeName} unlocked!");
 
-        // Create a new BuffInfo from the node's BuffData and add it to the player's BuffHandler
         if (node.buffData != null)
         {
             BuffHandler buffHandler = player.GetComponent<BuffHandler>();
@@ -63,12 +74,60 @@ public class SkillTreeManager : MonoBehaviour
             }
         }
 
-        SaveSkillTree();
+        SaveSkillTreeData();
         return true;
     }
 
     /// <summary>
-    /// On game start, ensure that buffs for already unlocked nodes are applied.
+    /// Called from the UI when a Buy button is pressed
+    /// Checks currency, prerequisites, then unlocks the skill
+    /// </summary>
+    public bool PurchaseSkill(SkillTreeNode node, SkillNodeUI nodeUI)
+    {
+        // Already unlocked? Nothing to do.
+        if (node.isUnlocked)
+        {
+            Debug.Log($"{node.nodeName} is already unlocked");
+            return false;
+        }
+
+        // Check currency
+        if (playerCurrency < node.cost)
+        {
+            Debug.Log($"Not enough currency to unlock {node.nodeName}");
+            return false;
+        }
+
+        // Check prerequisites
+        foreach (SkillTreeNode pre in node.prerequisites)
+        {
+            if (!pre.isUnlocked)
+            {
+                Debug.Log($"Cannot unlock {node.nodeName}. Prerequisite {pre.nodeName} is not unlocked");
+                return false;
+            }
+        }
+
+        // Deduct currency
+        playerCurrency -= node.cost;
+        Debug.Log($"Unlocking {node.nodeName}. Remaining currency: {playerCurrency}");
+
+        // Actually unlock the node
+        bool unlocked = UnlockNode(node);
+        if (unlocked && nodeUI != null && nodeUI.buyButton != null)
+        {
+            // Disable the Buy button and update text
+            nodeUI.buyButton.interactable = false;
+            TMPro.TextMeshProUGUI buttonText = nodeUI.buyButton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            if (buttonText != null) buttonText.text = "Unlocked";
+        }
+
+        return unlocked;
+    }
+
+
+    /// <summary>
+    /// Applies buffs for nodes that are already unlocked
     /// </summary>
     private void ApplyUnlockedBuffs()
     {
@@ -92,22 +151,29 @@ public class SkillTreeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Saves the current state of the skill tree to a JSON file.
+    /// Saves the current state of the skill tree to the JSON file
     /// </summary>
-    public void SaveSkillTree()
+    public void SaveSkillTreeData()
     {
-        SkillTreeData data = new SkillTreeData();
-        data.nodes = new List<SkillTreeNodeData>();
+        SkillTreeGraphSaveData data = new SkillTreeGraphSaveData();
+        data.nodes = new List<SkillNodeData>();
+        data.connections = new List<SkillConnectionData>();
 
         foreach (SkillTreeNode node in allNodes)
         {
-            SkillTreeNodeData nodeData = new SkillTreeNodeData
+            SkillNodeData nodeData = new SkillNodeData
             {
-                uniqueID = node.uniqueID,
-                isUnlocked = node.isUnlocked,
-                prerequisiteIDs = new List<string>()
+                GUID = node.uniqueID,
+                title = node.nodeName,
+                posX = node.positionX,
+                posY = node.positionY,
+                buffDataPath = (node.buffData != null) ? UnityEditor.AssetDatabase.GetAssetPath(node.buffData) : "",
+                cost = node.cost,
+                isUnlocked = node.isUnlocked
             };
 
+            // Save prerequisites
+            nodeData.prerequisiteIDs = new List<string>();
             if (node.prerequisites != null)
             {
                 foreach (SkillTreeNode pre in node.prerequisites)
@@ -120,13 +186,14 @@ public class SkillTreeManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(jsonFilePath, json);
-        Debug.Log("Skill tree saved to JSON.");
+        Debug.Log("Skill tree data saved to " + jsonFilePath);
     }
 
     /// <summary>
-    /// Loads the skill tree state from a JSON file.
+    /// Loads the skill tree data from the JSON file
+    /// This data includes both design and runtime information
     /// </summary>
-    public void LoadSkillTree()
+    public void LoadSkillTreeData()
     {
         if (!File.Exists(jsonFilePath))
         {
@@ -135,39 +202,80 @@ public class SkillTreeManager : MonoBehaviour
         }
 
         string json = File.ReadAllText(jsonFilePath);
-        SkillTreeData data = JsonUtility.FromJson<SkillTreeData>(json);
 
-        // Build a lookup table for nodes by uniqueID
-        Dictionary<string, SkillTreeNode> nodeLookup = new Dictionary<string, SkillTreeNode>();
-        foreach (SkillTreeNode node in allNodes)
+        SkillTreeGraphSaveData data = JsonUtility.FromJson<SkillTreeGraphSaveData>(json);
+        if (data == null || data.nodes == null)
         {
-            nodeLookup[node.uniqueID] = node;
+            Debug.LogWarning("JSON file is empty or invalid.");
+            return;
         }
 
-        // Update nodes based on saved data
-        foreach (SkillTreeNodeData nodeData in data.nodes)
+        // Clear the existing list so we can rebuild it from JSON
+        allNodes.Clear();
+
+        // Dictionary to quickly find newly created nodes by GUID
+        Dictionary<string, SkillTreeNode> nodeLookup = new Dictionary<string, SkillTreeNode>();
+
+        foreach (SkillNodeData nodeData in data.nodes)
         {
-            if (nodeLookup.TryGetValue(nodeData.uniqueID, out SkillTreeNode node))
+            if (string.IsNullOrEmpty(nodeData.GUID))
             {
-                node.isUnlocked = nodeData.isUnlocked;
+                Debug.LogWarning("Skipping a node in saved data with a null or empty GUID ");
+                continue;
+            }
+
+            // Create a new in-memory ScriptableObject or an instance of SkillTreeNode
+            SkillTreeNode newNode = ScriptableObject.CreateInstance<SkillTreeNode>();
+            newNode.uniqueID = nodeData.GUID;
+            newNode.nodeName = nodeData.title;
+            newNode.positionX = nodeData.posX;
+            newNode.positionY = nodeData.posY;
+            newNode.cost = nodeData.cost;
+            newNode.isUnlocked = nodeData.isUnlocked;
+
+            // If there's a buffDataPath, attempt to load the asset (Editor-only)
+            // If you need a runtime approach, use Resources.Load or Addressables
+            if (!string.IsNullOrEmpty(nodeData.buffDataPath))
+            {
+                BuffData buff = UnityEditor.AssetDatabase.LoadAssetAtPath<BuffData>(nodeData.buffDataPath);
+                newNode.buffData = buff;
+            }
+
+            // We'll link prerequisites in a second pass
+            newNode.prerequisites = new List<SkillTreeNode>();
+
+            // Add this node to the manager's list and to our lookup
+            allNodes.Add(newNode);
+            nodeLookup[newNode.uniqueID] = newNode;
+        }
+
+        // Second pass: link prerequisites by GUID
+        foreach (SkillNodeData nodeData in data.nodes)
+        {
+            if (string.IsNullOrEmpty(nodeData.GUID)) continue;
+            if (!nodeLookup.TryGetValue(nodeData.GUID, out SkillTreeNode thisNode))
+            {
+                continue;
+            }
+
+            // For each prerequisite ID, find the node in nodeLookup
+            if (nodeData.prerequisiteIDs != null)
+            {
+                foreach (string preGuid in nodeData.prerequisiteIDs)
+                {
+                    if (nodeLookup.TryGetValue(preGuid, out SkillTreeNode prereqNode))
+                    {
+                        thisNode.prerequisites.Add(prereqNode);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Prerequisite node with GUID '{preGuid}' not found for node '{thisNode.nodeName}'");
+                    }
+                }
             }
         }
-        Debug.Log("Skill tree loaded from JSON.");
+
+        Debug.Log($"Skill tree data loaded from {jsonFilePath}, created {allNodes.Count} nodes");
     }
-}
 
-// Helper classes for JSON serialization
-
-[System.Serializable]
-public class SkillTreeData
-{
-    public List<SkillTreeNodeData> nodes;
-}
-
-[System.Serializable]
-public class SkillTreeNodeData
-{
-    public string uniqueID;
-    public bool isUnlocked;
-    public List<string> prerequisiteIDs;
 }

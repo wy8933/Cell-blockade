@@ -1,12 +1,17 @@
 using UnityEditor.Experimental.GraphView;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 public class SkillTreeNodeElement : Node
 {
     public string GUID;
     public BuffData buffData;
+    public int cost;
+
+    public TextField skillNameField;
+    public IntegerField costField;
+    public ObjectField buffObjectField;
 
     public SkillTreeNodeElement()
     {
@@ -22,24 +27,28 @@ public class SkillTreeNodeElement : Node
         outputPort.portName = "Next Skill";
         outputContainer.Add(outputPort);
 
-        // Add a text field for editing the node's name
-        TextField nodeNameField = new TextField("Skill Name");
-        nodeNameField.RegisterValueChangedCallback(evt => title = evt.newValue);
-        mainContainer.Add(nodeNameField);
+        // Create a text field for editing the node's name
+        skillNameField = new TextField("Skill Name");
+        skillNameField.RegisterValueChangedCallback(evt => { title = evt.newValue; });
+        mainContainer.Add(skillNameField);
 
-        // Add an ObjectField to select a BuffData asset
-        ObjectField buffField = new ObjectField("Buff Data")
+        // Create an IntegerField for the cost value
+        costField = new IntegerField("Cost");
+        costField.RegisterValueChangedCallback(evt => { cost = evt.newValue; });
+        mainContainer.Add(costField);
+
+        // Create an ObjectField for selecting a BuffData asset
+        buffObjectField = new ObjectField("Buff Data")
         {
             objectType = typeof(BuffData),
             value = null
         };
-        buffField.RegisterValueChangedCallback(evt =>
+        buffObjectField.RegisterValueChangedCallback(evt =>
         {
             buffData = evt.newValue as BuffData;
         });
-        mainContainer.Add(buffField);
+        mainContainer.Add(buffObjectField);
 
-        // Refresh the UI to reflect changes
         RefreshExpandedState();
         RefreshPorts();
     }
