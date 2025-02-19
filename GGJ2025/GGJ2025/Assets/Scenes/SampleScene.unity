@@ -2758,6 +2758,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323587433}
   m_CullTransparentMesh: 1
+--- !u!1 &1333759557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333759558}
+  - component: {fileID: 1333759559}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333759558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333759557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.227221, y: -0.838954, z: -8.477754}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1333759559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333759557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d955648c4f5ae48915cb6a89226cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allNodes: []
+  jsonFilePath: Assets/Saves/SkillTreeData.json
+  player: {fileID: 1595879605}
 --- !u!1 &1360695965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,7 +3851,6 @@ MonoBehaviour:
     MaxHealth: 100
     Health: 100
     MovementSpeed: 100
-    RotationSpeed: 100
     SprintSpeed: 20
     Resistance: 0
     Shield: 0
@@ -5458,6 +5504,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7077520152189061098, guid: 07707c8434b059d42bc42930e7f34cd2, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077520152189061098, guid: 07707c8434b059d42bc42930e7f34cd2, type: 3}
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
@@ -5588,3 +5638,4 @@ SceneRoots:
   - {fileID: 105301193}
   - {fileID: 1236556617}
   - {fileID: 1517848649}
+  - {fileID: 1333759558}

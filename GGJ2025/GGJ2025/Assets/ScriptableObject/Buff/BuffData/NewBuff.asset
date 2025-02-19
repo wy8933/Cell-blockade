@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
-  m_Name: ScatterBuffData
+  m_Name: NewBuff
   m_EditorClassIdentifier: 
-  id: 1001
-  buffName: Scatter
-  description: 'Choose the default scatter playstyle, increasing attack damage to
-    200%. '
+  id: 5006
+  buffName: New Buff
+  description: 
   icon: {fileID: 0}
-  maxStack: 1
+  maxStack: 0
   priority: 0
   tags: []
-  isForever: 1
+  isForever: 0
   duration: 0
   tickTime: 0
   buffUpdateType: 0
   buffRemoveStackType: 0
-  OnCreate: {fileID: 11400000, guid: 04ea8210197d71442b41c3995c23d56e, type: 2}
+  OnCreate: {fileID: 0}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 0}
   OnHit: {fileID: 0}

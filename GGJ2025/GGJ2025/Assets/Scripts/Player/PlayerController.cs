@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _playerRB;
     public Camera mainMamera;
     public GameObject bulletPrefab;
-    public Stats Stats;
+    public PlayerStats Stats;
     public WeaponType weaponType;
     public GameObject playerModel;
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             if (direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(-direction);
-                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, targetRotation, Time.deltaTime * Stats.RotationSpeed);
+                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, targetRotation, Time.deltaTime);
             }
         }
     }
