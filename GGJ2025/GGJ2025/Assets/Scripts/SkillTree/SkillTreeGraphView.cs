@@ -9,7 +9,6 @@ using System.Linq;
 
 public class SkillTreeGraphView : GraphView
 {
-    // Default file path using the new base folder "Assets/Saves"
     public string filePath = "Assets/Saves/SkillTreeGraphData.json";
 
     public SkillTreeGraphView()
