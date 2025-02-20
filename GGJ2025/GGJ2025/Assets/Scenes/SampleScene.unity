@@ -3088,10 +3088,37 @@ MonoBehaviour:
       rarity: 0
     - value: {fileID: 11400000, guid: a93ad16a37b952d4aa90f1e0d65e0a35, type: 2}
       chance: 1
+      rarity: 1
+    - value: {fileID: 11400000, guid: a05af7a646f153048bb5b1e8627370d4, type: 2}
+      chance: 1
       rarity: 0
-    - value: {fileID: 0}
+    - value: {fileID: 11400000, guid: 08dd7dfa42e5d3b4783549012e2d9d13, type: 2}
+      chance: 1
+      rarity: 2
+    - value: {fileID: 11400000, guid: 364363cfc5c77e84ca5ea8f16f70312d, type: 2}
+      chance: 1
+      rarity: 2
+    - value: {fileID: 11400000, guid: 65c33ce4ef172b84aae7e01d3b5fa5d7, type: 2}
+      chance: 1
+      rarity: 4
+    - value: {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
+      chance: 1
+      rarity: 0
+    - value: {fileID: 11400000, guid: 93a649bd89a41d040ad948be468939ce, type: 2}
+      chance: 1
+      rarity: 0
+    - value: {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
+      chance: 1
+      rarity: 0
+    - value: {fileID: 11400000, guid: b245f91e7aeaccc4ba5d5f42fc9870fe, type: 2}
       chance: 1
       rarity: 1
+    - value: {fileID: 11400000, guid: 2021a4596893a2744b46e7d4ff94932d, type: 2}
+      chance: 1
+      rarity: 0
+    - value: {fileID: 11400000, guid: feef924ba7089c44390f71f3f6ad1c75, type: 2}
+      chance: 1
+      rarity: 0
   commonChance: 0.6
   uncommonChance: 0.2
   rareChance: 0.1
