@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
@@ -52,3 +53,4 @@ public class SkillTreeNodeElement : Node
         RefreshPorts();
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -76,3 +77,4 @@ public class SkillNodeUI : MonoBehaviour
         }
     }
 }
+#endif
