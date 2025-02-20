@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class TowerController : MonoBehaviour
+public abstract class BaseTower : MonoBehaviour
 {
-    public enum DetectionMode 
+    public enum DetectionMode
     {
-        
+
     }
 
     public Collider _dectectionRadius;
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab;
     public TowerStats Stats;
     public TowerType towerType;
-    public GameObject playerModel;
+    //public GameObject playerModel;
 
     [Header("Direct")]
-    public Transform firepoint;
+    //public Transform firepoint;
     public float maxBubble;
     public float currentBubble;
     public float bubbleHealthDeduct;
@@ -45,21 +45,17 @@ public class TowerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void Attack(Collider other)
-    {
-     
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    protected abstract void Attack(Collider other);
+
+    protected abstract void ShowAttack(GameObject source, GameObject target);
+
+    private void OnTriggerStay(Collider other)
     {
-        
+        Attack(other);
+
+        ShowAttack(gameObject, other.gameObject);
     }
 }
