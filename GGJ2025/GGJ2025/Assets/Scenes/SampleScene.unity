@@ -2959,21 +2959,21 @@ MonoBehaviour:
   powerUpManager: {fileID: 1483653860}
   waves:
   - waveName: Wave 1
-    baseEnemyCount: 10
+    baseEnemyCount: 2
     spawnInterval: 0.4
     enemyTypes: 00000000
     isBossWave: 0
     bossType: 1
     isBuffWave: 1
   - waveName: Wave 2
-    baseEnemyCount: 11
+    baseEnemyCount: 3
     spawnInterval: 0.4
     enemyTypes: 00000000
     isBossWave: 0
     bossType: 1
     isBuffWave: 1
   - waveName: Wave 3
-    baseEnemyCount: 12
+    baseEnemyCount: 4
     spawnInterval: 0.4
     enemyTypes: 00000000
     isBossWave: 0
@@ -3021,50 +3021,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9743d69a1d1fde04daf8f0b9b5653426, type: 2}
   - {fileID: 11400000, guid: ec4c1e2f33451384dbf5a5475ec04b28, type: 2}
   _normalPowerUps:
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 9b7045236ca4a7146a1be7638881327d, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 0995f97cea02c864aa429a51c00f2253, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 8bfd759ab0ebb89468287b27b6e95104, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 730f987e4d0145448ac9f7f140d3902c, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: 5cd121d1536b75347baea28ff9f426a3, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: a41f4aec715a32245b244af6eb38350e, type: 2}
-  - {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
-  - {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
-  - {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
-  - {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
-  - {fileID: 11400000, guid: b5b2449c2ab6bc84185892234cf27737, type: 2}
-  - {fileID: 11400000, guid: 49637cc335cd9894bb9a3f529a9ff3a2, type: 2}
-  - {fileID: 11400000, guid: ea746ecbd1a83ae44af842855aadb4c1, type: 2}
-  - {fileID: 11400000, guid: ce037ff8fadc3da4c96690745cdd1057, type: 2}
+  - {fileID: 11400000, guid: 8b475412ef033594498ed22b87c20184, type: 2}
+  - {fileID: 11400000, guid: 1d12603d7ee07394b904da384d9f6f2a, type: 2}
+  - {fileID: 11400000, guid: a93ad16a37b952d4aa90f1e0d65e0a35, type: 2}
+  - {fileID: 11400000, guid: a05af7a646f153048bb5b1e8627370d4, type: 2}
+  - {fileID: 11400000, guid: 364363cfc5c77e84ca5ea8f16f70312d, type: 2}
   _buffHandler: {fileID: 1595879614}
 --- !u!114 &1483653861
 MonoBehaviour:
@@ -5181,7 +5142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6074435919414104510, guid: b4c74694ab5620e47907def5e7ed3040, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 202.88335
+      value: 202.88336
       objectReference: {fileID: 0}
     - target: {fileID: 6074435919414104510, guid: b4c74694ab5620e47907def5e7ed3040, type: 3}
       propertyPath: m_AnchoredPosition.y

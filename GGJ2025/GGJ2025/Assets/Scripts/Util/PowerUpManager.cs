@@ -43,23 +43,9 @@ public class PowerUpManager : MonoBehaviour
     public void ShowPowerUpSelection()
     {
         _chosenPowerUps.Clear();
-        List<BuffData> powerUpPool = _isFirstTime ? _firstTimePowerUps : _normalPowerUps;
 
-        if (powerUpPool.Count == 0)
-        {
-            return;
-        }
-
-        // Choose 3 random power up from the list
-        HashSet<int> selectedIndices = new HashSet<int>();
-        while (selectedIndices.Count < _powerUpButtons.Count)
-        {
-            int randomIndex = Random.Range(0, powerUpPool.Count);
-            if (!selectedIndices.Contains(randomIndex))
-            {
-                selectedIndices.Add(randomIndex);
-                _chosenPowerUps.Add(powerUpPool[randomIndex]);
-            }
+        for (int i = 0; i < 3; i++) {
+            _chosenPowerUps.Add(RewardManager.Instance.GetSingleBuff());
         }
 
         // Add the info of the power up to the menu and add event listener
