@@ -246,10 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 100
-    Health: 100
+    MaxHealth: 15
+    Health: 15
     MovementSpeed: 3.5
-    RotationSpeed: 120
     SprintSpeed: 0
     Resistance: 0
     Shield: 0
@@ -284,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff29b8ab937e494db6a3fe47ddccd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffListInspector: []
+  _initialBuffs: []
 --- !u!82 &9203067772447950622
 AudioSource:
   m_ObjectHideFlags: 0

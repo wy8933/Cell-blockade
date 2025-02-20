@@ -25,8 +25,8 @@ public class BuffHandler : MonoBehaviour
 
     private void Update()
     {
-        UpdateBuffDurations();
         ProcessBuffTicks();
+        UpdateBuffDurations();
     }
 
     public void AddBuff(BuffInfo newBuff)
@@ -106,7 +106,6 @@ public class BuffHandler : MonoBehaviour
 
         RemoveBuffs(toRemove);
     }
-
     private void ProcessBuffTicks()
     {
         foreach (var buff in _activeBuffs)

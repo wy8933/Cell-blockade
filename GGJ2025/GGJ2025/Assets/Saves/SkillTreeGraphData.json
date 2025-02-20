@@ -1,16 +1,6 @@
 {
     "nodes": [
         {
-            "GUID": "24a80f0e-78eb-49be-ad22-6d8bbfd12be5",
-            "title": "Skill 1",
-            "posX": 366.0,
-            "posY": 135.0,
-            "buffDataPath": "Assets/ScriptableObject/Buff/BuffData/BuffData_Small Health Boost.asset",
-            "cost": 2,
-            "isUnlocked": false,
-            "prerequisiteIDs": []
-        },
-        {
             "GUID": "2312eb5b-b99b-4264-a2ac-8f3256ce4f8f",
             "title": "Skill 4",
             "posX": 1382.0,
@@ -20,19 +10,6 @@
             "isUnlocked": false,
             "prerequisiteIDs": [
                 "32e7c151-baac-49ab-b03a-65cf8ffe2c50"
-            ]
-        },
-        {
-            "GUID": "8708d940-9b76-4070-b1c7-e7bf072046be",
-            "title": "Skill 5",
-            "posX": 1382.0,
-            "posY": 135.0,
-            "buffDataPath": "Assets/ScriptableObject/Buff/BuffData/BuffData_Small Health Boost.asset",
-            "cost": 1,
-            "isUnlocked": false,
-            "prerequisiteIDs": [
-                "32e7c151-baac-49ab-b03a-65cf8ffe2c50",
-                "003f9bb5-c1d9-4178-bcd2-1edb2878ff97"
             ]
         },
         {
@@ -62,7 +39,7 @@
         {
             "GUID": "32e7c151-baac-49ab-b03a-65cf8ffe2c50",
             "title": "Skill 2",
-            "posX": 845.0,
+            "posX": 862.0,
             "posY": -39.0,
             "buffDataPath": "Assets/ScriptableObject/Buff/BuffData/BuffData_Speed Boost .asset",
             "cost": 1,
@@ -70,6 +47,29 @@
             "prerequisiteIDs": [
                 "24a80f0e-78eb-49be-ad22-6d8bbfd12be5"
             ]
+        },
+        {
+            "GUID": "8708d940-9b76-4070-b1c7-e7bf072046be",
+            "title": "Skill 5",
+            "posX": 1382.0,
+            "posY": 121.0,
+            "buffDataPath": "Assets/ScriptableObject/Buff/BuffData/BuffData_Small Health Boost.asset",
+            "cost": 1,
+            "isUnlocked": false,
+            "prerequisiteIDs": [
+                "32e7c151-baac-49ab-b03a-65cf8ffe2c50",
+                "003f9bb5-c1d9-4178-bcd2-1edb2878ff97"
+            ]
+        },
+        {
+            "GUID": "24a80f0e-78eb-49be-ad22-6d8bbfd12be5",
+            "title": "Skill 1",
+            "posX": 282.0,
+            "posY": 121.0,
+            "buffDataPath": "Assets/ScriptableObject/Buff/BuffData/BuffData_Small Health Boost.asset",
+            "cost": 2,
+            "isUnlocked": false,
+            "prerequisiteIDs": []
         }
     ],
     "connections": [
