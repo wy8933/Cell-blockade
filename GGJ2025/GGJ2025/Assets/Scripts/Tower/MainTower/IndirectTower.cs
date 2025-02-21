@@ -6,4 +6,9 @@ public class IndirectTower : BaseTower
     {
         throw new System.NotImplementedException();
     }
+
+    protected override void ShowAttack(GameObject source, GameObject target)
+    {
+
+    }
 }

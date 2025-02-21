@@ -2805,6 +2805,7 @@ MonoBehaviour:
   allNodes: []
   jsonFilePath: Assets/Saves/SkillTreeData.json
   player: {fileID: 1595879605}
+  playerCurrency: 100
 --- !u!1 &1360695965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,6 +3830,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   playerInput: {fileID: 0}
   playerAnimator: {fileID: 2143712103}
+  _towerPlacement: {fileID: 0}
   _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _pauseAction: {fileID: -2202334956473425637, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _primaryAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -4,7 +4,9 @@ public abstract class BaseTower : MonoBehaviour
 {
     public enum DetectionMode
     {
-
+        Nearest,
+        Farthest,
+        Strongest,
     }
 
     public Collider _dectectionRadius;
@@ -12,6 +14,8 @@ public abstract class BaseTower : MonoBehaviour
     public TowerStats Stats;
     public TowerType towerType;
     //public GameObject playerModel;
+
+    public DetectionMode detectionMode;
 
     [Header("Direct")]
     //public Transform firepoint;
@@ -39,13 +43,6 @@ public abstract class BaseTower : MonoBehaviour
     void Awake()
     {
         _dectectionRadius = GetComponent<CapsuleCollider>();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     protected abstract void Attack(Collider other);
