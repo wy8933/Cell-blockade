@@ -3,25 +3,36 @@ using UnityEngine;
 public class DirectTower : BaseTower
 {
 
-    protected LineRenderer laserAttack;
+    [SerializeField] protected GameObject LaserHolder;
 
-    protected LineRenderController laserControl;
+    [SerializeField] protected GameObject targetedEnemy;
 
-    private void Awake()
-    {
-        laserControl = GetComponent<LineRenderController>();
-    }
+    [SerializeField] protected float rotationSpeed = 100f;
+
 
     protected override void Attack(Collider collision)
     {
+        //Debug.Log(collision.tag);
+
         if (collision.tag == "Enemy")
         {
             DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+            Debug.Log("ITs in the area");
         }
     }
 
     protected override void ShowAttack(GameObject source, GameObject target)
     {
-        
+        //Debug.Log(target);
+        if (target.tag == "Enemy")
+        {
+            if (target != null)
+            {
+                LaserHolder.transform.LookAt(target.transform.position);
+
+                Debug.Log(target.transform.position);
+            }
+        }
+       
     }
 }
