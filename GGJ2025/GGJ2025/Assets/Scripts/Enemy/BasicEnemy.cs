@@ -44,7 +44,10 @@ public class BasicEnemy : BaseEnemy
     /// </summary>
     private void Attack()
     {
-        animator.SetBool("IsAttack", true);
+        if (animator !=null)
+        {
+            animator.SetBool("IsAttack", true);
+        }
         canAttack = false;
 
         // Check if player exist and deal damage to player
