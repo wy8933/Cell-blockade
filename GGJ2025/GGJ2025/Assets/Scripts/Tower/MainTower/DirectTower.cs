@@ -16,7 +16,20 @@ public class DirectTower : BaseTower
 
         if (collision.tag == "Enemy")
         {
-            DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+            if (targetedEnemy == null)
+            {
+                targetedEnemy = collision.gameObject;
+            }
+            else if (targetedEnemy != collision.gameObject)
+            {
+                targetedEnemy = collision.gameObject;
+            }
+
+            if (targetedEnemy == collision.gameObject)
+            {
+                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+            }
+           
             Debug.Log("ITs in the area");
         }
     }
