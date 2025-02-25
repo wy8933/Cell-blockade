@@ -1,16 +1,59 @@
 using UnityEngine;
 
-public class SupportTower : MonoBehaviour
+public class SupportTower : BaseTower
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public enum DetectionMode
     {
-        
+        Nearest,
+        Farthest,
+        Strongest,
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] protected GameObject LaserHolder;
+
+    [SerializeField] protected GameObject targetedAlly;
+
+    protected override void Attack(Collider collision)
     {
-        
+        //Debug.Log(collision.tag);
+
+        if (collision.tag == "Player" || collision.tag == "Ally")
+        {
+            if (targetedAlly == null)
+            {
+                targetedAlly = collision.gameObject;
+            }
+            else if (targetedAlly != collision.gameObject)
+            {
+                targetedAlly = collision.gameObject;
+            }
+
+            if (targetedAlly == collision.gameObject)
+            {
+                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+            }
+
+            Debug.Log("ITs in the area");
+        }
+    }
+
+    protected override void ShowAttack(GameObject source, GameObject target)
+    {
+        //Debug.Log(target);
+        if (target.tag == "Enemy")
+        {
+            if (target != null)
+            {
+
+                if (targetedAlly == target)
+                {
+                    LaserHolder.transform.LookAt(target.transform.position);
+                }
+
+
+                //Debug.Log(target.transform.position);
+            }
+        }
+
     }
 }

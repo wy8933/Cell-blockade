@@ -7,9 +7,6 @@ public class DirectTower : BaseTower
 
     [SerializeField] protected GameObject targetedEnemy;
 
-    [SerializeField] protected float rotationSpeed = 100f;
-
-
     protected override void Attack(Collider collision)
     {
         //Debug.Log(collision.tag);
@@ -41,9 +38,14 @@ public class DirectTower : BaseTower
         {
             if (target != null)
             {
-                LaserHolder.transform.LookAt(target.transform.position);
+               
+                if (targetedEnemy == target)
+                {
+                    LaserHolder.transform.LookAt(target.transform.position);
+                }
+                
 
-                Debug.Log(target.transform.position);
+                //Debug.Log(target.transform.position);
             }
         }
        

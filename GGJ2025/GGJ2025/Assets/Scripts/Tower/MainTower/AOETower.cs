@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class AOETower : MonoBehaviour
+public class AOETower : BaseTower
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected GameObject LaserHolder;
+
+    [SerializeField] protected GameObject targetedEnemy;
+
+    protected override void Attack(Collider collision)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void ShowAttack(GameObject source, GameObject target)
     {
-        
+
     }
 }

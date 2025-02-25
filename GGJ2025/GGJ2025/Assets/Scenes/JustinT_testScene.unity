@@ -3003,7 +3003,7 @@ Transform:
   m_GameObject: {fileID: 737369814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.044, y: 0.76, z: 3.099}
+  m_LocalPosition: {x: 1.108, y: 0.76, z: 5.026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3830,7 +3830,7 @@ Transform:
   m_GameObject: {fileID: 1010668739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.998, y: 0.76, z: 2.505}
+  m_LocalPosition: {x: 3.547, y: 0.76, z: 2.505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3962,14 +3962,17 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -0.08800008, y: -0.5200001, z: -0.849621}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: Direction_direction
         m_Overridden: 1
-      - m_Value: {x: 1, y: 0.5, z: 2.6741896}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: Position_position
         m_Overridden: 1
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 67.037605, y: 80.293625, z: 67.037605, w: 0}
+        m_Name: Laser Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -3984,7 +3987,7 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array:
-      - m_Value: 1
+      - m_Value: 0
         m_Name: Hit
         m_Overridden: 1
 --- !u!4 &1011772228
