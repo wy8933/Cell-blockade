@@ -1,11 +1,21 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class DirectTower : BaseTower
 {
 
-    [SerializeField] protected GameObject LaserHolder;
+    [SerializeField] private GameObject LaserHolder;
 
     [SerializeField] protected GameObject targetedEnemy;
+
+    [SerializeField] private VisualEffect laserEffect;
+
+    private void Start()
+    {
+        laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
+
+    }
 
     protected override void Attack(Collider collision)
     {

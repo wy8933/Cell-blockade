@@ -187,8 +187,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: Laser Color
-    path: Laser Color
+  - name: LaserColor
+    path: LaserColor
     tooltip: 
     space: -1
     spaceable: 0
@@ -4731,7 +4731,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614900}
-  m_ExposedName: Laser Color
+  m_ExposedName: LaserColor
   m_Exposed: 1
   m_Order: 3
   m_Category: 

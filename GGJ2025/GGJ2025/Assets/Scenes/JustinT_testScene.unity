@@ -3246,7 +3246,7 @@ MonoBehaviour:
   bubbleCost: 0
   LaserHolder: {fileID: 1011772223}
   targetedEnemy: {fileID: 0}
-  rotationSpeed: 5
+  laserEffect: {fileID: 1011772227}
 --- !u!4 &754174299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063322119798063112, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
@@ -3830,7 +3830,7 @@ Transform:
   m_GameObject: {fileID: 1010668739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.547, y: 0.76, z: 2.505}
+  m_LocalPosition: {x: 2.67, y: 0.76, z: 2.505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
