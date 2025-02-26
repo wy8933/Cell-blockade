@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine;
 >>>>>>> Stashed changes
+=======
+using System.Collections.Generic;
+using UnityEngine;
+>>>>>>> Stashed changes
 using UnityEngine.Tilemaps;
 
 public class TowerPlacement : MonoBehaviour
 {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     public static TowerPlacement Instance;
@@ -130,6 +136,8 @@ public class TowerPlacement : MonoBehaviour
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     [SerializeField] private TowerManager towerManager;
 
     [Header("Camera Variables")]
@@ -142,6 +150,9 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Tilemap turretTilemap;
     [SerializeField] private GameObject selectedTower;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -149,6 +160,7 @@ public class TowerPlacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         
@@ -180,6 +192,8 @@ public class TowerPlacement : MonoBehaviour
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         PlaceTower();
     }
 
@@ -205,6 +219,9 @@ public class TowerPlacement : MonoBehaviour
 
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
