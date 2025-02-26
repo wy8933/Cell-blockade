@@ -1,35 +1,17 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
-=======
-using System.Collections.Generic;
-using UnityEngine;
->>>>>>> Stashed changes
-=======
-using System.Collections.Generic;
-using UnityEngine;
->>>>>>> Stashed changes
-=======
-using System.Collections.Generic;
-using UnityEngine;
->>>>>>> Stashed changes
 using UnityEngine.Tilemaps;
 
 public class TowerPlacement : MonoBehaviour
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     public static TowerPlacement Instance;
 
     //[SerializeField] private PlayerInputManager _playerInputManager;
 
-[Header("TileMap Variables")]
+    [Header("TileMap Variables")]
     //[SerializeField] private List<GameObject> turretSelect;
 
     [SerializeField] private Grid grid;
@@ -108,15 +90,15 @@ public class TowerPlacement : MonoBehaviour
         placedGameObjects.Add(newObject);
 
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
-        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID,placedGameObjects.Count - 1);
+        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, placedGameObjects.Count - 1);
     }
 
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
     {
-        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData: towerData;
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
 
         return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
-    } 
+    }
 
     public void GetTowerPrefab(int ID)
     {
@@ -133,38 +115,12 @@ public class TowerPlacement : MonoBehaviour
             selectedTowerIndex = temp;
         }
     }
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    [SerializeField] private TowerManager towerManager;
-
-    [Header("Camera Variables")]
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private LayerMask layerMask;
-
-    [Header("TileMap Variables")]
-    [SerializeField] private List<GameObject> turretSelect;
-
-    [SerializeField] private Tilemap turretTilemap;
-    [SerializeField] private GameObject selectedTower;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        
-        
+
+
 
         if (selectedTowerIndex != -1)
         {
@@ -174,7 +130,7 @@ public class TowerPlacement : MonoBehaviour
     }
 
 
-    
+
     private void HighlightTile()
     {
 
@@ -189,40 +145,4 @@ public class TowerPlacement : MonoBehaviour
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        PlaceTower();
-    }
-
-    private Vector3 GetMousePosTile()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
-        {
-            //sets mouse pos
-            return raycastHit.point;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
-
-        
-    }
-
-    private void PlaceTower()
-    {
-
-    }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
