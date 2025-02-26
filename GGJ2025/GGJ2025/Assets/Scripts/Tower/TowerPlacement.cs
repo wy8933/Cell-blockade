@@ -1,12 +1,18 @@
+<<<<<<< Updated upstream
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
+=======
+using System.Collections.Generic;
+using UnityEngine;
+>>>>>>> Stashed changes
 using UnityEngine.Tilemaps;
 
 public class TowerPlacement : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public static TowerPlacement Instance;
 
     //[SerializeField] private PlayerInputManager _playerInputManager;
@@ -115,10 +121,24 @@ public class TowerPlacement : MonoBehaviour
             selectedTowerIndex = temp;
         }
     }
+=======
+    [SerializeField] private TowerManager towerManager;
+
+    [Header("Camera Variables")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private LayerMask layerMask;
+
+    [Header("TileMap Variables")]
+    [SerializeField] private List<GameObject> turretSelect;
+
+    [SerializeField] private Tilemap turretTilemap;
+    [SerializeField] private GameObject selectedTower;
+>>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         
         
 
@@ -145,4 +165,30 @@ public class TowerPlacement : MonoBehaviour
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+=======
+        PlaceTower();
+    }
+
+    private Vector3 GetMousePosTile()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
+        {
+            //sets mouse pos
+            return raycastHit.point;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+
+        
+    }
+
+    private void PlaceTower()
+    {
+
+    }
+>>>>>>> Stashed changes
 }
