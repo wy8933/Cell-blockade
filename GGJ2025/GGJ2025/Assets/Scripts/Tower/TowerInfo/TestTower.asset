@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f87c9bc46fcb64e9f7563b7fb207b8, type: 3}
+  m_Name: TestTower
+  m_EditorClassIdentifier: 
+  TowerList:
+  - <Name>k__BackingField: TempTower
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
+    <TowerDescription>k__BackingField: 
+    <Type>k__BackingField: 0
+  - <Name>k__BackingField: 
+    <ID>k__BackingField: 2
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
+    <TowerDescription>k__BackingField: 
+    <Type>k__BackingField: 0
+  - <Name>k__BackingField: 
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
+    <TowerDescription>k__BackingField: 
+    <Type>k__BackingField: 0
+  - <Name>k__BackingField: 
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 0}
+    <TowerDescription>k__BackingField: 
+    <Type>k__BackingField: 0

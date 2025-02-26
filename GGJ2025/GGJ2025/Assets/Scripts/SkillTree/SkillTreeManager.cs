@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
@@ -278,3 +279,4 @@ public class SkillTreeManager : MonoBehaviour
     }
 
 }
+#endif

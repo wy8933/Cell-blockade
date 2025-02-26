@@ -508,12 +508,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Weijie Ye: Programmer, Game Design
+  m_text: 'Weijie Ye: Programmer, Producer
 
-    Zhihao Chen: Artist, Game Design
+    Zhihao Chen: Artist
 
-    Kichyo:
-    Game Design
+    Benson Zhang
+    - Artist
+
+    Sterling: Game Designer
+
+    Justin Tong - Programmer
+
+
+    Special
+    Thanks:
 
     Nick-Baschfire-basch: Sound
 
@@ -544,7 +552,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.4
+  m_fontSize: 40.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

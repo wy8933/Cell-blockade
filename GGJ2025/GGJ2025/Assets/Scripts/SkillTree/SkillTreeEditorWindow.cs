@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -95,3 +96,4 @@ public class SkillTreeEditorWindow : EditorWindow
         graphView.Add(miniMap);
     }
 }
+#endif

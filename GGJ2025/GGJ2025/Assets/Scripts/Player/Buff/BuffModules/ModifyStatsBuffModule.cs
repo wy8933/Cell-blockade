@@ -32,6 +32,8 @@ public class ModifyStatsBuffModule : BaseBuffModule
             player.Stats.SpeedMultiplier *= (1 + stats.SpeedMultiplier);
             player.Stats.GoldDropMultiplier *= (1 + stats.GoldDropMultiplier);
 
+            HUDManager.Instance.SetMaxHealth(player.Stats.MaxHealth);
+            HUDManager.Instance.SetHealth(player.Stats.Health);
         }
     }
 }

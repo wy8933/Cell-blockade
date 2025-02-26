@@ -1,6 +1,7 @@
 using ObjectPoolings;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using static UnityEngine.Timeline.DirectorControlPlayable;
 
@@ -12,10 +13,14 @@ public class PlayerInputManager : MonoBehaviour
 
     public Animator playerAnimator;
 
+    [SerializeField] private TowerPlacement _towerPlacement;
+
     [Header("Input Action References")]
     [SerializeField] private InputActionReference _moveAction;
-    [SerializeField] private InputActionReference _fireAction;
     [SerializeField] private InputActionReference _pauseAction;
+
+    [SerializeField] private InputActionReference _primaryAction;
+    [SerializeField] private InputActionReference _secondaryAction;
 
     private void Start()
     {
@@ -29,14 +34,14 @@ public class PlayerInputManager : MonoBehaviour
     private void OnEnable()
     {
         _moveAction.action.Enable();
-        _fireAction.action.Enable();
+        _primaryAction.action.Enable();
         _pauseAction.action.Enable();
 
         _moveAction.action.performed += OnMovePerformed;
         _moveAction.action.canceled += OnMoveCanceled;
 
-        _fireAction.action.performed += OnAttackPerformed;
-        _fireAction.action.canceled += OnAttackCanceled;
+        _primaryAction.action.performed += OnPrimaryPreformed;
+        _primaryAction.action.canceled += OnPrimaryCanceled;
 
         _pauseAction.action.performed += OnPausePerformed;
     }
@@ -47,14 +52,14 @@ public class PlayerInputManager : MonoBehaviour
     private void OnDisable()
     {
         _moveAction.action.Disable();
-        _fireAction.action.Disable();
+        _primaryAction.action.Disable();
         _pauseAction.action.Disable();
 
         _moveAction.action.performed -= OnMovePerformed;
         _moveAction.action.canceled -= OnMoveCanceled;
 
-        _fireAction.action.performed -= OnAttackPerformed;
-        _fireAction.action.canceled -= OnAttackCanceled;
+        _primaryAction.action.performed -= OnPrimaryPreformed;
+        _primaryAction.action.canceled -= OnPrimaryCanceled;
     }
 
     /// <summary>
@@ -81,14 +86,21 @@ public class PlayerInputManager : MonoBehaviour
     /// Depend on the weapon type trigger different attack behavior
     /// </summary>
     /// <param name="context"></param>
-    private void OnAttackPerformed(InputAction.CallbackContext context) {
-        if (_player.weaponType == WeaponType.ShotGun)
+    private void OnPrimaryPreformed(InputAction.CallbackContext context) {
+        if (!_player.isBuildingMode)
         {
-            _player.Attack();
+            if (_player.weaponType == WeaponType.ShotGun)
+            {
+                _player.Attack();
+            }
+            else
+            {
+                _player.isShooting = true;
+            }
         }
-        else
+        else if(_player.isBuildingMode)
         {
-            _player.isShooting = true;
+            TowerPlacement.Instance.PlaceTower();
         }
     }
 
@@ -96,9 +108,17 @@ public class PlayerInputManager : MonoBehaviour
     /// Set shooting state to false
     /// </summary>
     /// <param name="context"></param>
-    private void OnAttackCanceled(InputAction.CallbackContext context)
+    private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        _player.isShooting = false;
+        if (!_player.isBuildingMode)
+        {
+            _player.isShooting = false;
+
+        }
+        else if (_player.isBuildingMode)
+        {
+            TowerPlacement.Instance.StopPlacement();
+        }
     }
 
     /// <summary>
