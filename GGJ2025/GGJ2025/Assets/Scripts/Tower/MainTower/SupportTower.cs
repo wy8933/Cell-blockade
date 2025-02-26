@@ -54,6 +54,10 @@ public class SupportTower : BaseTower
                 //Debug.Log(target.transform.position);
             }
         }
+        else
+        {
+            LaserHolder.transform.LookAt(target.transform.position);
+        }
 
     }
 }

@@ -39,6 +39,11 @@ public class DirectTower : BaseTower
            
             Debug.Log("ITs in the area");
         }
+
+        if (targetedEnemy != null && !targetedEnemy.activeSelf)
+        {
+            targetedEnemy = null;
+        }
     }
 
     protected override void ShowAttack(GameObject source, GameObject target)
@@ -51,13 +56,15 @@ public class DirectTower : BaseTower
                
                 if (targetedEnemy == target)
                 {
-                    LaserHolder.transform.LookAt(target.transform.position);
+                    LaserHolder.SetActive(true);
+                    LaserHolder.transform.LookAt(new Vector3(target.transform.position.x, (target.transform.position.y + 1.0f), target.transform.position.z));
                 }
-                
-
                 //Debug.Log(target.transform.position);
             }
         }
-       
+        else if (targetedEnemy == null)
+        {
+            LaserHolder.SetActive(false);
+        }
     }
 }
