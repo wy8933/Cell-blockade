@@ -54,5 +54,7 @@ public abstract class BaseTower : MonoBehaviour
         Attack(other);
 
         ShowAttack(gameObject, other.gameObject);
+
+        //Debug.Log(other.gameObject.transform.position);
     }
 }
