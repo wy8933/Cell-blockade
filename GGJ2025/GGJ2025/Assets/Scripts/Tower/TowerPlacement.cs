@@ -57,7 +57,6 @@ public class TowerPlacement : MonoBehaviour
     /// </summary>
     public void StartPlacement()
     {
-        StopPlacement();
         gridVisualiztion.SetActive(true);
         cellIndicator.SetActive(true);
     }
@@ -114,24 +113,11 @@ public class TowerPlacement : MonoBehaviour
         {
             selectedTowerIndex = temp;
         }
+
+        TowerManager.Instance.EnterBuildingMode();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-        if (selectedTowerIndex != -1)
-        {
-            StartPlacement();
-            HighlightTile();
-        }
-    }
-
-
-
-    private void HighlightTile()
+    public void HighlightTile()
     {
 
 
@@ -145,4 +131,5 @@ public class TowerPlacement : MonoBehaviour
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+
 }
