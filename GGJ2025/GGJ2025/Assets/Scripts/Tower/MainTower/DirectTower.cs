@@ -34,7 +34,7 @@ public class DirectTower : BaseTower
 
             if (targetedEnemy == collision.gameObject)
             {
-                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 1, DamageType.None));
             }
 
             Debug.Log("ITs in the area");
