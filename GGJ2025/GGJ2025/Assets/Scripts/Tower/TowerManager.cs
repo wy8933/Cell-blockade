@@ -4,7 +4,7 @@ using UnityEngine;
 public class TowerManager : MonoBehaviour
 {
     public static TowerManager Instance;
-
+    public PlayerController playerController;
     //[SerializeField] private List<GameObject> towers;
 
     public void Awake()
@@ -30,16 +30,19 @@ public class TowerManager : MonoBehaviour
     }
     */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+
+    public void ExitBuildMode()
     {
-        
+        TowerPlacement.Instance.StopPlacement();
+        playerController.isBuildingMode = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnterBuildingMode() 
     {
-        
+
+        TowerPlacement.Instance.StartPlacement();
+        TowerPlacement.Instance.HighlightTile();
+        playerController.isBuildingMode = true;
     }
-
-
 }

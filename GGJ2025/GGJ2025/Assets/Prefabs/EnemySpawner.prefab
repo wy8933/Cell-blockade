@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   enemyPrefabs:
-  - {fileID: 792196502952518451, guid: 63f38e2d4f36df742ade414e357d4355, type: 3}
+  - {fileID: 792196502952518451, guid: 21996479482a53843afff4da418cc584, type: 3}
   - {fileID: 7319691533758377645, guid: 9b384a04efdfd10409f3b768e191861e, type: 3}
   isTimeSpawner: 0
   spawnTime: 1
