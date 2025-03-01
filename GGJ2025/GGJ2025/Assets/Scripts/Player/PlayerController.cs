@@ -56,6 +56,7 @@ public class PlayerController : NetworkBehaviour
 
     void FixedUpdate()
     {
+        if (!base.IsOwner) return;
         // Init the HUD UI
         HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
         HUDManager.Instance.SetMaxBubble(maxBubble);
@@ -69,6 +70,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
+        if (!base.IsOwner) return;
         // Constantly shoot bullet by cooldown
         if (isShooting) 
         {

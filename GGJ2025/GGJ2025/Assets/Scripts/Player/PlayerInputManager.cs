@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using static UnityEngine.Timeline.DirectorControlPlayable;
-
+using FishNet.Object;
 [RequireComponent(typeof(PlayerInput), typeof(PlayerController))]
-public class PlayerInputManager : MonoBehaviour
+public class PlayerInputManager : NetworkBehaviour
 {
     [SerializeField] private PlayerController _player;
     public PlayerInput playerInput;
@@ -33,6 +33,8 @@ public class PlayerInputManager : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
+        if (!base.IsOwner) return;
+
         _moveAction.action.Enable();
         _primaryAction.action.Enable();
         _pauseAction.action.Enable();
@@ -51,6 +53,8 @@ public class PlayerInputManager : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
+        if (!base.IsOwner) return;
+
         _moveAction.action.Disable();
         _primaryAction.action.Disable();
         _pauseAction.action.Disable();
@@ -68,6 +72,7 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
+        if (!base.IsOwner) return;
         _player.moveDirection = context.ReadValue<Vector2>().normalized;
         playerAnimator.SetBool("IsWalking", true);
     }
@@ -78,6 +83,7 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
+        if (!base.IsOwner) return;
         _player.moveDirection = context.ReadValue<Vector2>().normalized;
         playerAnimator.SetBool("IsWalking", false);
     }
@@ -88,6 +94,7 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnPrimaryPreformed(InputAction.CallbackContext context)
     {
+        if (!base.IsOwner) return;
         if (!_player.isBuildingMode)
         {
             if (_player.weaponType == WeaponType.ShotGun)
@@ -111,6 +118,7 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
+        if (!base.IsOwner) return;
         if (!_player.isBuildingMode)
         {
             _player.isShooting = false;
