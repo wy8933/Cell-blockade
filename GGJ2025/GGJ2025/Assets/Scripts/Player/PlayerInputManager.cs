@@ -3,10 +3,10 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using FishNet.Object;
+using static UnityEngine.Timeline.DirectorControlPlayable;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerController))]
-public class PlayerInputManager : NetworkBehaviour
+public class PlayerInputManager : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
     public PlayerInput playerInput;
@@ -44,7 +44,6 @@ public class PlayerInputManager : NetworkBehaviour
         _primaryAction.action.canceled += OnPrimaryCanceled;
 
         _pauseAction.action.performed += OnPausePerformed;
-        
     }
 
     /// <summary>
@@ -87,7 +86,8 @@ public class PlayerInputManager : NetworkBehaviour
     /// Depend on the weapon type trigger different attack behavior
     /// </summary>
     /// <param name="context"></param>
-    private void OnPrimaryPreformed(InputAction.CallbackContext context) {
+    private void OnPrimaryPreformed(InputAction.CallbackContext context)
+    {
         if (!_player.isBuildingMode)
         {
             if (_player.weaponType == WeaponType.ShotGun)
@@ -99,7 +99,7 @@ public class PlayerInputManager : NetworkBehaviour
                 _player.isShooting = true;
             }
         }
-        else if(_player.isBuildingMode)
+        else if (_player.isBuildingMode)
         {
             TowerPlacement.Instance.PlaceTower();
         }
@@ -122,7 +122,8 @@ public class PlayerInputManager : NetworkBehaviour
     /// moved to use old input action, this causing error
     /// </summary>
     /// <param name="context"></param>
-    private void OnPausePerformed(InputAction.CallbackContext context) { 
+    private void OnPausePerformed(InputAction.CallbackContext context)
+    {
         //GameManager.Instance.Pause();
     }
 }

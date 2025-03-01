@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2671808542096913416}
   - component: {fileID: 2683584516844567633}
   - component: {fileID: 1483882355353920803}
+  - component: {fileID: -2375486048933045761}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -88,7 +89,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -141,7 +142,7 @@ MonoBehaviour:
   Stats:
     MaxHealth: 100
     Health: 70
-    MovementSpeed: 100
+    MovementSpeed: 10
     SprintSpeed: 20
     Resistance: 0
     Shield: 0
@@ -157,7 +158,8 @@ MonoBehaviour:
     GoldDropMultiplier: 1
   weaponType: 0
   playerModel: {fileID: 295712057035178095}
-  isBuildingMode: 1
+  characterController: {fileID: 0}
+  isBuildingMode: 0
   maxSpeed: 10
   moveDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
@@ -310,7 +312,7 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 2683584516844567633}
   _networkObjectCache: {fileID: 2683584516844567633}
-  _componentConfiguration: 2
+  _componentConfiguration: 1
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -338,6 +340,31 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!143 &-2375486048933045761
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396307825544410542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2.5
+  m_Radius: 0.56
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1001 &638382350080474430
 PrefabInstance:
   m_ObjectHideFlags: 0

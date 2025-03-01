@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using FishNet.Object;
 using Steamworks;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerController))]
 public class PlayerController : NetworkBehaviour
 {
     private Rigidbody _playerRB;
@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
     public PlayerStats Stats;
     public WeaponType weaponType;
     public GameObject playerModel;
+    public CharacterController characterController;
 
     [Header("Build Mode")]
     public bool isBuildingMode;
@@ -50,6 +51,7 @@ public class PlayerController : NetworkBehaviour
         _playerRB.maxLinearVelocity = maxSpeed;
 
         mainMamera = FindFirstObjectByType<Camera>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void FixedUpdate()
@@ -81,13 +83,11 @@ public class PlayerController : NetworkBehaviour
 
 
     /// <summary>
-    /// Move the player by add force in player's rigidbody towards the input direction
+    /// Move the player towards the input direction
     /// </summary>
-    [ServerRpc]
     public void PlayerMovement() 
     {
-        // Physics doesn't need delta time
-        _playerRB.AddForce(new Vector3(moveDirection.x,0,moveDirection.y) * Stats.MovementSpeed);
+        characterController.Move(new Vector3(moveDirection.x,0,moveDirection.y) * Stats.MovementSpeed * Time.deltaTime);
     }
 
     /// <summary>
