@@ -3,9 +3,11 @@ using System.Collections;
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using FishNet.Object;
+using Steamworks;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     private Rigidbody _playerRB;
     public Camera mainMamera;
@@ -47,17 +49,23 @@ public class PlayerController : MonoBehaviour
         _playerRB = GetComponent<Rigidbody>();
         _playerRB.maxLinearVelocity = maxSpeed;
 
-        // Init the HUD UI
-        HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
-        HUDManager.Instance.SetMaxBubble(maxBubble);
-        HUDManager.Instance.SetHealth(Stats.Health);
-        HUDManager.Instance.SetBubble(currentBubble);
+        mainMamera = FindFirstObjectByType<Camera>();
     }
 
     void FixedUpdate()
     {
-        PlayerMovement();
-        PlayerRotation();
+        if (base.IsOwner)
+        {
+            // Init the HUD UI
+            HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
+            HUDManager.Instance.SetMaxBubble(maxBubble);
+            HUDManager.Instance.SetHealth(Stats.Health);
+            HUDManager.Instance.SetBubble(currentBubble);
+
+            // Player Movement
+            PlayerMovement();
+            PlayerRotation();
+        }
     }
 
     private void Update()
@@ -74,9 +82,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// Move the player by add force in player's rigidbody towards the input direction
     /// </summary>
+    [ServerRpc]
     public void PlayerMovement() 
     {
         // Physics doesn't need delta time
