@@ -54,18 +54,15 @@ public class PlayerController : NetworkBehaviour
 
     void FixedUpdate()
     {
-        if (base.IsOwner)
-        {
-            // Init the HUD UI
-            HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
-            HUDManager.Instance.SetMaxBubble(maxBubble);
-            HUDManager.Instance.SetHealth(Stats.Health);
-            HUDManager.Instance.SetBubble(currentBubble);
+        // Init the HUD UI
+        HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
+        HUDManager.Instance.SetMaxBubble(maxBubble);
+        HUDManager.Instance.SetHealth(Stats.Health);
+        HUDManager.Instance.SetBubble(currentBubble);
 
-            // Player Movement
-            PlayerMovement();
-            PlayerRotation();
-        }
+        // Player Movement
+        PlayerMovement();
+        PlayerRotation();
     }
 
     private void Update()

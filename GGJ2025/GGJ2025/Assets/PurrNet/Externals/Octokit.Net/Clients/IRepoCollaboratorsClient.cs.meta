@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 9de78d43514136a4186684c28e3c94fb
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297320
+  packageName: PurrNet
+  packageVersion: v1.8.1
+  assetPath: Assets/PurrNet/Externals/Octokit.Net/Clients/IRepoCollaboratorsClient.cs
+  uploadId: 734895

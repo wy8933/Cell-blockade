@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 0bda16b483ce22d428e557275bef3754
+AssetOrigin:
+  serializedVersion: 1
+  productId: 297320
+  packageName: PurrNet
+  packageVersion: v1.8.1
+  assetPath: Assets/PurrNet/Runtime/BitPacker/BitPacker.Tests/GeneratedDeltaPackingTests.cs
+  uploadId: 734895

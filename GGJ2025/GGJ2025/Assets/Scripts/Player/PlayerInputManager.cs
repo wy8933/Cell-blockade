@@ -3,10 +3,10 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEngine.Timeline.DirectorControlPlayable;
+using FishNet.Object;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerController))]
-public class PlayerInputManager : MonoBehaviour
+public class PlayerInputManager : NetworkBehaviour
 {
     [SerializeField] private PlayerController _player;
     public PlayerInput playerInput;
@@ -44,6 +44,7 @@ public class PlayerInputManager : MonoBehaviour
         _primaryAction.action.canceled += OnPrimaryCanceled;
 
         _pauseAction.action.performed += OnPausePerformed;
+        
     }
 
     /// <summary>
