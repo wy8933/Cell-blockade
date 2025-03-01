@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: ad8226ab340d6c24a9edf171b144eb47
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Response/CommitComment.cs
-  uploadId: 734895

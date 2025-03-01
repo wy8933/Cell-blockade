@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 090813b25aa05c74db69dcd24269dd2e
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Clients/IUserKeysClient.cs
-  uploadId: 734895

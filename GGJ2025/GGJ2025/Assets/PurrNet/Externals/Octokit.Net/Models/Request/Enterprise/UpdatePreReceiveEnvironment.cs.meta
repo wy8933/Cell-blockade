@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 94138ef9aaa7f6d4ab95630219eb5dcd
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Request/Enterprise/UpdatePreReceiveEnvironment.cs
-  uploadId: 734895

@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 4b3b6ff6b129db44995096681df17aeb
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Response/ActivityPayloads/PullRequestEventPayload.cs
-  uploadId: 734895

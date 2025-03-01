@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: e850bc229762ef14cbfa4e3367815b0d
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Response/Account.cs
-  uploadId: 734895

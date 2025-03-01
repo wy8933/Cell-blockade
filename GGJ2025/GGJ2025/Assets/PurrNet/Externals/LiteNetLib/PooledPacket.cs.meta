@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: c30f666c963acea43b62814bb2d2933a
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/LiteNetLib/PooledPacket.cs
-  uploadId: 734895

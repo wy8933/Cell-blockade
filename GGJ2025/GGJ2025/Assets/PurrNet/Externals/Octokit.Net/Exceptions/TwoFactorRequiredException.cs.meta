@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: d5134b6a98f1b2042b3cbebe28baba47
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Exceptions/TwoFactorRequiredException.cs
-  uploadId: 734895

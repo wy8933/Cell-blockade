@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 35c1f28c1facd1f49976237748dc9020
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Runtime/BitPacker/OptimizedTypes/PackNetworkID.cs
-  uploadId: 734895

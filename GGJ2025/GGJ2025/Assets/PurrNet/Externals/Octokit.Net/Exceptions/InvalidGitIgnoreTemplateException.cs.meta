@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 2b5024f7c11394f47bc2cfb68f6ad933
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Exceptions/InvalidGitIgnoreTemplateException.cs
-  uploadId: 734895

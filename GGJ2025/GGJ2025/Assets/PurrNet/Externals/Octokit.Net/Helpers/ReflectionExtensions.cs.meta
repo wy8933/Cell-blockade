@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 6442c02ffab10f041a6f59ef688d23c4
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Helpers/ReflectionExtensions.cs
-  uploadId: 734895

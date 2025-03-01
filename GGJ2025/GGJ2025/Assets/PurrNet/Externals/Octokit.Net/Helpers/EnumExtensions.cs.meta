@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 48715561fa1b22d4ebce6462f405016e
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Helpers/EnumExtensions.cs
-  uploadId: 734895

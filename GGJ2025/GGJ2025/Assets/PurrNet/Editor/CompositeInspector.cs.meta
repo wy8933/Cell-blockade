@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: eb6ab5817d2954a41858a1d5838bffbe
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Editor/CompositeInspector.cs
-  uploadId: 734895

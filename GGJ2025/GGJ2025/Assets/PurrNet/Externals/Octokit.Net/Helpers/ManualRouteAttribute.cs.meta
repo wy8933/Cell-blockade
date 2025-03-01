@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 367a1763cca987647a1081aa2da54adc
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Helpers/ManualRouteAttribute.cs
-  uploadId: 734895

@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 6aab87ca805736d42a7468f71dc386c0
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Response/Notification.cs
-  uploadId: 734895

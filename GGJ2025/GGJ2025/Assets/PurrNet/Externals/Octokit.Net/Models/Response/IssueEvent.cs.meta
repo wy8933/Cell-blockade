@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 61d73b92a1b41494ca2839345719578a
-AssetOrigin:
-  serializedVersion: 1
-  productId: 297320
-  packageName: PurrNet
-  packageVersion: v1.8.1
-  assetPath: Assets/PurrNet/Externals/Octokit.Net/Models/Response/IssueEvent.cs
-  uploadId: 734895
