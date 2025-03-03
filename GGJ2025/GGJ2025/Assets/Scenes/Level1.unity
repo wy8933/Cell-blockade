@@ -15434,6 +15434,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1860570365}
   isGameOver: 0
   isPowerUp: 0
+  currency: 0
 --- !u!114 &1483653857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16709,23 +16710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMamera: {fileID: 1227371521}
   bulletPrefab: {fileID: 1430058456195928741, guid: 6d46b04540cdc264589eb326f6317db9, type: 3}
-  Stats:
-    MaxHealth: 100
-    Health: 70
-    MovementSpeed: 100
-    SprintSpeed: 20
-    Resistance: 0
-    Shield: 0
-    DamageReduction: 0
-    BlockChance: 0
-    SlowResistance: 0
-    SizeMultiplier: 0
-    HealthMultiplier: 0
-    AtkMultiplier: 1
-    DamageReductionMultiplier: 1
-    ResistanceMultiplier: 1
-    SpeedMultiplier: 1
-    GoldDropMultiplier: 1
+  Stats: {fileID: 11400000, guid: 999c415f890d941499cdbf87e07017b7, type: 2}
   weaponType: 0
   playerModel: {fileID: 2143712102}
   isBuildingMode: 0

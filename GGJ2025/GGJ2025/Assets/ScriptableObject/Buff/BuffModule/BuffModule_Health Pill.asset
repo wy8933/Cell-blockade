@@ -15,12 +15,10 @@ MonoBehaviour:
   moduleName: Health Pill
   moduleType: 0
   stats:
-    MaxHealth: 0
-    Health: 25
-    MovementSpeed: 0
-    SprintSpeed: 0
+    CurrentHealth: 25
+    CurrentShield: 0
+    MaxHealth: 25
     Resistance: 0
-    Shield: 0
     DamageReduction: 0
     BlockChance: 0
     SlowResistance: 0
@@ -30,4 +28,6 @@ MonoBehaviour:
     DamageReductionMultiplier: 0
     ResistanceMultiplier: 0
     SpeedMultiplier: 0
-    GoldDropMultiplier: 0
+    OxygenDropMultiplier: 0
+    MovementSpeed: 0
+    SprintSpeed: 0

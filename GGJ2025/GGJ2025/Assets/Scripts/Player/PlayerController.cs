@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _playerRB;
     public Camera mainMamera;
     public GameObject bulletPrefab;
-    public PlayerStats Stats;
+    public EntityStats Stats;
     public WeaponType weaponType;
     public GameObject playerModel;
 
@@ -48,9 +49,9 @@ public class PlayerController : MonoBehaviour
         _playerRB.maxLinearVelocity = maxSpeed;
 
         // Init the HUD UI
-        HUDManager.Instance.SetMaxHealth(Stats.MaxHealth);
+        HUDManager.Instance.SetMaxHealth(Stats.MaxHealth.Value);
         HUDManager.Instance.SetMaxBubble(maxBubble);
-        HUDManager.Instance.SetHealth(Stats.Health);
+        HUDManager.Instance.SetHealth(Stats.CurrentHealth.Value);
         HUDManager.Instance.SetBubble(currentBubble);
     }
 
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerMovement() 
     {
         // Physics doesn't need delta time
-        _playerRB.AddForce(new Vector3(moveDirection.x,0,moveDirection.y) * Stats.MovementSpeed);
+        _playerRB.AddForce(new Vector3(moveDirection.x,0,moveDirection.y) * Stats.MovementSpeed.Value);
     }
 
     /// <summary>
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
         // Init bullet
         if (bulletController)
         {
-            bulletController.InitBullet(pool, Stats.AtkMultiplier);
+            bulletController.InitBullet(pool, Stats.AtkMultiplier.Value);
         }
     }
 
@@ -179,10 +180,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         // deal damage and update UI
-        Stats.Health -= (damage * (1-Stats.BlockChance));
-        HUDManager.Instance.SetHealth(Stats.Health);
+        Stats.CurrentHealth.Value -= (damage * (1-Stats.BlockChance.Value));
+        HUDManager.Instance.SetHealth(Stats.CurrentHealth.Value);
 
-        if (Stats.Health <= 0)
+        if (Stats.CurrentHealth.Value <= 0)
         {
             Die();
         }
