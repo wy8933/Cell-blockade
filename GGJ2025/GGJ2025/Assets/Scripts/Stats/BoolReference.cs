@@ -35,7 +35,7 @@ public class BoolReference : ScriptableObject
     private void OnEnable()
     {
         // Only reset if the game is actually playing and you've enabled reset
-        if (Application.isPlaying && resetToInitialValue && saveOn == SaveOn.SceneLoaded)
+        if (resetToInitialValue && saveOn == SaveOn.SceneLoaded)
         {
             ResetValue();
         }
