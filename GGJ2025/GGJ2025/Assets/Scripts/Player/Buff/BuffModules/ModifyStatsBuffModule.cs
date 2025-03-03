@@ -3,37 +3,38 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ModifyStatsBuffModule", menuName = "BuffSystem/ModifyStatsBuffModule")]
 public class ModifyStatsBuffModule : BaseBuffModule
 {
-    public PlayerStats stats;
+    public EntityStatsBuff stats;
 
-    public override void Apply(BuffInfo buffInfo, DamageInfo damageInfo = null)
+     public override void Apply(BuffInfo buffInfo, DamageInfo damageInfo = null)
     {
         PlayerController player = buffInfo.target.GetComponent<PlayerController>();
         if (player)
         {
             // Base Stats
-            player.Stats.MaxHealth += stats.MaxHealth;
-            player.Stats.Health += stats.Health;
-            player.Stats.MovementSpeed += stats.MovementSpeed;
-            player.Stats.SprintSpeed += stats.SprintSpeed;
-            player.Stats.Resistance += stats.Resistance;
+            player.Stats.MaxHealth.Value += stats.MaxHealth;
+            player.Stats.MovementSpeed.Value += stats.MovementSpeed;
+            player.Stats.SprintSpeed.Value += stats.SprintSpeed;
+            player.Stats.Resistance.Value += stats.Resistance;
 
             // Defense Stats
-            player.Stats.Shield += stats.Shield;
-            player.Stats.DamageReduction += stats.DamageReduction;
-            player.Stats.BlockChance += stats.BlockChance;
+            player.Stats.CurrentShield.Value += stats.CurrentShield;
+            player.Stats.DamageReduction.Value += stats.DamageReduction;
+            player.Stats.BlockChance.Value += stats.BlockChance;
 
             // Status Effect Mechanics
-            player.Stats.SlowResistance += stats.SlowResistance;
+            player.Stats.SlowResistance.Value += stats.SlowResistance;
 
             // Stat Multipliers
-            player.Stats.AtkMultiplier *= (1 + stats.AtkMultiplier);
-            player.Stats.DamageReductionMultiplier *= (1 + stats.DamageReductionMultiplier);
-            player.Stats.ResistanceMultiplier *= (1 + stats.ResistanceMultiplier);
-            player.Stats.SpeedMultiplier *= (1 + stats.SpeedMultiplier);
-            player.Stats.GoldDropMultiplier *= (1 + stats.GoldDropMultiplier);
+            player.Stats.AtkMultiplier.Value *= (1 + stats.AtkMultiplier);
+            player.Stats.DamageReductionMultiplier.Value *= (1 + stats.DamageReductionMultiplier);
+            player.Stats.ResistanceMultiplier.Value *= (1 + stats.ResistanceMultiplier);
+            player.Stats.SpeedMultiplier.Value *= (1 + stats.SpeedMultiplier);
+            player.Stats.OxygenDropMultiplier.Value *= (1 + stats.OxygenDropMultiplier);
 
-            HUDManager.Instance.SetMaxHealth(player.Stats.MaxHealth);
-            HUDManager.Instance.SetHealth(player.Stats.Health);
+            // Update the HUD with the new values
+            HUDManager.Instance.SetMaxHealth(player.Stats.MaxHealth.Value);
+            HUDManager.Instance.SetHealth(player.Stats.CurrentHealth.Value);
         }
     }
 }
+

@@ -15,6 +15,7 @@ public class BaseEnemy : MonoBehaviour
     public bool isReleased;
     public AudioSource audioSource;
     public Animator animator;
+    public float currencyAmount = 10;
 
     private void Start()
     {
@@ -92,6 +93,7 @@ public class BaseEnemy : MonoBehaviour
             isReleased = true;
             EnemyWaveManager.Instance.EnemyDefeated();
             pool.Release(gameObject);
+            GameManager.Instance.ModifyCurrency(currencyAmount);
         }
     }
 
@@ -120,6 +122,8 @@ public class BaseEnemy : MonoBehaviour
         Stats.DamageReduction *= scalingFactor * Stats.DamageReductionMultiplier;
         Stats.BlockChance *= scalingFactor;
         Stats.SlowResistance *= scalingFactor;
+
+        currencyAmount *= scalingFactor;
     }
 
 }

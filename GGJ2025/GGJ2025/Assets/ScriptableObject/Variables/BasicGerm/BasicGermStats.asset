@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f5b540d320485499ad127ed424cc7b, type: 3}
+  m_Name: BasicGermStats
+  m_EditorClassIdentifier: 
+  CurrentHealth: {fileID: 11400000, guid: 39dd6a2453603454fbaad6129b3a11e9, type: 2}
+  CurrentShield: {fileID: 11400000, guid: f901854c9d08b3c43aa024d06a91c22b, type: 2}
+  MaxHealth: {fileID: 11400000, guid: cf8716bf47ceb0542a5a92f5fb5305bb, type: 2}
+  Resistance: {fileID: 11400000, guid: 6ffb535637e0f8b4a923a84bc4233a1c, type: 2}
+  DamageReduction: {fileID: 11400000, guid: 99222c6f3d5742942a3a79563f7c4ad9, type: 2}
+  BlockChance: {fileID: 11400000, guid: 602ff3eed8c0d654299a66648263454f, type: 2}
+  SlowResistance: {fileID: 11400000, guid: fa746d6e73934ab41b8052b45ae0c8ee, type: 2}
+  SizeMultiplier: {fileID: 11400000, guid: 70fa160b9bb3f01458464936420097b8, type: 2}
+  HealthMultiplier: {fileID: 11400000, guid: 1b9e495548074fd44bb885847d0f51d0, type: 2}
+  AtkMultiplier: {fileID: 11400000, guid: 2d38d725a16a2874893f519f7c3bd46e, type: 2}
+  DamageReductionMultiplier: {fileID: 11400000, guid: 792e2d27fa214bb4d8040e25be7ba80f, type: 2}
+  ResistanceMultiplier: {fileID: 11400000, guid: fb53675d1aadb5845979fc0d14a8adcc, type: 2}
+  SpeedMultiplier: {fileID: 11400000, guid: f140cf76b66e07346bdcfb11b0b8784a, type: 2}
+  OxygenDropMultiplier: {fileID: 11400000, guid: 9817d078dba6e4c43920182bcaf6c9a3, type: 2}
+  MovementSpeed: {fileID: 11400000, guid: 89af225f9d302744ea6f5b1e2c42db16, type: 2}
+  SprintSpeed: {fileID: 11400000, guid: 339f85d13ffe9d840b300dbad4536a86, type: 2}

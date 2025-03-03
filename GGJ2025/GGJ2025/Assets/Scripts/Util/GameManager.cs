@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
     public bool isPowerUp;
 
+    public float currency = 0;
+
     void Awake()
     {
         if (Instance == null)
@@ -17,7 +20,7 @@ public class GameManager : MonoBehaviour
             isGameOver = false;
             isPowerUp = false;
         }
-        else { 
+        else {
             Destroy(gameObject);
         }
     }
@@ -32,13 +35,13 @@ public class GameManager : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0;
-            if(!isGameOver&&!isPowerUp)
+            if (!isGameOver && !isPowerUp)
                 pauseMenu.SetActive(true);
         }
-        else 
-        { 
-            Time.timeScale = 1; 
-            if(!isGameOver && !isPowerUp)
+        else
+        {
+            Time.timeScale = 1;
+            if (!isGameOver && !isPowerUp)
                 pauseMenu.SetActive(false);
         }
     }
@@ -51,6 +54,10 @@ public class GameManager : MonoBehaviour
         gameOverMenu.SetActive(true);
     }
 
+    public void ModifyCurrency(float amount) 
+    {
+        currency += amount;
+    }
 
 
 
