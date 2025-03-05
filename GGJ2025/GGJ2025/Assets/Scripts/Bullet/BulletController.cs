@@ -96,7 +96,10 @@ public class BulletController : MonoBehaviour
     // Play the bubble explode sound
     public void PopSound() 
     {
-        audioSource.Play();
-        audioSource.volume = SoundManager.Instance.SFXMult;
+        if (SoundManager.Instance != null)
+        {
+            audioSource.Play();
+            audioSource.volume = SoundManager.Instance.SFXMult;
+        }
     }
 }
