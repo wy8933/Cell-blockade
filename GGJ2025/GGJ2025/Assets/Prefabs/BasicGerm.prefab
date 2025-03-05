@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 15
-    Health: 15
+    MaxHealth: 500
+    Health: 500
     MovementSpeed: 3.5
     SprintSpeed: 0
     Resistance: 0
@@ -286,10 +286,14 @@ MonoBehaviour:
     SpeedMultiplier: 1
     GoldDropMultiplier: 1
   player: {fileID: 0}
-  agent: {fileID: 0}
   isReleased: 0
   audioSource: {fileID: 9203067772447950622}
   animator: {fileID: 0}
+  currencyAmount: 10
+  steeringWeight: 1
+  detectionRadius: 2
+  pathfindingMode: 2
+  currentFlowFieldTarget: 0
   attackRange: 2
   attackCooldown: 1.5
   attackDamage: 10
@@ -419,7 +423,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -449,7 +453,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

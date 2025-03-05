@@ -11658,7 +11658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd95a9ef55b436468c05211315a7175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 1595879607}
+  playerController: {fileID: 0}
 --- !u!4 &1054939347
 Transform:
   m_ObjectHideFlags: 0
@@ -17606,7 +17606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMamera: {fileID: 1227371521}
   bulletPrefab: {fileID: 1430058456195928741, guid: 6d46b04540cdc264589eb326f6317db9, type: 3}
-  Stats: {fileID: 11400000, guid: 999c415f890d941499cdbf87e07017b7, type: 2}
+  Stats: {fileID: 0}
   weaponType: 0
   playerModel: {fileID: 2143712102}
   isBuildingMode: 0

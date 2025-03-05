@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using ObjectPoolings;
+using Unity.VisualScripting;
 
 public class BasicEnemy : BaseEnemy
 {
@@ -12,56 +13,68 @@ public class BasicEnemy : BaseEnemy
     public DamageType attackDamageType = DamageType.None;
     private bool canAttack = true;
 
-    private void Start()
+    protected override void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        base.Start();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        EnemyPathFinding();
+        base.Update();
         TryAttack();
     }
 
-    /// <summary>
-    /// Check if player is in range and can be attacked
-    /// </summary>
     protected void TryAttack()
     {
-        if (player == null) return;
+        Vector3 targetPosition = Vector3.zero;
+        if (currentFlowFieldTarget == FlowFieldTarget.Player)
+        {
+            if (player != null)
+                targetPosition = player.position;
+            else
+                return;
+        }
+        else if (currentFlowFieldTarget == FlowFieldTarget.Core)
+        {
+            targetPosition = Wound.Instance.transform.position;
+        }
+        else
+        {
+            targetPosition = Wound.Instance.transform.position;
+        }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= attackRange && canAttack)
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        if (distance <= attackRange && canAttack)
         {
             Attack();
         }
     }
 
-    /// <summary>
-    /// Play the attack animation and attack the player
-    /// </summary>
     private void Attack()
     {
-        if (animator !=null)
-        {
+        if (animator != null)
             animator.SetBool("IsAttack", true);
-        }
         canAttack = false;
 
-        // Check if player exist and deal damage to player
-        if (player.TryGetComponent(out PlayerController playerController))
+        if (currentFlowFieldTarget == FlowFieldTarget.Player)
         {
-            DamageInfo damageInfo = new DamageInfo(gameObject, player.gameObject, attackDamage * Stats.AtkMultiplier, attackDamageType);
-            DamageManager.Instance.ManageDamage(damageInfo);
+            if (player.TryGetComponent(out PlayerController playerController))
+            {
+                DamageInfo damageInfo = new DamageInfo(gameObject, player.gameObject, attackDamage * Stats.AtkMultiplier, attackDamageType);
+                DamageManager.Instance.ManageDamage(damageInfo);
+            }
+        }
+        else if (currentFlowFieldTarget == FlowFieldTarget.Core)
+        {
+            Debug.Log("attack core");
         }
 
         Invoke(nameof(ResetAttack), attackCooldown);
     }
 
     /// <summary>
-    /// Reset attack state
+    /// Resets the enemy's attack state
     /// </summary>
     private void ResetAttack()
     {
