@@ -50,9 +50,7 @@ public class PlayerController : MonoBehaviour
 
         // Init the HUD UI
         HUDManager.Instance.SetMaxHealth(Stats.MaxHealth.Value);
-        HUDManager.Instance.SetMaxBubble(maxBubble);
         HUDManager.Instance.SetHealth(Stats.CurrentHealth.Value);
-        HUDManager.Instance.SetBubble(currentBubble);
     }
 
     void FixedUpdate()
@@ -209,7 +207,6 @@ public class PlayerController : MonoBehaviour
         { 
             currentBubble = maxBubble;
         }
-        HUDManager.Instance.SetBubble(currentBubble);
     }
 
     /// <summary>
@@ -218,14 +215,13 @@ public class PlayerController : MonoBehaviour
     /// <param name="amount">the amonud of bubble ammo reduced</param>
     public void ReduceBubble(float amount)
     {
-        currentBubble -= amount;
+        currentBubble -= 0;
 
         if (currentBubble < 0)
         {
             currentBubble = 0;
         }
 
-        HUDManager.Instance.SetBubble(currentBubble);
     }
 
     /// <summary>

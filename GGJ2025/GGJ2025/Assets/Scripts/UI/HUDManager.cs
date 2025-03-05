@@ -10,10 +10,6 @@ public class HUDManager : MonoBehaviour
     public Gradient healthGradient;
     public Image healthFill;
 
-    [Header("Bubble")]
-    public Slider bubbleSlider;
-    public Gradient bubbleGradient;
-    public Image bubbleFill;
 
     public void Awake()
     {
@@ -40,29 +36,5 @@ public class HUDManager : MonoBehaviour
         healthSlider.value = health;
 
         healthFill.color = healthGradient.Evaluate(healthSlider.normalizedValue);
-    }
-
-
-    /// <summary>
-    /// Set the max value of bubble slider
-    /// </summary>
-    /// <param name="value">The new max bubble</param>
-    public void SetMaxBubble(float value)
-    {
-        bubbleSlider.maxValue = value;
-
-        bubbleGradient.Evaluate(1f);
-    }
-
-
-    /// <summary>
-    /// Set the current value of bubble slider, and change the fill color of the slider
-    /// </summary>
-    /// <param name="value">The curret bubble value</param>
-    public void SetBubble(float value)
-    {
-        bubbleSlider.value = value;
-
-        bubbleFill.color = bubbleGradient.Evaluate(bubbleSlider.normalizedValue);
     }
 }
