@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         PlayerRotation();
+        HUDManager.Instance.WriteAllStatsToUI(Stats);
     }
 
     private void Update()

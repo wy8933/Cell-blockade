@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
@@ -10,6 +11,48 @@ public class HUDManager : MonoBehaviour
     public Gradient healthGradient;
     public Image healthFill;
 
+    [SerializeField] private TextMeshProUGUI statsText;
+    [SerializeField] private TextMeshProUGUI hpText;
+    public void WriteAllStatsToUI(EntityStats playerStats)
+    {
+        if (statsText == null)
+        {
+            Debug.LogWarning("PlayerStatsTMPUI: No TextMeshProUGUI component assigned.");
+            return;
+        }
+
+        // Build the stats string (customize as needed)
+        string statsInfo =
+            $"<b>Basic Stats</b>\n" +
+            $"Max Health: {playerStats.MaxHealth.Value}\n" +
+            $"Health: {playerStats.CurrentHealth.Value}\n" +
+            $"Movement Speed: {playerStats.MovementSpeed.Value}\n" +
+            $"Sprint Speed: {playerStats.SprintSpeed.Value}\n" +
+            $"Resistance: {playerStats.Resistance.Value}\n\n" +
+
+            $"<b>Defense Stats</b>\n" +
+            $"Shield: {playerStats.CurrentShield.Value}\n" +
+            $"Damage Reduction: {playerStats.DamageReduction.Value}\n" +
+            $"Block Chance: {playerStats.BlockChance.Value}\n\n" +
+
+            $"<b>Status Effect Mechanics</b>\n" +
+            $"Slow Resistance: {playerStats.SlowResistance.Value}\n\n" +
+
+            $"<b>Stats Multiplier</b>\n" +
+            $"Size Multiplier: {playerStats.SizeMultiplier.Value}\n" +
+            $"Health Multiplier: {playerStats.HealthMultiplier.Value}\n" +
+            $"Atk Multiplier: {playerStats.AtkMultiplier.Value}\n" +
+            $"Damage Reduction Multiplier: {playerStats.DamageReductionMultiplier.Value}\n" +
+            $"Resistance Multiplier: {playerStats.ResistanceMultiplier.Value}\n" +
+            $"Speed Multiplier: {playerStats.SpeedMultiplier.Value}\n" +
+            $"Gold Drop Multiplier: {playerStats.OxygenDropMultiplier.Value}\n";
+
+        statsText.text = statsInfo;
+
+        string twoLineInfo = $"{playerStats.CurrentHealth.Value}\n------\n{playerStats.MaxHealth.Value}";
+
+        hpText.text = twoLineInfo;
+    }
 
     public void Awake()
     {
@@ -37,4 +80,6 @@ public class HUDManager : MonoBehaviour
 
         healthFill.color = healthGradient.Evaluate(healthSlider.normalizedValue);
     }
+
+
 }

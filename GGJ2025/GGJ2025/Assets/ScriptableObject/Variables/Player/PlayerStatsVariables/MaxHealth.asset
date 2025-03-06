@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialValue: 100
   runtimeValue: 100
-  debugEnabled: 1
+  debugEnabled: 0
   saveOn: 1
   resetToInitialValue: 1

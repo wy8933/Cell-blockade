@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuffHandler : MonoBehaviour
 {
     [SerializeField] private List<BuffInfo> _initialBuffs = new List<BuffInfo>();
-    private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
+    [SerializeField] private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
     private BuffComparer _buffComparer = new BuffComparer();
 
     public List<BuffInfo> ActiveBuffs

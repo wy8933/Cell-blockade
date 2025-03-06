@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: DamageReduction
   m_EditorClassIdentifier: 
   initialValue: 0
-  runtimeValue: 0
+  runtimeValue: 0.05
   debugEnabled: 0
   saveOn: 1
-  resetToInitialValue: 0
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  resetToInitialValue: 1

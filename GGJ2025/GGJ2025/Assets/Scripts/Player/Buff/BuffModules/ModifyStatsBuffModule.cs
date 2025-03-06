@@ -12,6 +12,7 @@ public class ModifyStatsBuffModule : BaseBuffModule
         {
             // Base Stats
             player.Stats.MaxHealth.Value += stats.MaxHealth;
+            player.Stats.CurrentHealth.Value += stats.CurrentHealth;
             player.Stats.MovementSpeed.Value += stats.MovementSpeed;
             player.Stats.SprintSpeed.Value += stats.SprintSpeed;
             player.Stats.Resistance.Value += stats.Resistance;
