@@ -290,6 +290,10 @@ MonoBehaviour:
   audioSource: {fileID: 9203067772447950622}
   animator: {fileID: 0}
   currencyAmount: 10
+  damageVFX: {fileID: 0}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0.06733799, b: 1, a: 0}
   steeringWeight: 1
   detectionRadius: 2
   pathfindingMode: 2
@@ -311,6 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialBuffs: []
+  _activeBuffs: []
 --- !u!82 &9203067772447950622
 AudioSource:
   m_ObjectHideFlags: 0

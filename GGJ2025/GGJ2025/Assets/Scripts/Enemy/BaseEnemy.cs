@@ -1,6 +1,8 @@
 using ObjectPoolings;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public enum PathfindingMode { AlwaysPlayer, AlwaysCore, Closest }
 public enum EnemyAIState { Chase }
@@ -115,7 +117,17 @@ public class BaseEnemy : MonoBehaviour
     protected Vector3 CalculateSteering()
     {
         // TODO: Add local steering logic for fine-tuning movement, expand here for obstacle avoidance
-        return Vector3.zero;
+        Transform target = null;
+        if ((currentFlowFieldTarget == FlowFieldTarget.Player || currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer) && player != null)
+        {
+            target = player;
+        }
+        else
+        {
+            target = Wound.Instance.transform;
+        }
+
+        return (target.position - transform.position).normalized;
     }
 
     /// <summary>
