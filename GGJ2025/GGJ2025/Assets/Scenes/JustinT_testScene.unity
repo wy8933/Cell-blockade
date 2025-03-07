@@ -3355,6 +3355,7 @@ GameObject:
   - component: {fileID: 805244518}
   - component: {fileID: 805244517}
   - component: {fileID: 805244516}
+  - component: {fileID: 805244520}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3447,12 +3448,34 @@ Transform:
   m_GameObject: {fileID: 805244515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8677663, y: 3.190167, z: -6.1596804}
+  m_LocalPosition: {x: -1.8677663, y: 3.190167, z: -2.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &805244520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805244515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845e1b7b0f33fbb43a9243f16c9c3e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  angle: 0
+  targetRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  canSeeTarget: 0
 --- !u!4 &808820101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2876168289200965576, guid: 6a48e793df76aeb428c656291c32a26d, type: 3}

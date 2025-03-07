@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    protected float radius;
-    [Range(0,360)] protected float angle;
+    public float radius;
+    [Range(0,360)] public float angle;
+
+    public GameObject targetRef;
 
     //Layers
-    protected LayerMask targetMask;
-    protected LayerMask obstructionMask;
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
 
-    protected bool canSeeTarget;
+    public bool canSeeTarget;
 
 
 
@@ -37,7 +39,7 @@ public class FieldOfView : MonoBehaviour
             Transform target = rangeCheck[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
             
-            if (Vector3.Angle(transform.position, directionToTarget) < angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
