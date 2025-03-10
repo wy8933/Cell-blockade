@@ -1,8 +1,6 @@
 using ObjectPoolings;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.VFX;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public enum PathfindingMode { AlwaysPlayer, AlwaysCore, Closest }
 public enum EnemyAIState { Chase }
@@ -136,6 +134,7 @@ public class BaseEnemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Stats.Health -= damage;
+        DamageTextManager.Instance.ShowDamageText(transform.position,damage);
         if (Stats.Health <= 0)
         {
             Die();
