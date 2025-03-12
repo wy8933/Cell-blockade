@@ -24,11 +24,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3215035912193
-    m_Key: btn-setting
+    m_Key: btn-settings
     m_Metadata:
       m_Items: []
   - m_Id: 3215035912194
-    m_Key: btn-credit
+    m_Key: btn-credits
     m_Metadata:
       m_Items: []
   m_Metadata:
