@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647fea2afaba2e94785bcc7fa7f917bd, type: 3}
   m_Name: ResistanceMultiplier
   m_EditorClassIdentifier: 
-  initialValue: 0
+  initialValue: 1
   runtimeValue: 0
   debugEnabled: 0
   saveOn: 1
-  resetToInitialValue: 0
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  resetToInitialValue: 1

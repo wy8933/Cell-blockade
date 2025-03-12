@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: CurrentHealth
   m_EditorClassIdentifier: 
   initialValue: 100
-  runtimeValue: 0
+  runtimeValue: 100
   debugEnabled: 0
   saveOn: 1
   resetToInitialValue: 1
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []

@@ -115,7 +115,17 @@ public class BaseEnemy : MonoBehaviour
     protected Vector3 CalculateSteering()
     {
         // TODO: Add local steering logic for fine-tuning movement, expand here for obstacle avoidance
-        return Vector3.zero;
+        Transform target = null;
+        if ((currentFlowFieldTarget == FlowFieldTarget.Player || currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer) && player != null)
+        {
+            target = player;
+        }
+        else
+        {
+            target = Wound.Instance.transform;
+        }
+
+        return (target.position - transform.position).normalized;
     }
 
     /// <summary>
@@ -124,6 +134,7 @@ public class BaseEnemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Stats.Health -= damage;
+        DamageTextManager.Instance.ShowDamageText(transform.position,damage);
         if (Stats.Health <= 0)
         {
             Die();

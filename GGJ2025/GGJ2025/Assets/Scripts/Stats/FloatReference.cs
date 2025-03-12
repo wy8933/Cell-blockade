@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,9 +31,8 @@ public class FloatReference : ScriptableObject
     [Tooltip("Check this if you want to reset to 'initialValue' at the specified time")]
     public bool resetToInitialValue;
 
-    [Header("Value Changed Event")]
     [Tooltip("Event invoked whenever 'runtimeValue' changes")]
-    public UnityEvent<float> OnValueChanged;
+    public event Action<float> OnValueChanged;
 
 
     private void OnEnable()
