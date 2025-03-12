@@ -1000,7 +1000,19 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1221573371676244942}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: OnLanguageChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &3556651682362746166
 GameObject:
@@ -1785,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFXSlider: {fileID: 4673390550645418909}
   MusicSlider: {fileID: 182366306821868054}
+  LanguageDropdown: {fileID: 868353354814170443}
 --- !u!1 &5570240493838343268
 GameObject:
   m_ObjectHideFlags: 0

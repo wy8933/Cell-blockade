@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
@@ -6,12 +8,17 @@ public class Settings : MonoBehaviour
 {
     public Slider SFXSlider;
     public Slider MusicSlider;
-    public Dropdown LanguageDropdown;
+    public TMP_Dropdown LanguageDropdown;
 
-    public void Start()
+    public IEnumerator Start()
     {
         SFXSlider.value = SoundManager.Instance.SFXMult;
         MusicSlider.value = SoundManager.Instance.MusicMult;
+
+        yield return LocalizationSettings.InitializationOperation;
+        int index = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
+        LanguageDropdown.value = index;
+        
     }
 
     /// <summary>
