@@ -1,60 +1,64 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
     public float radius;
-    [Range(0, 360)]
-    public float angle;
+    [Range(0,360)] public float angle;
 
     public GameObject targetRef;
 
+    //Layers
     public LayerMask targetMask;
     public LayerMask obstructionMask;
 
     public bool canSeeTarget;
 
-    private void Start()
-    {
-        //targetRef = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(FOVRoutine());
-    }
 
-    private IEnumerator FOVRoutine()
+
+    protected IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
 
-        while (true)
-        {
+        //This will changed
+        while (true) 
+        { 
             yield return wait;
             FieldOfViewCheck();
         }
+
     }
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+        Collider[] rangeCheck = Physics.OverlapSphere(transform.position, radius, targetMask);
 
-        if (rangeChecks.Length != 0)
+        if (rangeCheck.Length != 0)
         {
-            Transform target = rangeChecks[0].transform;
+            Transform target = rangeCheck[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
-
+            
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget,obstructionMask)) 
+                {
                     canSeeTarget = true;
+                }
                 else
+                {
                     canSeeTarget = false;
+                }
             }
-            else
+            else 
+            {
                 canSeeTarget = false;
+            }
         }
-        else if (canSeeTarget)
+        else if (canSeeTarget){
             canSeeTarget = false;
+        }
     }
 }

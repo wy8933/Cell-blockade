@@ -1197,7 +1197,7 @@ Transform:
   m_GameObject: {fileID: 212167506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.043, y: 1.16, z: 6.116}
+  m_LocalPosition: {x: -1.9, y: 1.16, z: 3.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1753,7 +1753,7 @@ Transform:
   m_GameObject: {fileID: 427607213}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
-  m_LocalPosition: {x: -1.043, y: 10.223079, z: 1.8898189}
+  m_LocalPosition: {x: -1.9, y: 10.22308, z: -0.43618184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3101,7 +3101,7 @@ Transform:
   m_GameObject: {fileID: 742497782}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
-  m_LocalPosition: {x: -1.043, y: 10.223079, z: 1.8898189}
+  m_LocalPosition: {x: -1.9, y: 10.22308, z: -0.43618184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3356,7 +3356,6 @@ GameObject:
   - component: {fileID: 805244517}
   - component: {fileID: 805244516}
   - component: {fileID: 805244520}
-  - component: {fileID: 805244521}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3379,14 +3378,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &805244517
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3449,8 +3448,8 @@ Transform:
   m_GameObject: {fileID: 805244515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.778, z: 1}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: -1.8677663, y: 3.190167, z: -2.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3467,51 +3466,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845e1b7b0f33fbb43a9243f16c9c3e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  angle: 62
-  targetRef: {fileID: 212167506}
+  radius: 0
+  angle: 0
+  targetRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2048
   obstructionMask:
     serializedVersion: 2
     m_Bits: 0
   canSeeTarget: 0
---- !u!114 &805244521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805244515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7322e73f43378fc4c9d6e4cad7ce169a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dectectionRadius: {fileID: 0}
-  Stats:
-    MaxHealth: 0
-    Health: 0
-    Resistance: 0
-    Shield: 0
-    DamageReduction: 0
-    BlockChance: 0
-    SlowResistance: 0
-    SizeMultiplier: 0
-    HealthMultiplier: 0
-    AtkMultiplier: 0
-    DamageReductionMultiplier: 0
-    ResistanceMultiplier: 0
-    SpeedMultiplier: 0
-    GoldDropMultiplier: 0
-  towerType: 0
-  detectionMode: 0
-  maxBubble: 0
-  currentBubble: 0
-  bubbleHealthDeduct: 0
-  bubbleGainAmount: 0
-  bubbleCost: 0
 --- !u!4 &808820101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2876168289200965576, guid: 6a48e793df76aeb428c656291c32a26d, type: 3}

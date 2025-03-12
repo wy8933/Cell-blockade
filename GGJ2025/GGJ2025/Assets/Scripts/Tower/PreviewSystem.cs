@@ -50,7 +50,6 @@ public class PreviewSystem : MonoBehaviour
 
     public void StopShowingPreview()
     {
-        cellIndicator.SetActive(false);
-        Destroy(previewObject);
+
     }
 }
