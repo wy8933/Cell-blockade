@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(Instance);
         }
         else {
+            BGM.Stop();
             Destroy(this);
         }
     }

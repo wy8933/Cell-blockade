@@ -18,22 +18,18 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
     <TowerDescription>k__BackingField: 
-    <Type>k__BackingField: 0
   - <Name>k__BackingField: 
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
     <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
     <TowerDescription>k__BackingField: 
-    <Type>k__BackingField: 0
   - <Name>k__BackingField: 
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 1, y: 1}
     <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
     <TowerDescription>k__BackingField: 
-    <Type>k__BackingField: 0
   - <Name>k__BackingField: 
     <ID>k__BackingField: 4
     <Size>k__BackingField: {x: 1, y: 1}
-    <TowerPrefab>k__BackingField: {fileID: 0}
+    <TowerPrefab>k__BackingField: {fileID: 2959490063290394389, guid: 5de244bce8f62ec489a107599dd3b82a, type: 3}
     <TowerDescription>k__BackingField: 
-    <Type>k__BackingField: 0

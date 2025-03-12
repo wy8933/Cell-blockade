@@ -11,7 +11,7 @@ public class TowerPlacement : MonoBehaviour
 
     //[SerializeField] private PlayerInputManager _playerInputManager;
 
-[Header("TileMap Variables")]
+    [Header("TileMap Variables")]
     //[SerializeField] private List<GameObject> turretSelect;
 
     [SerializeField] private Grid grid;
@@ -57,7 +57,6 @@ public class TowerPlacement : MonoBehaviour
     /// </summary>
     public void StartPlacement()
     {
-        StopPlacement();
         gridVisualiztion.SetActive(true);
         cellIndicator.SetActive(true);
     }
@@ -90,15 +89,15 @@ public class TowerPlacement : MonoBehaviour
         placedGameObjects.Add(newObject);
 
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
-        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID,placedGameObjects.Count - 1);
+        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, placedGameObjects.Count - 1);
     }
 
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
     {
-        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData: towerData;
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
 
         return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
-    } 
+    }
 
     public void GetTowerPrefab(int ID)
     {
@@ -114,24 +113,11 @@ public class TowerPlacement : MonoBehaviour
         {
             selectedTowerIndex = temp;
         }
+
+        TowerManager.Instance.EnterBuildingMode();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-
-        if (selectedTowerIndex != -1)
-        {
-            StartPlacement();
-            HighlightTile();
-        }
-    }
-
-
-    
-    private void HighlightTile()
+    public void HighlightTile()
     {
 
 
@@ -145,4 +131,5 @@ public class TowerPlacement : MonoBehaviour
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+
 }

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -241,3 +242,4 @@ public class SkillTreeGraphView : GraphView
         Debug.Log("Graph loaded from " + filePath);
     }
 }
+#endif

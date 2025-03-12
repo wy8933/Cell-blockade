@@ -1,32 +1,39 @@
 using ObjectPoolings;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Audio;
-using UnityEngine.Rendering.Universal;
+
+public enum PathfindingMode { AlwaysPlayer, AlwaysCore, Closest }
+public enum EnemyAIState { Chase }
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BaseEnemy : MonoBehaviour
 {
     public EnemyStats Stats;
     public Transform player;
-    public NavMeshAgent agent;
     public PrefabPool pool;
     public bool isReleased;
     public AudioSource audioSource;
     public Animator animator;
+    public float currencyAmount = 10;
 
-    private void Start()
+    [Header("Pathfinding Settings")]
+    public float steeringWeight = 1.0f;
+    public float detectionRadius = 2.0f;
+    public PathfindingMode pathfindingMode = PathfindingMode.AlwaysPlayer;
+    protected EnemyAIState currentState = EnemyAIState.Chase;
+    public FlowFieldTarget currentFlowFieldTarget = FlowFieldTarget.Player;
+
+    protected virtual void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        GetComponent<NavMeshAgent>().enabled = false;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         EnemyPathFinding();
+        FlowFieldSteeringMovement();
 
-        // Check if the animation is finished and set animation back to walk
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ArmatureAction 0") && 
+        if (animator && animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ArmatureAction 0") &&
             animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= animator.GetCurrentAnimatorStateInfo(0).length)
         {
             animator.SetBool("IsAttack", false);
@@ -34,79 +41,124 @@ public class BaseEnemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Init the enemy behavior to make sure it will function correctly whenncreate and get from an object pool
+    /// Initializes the enemy when created or released from an object pool
     /// </summary>
-    /// <param name="pool">The pool it is from</param>
-    public void InitEnemy(PrefabPool pool) 
+    public void InitEnemy(PrefabPool pool)
     {
         Stats.Health = Stats.MaxHealth;
         this.pool = pool;
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = Stats.MovementSpeed;
         isReleased = false;
+        currentState = EnemyAIState.Chase;
+        currentFlowFieldTarget = FlowFieldTarget.Core;
         ApplyScaling(EnemyWaveManager.Instance.enemyIncreaseFactor, EnemyWaveManager.Instance.currentWaveIndex);
     }
 
-    /// <summary>
-    /// Path finding towards player or the wound depend on which of the two is closer
-    /// </summary>
     protected virtual void EnemyPathFinding()
     {
-        Vector3 woundPosition = Wound.Instance.transform.position;
-        Vector3 targetPosition = woundPosition;
+        Transform coreTransform = Wound.Instance.transform;
 
-        if (player != null)
+        // Choose a target based on the selected pathfinding mode
+        if (currentState == EnemyAIState.Chase)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            float distanceToWound = Vector3.Distance(transform.position, woundPosition);
-
-            // If the player is closer than the wound, target the player instead
-            if (distanceToPlayer <= distanceToWound)
+            switch (pathfindingMode)
             {
-                targetPosition = player.position;
+                case PathfindingMode.AlwaysPlayer:
+                    currentFlowFieldTarget = FlowFieldTarget.Player;
+                    break;
+                case PathfindingMode.AlwaysCore:
+                    currentFlowFieldTarget = FlowFieldTarget.Core;
+                    break;
+                case PathfindingMode.Closest:
+                    if (player != null)
+                    {
+                        float dPlayer = Vector3.Distance(transform.position, player.position);
+                        float dCore = Vector3.Distance(transform.position, coreTransform.position);
+                        currentFlowFieldTarget = (dPlayer <= dCore) ? FlowFieldTarget.Player : FlowFieldTarget.Core;
+                    }
+                    else
+                    {
+                        currentFlowFieldTarget = FlowFieldTarget.Core;
+                    }
+                    break;
+            }
+
+            // Check whether the normal flow field is blocked
+            Vector3 normalDirection = FlowFieldManager.Instance.GetFlowDirection(currentFlowFieldTarget, transform.position);
+            if (normalDirection.sqrMagnitude < 0.001f)
+            {
+                // Path is completely blocked; switch to the blocked flow field
+                if (currentFlowFieldTarget == FlowFieldTarget.Player)
+                    currentFlowFieldTarget = FlowFieldTarget.BlockedPlayer;
+                else if (currentFlowFieldTarget == FlowFieldTarget.Core)
+                    currentFlowFieldTarget = FlowFieldTarget.BlockedCore;
+            }
+            else
+            {
+                // If a valid path exists and enemy are in a blocked mode, revert to the normal target
+                if (currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer)
+                    currentFlowFieldTarget = FlowFieldTarget.Player;
+                else if (currentFlowFieldTarget == FlowFieldTarget.BlockedCore)
+                    currentFlowFieldTarget = FlowFieldTarget.Core;
             }
         }
+    }
 
-        agent.SetDestination(targetPosition);
+    protected void FlowFieldSteeringMovement()
+    {
+        // Get the global direction from the flow field
+        Vector3 globalDirection = FlowFieldManager.Instance.GetFlowDirection(currentFlowFieldTarget, transform.position);
+        Vector3 steering = CalculateSteering();
+        Vector3 finalDirection = (globalDirection + steeringWeight * steering).normalized;
+        transform.position += finalDirection * Stats.MovementSpeed * Time.deltaTime;
+    }
+
+    protected Vector3 CalculateSteering()
+    {
+        // TODO: Add local steering logic for fine-tuning movement, expand here for obstacle avoidance
+        Transform target = null;
+        if ((currentFlowFieldTarget == FlowFieldTarget.Player || currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer) && player != null)
+        {
+            target = player;
+        }
+        else
+        {
+            target = Wound.Instance.transform;
+        }
+
+        return (target.position - transform.position).normalized;
     }
 
     /// <summary>
-    /// Deal damage to enemy and trigger die method when hp is below 0
+    /// Deal damage to the enemy and trigger death when health is 0 or below
     /// </summary>
-    /// <param name="damage"></param>
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage)
+    {
         Stats.Health -= damage;
-
-        if (Stats.Health <= 0) {
+        DamageTextManager.Instance.ShowDamageText(transform.position,damage);
+        if (Stats.Health <= 0)
+        {
             Die();
         }
     }
 
     /// <summary>
-    /// Release the enemy in the object pool and notify enemy wave manager that one enemy is defeated
+    /// Releases the enemy back to the object pool and notifies the enemy wave manager
     /// </summary>
-    private void Die() 
+    private void Die()
     {
-        if (!isReleased) {
+        if (!isReleased)
+        {
             audioSource.Play();
             isReleased = true;
             EnemyWaveManager.Instance.EnemyDefeated();
             pool.Release(gameObject);
+            GameManager.Instance.ModifyCurrency(currencyAmount);
         }
     }
 
     /// <summary>
-    /// Play enemy death animation(Cut off feature)
+    /// Applies scaling to enemy stats based on wave number and an increase factor
     /// </summary>
-    private void BubbleDeathAnimation() { 
-        
-    }
-
-    /// <summary>
-    /// Apply enemy scaling to enemy's stats based on the wave number and enemy increase factor
-    /// </summary>
-    /// <param name="enemyIncreaseFactor">How much enemy stats will multiply by per wave</param>
-    /// <param name="waveNumber">The current number of wave</param>
     public void ApplyScaling(float enemyIncreaseFactor, int waveNumber)
     {
         float scalingFactor = Mathf.Pow(enemyIncreaseFactor, waveNumber);
@@ -120,6 +172,7 @@ public class BaseEnemy : MonoBehaviour
         Stats.DamageReduction *= scalingFactor * Stats.DamageReductionMultiplier;
         Stats.BlockChance *= scalingFactor;
         Stats.SlowResistance *= scalingFactor;
-    }
 
+        currencyAmount *= scalingFactor;
+    }
 }

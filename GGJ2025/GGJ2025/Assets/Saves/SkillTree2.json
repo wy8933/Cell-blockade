@@ -5,8 +5,28 @@
             "title": "this is 2",
             "posX": 405.0,
             "posY": 121.0,
-            "buffDataPath": ""
+            "buffDataPath": "",
+            "cost": 0,
+            "isUnlocked": false,
+            "prerequisiteIDs": []
+        },
+        {
+            "GUID": "8c6794e0-55c3-4a12-a1e1-541dc4fe8a29",
+            "title": "New Skill",
+            "posX": 771.0,
+            "posY": 95.0,
+            "buffDataPath": "",
+            "cost": 0,
+            "isUnlocked": false,
+            "prerequisiteIDs": [
+                "780dd3b1-46c3-4dba-b074-bfb9a0a6a687"
+            ]
         }
     ],
-    "connections": []
+    "connections": [
+        {
+            "outputNodeGUID": "780dd3b1-46c3-4dba-b074-bfb9a0a6a687",
+            "inputNodeGUID": "8c6794e0-55c3-4a12-a1e1-541dc4fe8a29"
+        }
+    ]
 }

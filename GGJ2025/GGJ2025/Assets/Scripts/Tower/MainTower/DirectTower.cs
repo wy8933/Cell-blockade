@@ -13,7 +13,7 @@ public class DirectTower : BaseTower
 
     private void Start()
     {
-        laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
+        //laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
 
     }
 
@@ -34,7 +34,7 @@ public class DirectTower : BaseTower
 
             if (targetedEnemy == collision.gameObject)
             {
-                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
+                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 1, DamageType.None));
             }
            
             //Debug.Log("ITs in the area");
@@ -53,7 +53,7 @@ public class DirectTower : BaseTower
         {
             if (target != null)
             {
-               
+
                 if (targetedEnemy == target)
                 {
                     LaserHolder.SetActive(true);

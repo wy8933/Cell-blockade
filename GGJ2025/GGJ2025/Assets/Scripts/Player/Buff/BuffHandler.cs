@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuffHandler : MonoBehaviour
 {
     [SerializeField] private List<BuffInfo> _initialBuffs = new List<BuffInfo>();
-    private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
+    [SerializeField] private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
     private BuffComparer _buffComparer = new BuffComparer();
 
     public List<BuffInfo> ActiveBuffs
@@ -25,8 +25,8 @@ public class BuffHandler : MonoBehaviour
 
     private void Update()
     {
-        UpdateBuffDurations();
         ProcessBuffTicks();
+        UpdateBuffDurations();
     }
 
     public void AddBuff(BuffInfo newBuff)
@@ -106,7 +106,6 @@ public class BuffHandler : MonoBehaviour
 
         RemoveBuffs(toRemove);
     }
-
     private void ProcessBuffTicks()
     {
         foreach (var buff in _activeBuffs)

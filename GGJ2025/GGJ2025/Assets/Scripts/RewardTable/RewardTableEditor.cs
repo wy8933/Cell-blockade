@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using RewardTables;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -230,3 +231,4 @@ namespace RewardTables.Editor
         }
     }
 }
+#endif

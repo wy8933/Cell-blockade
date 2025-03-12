@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8318866920685417004}
   - component: {fileID: 1572849724815259880}
   - component: {fileID: 3121466829993924639}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0.35, z: 1}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1063322119798063112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,9 +100,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -117,12 +117,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063322119798063112}
-  - component: {fileID: 5104539683205518441}
-  - component: {fileID: 8771840867683421937}
-  - component: {fileID: 4767218317320484133}
+  - component: {fileID: 6311034800083796308}
+  - component: {fileID: -8658479324156859597}
+  - component: {fileID: -2698334602739853529}
   m_Layer: 0
   m_Name: tempObject
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,11 +140,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2698568937730128874}
   - {fileID: 4482994627645795666}
-  - {fileID: 6587067253435456284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5104539683205518441
+--- !u!136 &6311034800083796308
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +167,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 1, y: 0, z: 1}
---- !u!54 &8771840867683421937
+--- !u!54 &-8658479324156859597
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,9 +192,9 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4767218317320484133
+--- !u!114 &-2698334602739853529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef58b5c9b35ffd4a8cccfb18caa6371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dectectionRadius: {fileID: 0}
+  _dectectionRadius: {fileID: 6311034800083796308}
   Stats:
     MaxHealth: 0
     Health: 0
@@ -229,10 +229,10 @@ MonoBehaviour:
   bubbleHealthDeduct: 0
   bubbleGainAmount: 0
   bubbleCost: 0
-  LaserHolder: {fileID: 0}
+  LaserHolder: {fileID: 6903736668756049381}
   targetedEnemy: {fileID: 0}
-  laserEffect: {fileID: 0}
---- !u!1 &6373447551318762750
+  laserEffect: {fileID: 2258277521962377386}
+--- !u!1 &6903736668756049381
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,40 +240,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6587067253435456284}
-  - component: {fileID: 2942491023779681743}
-  - component: {fileID: 1721180692487118179}
-  - component: {fileID: 9167344814250968588}
-  - component: {fileID: 3743841449523169134}
+  - component: {fileID: 2698568937730128874}
+  - component: {fileID: 2258277521962377386}
+  - component: {fileID: 4679155455715229956}
+  - component: {fileID: 2726681775437164224}
+  - component: {fileID: 7871360473766885607}
   m_Layer: 0
-  m_Name: Laser Effect
+  m_Name: Laser Effect (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6587067253435456284
+--- !u!4 &2698568937730128874
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6373447551318762750}
+  m_GameObject: {fileID: 6903736668756049381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 1, y: 0.35, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1063322119798063112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &2942491023779681743
+--- !u!2083052967 &2258277521962377386
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6373447551318762750}
+  m_GameObject: {fileID: 6903736668756049381}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: eaec066e10b2d474d9fba654ea156ecf, type: 3}
   m_InitialEventName: OnPlay
@@ -296,10 +296,7 @@ VisualEffect:
         m_Name: Position_position
         m_Overridden: 1
     m_Vector4f:
-      m_Array:
-      - m_Value: {x: 67.037605, y: 80.293625, z: 67.037605, w: 0}
-        m_Name: Laser Color
-        m_Overridden: 1
+      m_Array: []
     m_Uint:
       m_Array: []
     m_Int:
@@ -317,14 +314,14 @@ VisualEffect:
       - m_Value: 0
         m_Name: Hit
         m_Overridden: 1
---- !u!73398921 &1721180692487118179
+--- !u!73398921 &4679155455715229956
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6373447551318762750}
+  m_GameObject: {fileID: 6903736668756049381}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -360,13 +357,13 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &9167344814250968588
+--- !u!114 &2726681775437164224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6373447551318762750}
+  m_GameObject: {fileID: 6903736668756049381}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
@@ -374,15 +371,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
-  - {fileID: 3743841449523169134}
-  m_VisualEffect: {fileID: 2942491023779681743}
---- !u!114 &3743841449523169134
+  - {fileID: 7871360473766885607}
+  m_VisualEffect: {fileID: 2258277521962377386}
+--- !u!114 &7871360473766885607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6373447551318762750}
+  m_GameObject: {fileID: 6903736668756049381}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d51d0c138bfbbe049917ff3ba4ea5221, type: 3}
@@ -394,10 +391,10 @@ MonoBehaviour:
     m_Name: Direction
   m_TargetHit:
     m_Name: Hit
-  RaycastSource: {fileID: 6373447551318762750}
+  RaycastSource: {fileID: 6903736668756049381}
   RaycastDirection: {x: 0, y: 0, z: 1}
   RaycastDirectionSpace: 0
   Layers:
     serializedVersion: 2
     m_Bits: 4294967295
-  MaxDistance: 3
+  MaxDistance: 100

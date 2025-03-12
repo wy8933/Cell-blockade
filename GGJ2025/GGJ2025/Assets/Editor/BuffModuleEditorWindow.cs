@@ -273,36 +273,36 @@ public class BuffModuleEditorWindow : EditorWindow
             moduleDetailsSection.Add(statsLabel);
 
             // Use the class reference directly
-            PlayerStats stats = statsModule.stats;
+            EntityStatsBuff stats = statsModule.stats;
 
-            FloatField maxHealthField = AddStatField(moduleDetailsSection, "Max Health", stats, nameof(PlayerStats.MaxHealth));
-            FloatField healthField = AddStatField(moduleDetailsSection, "Health", stats, nameof(PlayerStats.Health));
-            FloatField movementSpeedField = AddStatField(moduleDetailsSection, "Movement Speed", stats, nameof(PlayerStats.MovementSpeed));
-            FloatField sprintSpeedField = AddStatField(moduleDetailsSection, "Sprint Speed", stats, nameof(PlayerStats.SprintSpeed));
-            FloatField resistanceField = AddStatField(moduleDetailsSection, "Resistance", stats, nameof(PlayerStats.Resistance));
+            FloatField maxHealthField = AddStatField(moduleDetailsSection, "Max Health", stats, nameof(EntityStatsBuff.MaxHealth));
+            FloatField healthField = AddStatField(moduleDetailsSection, "Health", stats, nameof(EntityStatsBuff.CurrentHealth));
+            FloatField movementSpeedField = AddStatField(moduleDetailsSection, "Movement Speed", stats, nameof(EntityStatsBuff.MovementSpeed));
+            FloatField sprintSpeedField = AddStatField(moduleDetailsSection, "Sprint Speed", stats, nameof(EntityStatsBuff.SprintSpeed));
+            FloatField resistanceField = AddStatField(moduleDetailsSection, "Resistance", stats, nameof(EntityStatsBuff.Resistance));
 
-            FloatField shieldField = AddStatField(moduleDetailsSection, "Shield", stats, nameof(PlayerStats.Shield));
-            FloatField damageReductionField = AddStatField(moduleDetailsSection, "Damage Reduction", stats, nameof(PlayerStats.DamageReduction));
-            FloatField blockChanceField = AddStatField(moduleDetailsSection, "Block Chance", stats, nameof(PlayerStats.BlockChance));
+            FloatField shieldField = AddStatField(moduleDetailsSection, "Shield", stats, nameof(EntityStatsBuff.CurrentShield));
+            FloatField damageReductionField = AddStatField(moduleDetailsSection, "Damage Reduction", stats, nameof(EntityStatsBuff.DamageReduction));
+            FloatField blockChanceField = AddStatField(moduleDetailsSection, "Block Chance", stats, nameof(EntityStatsBuff.BlockChance));
 
-            FloatField slowResistanceField = AddStatField(moduleDetailsSection, "Slow Resistance", stats, nameof(PlayerStats.SlowResistance));
+            FloatField slowResistanceField = AddStatField(moduleDetailsSection, "Slow Resistance", stats, nameof(EntityStatsBuff.SlowResistance));
 
-            FloatField sizeMultiplierField = AddStatField(moduleDetailsSection, "Size Multiplier", stats, nameof(PlayerStats.SizeMultiplier));
-            FloatField healthMultiplierField = AddStatField(moduleDetailsSection, "Health Multiplier", stats, nameof(PlayerStats.HealthMultiplier));
-            FloatField atkMultiplierField = AddStatField(moduleDetailsSection, "Attack Multiplier", stats, nameof(PlayerStats.AtkMultiplier));
-            FloatField damageReductionMultiplierField = AddStatField(moduleDetailsSection, "Damage Reduction Multiplier", stats, nameof(PlayerStats.DamageReductionMultiplier));
-            FloatField resistanceMultiplierField = AddStatField(moduleDetailsSection, "Resistance Multiplier", stats, nameof(PlayerStats.ResistanceMultiplier));
-            FloatField speedMultiplierField = AddStatField(moduleDetailsSection, "Speed Multiplier", stats, nameof(PlayerStats.SpeedMultiplier));
-            FloatField goldDropMultiplierField = AddStatField(moduleDetailsSection, "Gold Drop Multiplier", stats, nameof(PlayerStats.GoldDropMultiplier));
+            FloatField sizeMultiplierField = AddStatField(moduleDetailsSection, "Size Multiplier", stats, nameof(EntityStatsBuff.SizeMultiplier));
+            FloatField healthMultiplierField = AddStatField(moduleDetailsSection, "Health Multiplier", stats, nameof(EntityStatsBuff.HealthMultiplier));
+            FloatField atkMultiplierField = AddStatField(moduleDetailsSection, "Attack Multiplier", stats, nameof(EntityStatsBuff.AtkMultiplier));
+            FloatField damageReductionMultiplierField = AddStatField(moduleDetailsSection, "Damage Reduction Multiplier", stats, nameof(EntityStatsBuff.DamageReductionMultiplier));
+            FloatField resistanceMultiplierField = AddStatField(moduleDetailsSection, "Resistance Multiplier", stats, nameof(EntityStatsBuff.ResistanceMultiplier));
+            FloatField speedMultiplierField = AddStatField(moduleDetailsSection, "Speed Multiplier", stats, nameof(EntityStatsBuff.SpeedMultiplier));
+            FloatField goldDropMultiplierField = AddStatField(moduleDetailsSection, "Gold Drop Multiplier", stats, nameof(EntityStatsBuff.OxygenDropMultiplier));
         }
     }
 
-    private FloatField AddStatField(VisualElement parent, string label, PlayerStats stats, string statName)
+    private FloatField AddStatField(VisualElement parent, string label, EntityStatsBuff stats, string statName)
     {
         FloatField statField = new FloatField(label);
 
         // Get the field 
-        var fieldInfo = typeof(PlayerStats).GetField(statName);
+        var fieldInfo = typeof(EntityStatsBuff).GetField(statName);
         if (fieldInfo == null)
         {
             Debug.LogError($"Field {statName} not found in PlayerStats!");

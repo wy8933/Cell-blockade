@@ -115,10 +115,6 @@ public class PlayerInputManager : MonoBehaviour
             _player.isShooting = false;
 
         }
-        else if (_player.isBuildingMode)
-        {
-            TowerPlacement.Instance.StopPlacement();
-        }
     }
 
     /// <summary>

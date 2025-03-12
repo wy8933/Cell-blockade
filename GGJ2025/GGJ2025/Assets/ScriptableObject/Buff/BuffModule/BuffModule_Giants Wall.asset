@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75300ce7dac3b1418948efb388f6940, type: 3}
+  m_Name: BuffModule_Giants Wall
+  m_EditorClassIdentifier: 
+  moduleName: Giants Wall
+  moduleType: 0
+  stats:
+    CurrentHealth: 100
+    CurrentShield: 0
+    MaxHealth: 100
+    Resistance: 0
+    DamageReduction: 0
+    BlockChance: 0
+    SlowResistance: 0
+    SizeMultiplier: 0
+    HealthMultiplier: 0
+    AtkMultiplier: 0
+    DamageReductionMultiplier: 0
+    ResistanceMultiplier: 0
+    SpeedMultiplier: 0
+    OxygenDropMultiplier: 0
+    MovementSpeed: 50
+    SprintSpeed: 0

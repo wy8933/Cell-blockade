@@ -129,8 +129,10 @@ public class EnemyWaveManager : MonoBehaviour
         {
             yield return null;
         }
-        
-        if (waves[currentWaveIndex].isBuffWave) {
+
+        if (waves[currentWaveIndex].isBuffWave)
+        {
+            yield return new WaitForSeconds(1f);
             powerUpManager.ShowPowerUpSelection();
         }
 
