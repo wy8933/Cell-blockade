@@ -26,12 +26,32 @@ MonoBehaviour:
     m_Localized: Sair do jogo
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912193
+  - m_Id: 776348974108672
     m_Localized: "Configura\xE7\xF5es"
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912194
+  - m_Id: 776349016051712
     m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246016
+    m_Localized: Fechar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246017
+    m_Localized: Linguagem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246018
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246019
+    m_Localized: Efeito sonoro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246020
+    m_Localized: Bloqueio Celular
     m_Metadata:
       m_Items: []
   references:

@@ -325,7 +325,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.2
+  m_fontSize: 58.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:a60158d7fc6fadc4fb50e82e92a91778
     m_TableEntryReference:
-      m_KeyId: 3215035912193
+      m_KeyId: 776348974108672
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.2
+  m_fontSize: 58.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1179,7 +1179,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:a60158d7fc6fadc4fb50e82e92a91778
     m_TableEntryReference:
-      m_KeyId: 3215035912194
+      m_KeyId: 776349016051712
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1214,6 +1214,10 @@ PrefabInstance:
     - target: {fileID: 2169078107769409318, guid: 7cc9683c3212ae543916ea6c456f4176, type: 3}
       propertyPath: m_Name
       value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169078107769409318, guid: 7cc9683c3212ae543916ea6c456f4176, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5212230076702719777, guid: 7cc9683c3212ae543916ea6c456f4176, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1399,7 +1403,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.2
+  m_fontSize: 58.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1714,6 +1718,7 @@ GameObject:
   - component: {fileID: 1534868859}
   - component: {fileID: 1534868861}
   - component: {fileID: 1534868860}
+  - component: {fileID: 1534868862}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1762,8 +1767,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Cell Blockade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+  m_sharedMaterial: {fileID: 652907599367871951, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1787,7 +1792,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 99.15
+  m_fontSize: 97.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1839,6 +1844,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534868858}
   m_CullTransparentMesh: 1
+--- !u!114 &1534868862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534868858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:a60158d7fc6fadc4fb50e82e92a91778
+    m_TableEntryReference:
+      m_KeyId: 776349020246020
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1534868860}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1611385528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +2102,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.2
+  m_fontSize: 58.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2372,6 +2417,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 289171987}
+    - target: {fileID: 3306416177761172013, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 3306416177761172013, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 652907599367871951, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 3306416177761172013, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4550098116617331673, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2379,6 +2436,18 @@ PrefabInstance:
     - target: {fileID: 4773917344778547721, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004293530888827081, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 5004293530888827081, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 652907599367871951, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 5004293530888827081, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5191760565516747477, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
       propertyPath: m_Name
@@ -2388,9 +2457,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5919697358385259903, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_fontSize
+      value: 146.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919697358385259903, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 5919697358385259903, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 652907599367871951, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 5919697358385259903, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7237998311086211886, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749595804792010373, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 7749595804792010373, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 652907599367871951, guid: 30ecb0776e6872840b2dd4a8524750e7, type: 2}
+    - target: {fileID: 7749595804792010373, guid: bdbacc8a7141a3e4d81d5de336a61935, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
