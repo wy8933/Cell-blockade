@@ -51,6 +51,7 @@ public class BaseEnemy : MonoBehaviour
         currentState = EnemyAIState.Chase;
         currentFlowFieldTarget = FlowFieldTarget.Core;
         ApplyScaling(EnemyWaveManager.Instance.enemyIncreaseFactor, EnemyWaveManager.Instance.currentWaveIndex);
+        GameManager.Instance.CurrentEnemyList.Add(gameObject);
     }
 
     protected virtual void EnemyPathFinding()
@@ -153,6 +154,7 @@ public class BaseEnemy : MonoBehaviour
             EnemyWaveManager.Instance.EnemyDefeated();
             pool.Release(gameObject);
             GameManager.Instance.ModifyCurrency(currencyAmount);
+            GameManager.Instance.CurrentEnemyList.Remove(gameObject);
         }
     }
 

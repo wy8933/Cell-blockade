@@ -1,5 +1,8 @@
+using NUnit.Framework;
 using System.Data;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +15,8 @@ public class GameManager : MonoBehaviour
     public bool isPowerUp;
 
     public float currency = 0;
+
+    public List<GameObject> CurrentEnemyList = new List<GameObject>();
 
     void Awake()
     {
