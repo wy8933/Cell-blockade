@@ -324,6 +324,15 @@ public class BuffEditorWindow : EditorWindow
         onKillField.SetValueWithoutNotify(buff.OnKill);
         onDeathField.SetValueWithoutNotify(buff.OnDeath);
 
+
+        // Price Field
+        IntegerField priceField = buffDetailsSection.Q<IntegerField>("Price");
+        priceField.SetValueWithoutNotify(buff.price);
+
+        // Rarity Field
+        EnumField rarityField = buffDetailsSection.Q<EnumField>("Rarity");
+        rarityField.SetValueWithoutNotify(buff.rarity);
+
         // Store user edits but don't apply them yet
         saveButton.clicked -= () => { };
         saveButton.clicked += () =>
@@ -342,6 +351,9 @@ public class BuffEditorWindow : EditorWindow
             activeBuff.tickTime = tickTimeField.value;
             activeBuff.buffUpdateType = (BuffUpdateTimeType)buffUpdateField.value;
             activeBuff.buffRemoveStackType = (BuffRemoveStackUpdateType)buffRemoveField.value;
+
+            activeBuff.rarity = (RarityLevel)rarityField.value;
+            activeBuff.price = priceField.value;
 
             activeBuff.OnCreate = (BaseBuffModule)onCreateField.value;
             activeBuff.OnRemove = (BaseBuffModule)onRemoveField.value;

@@ -4,16 +4,17 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum RarityLevel
+{
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary
+}
+
 namespace RewardTables
 {
-    public enum RarityLevel
-    {
-        Common,
-        Uncommon,
-        Rare,
-        Epic,
-        Legendary
-    }
 
     [Serializable]
     public class RewardTable<T>
