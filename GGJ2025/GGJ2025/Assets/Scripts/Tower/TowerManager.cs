@@ -31,7 +31,6 @@ public class TowerManager : MonoBehaviour
     */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-
     public void ExitBuildMode()
     {
         TowerPlacement.Instance.StopPlacement();
@@ -40,7 +39,6 @@ public class TowerManager : MonoBehaviour
 
     public void EnterBuildingMode() 
     {
-
         TowerPlacement.Instance.StartPlacement();
         TowerPlacement.Instance.HighlightTile();
         playerController.isBuildingMode = true;

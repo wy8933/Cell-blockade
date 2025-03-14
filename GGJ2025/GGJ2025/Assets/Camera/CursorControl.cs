@@ -19,8 +19,6 @@ public class CursorControl : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        
     }
 
     public Vector3 GetMousePos()

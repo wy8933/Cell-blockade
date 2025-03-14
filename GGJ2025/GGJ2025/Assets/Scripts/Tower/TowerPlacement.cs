@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
@@ -19,10 +20,11 @@ public class TowerPlacement : MonoBehaviour
     //[SerializeField] private GameObject _selectedTowerIndexGameObj;
 
     [Header("Highlighting")]
-    [SerializeField] private GameObject cellIndicator;
     [SerializeField] private GameObject gridVisualiztion;
-
-    [SerializeField] private Renderer previewRenderer;
+    [SerializeField] private PreviewSystem preview;
+    
+    //[SerializeField] private GameObject cellIndicator;
+    //[SerializeField] private Renderer previewRenderer;
 
     [Header("TowerPlacement")]
 
@@ -33,6 +35,8 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private GridData towerData;
 
     [SerializeField] private List<GameObject> placedGameObjects = new List<GameObject>();
+
+    private Vector3Int lastDetectedPos = Vector3Int.zero;
 
     public void Awake()
     {
@@ -58,14 +62,15 @@ public class TowerPlacement : MonoBehaviour
     public void StartPlacement()
     {
         gridVisualiztion.SetActive(true);
-        cellIndicator.SetActive(true);
+        preview.StartShowingPlacementPreview(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, towerDataBase.TowerList[selectedTowerIndex].Size);
     }
 
     public void StopPlacement()
     {
         //selectedTowerIndex = -1;
         gridVisualiztion.SetActive(false);
-        cellIndicator.SetActive(false);
+        preview.StopShowingPreview();
+        lastDetectedPos = Vector3Int.zero;
     }
 
     public void PlaceTower()
@@ -90,6 +95,8 @@ public class TowerPlacement : MonoBehaviour
 
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
         selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, placedGameObjects.Count - 1);
+
+        preview.UpdatePosition(grid.CellToWorld(gridPos), false);
     }
 
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
@@ -119,15 +126,19 @@ public class TowerPlacement : MonoBehaviour
 
     public void HighlightTile()
     {
-
+       
 
         Vector3Int gridPos = grid.WorldToCell(CursorControl.Instance.GetMousePos());
 
-        bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);
-        previewRenderer.material.color = placementValidity ? Color.white : Color.red;
+        Debug.Log(gridPos);
 
-        cellIndicator.transform.position = grid.CellToWorld(gridPos);
-
+        if (lastDetectedPos != gridPos)
+        {
+            bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);
+            preview.UpdatePosition(grid.CellToWorld(gridPos), placementValidity);
+            lastDetectedPos = gridPos;
+        }
+        
     }
 
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
