@@ -19,15 +19,10 @@ public class IndirectTower : BaseTower
     protected override void Attack(Collider collision)
     {
         if (collision.tag == "Enemy")
-        {
-            if ()
-            {
-
-            }
-
+        { 
             if (FieldOfView.canSeeTarget)
             {
-                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None);
+                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
             }
 
             
