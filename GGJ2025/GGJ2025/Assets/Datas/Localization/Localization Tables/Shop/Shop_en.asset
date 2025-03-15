@@ -23,11 +23,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 161582600192
-    m_Localized: Cost
+    m_Localized: 'Cost:'
     m_Metadata:
       m_Items: []
   - m_Id: 15450709872640
-    m_Localized: Reroll
+    m_Localized: Refresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 782015596253184
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 782015659167744
+    m_Localized: Buffs
     m_Metadata:
       m_Items: []
   references:

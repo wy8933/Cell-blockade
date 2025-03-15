@@ -13,7 +13,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private List<TMP_Text> buffNames;
     [SerializeField] private List<TMP_Text> buffDescriptions;
     [SerializeField] private List<Image> buffIcons;
-    // UI field for displaying buff cost.
     [SerializeField] private List<TMP_Text> buffCosts;
     [SerializeField] private TMP_Text currencyText;
 
@@ -21,9 +20,17 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private List<BuffData> availableBuffs;
     private List<BuffData> generatedBuffs = new List<BuffData>();
 
+    [Header("Buff Grid UI")]
+    [SerializeField] private GameObject buffItemPrefab;
+    [SerializeField] private Transform buffGridParent;
+
     [Header("References")]
     [SerializeField] private BuffHandler buffHandler;
     private GameObject player;
+    [SerializeField] private GameObject buffList;
+    [SerializeField] private GameObject shopList;
+
+    private Dictionary<string, BuffItemUI> purchasedBuffUIs = new Dictionary<string, BuffItemUI>();
 
     private void Awake()
     {
@@ -41,14 +48,7 @@ public class ShopManager : MonoBehaviour
     {
         shopPanel.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            buffHandler = player.GetComponent<BuffHandler>();
-        }
-        else
-        {
-            Debug.LogError("Player not found in scene. Ensure the Player tag is set correctly.");
-        }
+        buffHandler = player.GetComponent<BuffHandler>();
     }
 
     private void UpdateCurrencyText()
@@ -85,7 +85,7 @@ public class ShopManager : MonoBehaviour
                 buffNames[i].text = buff.buffName;
                 buffDescriptions[i].text = buff.description;
                 buffIcons[i].sprite = buff.icon;
-                buffCosts[i].text = "Cost: " + buff.price.ToString();
+                buffCosts[i].text = buff.price.ToString();
 
                 int index = i;
                 buffButtons[i].onClick.RemoveAllListeners();
@@ -103,7 +103,7 @@ public class ShopManager : MonoBehaviour
     {
         if (index < 0 || index >= generatedBuffs.Count)
         {
-            Debug.LogWarning("Invalid buff selection index.");
+            Debug.LogWarning("Invalid buff selection index");
             return;
         }
 
@@ -111,7 +111,7 @@ public class ShopManager : MonoBehaviour
 
         if (GameManager.Instance.Currency.Value < selectedBuff.price)
         {
-            Debug.Log("Not enough currency to purchase this buff.");
+            Debug.Log("Not enough currency to purchase this buff");
             return;
         }
 
@@ -128,45 +128,60 @@ public class ShopManager : MonoBehaviour
 
         buffHandler.AddBuff(buffInfo);
 
+        AddOrUpdateBuffInGrid(selectedBuff);
+
         generatedBuffs.RemoveAt(index);
         UpdateShopUI();
     }
-
     public void RerollShop()
     {
-        int desiredCount = Mathf.Min(4, availableBuffs.Count);
+        generatedBuffs.Clear();
+        List<BuffData> buffPool = new List<BuffData>(availableBuffs);
+        int count = Mathf.Min(4, buffPool.Count);
 
-        int missing = desiredCount - generatedBuffs.Count;
-        if (missing > 0)
+        for (int i = 0; i < count; i++)
         {
-            List<BuffData> pool = new List<BuffData>();
-            foreach (BuffData buff in availableBuffs)
-            {
-                if (!generatedBuffs.Contains(buff))
-                {
-                    pool.Add(buff);
-                }
-            }
+            int randomIndex = Random.Range(0, buffPool.Count);
+            generatedBuffs.Add(buffPool[randomIndex]);
+            buffPool.RemoveAt(randomIndex);
+        }
 
-            for (int i = 0; i < missing; i++)
-            {
-                if (pool.Count == 0)
-                    break;
-                int randomIndex = Random.Range(0, pool.Count);
-                generatedBuffs.Add(pool[randomIndex]);
-                pool.RemoveAt(randomIndex);
-            }
+        UpdateShopUI();
+    }
+
+    private void AddOrUpdateBuffInGrid(BuffData buff)
+    {
+        string buffKey = buff.buffName;
+        if (purchasedBuffUIs.ContainsKey(buffKey))
+        {
+            purchasedBuffUIs[buffKey].IncrementStack();
         }
         else
         {
-            ShowShop();
-            return;
+            GameObject newBuffItem = Instantiate(buffItemPrefab, buffGridParent);
+            BuffItemUI itemUI = newBuffItem.GetComponent<BuffItemUI>();
+            if (itemUI != null)
+            {
+                itemUI.Setup(buff);
+                purchasedBuffUIs.Add(buffKey, itemUI);
+            }
         }
-        UpdateShopUI();
     }
 
     public void CloseShop()
     {
         shopPanel.SetActive(false);
+    }
+
+    public void ShowShopList()
+    {
+        shopList.SetActive(true);
+        buffList.SetActive(false);
+    }
+
+    public void ShowBuffList()
+    {
+        shopList.SetActive(false);
+        buffList.SetActive(true);
     }
 }

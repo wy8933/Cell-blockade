@@ -27,6 +27,14 @@ MonoBehaviour:
     m_Key: btn-reroll
     m_Metadata:
       m_Items: []
+  - m_Id: 782015596253184
+    m_Key: btn-shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 782015659167744
+    m_Key: btn-buffs
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

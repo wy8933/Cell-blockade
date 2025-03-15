@@ -17,7 +17,27 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: a2b4d390bbd26124a92fba4aac9001ad, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 87037235200
+    m_Localized: Sauerstoff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 161582600192
+    m_Localized: 'Kosten:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15450709872640
+    m_Localized: Aktualisieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 782015596253184
+    m_Localized: "Gesch\xE4ft"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 782015659167744
+    m_Localized: Buffs
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
