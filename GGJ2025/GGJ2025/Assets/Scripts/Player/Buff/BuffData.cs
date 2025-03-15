@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +12,8 @@ public class BuffData : ScriptableObject
     public Sprite icon;
     public int maxStack;
     public int priority;
+    public int price;
+    public RarityLevel rarity;
     public List<string> tags;
 
     [Header("Time Information")]

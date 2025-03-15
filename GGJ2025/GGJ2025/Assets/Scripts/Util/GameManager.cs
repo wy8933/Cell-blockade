@@ -3,6 +3,7 @@ using System.Data;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
     public bool isPowerUp;
 
-    public float currency = 0;
+    public FloatReference Currency;
 
     public List<GameObject> CurrentEnemyList = new List<GameObject>();
 
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void ModifyCurrency(float amount) 
     {
-        currency += amount;
+        Currency.Value += amount;
     }
 
 
