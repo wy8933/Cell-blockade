@@ -66,6 +66,8 @@ public class TowerPlacement : MonoBehaviour
         //selectedTowerIndex = -1;
         gridVisualiztion.SetActive(false);
         cellIndicator.SetActive(false);
+
+        NavMeshManager.Instance.BakeNavMesh();
     }
 
     public void PlaceTower()

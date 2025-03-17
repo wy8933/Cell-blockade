@@ -3,7 +3,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public enum PathfindingMode { AlwaysPlayer, AlwaysCore, Closest }
-public enum EnemyAIState { Chase }
+public enum EnemyAIState
+{
+    Idle,
+    Chase,
+    Attack,
+    Destroy
+}
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BaseEnemy : MonoBehaviour
@@ -17,22 +23,33 @@ public class BaseEnemy : MonoBehaviour
     public float currencyAmount = 10;
 
     [Header("Pathfinding Settings")]
-    public float steeringWeight = 1.0f;
     public float detectionRadius = 2.0f;
     public PathfindingMode pathfindingMode = PathfindingMode.AlwaysPlayer;
     protected EnemyAIState currentState = EnemyAIState.Chase;
-    public FlowFieldTarget currentFlowFieldTarget = FlowFieldTarget.Player;
+
+    // The currently selected target based on pathfinding mode
+    protected Transform currentTarget;
+
+    protected NavMeshAgent agent;
 
     protected virtual void Start()
     {
-        GetComponent<NavMeshAgent>().enabled = false;
+        agent = GetComponent<NavMeshAgent>();
+        agent.enabled = true;
+        player = GameManager.Instance.Player.gameObject.transform;
     }
 
     protected virtual void Update()
     {
         EnemyPathFinding();
-        FlowFieldSteeringMovement();
 
+        // Set the destination toward the current target
+        if (currentTarget != null)
+        {
+            agent.SetDestination(currentTarget.position);
+        }
+
+        // Reset the attack animation if finished
         if (animator && animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ArmatureAction 0") &&
             animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= animator.GetCurrentAnimatorStateInfo(0).length)
         {
@@ -49,84 +66,43 @@ public class BaseEnemy : MonoBehaviour
         this.pool = pool;
         isReleased = false;
         currentState = EnemyAIState.Chase;
-        currentFlowFieldTarget = FlowFieldTarget.Core;
+        // For initialization, default to targeting the core.
+        currentTarget = Wound.Instance.transform;
         ApplyScaling(EnemyWaveManager.Instance.enemyIncreaseFactor, EnemyWaveManager.Instance.currentWaveIndex);
         GameManager.Instance.CurrentEnemyList.Add(gameObject);
     }
 
+    /// <summary>
+    /// Chooses the target based on the selected pathfinding mode
+    /// </summary>
     protected virtual void EnemyPathFinding()
     {
         Transform coreTransform = Wound.Instance.transform;
+        Transform chosenTarget = null;
 
-        // Choose a target based on the selected pathfinding mode
-        if (currentState == EnemyAIState.Chase)
+        switch (pathfindingMode)
         {
-            switch (pathfindingMode)
-            {
-                case PathfindingMode.AlwaysPlayer:
-                    currentFlowFieldTarget = FlowFieldTarget.Player;
-                    break;
-                case PathfindingMode.AlwaysCore:
-                    currentFlowFieldTarget = FlowFieldTarget.Core;
-                    break;
-                case PathfindingMode.Closest:
-                    if (player != null)
-                    {
-                        float dPlayer = Vector3.Distance(transform.position, player.position);
-                        float dCore = Vector3.Distance(transform.position, coreTransform.position);
-                        currentFlowFieldTarget = (dPlayer <= dCore) ? FlowFieldTarget.Player : FlowFieldTarget.Core;
-                    }
-                    else
-                    {
-                        currentFlowFieldTarget = FlowFieldTarget.Core;
-                    }
-                    break;
-            }
-
-            // Check whether the normal flow field is blocked
-            Vector3 normalDirection = FlowFieldManager.Instance.GetFlowDirection(currentFlowFieldTarget, transform.position);
-            if (normalDirection.sqrMagnitude < 0.001f)
-            {
-                // Path is completely blocked; switch to the blocked flow field
-                if (currentFlowFieldTarget == FlowFieldTarget.Player)
-                    currentFlowFieldTarget = FlowFieldTarget.BlockedPlayer;
-                else if (currentFlowFieldTarget == FlowFieldTarget.Core)
-                    currentFlowFieldTarget = FlowFieldTarget.BlockedCore;
-            }
-            else
-            {
-                // If a valid path exists and enemy are in a blocked mode, revert to the normal target
-                if (currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer)
-                    currentFlowFieldTarget = FlowFieldTarget.Player;
-                else if (currentFlowFieldTarget == FlowFieldTarget.BlockedCore)
-                    currentFlowFieldTarget = FlowFieldTarget.Core;
-            }
-        }
-    }
-
-    protected void FlowFieldSteeringMovement()
-    {
-        // Get the global direction from the flow field
-        Vector3 globalDirection = FlowFieldManager.Instance.GetFlowDirection(currentFlowFieldTarget, transform.position);
-        Vector3 steering = CalculateSteering();
-        Vector3 finalDirection = (globalDirection + steeringWeight * steering).normalized;
-        transform.position += finalDirection * Stats.MovementSpeed * Time.deltaTime;
-    }
-
-    protected Vector3 CalculateSteering()
-    {
-        // TODO: Add local steering logic for fine-tuning movement, expand here for obstacle avoidance
-        Transform target = null;
-        if ((currentFlowFieldTarget == FlowFieldTarget.Player || currentFlowFieldTarget == FlowFieldTarget.BlockedPlayer) && player != null)
-        {
-            target = player;
-        }
-        else
-        {
-            target = Wound.Instance.transform;
+            case PathfindingMode.AlwaysPlayer:
+                chosenTarget = player;
+                break;
+            case PathfindingMode.AlwaysCore:
+                chosenTarget = coreTransform;
+                break;
+            case PathfindingMode.Closest:
+                if (player != null)
+                {
+                    float dPlayer = Vector3.Distance(transform.position, player.position);
+                    float dCore = Vector3.Distance(transform.position, coreTransform.position);
+                    chosenTarget = (dPlayer <= dCore) ? player : coreTransform;
+                }
+                else
+                {
+                    chosenTarget = coreTransform;
+                }
+                break;
         }
 
-        return (target.position - transform.position).normalized;
+        currentTarget = chosenTarget;
     }
 
     /// <summary>
@@ -134,8 +110,9 @@ public class BaseEnemy : MonoBehaviour
     /// </summary>
     public void TakeDamage(float damage)
     {
+        // TODO: change this to use the damage manager
         Stats.Health -= damage;
-        DamageTextManager.Instance.ShowDamageText(transform.position,damage);
+        DamageTextManager.Instance.ShowDamageText(transform.position, damage);
         if (Stats.Health <= 0)
         {
             Die();
