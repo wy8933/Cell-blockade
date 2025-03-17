@@ -13,7 +13,7 @@ public class FlowFieldManager : MonoBehaviour
 
     [Header("Obstacle Settings")]
     public LayerMask obstacleMask;
-    public int obstacleCost = 100;
+    public int obstacleCost = 10;
 
     // Normal flow fields that consider obstacles
     public FlowField playerFlowField;

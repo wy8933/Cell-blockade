@@ -116,7 +116,6 @@ public class ShopManager : MonoBehaviour
         }
 
         GameManager.Instance.Currency.Value -= selectedBuff.price;
-        Debug.Log("Buff purchased! Remaining currency: " + GameManager.Instance.Currency.Value);
 
         BuffInfo buffInfo = new BuffInfo
         {

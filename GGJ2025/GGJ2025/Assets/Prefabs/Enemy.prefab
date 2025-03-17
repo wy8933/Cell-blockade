@@ -150,7 +150,7 @@ MonoBehaviour:
   Stats:
     MaxHealth: 25
     Health: 25
-    MovementSpeed: 3.5
+    MovementSpeed: 1
     SprintSpeed: 0
     Resistance: 0
     Shield: 0
@@ -165,10 +165,14 @@ MonoBehaviour:
     SpeedMultiplier: 1
     GoldDropMultiplier: 1
   player: {fileID: 0}
-  agent: {fileID: 0}
   isReleased: 0
   audioSource: {fileID: 4913244894169025000}
   animator: {fileID: 0}
+  currencyAmount: 10
+  steeringWeight: 1
+  detectionRadius: 2
+  pathfindingMode: 0
+  currentFlowFieldTarget: 0
   attackRange: 2
   attackCooldown: 1.5
   attackDamage: 10
@@ -186,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialBuffs: []
+  _activeBuffs: []
 --- !u!54 &6141349244940772394
 Rigidbody:
   m_ObjectHideFlags: 0
