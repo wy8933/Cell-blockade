@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using static Unity.VisualScripting.Metadata;
 
 public class PreviewSystem : MonoBehaviour
 {
-    [SerializeField] private float previewYOffset = 0.06f;
+    [SerializeField] private float previewYOffset = 0.6f;
 
     [SerializeField] private GameObject cellIndicator;
     [SerializeField] private GameObject previewObject;
