@@ -127,6 +127,7 @@ public class BaseEnemy : MonoBehaviour
         if (!isReleased)
         {
             audioSource.Play();
+            GetComponent<BuffHandler>().TriggerAllOnDeath();
             isReleased = true;
             EnemyWaveManager.Instance.EnemyDefeated();
             pool.Release(gameObject);

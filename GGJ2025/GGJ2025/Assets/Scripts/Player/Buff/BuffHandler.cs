@@ -175,6 +175,13 @@ public class BuffHandler : MonoBehaviour
     {
         ExecuteModule(buff.buffData.OnDeath, buff);
     }
+
+    public void TriggerAllOnDeath() {
+        foreach (var buff in _activeBuffs) 
+        {
+            ExecuteModule(buff.buffData.OnDeath, buff);
+        }
+    }
     #endregion
 
     #region Helper Methods
