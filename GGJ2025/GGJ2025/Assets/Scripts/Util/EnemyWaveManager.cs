@@ -18,7 +18,6 @@ public class Wave
 public class EnemyWaveManager : MonoBehaviour
 {
     public static EnemyWaveManager Instance;
-    public PowerUpManager powerUpManager;
 
     [Header("Wave Settings")]
     public List<Wave> waves;
@@ -133,7 +132,7 @@ public class EnemyWaveManager : MonoBehaviour
         if (waves[currentWaveIndex].isBuffWave)
         {
             yield return new WaitForSeconds(1f);
-            powerUpManager.ShowPowerUpSelection();
+            ShopManager.Instance.ShowShop();
         }
 
         yield return new WaitForSeconds(timeBetweenWaves);

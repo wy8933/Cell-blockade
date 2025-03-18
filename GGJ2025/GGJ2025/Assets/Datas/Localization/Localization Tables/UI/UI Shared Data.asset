@@ -23,12 +23,32 @@ MonoBehaviour:
     m_Key: btn-exit
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912193
+  - m_Id: 776348974108672
     m_Key: btn-settings
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912194
+  - m_Id: 776349016051712
     m_Key: btn-credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246016
+    m_Key: btn-close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246017
+    m_Key: text-language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246018
+    m_Key: text-music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246019
+    m_Key: text-sfx
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246020
+    m_Key: text-game-title
     m_Metadata:
       m_Items: []
   m_Metadata:

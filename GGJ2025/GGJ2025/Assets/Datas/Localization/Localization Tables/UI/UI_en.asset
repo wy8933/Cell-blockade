@@ -26,12 +26,32 @@ MonoBehaviour:
     m_Localized: Exit Game
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912193
+  - m_Id: 776348974108672
     m_Localized: Settings
     m_Metadata:
       m_Items: []
-  - m_Id: 3215035912194
+  - m_Id: 776349016051712
     m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246016
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246017
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246018
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246019
+    m_Localized: Sound Effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776349020246020
+    m_Localized: Cell Blockade
     m_Metadata:
       m_Items: []
   references:

@@ -71,6 +71,8 @@ public class TowerPlacement : MonoBehaviour
         gridVisualiztion.SetActive(false);
         preview.StopShowingPreview();
         lastDetectedPos = Vector3Int.zero;
+
+        NavMeshManager.Instance.BakeNavMesh();
     }
 
     public void PlaceTower()
