@@ -11,10 +11,10 @@ public class DirectTower : BaseTower
 
     [SerializeField] private VisualEffect laserEffect;
 
-    private void Start()
+    private void Awake()
     {
         //laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
-
+        LaserHolder.SetActive(false);
     }
 
     protected override void Attack(Collider collision)
