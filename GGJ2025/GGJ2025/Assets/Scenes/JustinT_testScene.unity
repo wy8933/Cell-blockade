@@ -2944,7 +2944,7 @@ GameObject:
   - component: {fileID: 737369816}
   - component: {fileID: 737369815}
   - component: {fileID: 737369819}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3394,10 +3394,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   angle: 62
-  targetRef: {fileID: 212167506}
+  targetRefs: []
   targetMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   obstructionMask:
     serializedVersion: 2
     m_Bits: 0
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   bubbleCost: 0
   targetedEnemy: {fileID: 0}
   targetedEnemies: []
-  FieldOfView: {fileID: 0}
+  fieldOfView: {fileID: 0}
 --- !u!4 &808820101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2876168289200965576, guid: 6a48e793df76aeb428c656291c32a26d, type: 3}
@@ -3745,7 +3745,7 @@ GameObject:
   - component: {fileID: 1010668742}
   - component: {fileID: 1010668741}
   - component: {fileID: 1010668740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5218,7 +5218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b38c927e88a894c80a08cceff83ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpManager: {fileID: 1443469542}
   waves:
   - waveName: Wave 1
     baseEnemyCount: 10
@@ -5282,7 +5281,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   isGameOver: 0
   isPowerUp: 0
-  currency: 0
+  Currency: {fileID: 0}
   CurrentEnemyList: []
 --- !u!114 &1443469546
 MonoBehaviour:
