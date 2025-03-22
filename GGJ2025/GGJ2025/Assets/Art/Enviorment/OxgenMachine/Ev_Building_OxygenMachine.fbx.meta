@@ -3,7 +3,22 @@ guid: 3803278b45746764e8a7a957fc4b017d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alert
+    second: {fileID: 2100000, guid: 4efae3f70c33a6a4b8951f6763ad8344, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bake
+    second: {fileID: 2100000, guid: fa7c19ad9630fba46863a7ae0cd868a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fence
+    second: {fileID: 2100000, guid: ec07b05bb404a5445b02236e5a666039, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

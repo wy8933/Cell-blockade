@@ -3,7 +3,12 @@ guid: 2ae88501937b5454689d0899caa33874
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WalkWaySolid
+    second: {fileID: 2100000, guid: e89d6f169043aee40af9a999f6b69010, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
