@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
     public static TowerManager Instance;
     public PlayerController playerController;
+
+    private int selectedTowerIndex;
     //[SerializeField] private List<GameObject> towers;
 
     public void Awake()
@@ -40,9 +43,13 @@ public class TowerManager : MonoBehaviour
 
     public void EnterBuildingMode() 
     {
-
-        TowerPlacement.Instance.StartPlacement();
-        TowerPlacement.Instance.HighlightTile();
+        TowerPlacement.Instance.StartPlacement(selectedTowerIndex);
+        //TowerPlacement.Instance.HighlightTile();
         playerController.isBuildingMode = true;
+    }
+
+    private void OnButtonClick(int towerID)
+    {
+        selectedTowerIndex = towerID;
     }
 }
