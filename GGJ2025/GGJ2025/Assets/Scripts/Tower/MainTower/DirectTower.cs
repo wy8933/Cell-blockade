@@ -11,10 +11,10 @@ public class DirectTower : BaseTower
 
     [SerializeField] private VisualEffect laserEffect;
 
-    private void Start()
+    private void Awake()
     {
         //laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
-
+        LaserHolder.SetActive(false);
     }
 
     protected override void Attack(Collider collision)
@@ -36,8 +36,8 @@ public class DirectTower : BaseTower
             {
                 DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 1, DamageType.None));
             }
-
-            Debug.Log("ITs in the area");
+           
+            //Debug.Log("ITs in the area");
         }
 
         if (targetedEnemy != null && !targetedEnemy.activeSelf)
