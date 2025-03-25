@@ -9,7 +9,6 @@ public class BasicEnemy : BaseEnemy
     [Header("Basic Attack Settings")]
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
-    public int attackDamage = 10;
     public DamageType attackDamageType = DamageType.None;
     private bool canAttack = true;
 
