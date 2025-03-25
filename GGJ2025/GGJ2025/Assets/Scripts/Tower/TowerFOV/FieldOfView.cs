@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -9,7 +10,7 @@ public class FieldOfView : MonoBehaviour
     [Range(0, 360)]
     public float angle;
 
-    public GameObject targetRef;
+    public List<GameObject> targetRefs;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
@@ -22,6 +23,10 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -30,9 +35,14 @@ public class FieldOfView : MonoBehaviour
         {
             yield return wait;
             FieldOfViewCheck();
+
+            targetRefs = GetDetectedObjectRef();
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
@@ -56,5 +66,19 @@ public class FieldOfView : MonoBehaviour
         }
         else if (canSeeTarget)
             canSeeTarget = false;
+    }
+
+    public List<GameObject> GetDetectedObjectRef()
+    {
+        Collider[] objectCheck = Physics.OverlapSphere(transform.position, radius, targetMask);
+
+        List<GameObject> returnVal = new List<GameObject>();
+
+        foreach (Collider objects in objectCheck)
+        {
+            returnVal.Add(objects.gameObject);
+        }
+
+        return returnVal;
     }
 }

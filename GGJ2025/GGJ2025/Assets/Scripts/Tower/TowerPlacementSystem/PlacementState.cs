@@ -63,6 +63,12 @@ public class PlacementState : IBuildingState
         previewSystem.UpdatePosition(grid.CellToWorld(gridPos), false);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <param name="selectedTowerIndex"></param>
+    /// <returns></returns>
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
     {
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
@@ -70,6 +76,10 @@ public class PlacementState : IBuildingState
         return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void UpdateState(Vector3Int gridPos)
     {
         bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);

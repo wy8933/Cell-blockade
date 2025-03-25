@@ -8,33 +8,36 @@ public class IndirectTower : BaseTower
 
     [SerializeField] protected List<GameObject> targetedEnemies;
 
-    [SerializeField] protected FieldOfView FieldOfView;
-
-    private void Start()
-    {
-        
-    }
+    [SerializeField] protected FieldOfView fieldOfView;
 
     // Uses the collision to detect if the enemy is in the area then use the field of view script to check if its in te cone area
+
+    /// <summary>
+    /// Check if the enemy is within the general area, with a caps
+    /// </summary>
+    /// <param name="collision"></param>
     protected override void Attack(Collider collision)
     {
         if (collision.tag == "Enemy")
         {
-            for (int x = 0; x < GameManager.Instance.CurrentEnemyList.Count; x++)
+            if (fieldOfView.canSeeTarget)
             {
-
+                for (int x = 0; x < fieldOfView.targetRefs.Count; x++)
+                {
+                    DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, fieldOfView.targetRefs[x].gameObject, 10, DamageType.None));
+                }
+                
             }
-
-            if (FieldOfView.canSeeTarget)
-            {
-                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
-            }
-
             
         }
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
 

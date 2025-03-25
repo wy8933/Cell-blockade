@@ -25,8 +25,12 @@ public class FieldOfViewEditor : Editor
 
         if (fov.canSeeTarget)
         {
-            Handles.color = Color.green;
-            Handles.DrawLine(fov.transform.position, fov.targetRef.transform.position);
+            for (int i = 0; i < fov.targetRefs.Count; i++) 
+            {
+                Handles.color = Color.green;
+                Handles.DrawLine(fov.transform.position, fov.targetRefs[i].transform.position);
+            }
+            
         }
     }
 

@@ -69,6 +69,13 @@ public class TowerPlacement : MonoBehaviour
         buildingState = new PlacementState(objectPlacer, preview, ID, grid, towerDataBase, towerData);
     }
 
+    public void StartRemoving()
+    {
+        StopPlacement();
+        gridVisualiztion.SetActive(true);
+        buildingState = new RemovingState(objectPlacer, preview, grid, towerData);
+    }
+
     public void StopPlacement()
     {
         if (buildingState == null)
