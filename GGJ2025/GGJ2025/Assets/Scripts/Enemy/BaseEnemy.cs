@@ -21,6 +21,7 @@ public class BaseEnemy : MonoBehaviour
     public AudioSource audioSource;
     public Animator animator;
     public float currencyAmount = 10;
+    public int attackDamage = 10;
 
     [Header("Pathfinding Settings")]
     public float detectionRadius = 2.0f;
@@ -122,11 +123,12 @@ public class BaseEnemy : MonoBehaviour
     /// <summary>
     /// Releases the enemy back to the object pool and notifies the enemy wave manager
     /// </summary>
-    private void Die()
+    public void Die()
     {
         if (!isReleased)
         {
             audioSource.Play();
+            GetComponent<BuffHandler>().TriggerAllOnDeath();
             isReleased = true;
             EnemyWaveManager.Instance.EnemyDefeated();
             pool.Release(gameObject);
