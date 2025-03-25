@@ -34356,8 +34356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd3867725382b343b11c592db47ca03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: {fileID: 0}
-  CurrentHealth: {fileID: 0}
+  MaxHealth: {fileID: 11400000, guid: 5a18526381e66a74891469eb5e928bf3, type: 2}
+  CurrentHealth: {fileID: 11400000, guid: 21251833879807845b7bcabfa66ab0a7, type: 2}
 --- !u!64 &1116331571
 MeshCollider:
   m_ObjectHideFlags: 0
