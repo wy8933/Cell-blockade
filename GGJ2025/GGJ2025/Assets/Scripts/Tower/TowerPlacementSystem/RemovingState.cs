@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RemovingState : IBuildingState
@@ -16,12 +17,10 @@ public class RemovingState : IBuildingState
     [SerializeField] private Grid grid;
     [SerializeField] private GridData towerData;
 
-    public RemovingState(ObjectPlacer objectPlacer, PreviewSystem previewSystem, int selectedTowerIndex, int towerID, Grid grid, GridData towerData)
+    public RemovingState(ObjectPlacer objectPlacer, PreviewSystem previewSystem, Grid grid, GridData towerData)
     {
         this.objectPlacer = objectPlacer;
         this.previewSystem = previewSystem;
-        this.selectedTowerIndex = selectedTowerIndex;
-        this.towerID = towerID;
         this.grid = grid;
         this.towerData = towerData;
 
@@ -35,11 +34,38 @@ public class RemovingState : IBuildingState
 
     public void OnAction(Vector3Int gridPos)
     {
-        throw new System.NotImplementedException();
+        GridData selectedData = null;
+        if (towerData.CanPlaceObjectAt(gridPos,Vector2Int.one) == false)
+        {
+            selectedData = towerData;
+        }
+
+        if (selectedData == null)
+        {
+            //sounds
+        }
+        else
+        {
+            selectedTowerIndex = selectedData.GetRepresentationIndex(gridPos);
+            if (selectedTowerIndex == -1)
+            {
+                return;
+            }
+            selectedData.RemoveObjectAt(gridPos);
+            objectPlacer.RemoveObjectAt(selectedTowerIndex);
+        }
+        Vector3 cellPos = grid.CellToWorld(gridPos);
+        previewSystem.UpdatePosition(cellPos, CheckIfSelectionIsValid(gridPos));
+    }
+
+    private bool CheckIfSelectionIsValid(Vector3Int gridPos)
+    {
+        return !(towerData.CanPlaceObjectAt(gridPos, Vector2Int.one));
     }
 
     public void UpdateState(Vector3Int gridPos)
     {
-        throw new System.NotImplementedException();
+        bool validity = CheckIfSelectionIsValid(gridPos);
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPos), validity);
     }
 }

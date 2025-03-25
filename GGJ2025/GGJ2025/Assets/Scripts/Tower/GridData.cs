@@ -49,6 +49,23 @@ public class GridData : MonoBehaviour
         }
         return true;
     }
+
+    internal int GetRepresentationIndex(Vector3Int gridPos)
+    {
+        if (placedObjects.ContainsKey(gridPos) == false)
+        {
+            return -1;
+        }
+        return placedObjects[gridPos].PlacedObjectIndex;
+    }
+
+    internal void RemoveObjectAt(Vector3Int gridPos)
+    {
+        foreach (var pos in placedObjects[gridPos].occupiedPositions)
+        {
+            placedObjects.Remove(pos);
+        }
+    }
 }
 
 public class PlacementData
