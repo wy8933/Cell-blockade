@@ -3,6 +3,7 @@ using UnityEngine.VFX;
 
 public class AOETower : BaseTower
 {
+    //Not currently Done
     [SerializeField] private GameObject LaserHolder;
 
     [SerializeField] protected GameObject targetedEnemy;
@@ -15,6 +16,10 @@ public class AOETower : BaseTower
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="collision"></param>
     protected override void Attack(Collider collision)
     {
         //Debug.Log(collision.tag);
@@ -44,6 +49,11 @@ public class AOETower : BaseTower
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
         //Debug.Log(target);

@@ -3,26 +3,25 @@ using UnityEngine;
 
 public abstract class BaseTower : BasicTowerInfo
 {
-
-
-    /*
-    [Header("AOE")]
-    public bool isShooting;
-    public float shootCooldown;
-    public float shootshootCooldownTimer;
-    public int machineGunAngleOffset;
-
-    [Header("Support")]
-    public float shotGunBubbleCost;
-    public int bulletCount;
-    public int shotGunAngleOffset;
-    */
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    /// <summary>
+    /// An abstract method that is used by the children of this class to in someway 
+    /// do damage to enemies directly
+    /// </summary>
+    /// <param name="other"></param>
     protected abstract void Attack(Collider other);
 
+    /// <summary>
+    /// An abstract method that is used by children classes, as a method that is mainly
+    /// used for running visual representation of the attack
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
     protected abstract void ShowAttack(GameObject source, GameObject target);
 
+    /// <summary>
+    /// Both abstract methods Attack and ShowAttack
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         Attack(other);

@@ -40,11 +40,18 @@ public class PlacementState : IBuildingState
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void EndState()
     {
         previewSystem.StopShowingPreview();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void OnAction(Vector3Int gridPos)
     {
 

@@ -7,6 +7,14 @@ public class GridData : MonoBehaviour
 {
     Dictionary<Vector3Int, PlacementData> placedObjects = new Dictionary<Vector3Int, PlacementData>();
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <param name="objectSize"></param>
+    /// <param name="ID"></param>
+    /// <param name="placedObjectIndex"></param>
+    /// <exception cref="Exception"></exception>
     public void AddObjectAt(Vector3Int gridPos, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPos, objectSize);
@@ -23,6 +31,12 @@ public class GridData : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <param name="objectSize"></param>
+    /// <returns></returns>
     private List<Vector3Int> CalculatePositions(Vector3Int gridPos, Vector2Int objectSize)
     {
         List<Vector3Int> returnVal = new List<Vector3Int>();
@@ -37,6 +51,12 @@ public class GridData : MonoBehaviour
         return returnVal;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <param name="objectSize"></param>
+    /// <returns></returns>
     public bool CanPlaceObjectAt(Vector3Int gridPos, Vector2Int objectSize)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPos, objectSize);
@@ -50,6 +70,11 @@ public class GridData : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <returns></returns>
     internal int GetRepresentationIndex(Vector3Int gridPos)
     {
         if (placedObjects.ContainsKey(gridPos) == false)
@@ -59,6 +84,10 @@ public class GridData : MonoBehaviour
         return placedObjects[gridPos].PlacedObjectIndex;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     internal void RemoveObjectAt(Vector3Int gridPos)
     {
         foreach (var pos in placedObjects[gridPos].occupiedPositions)

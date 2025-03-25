@@ -7,6 +7,10 @@ public class SupportTower : BaseTower
 
     [SerializeField] protected GameObject targetedAlly;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="collision"></param>
     protected override void Attack(Collider collision)
     {
         //Debug.Log(collision.tag);
@@ -23,6 +27,11 @@ public class SupportTower : BaseTower
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
         //Debug.Log(target);
