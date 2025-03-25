@@ -124,6 +124,14 @@ public class PlayerInputManager : MonoBehaviour
     private void OnPausePerformed(InputAction.CallbackContext context) { 
         //GameManager.Instance.Pause();
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
+    private void OnScrollUp(InputAction.CallbackContext context) { 
+        //GameManager.Instance.Pause();
+    }
 }
 
 

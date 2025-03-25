@@ -17,6 +17,11 @@ public class DirectTower : BaseTower
         LaserHolder.SetActive(false);
     }
 
+    /// <summary>
+    /// An override of the Attack method that takes a collision as an input
+    /// checks if a target is within the detection radius
+    /// </summary>
+    /// <param name="collision"></param>
     protected override void Attack(Collider collision)
     {
         //Debug.Log(collision.tag);
@@ -46,6 +51,11 @@ public class DirectTower : BaseTower
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
         //Debug.Log(target);

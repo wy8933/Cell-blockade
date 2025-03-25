@@ -27,11 +27,18 @@ public class RemovingState : IBuildingState
         previewSystem.StartShowingrRemovePreview();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void EndState()
     {
         previewSystem.StopShowingPreview();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void OnAction(Vector3Int gridPos)
     {
         GridData selectedData = null;
