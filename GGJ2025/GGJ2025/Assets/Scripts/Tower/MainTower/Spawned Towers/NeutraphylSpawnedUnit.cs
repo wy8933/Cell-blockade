@@ -24,9 +24,10 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
         
     }
 
-    private void DamageAndDestroy()
+    private void DamageAndDestroy(Collider other)
     {
-        
+
+        DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, other.gameObject, 1, DamageType.None));
     }
 
     private void MoveTowardsTarget()
@@ -45,6 +46,11 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
     private void RoamingWalk()
     {
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 
 }

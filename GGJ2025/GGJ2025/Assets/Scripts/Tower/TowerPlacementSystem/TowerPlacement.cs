@@ -13,7 +13,7 @@ public class TowerPlacement : MonoBehaviour
 
     [SerializeField] private PlacementState placementState;
 
-    IBuildingState buildingState;
+    [SerializeField] private IBuildingState buildingState;
 
     public static TowerPlacement Instance;
 
@@ -74,6 +74,8 @@ public class TowerPlacement : MonoBehaviour
         StopPlacement();
         gridVisualiztion.SetActive(true);
         buildingState = new RemovingState(objectPlacer, preview, grid, towerData);
+
+        Debug.Log(buildingState);
     }
 
     public void StopPlacement()
@@ -87,7 +89,10 @@ public class TowerPlacement : MonoBehaviour
         buildingState.EndState();
         lastDetectedPos = Vector3Int.zero;
 
-        NavMeshManager.Instance.BakeNavMesh();
+        if (NavMeshManager.Instance != null)
+        {
+            NavMeshManager.Instance.BakeNavMesh();
+        }
         buildingState = null;
     }
 
