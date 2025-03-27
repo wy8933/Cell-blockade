@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static Unity.VisualScripting.Metadata;
 
 public class PreviewSystem : MonoBehaviour
 {
@@ -20,14 +19,28 @@ public class PreviewSystem : MonoBehaviour
         cellIndicatorRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
+    /// <summary>
+    /// Called to start showing a transparent representation of the tower and its placement
+    /// </summary>
+    /// <param name="prefab"></param>
+    /// <param name="size"></param>
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
+        if (previewObject != null)
+        {
+            Destroy(previewObject);
+        }
+
         previewObject = Instantiate(prefab);
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="size"></param>
     private void PrepareCursor(Vector2Int size)
     {
         if (size.x > 0 || size.y > 0)
@@ -37,6 +50,10 @@ public class PreviewSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="previewObject"></param>
     private void PreparePreview(GameObject previewObject)
     {
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
