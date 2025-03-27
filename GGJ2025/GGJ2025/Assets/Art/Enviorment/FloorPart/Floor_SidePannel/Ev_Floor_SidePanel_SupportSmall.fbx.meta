@@ -3,7 +3,12 @@ guid: c96d783353a58de4fa9510f4414ab75a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SidePannel
+    second: {fileID: 2100000, guid: 5c85f4d3ff9f60049bf5c27fd204b9c4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
