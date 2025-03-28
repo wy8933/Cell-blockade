@@ -47619,21 +47619,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
-    baseEnemyCount: 200
-    spawnInterval: 0.01
+    baseEnemyCount: 10
+    spawnInterval: 1
     enemyTypes: 00000000
     isBossWave: 0
     bossType: 1
     isBuffWave: 1
   - waveName: Wave 2
-    baseEnemyCount: 3
+    baseEnemyCount: 15
     spawnInterval: 0.4
     enemyTypes: 00000000
     isBossWave: 0
     bossType: 1
     isBuffWave: 1
   - waveName: Wave 3
-    baseEnemyCount: 4
+    baseEnemyCount: 20
+    spawnInterval: 0.4
+    enemyTypes: 00000000
+    isBossWave: 0
+    bossType: 1
+    isBuffWave: 1
+  - waveName: Wave 4
+    baseEnemyCount: 25
     spawnInterval: 0.4
     enemyTypes: 00000000
     isBossWave: 0
@@ -47642,7 +47649,7 @@ MonoBehaviour:
   currentWaveIndex: 0
   isWaveActive: 0
   enemyIncreaseFactor: 1.1
-  timeBetweenWaves: 5
+  timeBetweenWaves: 30
   enemySpawners:
   - {fileID: 1815618632}
   - {fileID: 1245019249}
