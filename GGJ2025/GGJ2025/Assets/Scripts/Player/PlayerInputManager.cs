@@ -43,6 +43,8 @@ public class PlayerInputManager : MonoBehaviour
         _primaryAction.action.performed += OnPrimaryPreformed;
         _primaryAction.action.canceled += OnPrimaryCanceled;
 
+        _secondaryAction.action.performed += OnSecondaryPreformed;
+
         _pauseAction.action.performed += OnPausePerformed;
     }
 
@@ -60,6 +62,8 @@ public class PlayerInputManager : MonoBehaviour
 
         _primaryAction.action.performed -= OnPrimaryPreformed;
         _primaryAction.action.canceled -= OnPrimaryCanceled;
+
+        _secondaryAction.action.performed -= OnSecondaryPreformed;
     }
 
     /// <summary>
@@ -115,6 +119,20 @@ public class PlayerInputManager : MonoBehaviour
             _player.isShooting = false;
 
         }
+    }
+
+    private void OnSecondaryPreformed(InputAction.CallbackContext context)
+    {
+        if (TowerPlacement.Instance.towerRotationDegrees < 270)
+        {
+            TowerPlacement.Instance.towerRotationDegrees += 90;
+        }
+        else
+        {
+            TowerPlacement.Instance.towerRotationDegrees = 0;
+        }
+        
+        TowerPlacement.Instance.towerRotation = Quaternion.AngleAxis(TowerPlacement.Instance.towerRotationDegrees, Vector3.up);
     }
 
     /// <summary>

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class IndirectTower : BaseTower
 {
-    [SerializeField] protected GameObject targetedEnemy;
-
-    [SerializeField] protected List<GameObject> targetedEnemies;
 
     [SerializeField] protected FieldOfView fieldOfView;
+
+    [SerializeField] private ParticleSystem burstEffect;
 
     // Uses the collision to detect if the enemy is in the area then use the field of view script to check if its in te cone area
 
@@ -40,7 +39,14 @@ public class IndirectTower : BaseTower
     /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
-
+        if (fieldOfView.canSeeTarget)
+        {
+            burstEffect.Play();
+        }
+        else
+        {
+            burstEffect.Stop();
+        }
     }
 
 

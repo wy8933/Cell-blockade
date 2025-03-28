@@ -39,6 +39,10 @@ public class TowerPlacement : MonoBehaviour
 
     [SerializeField] private GridData towerData;
 
+    [SerializeField] public int towerRotationDegrees;
+
+    [SerializeField] public Quaternion towerRotation;
+
     private Vector3Int lastDetectedPos = Vector3Int.zero;
 
     public void Awake()
@@ -104,38 +108,8 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        buildingState.OnAction(gridPos);
+        buildingState.OnAction(gridPos, towerRotation);
     }
-
-    /*
-    private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
-    {
-        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
-
-        return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
-    }
-    */
-
-    //This will be removed when determined to be unneeded
-    /*
-    public void GetTowerPrefab(int ID)
-    {
-        int temp;
-
-        //Debug.Log(ID);
-
-        temp = towerDataBase.TowerList.FindIndex(data => data.ID == ID);
-
-        //Debug.Log(towerInfo.TowerList.FindIndex(data => data.ID == ID));
-
-        if (temp >= 0)
-        {
-            selectedTowerIndex = temp;
-        }
-
-        TowerManager.Instance.EnterBuildingMode();
-    }
-    */
 
     public void HighlightTile()
     {
