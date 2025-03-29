@@ -40,11 +40,18 @@ public class PlacementState : IBuildingState
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void EndState()
     {
         previewSystem.StopShowingPreview();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void OnAction(Vector3Int gridPos)
     {
 
@@ -63,6 +70,31 @@ public class PlacementState : IBuildingState
         previewSystem.UpdatePosition(grid.CellToWorld(gridPos), false);
     }
 
+    public void OnAction(Vector3Int gridPos, Quaternion objectRotation)
+    {
+
+        bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);
+
+        if (!placementValidity)
+        {
+            return;
+        }
+
+        int index = objectPlacer.PlaceObject(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, grid.CellToWorld(gridPos), objectRotation);
+
+
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
+        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, index);
+
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPos), false);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
+    /// <param name="selectedTowerIndex"></param>
+    /// <returns></returns>
     private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
     {
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
@@ -70,6 +102,10 @@ public class PlacementState : IBuildingState
         return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void UpdateState(Vector3Int gridPos)
     {
         bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);

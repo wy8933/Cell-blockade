@@ -13,7 +13,7 @@ public class TowerPlacement : MonoBehaviour
 
     [SerializeField] private PlacementState placementState;
 
-    IBuildingState buildingState;
+    [SerializeField] private IBuildingState buildingState;
 
     public static TowerPlacement Instance;
 
@@ -38,6 +38,10 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private TowerInfo towerDataBase;
 
     [SerializeField] private GridData towerData;
+
+    [SerializeField] public int towerRotationDegrees;
+
+    [SerializeField] public Quaternion towerRotation;
 
     private Vector3Int lastDetectedPos = Vector3Int.zero;
 
@@ -69,6 +73,15 @@ public class TowerPlacement : MonoBehaviour
         buildingState = new PlacementState(objectPlacer, preview, ID, grid, towerDataBase, towerData);
     }
 
+    public void StartRemoving()
+    {
+        StopPlacement();
+        gridVisualiztion.SetActive(true);
+        buildingState = new RemovingState(objectPlacer, preview, grid, towerData);
+
+        Debug.Log(buildingState);
+    }
+
     public void StopPlacement()
     {
         if (buildingState == null)
@@ -80,7 +93,10 @@ public class TowerPlacement : MonoBehaviour
         buildingState.EndState();
         lastDetectedPos = Vector3Int.zero;
 
-        NavMeshManager.Instance.BakeNavMesh();
+        if (NavMeshManager.Instance != null)
+        {
+            NavMeshManager.Instance.BakeNavMesh();
+        }
         buildingState = null;
     }
 
@@ -92,38 +108,8 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        buildingState.OnAction(gridPos);
+        buildingState.OnAction(gridPos, towerRotation);
     }
-
-    /*
-    private bool CheckPlaceValidity(Vector3Int gridPos, int selectedTowerIndex)
-    {
-        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
-
-        return selectedData.CanPlaceObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size);
-    }
-    */
-
-    //This will be removed when determined to be unneeded
-    /*
-    public void GetTowerPrefab(int ID)
-    {
-        int temp;
-
-        //Debug.Log(ID);
-
-        temp = towerDataBase.TowerList.FindIndex(data => data.ID == ID);
-
-        //Debug.Log(towerInfo.TowerList.FindIndex(data => data.ID == ID));
-
-        if (temp >= 0)
-        {
-            selectedTowerIndex = temp;
-        }
-
-        TowerManager.Instance.EnterBuildingMode();
-    }
-    */
 
     public void HighlightTile()
     {

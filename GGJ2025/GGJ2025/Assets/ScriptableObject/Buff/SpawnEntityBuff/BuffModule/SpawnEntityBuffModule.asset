@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c87710f85eeea34381f6c2ea54ba41e, type: 3}
+  m_Name: SpawnEntityBuffModule
+  m_EditorClassIdentifier: 
+  moduleName: Swarm
+  moduleType: 0
+  gameObject: {fileID: 792196502952518451, guid: 21996479482a53843afff4da418cc584, type: 3}
+  count: 3

@@ -9,10 +9,34 @@ public class ObjectPlacer : MonoBehaviour
     public int PlaceObject(GameObject towerPrefab, Vector3 pos)
     {
         GameObject newObject = Instantiate(towerPrefab);
-        newObject.transform.position = pos;
+        newObject.transform.position = pos; 
 
         placedGameObjects.Add(newObject);
 
         return placedGameObjects.Count - 1;
+    }
+
+    public int PlaceObject(GameObject towerPrefab, Vector3 pos, Quaternion rot)
+    {
+        GameObject newObject = Instantiate(towerPrefab);
+        newObject.transform.position = pos;
+        foreach (Transform child in newObject.transform)
+        {
+            child.rotation = rot;
+        }
+
+        placedGameObjects.Add(newObject);
+
+        return placedGameObjects.Count - 1;
+    }
+
+    internal void RemoveObjectAt(int selectedTowerIndex)
+    {
+        if (placedGameObjects.Count <= selectedTowerIndex || placedGameObjects[selectedTowerIndex] == null)
+        {
+            return;
+        }
+        Destroy(placedGameObjects[selectedTowerIndex]);
+        placedGameObjects[selectedTowerIndex] = null;
     }
 }

@@ -24,7 +24,7 @@ public class CursorControl : MonoBehaviour
     public Vector3 GetMousePos()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
+        
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
         {
             //sets mouse pos

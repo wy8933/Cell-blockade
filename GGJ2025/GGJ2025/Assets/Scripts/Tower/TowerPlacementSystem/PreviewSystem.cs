@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static Unity.VisualScripting.Metadata;
 
 public class PreviewSystem : MonoBehaviour
 {
@@ -20,14 +19,28 @@ public class PreviewSystem : MonoBehaviour
         cellIndicatorRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
+    /// <summary>
+    /// Called to start showing a transparent representation of the tower and its placement
+    /// </summary>
+    /// <param name="prefab"></param>
+    /// <param name="size"></param>
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
+        if (previewObject != null)
+        {
+            Destroy(previewObject);
+        }
+
         previewObject = Instantiate(prefab);
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="size"></param>
     private void PrepareCursor(Vector2Int size)
     {
         if (size.x > 0 || size.y > 0)
@@ -37,6 +50,10 @@ public class PreviewSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="previewObject"></param>
     private void PreparePreview(GameObject previewObject)
     {
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
@@ -55,22 +72,38 @@ public class PreviewSystem : MonoBehaviour
     public void StopShowingPreview()
     {
         cellIndicator.SetActive(false);
-        Destroy(previewObject);
+        if (previewObject != null)
+        {
+            Destroy(previewObject);
+        }
+        
     }
 
     public void UpdatePosition(Vector3 position, bool validity)
     {
-        MovePreview(position);
+        if (previewObject != null)
+        {
+            MovePreview(position);
+            ApplyFeedbackToPreview(validity);
+        }
+
+        ApplyRotation(TowerPlacement.Instance.towerRotation);
         MoveCursor(position);
-        ApplyFeedback(validity);
+        ApplyFeedbackToCursor(validity);
     }
 
-    private void ApplyFeedback(bool validity)
+    private void ApplyFeedbackToPreview(bool validity)
     {
         Color c = validity ? Color.white : Color.red;
-        cellIndicatorRenderer.material.color = c;
         c.a = 0.5f;
         previewMaterialsInstance.color = c;
+    }
+
+    private void ApplyFeedbackToCursor(bool validity)
+    {
+        Color c = validity ? Color.white : Color.red;
+        c.a = 0.5f;
+        cellIndicatorRenderer.material.color = c;
     }
 
     private void MoveCursor(Vector3 position)
@@ -81,5 +114,21 @@ public class PreviewSystem : MonoBehaviour
     private void MovePreview(Vector3 position)
     {
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+        
+    }
+
+    private void ApplyRotation(Quaternion rot)
+    {
+        foreach (Transform children in previewObject.transform)
+        {
+            children.rotation = rot;
+        }
+    }
+
+    internal void StartShowingrRemovePreview()
+    {
+        cellIndicator.SetActive(true);
+        PrepareCursor(Vector2Int.one);
+        ApplyFeedbackToCursor(false);
     }
 }
