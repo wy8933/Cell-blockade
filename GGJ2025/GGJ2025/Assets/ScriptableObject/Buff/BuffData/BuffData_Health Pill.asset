@@ -18,8 +18,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   maxStack: 0
   priority: 0
-  price: 20
-  rarity: 1
   tags: []
   isForever: 0
   duration: 0
