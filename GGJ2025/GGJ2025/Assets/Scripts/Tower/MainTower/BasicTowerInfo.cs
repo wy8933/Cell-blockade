@@ -9,6 +9,8 @@ public class BasicTowerInfo : MonoBehaviour
         Strongest,
     }
 
+    public bool isTowerActive = false;
+
     public Collider _dectectionRadius;
     //public GameObject bulletPrefab;
     public TowerStats Stats;

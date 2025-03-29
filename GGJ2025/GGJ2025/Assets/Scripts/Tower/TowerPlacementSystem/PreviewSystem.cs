@@ -86,8 +86,8 @@ public class PreviewSystem : MonoBehaviour
             MovePreview(position);
             ApplyFeedbackToPreview(validity);
         }
-       
 
+        ApplyRotation(TowerPlacement.Instance.towerRotation);
         MoveCursor(position);
         ApplyFeedbackToCursor(validity);
     }
@@ -114,6 +114,15 @@ public class PreviewSystem : MonoBehaviour
     private void MovePreview(Vector3 position)
     {
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+        
+    }
+
+    private void ApplyRotation(Quaternion rot)
+    {
+        foreach (Transform children in previewObject.transform)
+        {
+            children.rotation = rot;
+        }
     }
 
     internal void StartShowingrRemovePreview()
