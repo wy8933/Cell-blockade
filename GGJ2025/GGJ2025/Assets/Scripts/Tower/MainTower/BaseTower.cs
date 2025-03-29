@@ -24,13 +24,10 @@ public abstract class BaseTower : BasicTowerInfo
     /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
-        if (isTowerActive)
-        {
-            Attack(other);
+        Attack(other);
 
-            ShowAttack(gameObject, other.gameObject);
-        }
-        
+        ShowAttack(gameObject, other.gameObject);
+
 
         //Debug.Log(other.gameObject.transform.position);
     }
