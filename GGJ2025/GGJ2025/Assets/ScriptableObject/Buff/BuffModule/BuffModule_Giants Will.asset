@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d75300ce7dac3b1418948efb388f6940, type: 3}
-  m_Name: BuffModule_Movement Speed Increase
+  m_Name: BuffModule_Giants Will
   m_EditorClassIdentifier: 
-  moduleName: Movement Speed Increase
+  moduleName: Giants Will
   moduleType: 0
   stats:
-    CurrentHealth: 0
+    CurrentHealth: 100
     CurrentShield: 0
-    MaxHealth: 0
+    MaxHealth: 100
     Resistance: 0
     DamageReduction: 0
     BlockChance: 0
@@ -29,5 +29,5 @@ MonoBehaviour:
     ResistanceMultiplier: 0
     SpeedMultiplier: 0
     OxygenDropMultiplier: 0
-    MovementSpeed: 5
+    MovementSpeed: -50
     SprintSpeed: 0
