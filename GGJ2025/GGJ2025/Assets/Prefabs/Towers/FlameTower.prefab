@@ -5219,7 +5219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  angle: 84
+  angle: 29
   targetRefs: []
   targetMask:
     serializedVersion: 2

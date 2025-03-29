@@ -57,7 +57,7 @@ public class PreviewSystem : MonoBehaviour
     private void PreparePreview(GameObject previewObject)
     {
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
-        previewObject.GetComponent<BaseTower>().enabled = false;
+        //previewObject.GetComponent<basetower>().enabled = false;
         foreach (Renderer renderer in renderers)
         {
             Material[] materials = renderer.materials;

@@ -31,7 +31,9 @@ public class PlacementState : IBuildingState
         if (selectedTowerIndex > -1)
         {
             //gridVisualiztion.SetActive(true);
+            Debug.Log(selectedTowerIndex);
             previewSystem.StartShowingPlacementPreview(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, towerDataBase.TowerList[selectedTowerIndex].Size);
+            
         }
         else
         {
