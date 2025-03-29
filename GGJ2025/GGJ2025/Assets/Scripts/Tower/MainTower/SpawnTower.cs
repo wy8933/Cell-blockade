@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo
 {
-    protected List<GameObject> spawnedChildren;
+    [SerializeField] protected List<GameObject> spawnedChildren = new List<GameObject>();
 
-    protected float spawnLimit;
+    [SerializeField] protected float spawnLimit;
 
     protected float spawnDelay = 0.5f;
 
     private float timer;
 
-    protected GameObject spawnedAllyPrefab;
+    [SerializeField] protected GameObject spawnedAllyPrefab;
 
     private void Update()
     {
@@ -21,12 +21,12 @@ public class SpawnTower : BasicTowerInfo
 
     protected void SpawnHelperTower()
     {
-        if (spawnedChildren.Count < spawnLimit)
+        if (spawnLimit > spawnedChildren.Count)
         {
             timer += Time.deltaTime;
             if (timer >= spawnDelay)
             {
-                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, gameObject.transform));
+                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, this.transform));
                 timer = 0;
             }
 
@@ -41,11 +41,14 @@ public class SpawnTower : BasicTowerInfo
             {
                 for (int x = 0; x < spawnedChildren.Count; x++)
                 {
-                    if (spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform != null)
+                    if (target != null && spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform == Vector3.zero)
                     {
-                        spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform = target;
+                        spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform = target.position;
                     }
-
+                    else
+                    {
+                        spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform = Vector3.zero;
+                    }
                 }
             }
         }

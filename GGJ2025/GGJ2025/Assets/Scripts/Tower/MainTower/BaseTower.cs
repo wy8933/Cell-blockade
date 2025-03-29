@@ -28,6 +28,7 @@ public abstract class BaseTower : BasicTowerInfo
 
         ShowAttack(gameObject, other.gameObject);
 
+
         //Debug.Log(other.gameObject.transform.position);
     }
 

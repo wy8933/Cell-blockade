@@ -70,6 +70,25 @@ public class PlacementState : IBuildingState
         previewSystem.UpdatePosition(grid.CellToWorld(gridPos), false);
     }
 
+    public void OnAction(Vector3Int gridPos, Quaternion objectRotation)
+    {
+
+        bool placementValidity = CheckPlaceValidity(gridPos, selectedTowerIndex);
+
+        if (!placementValidity)
+        {
+            return;
+        }
+
+        int index = objectPlacer.PlaceObject(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, grid.CellToWorld(gridPos), objectRotation);
+
+
+        GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
+        selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, index);
+
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPos), false);
+    }
+
     /// <summary>
     /// 
     /// </summary>

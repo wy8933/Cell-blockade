@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f87c9bc46fcb64e9f7563b7fb207b8, type: 3}
+  m_Name: Towers
+  m_EditorClassIdentifier: 
+  TowerList:
+  - <Name>k__BackingField: Laser
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 542965131713466515, guid: 0d8c5fa80439beb4dbc51aa5995fd376, type: 3}
+    <TowerDescription>k__BackingField: 
+  - <Name>k__BackingField: Flame
+    <ID>k__BackingField: 2
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 1772718365916077745, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}
+    <TowerDescription>k__BackingField: 
+  - <Name>k__BackingField: Blocker
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 1, y: 1}
+    <TowerPrefab>k__BackingField: {fileID: 5193126016425943620, guid: fd3cd5f0eaf6f3c49be5410e74c15187, type: 3}
+    <TowerDescription>k__BackingField: 
