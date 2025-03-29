@@ -11,11 +11,6 @@ public class IndirectTower : BaseTower
 
     // Uses the collision to detect if the enemy is in the area then use the field of view script to check if its in te cone area
 
-    private void Awake()
-    {
-        fieldOfView = GetComponentInChildren<FieldOfView>();
-    }
-
     /// <summary>
     /// When ennemies step within the FOV or the detection area of the tower, any enemies within the FOV will be damaged
     /// </summary>

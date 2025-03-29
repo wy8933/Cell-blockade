@@ -7,7 +7,7 @@ public class CursorControl : MonoBehaviour
     [Header("Camera Variables")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Vector3 raycastHittingLoc;
+
     public void Awake()
     {
         if (Instance != null)
@@ -28,7 +28,6 @@ public class CursorControl : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
         {
             //sets mouse pos
-            raycastHittingLoc = raycastHit.point;
             return raycastHit.point;
         }
         else

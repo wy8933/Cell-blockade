@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8053040612673422681}
+  - component: {fileID: 993717366914438857}
   - component: {fileID: 348391593195212364}
   - component: {fileID: 3027703305016267010}
   - component: {fileID: 3097110218850295402}
-  - component: {fileID: 2482574483523758033}
   m_Layer: 0
   m_Name: BlockerTower
   m_TagString: Tower
@@ -36,6 +36,44 @@ Transform:
   - {fileID: 6860464151066535939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993717366914438857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193126016425943620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2833865bea6efd45be48b79c3327a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTowerActive: 0
+  _dectectionRadius: {fileID: 0}
+  Stats:
+    MaxHealth: 0
+    Health: 0
+    Resistance: 0
+    Shield: 0
+    DamageReduction: 0
+    BlockChance: 0
+    SlowResistance: 0
+    SizeMultiplier: 0
+    HealthMultiplier: 0
+    AtkMultiplier: 0
+    DamageReductionMultiplier: 0
+    ResistanceMultiplier: 0
+    SpeedMultiplier: 0
+    GoldDropMultiplier: 0
+  towerType: 0
+  detectionMode: 0
+  maxBubble: 0
+  currentBubble: 0
+  bubbleHealthDeduct: 0
+  bubbleGainAmount: 0
+  bubbleCost: 0
+  regenerationDelay: 0
+  regenerationAmount: 0
 --- !u!114 &348391593195212364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,29 +149,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: 
---- !u!136 &2482574483523758033
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193126016425943620}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5299669017878520814
 GameObject:
   m_ObjectHideFlags: 0
