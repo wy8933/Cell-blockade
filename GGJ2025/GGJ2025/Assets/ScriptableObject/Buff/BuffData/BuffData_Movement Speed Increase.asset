@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 20030
   buffName: Movement Speed Increase
-  description: Increase Speed By 25
+  description: Increase Speed By 5
   icon: {fileID: 0}
-  maxStack: 999
+  maxStack: 10
   priority: 0
-  price: 10
+  price: 0
   rarity: 0
   tags: []
   isForever: 1
