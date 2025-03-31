@@ -68,6 +68,7 @@ public class TowerPlacement : MonoBehaviour
     /// </summary>
     public void StartPlacement(int ID)
     {
+        StopPlacement();
         gridVisualiztion.SetActive(true);
         //ID can be changed if needed remove the ID input and replace ID with selectedTowerIndex
         buildingState = new PlacementState(objectPlacer, previewSystem, ID, grid, towerDataBase, towerData);

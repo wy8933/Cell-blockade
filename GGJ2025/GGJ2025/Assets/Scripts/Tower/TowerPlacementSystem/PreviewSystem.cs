@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PreviewSystem : MonoBehaviour
 {
-    [SerializeField] private float previewYOffset = 0.6f;
+    [SerializeField] private float previewYOffset = 0.06f;
 
     [SerializeField] private GameObject cellIndicator;
     [SerializeField] private GameObject previewObject;
 
     [SerializeField] private Material previewMaterialsPrefab;
-    private Material previewMaterialsInstance;
+    [SerializeField] private Material previewMaterialsInstance;
 
     private Renderer cellIndicatorRenderer;
     private void Start()

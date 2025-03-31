@@ -27,7 +27,7 @@ public class PlacementState : IBuildingState
         this.towerDataBase = towerDataBase;
         this.towerData = towerData;
 
-        selectedTowerIndex = towerDataBase.TowerList.FindIndex(data => data.ID == toweriD);
+        selectedTowerIndex = towerDataBase.TowerList.FindIndex(data => data.ID == towerID);
         if (selectedTowerIndex > -1)
         {
             //gridVisualiztion.SetActive(true);
@@ -83,12 +83,19 @@ public class PlacementState : IBuildingState
         //
         if (GameManager.Instance.Currency)
         {
-            GameManager.Instance.ModifyCurrency(towerDataBase.TowerList[selectedTowerIndex].TowerPrice);
+            if (GameManager.Instance.Currency.Value >= towerDataBase.TowerList[selectedTowerIndex].TowerPrice)
+            {
+                GameManager.Instance.ModifyCurrency(-towerDataBase.TowerList[selectedTowerIndex].TowerPrice);
+            }
+            else
+            {
+                return;
+            }
+            
         }
         //
 
         int index = objectPlacer.PlaceObject(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, grid.CellToWorld(gridPos), objectRotation);
-
 
         GridData selectedData = towerDataBase.TowerList[selectedTowerIndex].ID == 0 ? towerData : towerData;
         selectedData.AddObjectAt(gridPos, towerDataBase.TowerList[selectedTowerIndex].Size, towerDataBase.TowerList[selectedTowerIndex].ID, index);

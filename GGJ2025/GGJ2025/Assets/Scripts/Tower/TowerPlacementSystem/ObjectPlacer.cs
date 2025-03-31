@@ -25,6 +25,8 @@ public class ObjectPlacer : MonoBehaviour
             child.rotation = rot;
         }
 
+        
+
         placedGameObjects.Add(newObject);
 
         return placedGameObjects.Count - 1;
