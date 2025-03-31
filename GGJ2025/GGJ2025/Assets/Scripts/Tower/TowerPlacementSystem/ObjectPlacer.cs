@@ -30,13 +30,13 @@ public class ObjectPlacer : MonoBehaviour
         return placedGameObjects.Count - 1;
     }
 
-    internal void RemoveObjectAt(int selectedTowerIndex)
+    internal void RemoveObjectAt(int gameObjectIndex)
     {
-        if (placedGameObjects.Count <= selectedTowerIndex || placedGameObjects[selectedTowerIndex] == null)
+        if (placedGameObjects.Count <= gameObjectIndex || placedGameObjects[gameObjectIndex] == null)
         {
             return;
         }
-        Destroy(placedGameObjects[selectedTowerIndex]);
-        placedGameObjects[selectedTowerIndex] = null;
+        Destroy(placedGameObjects[gameObjectIndex]);
+        placedGameObjects[gameObjectIndex] = null;
     }
 }

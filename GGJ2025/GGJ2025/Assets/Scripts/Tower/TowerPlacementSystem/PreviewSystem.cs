@@ -26,11 +26,12 @@ public class PreviewSystem : MonoBehaviour
     /// <param name="size"></param>
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
+        /*
         if (previewObject != null)
         {
             Destroy(previewObject);
         }
-
+        */
         previewObject = Instantiate(prefab);
         PreparePreview(previewObject);
         PrepareCursor(size);
@@ -57,7 +58,7 @@ public class PreviewSystem : MonoBehaviour
     private void PreparePreview(GameObject previewObject)
     {
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
-        previewObject.GetComponent<BaseTower>().enabled = false;
+        //previewObject.GetComponent<BaseTower>().enabled = false;
         foreach (Renderer renderer in renderers)
         {
             Material[] materials = renderer.materials;

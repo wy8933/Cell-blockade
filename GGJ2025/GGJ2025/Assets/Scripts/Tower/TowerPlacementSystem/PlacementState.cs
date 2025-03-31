@@ -80,6 +80,13 @@ public class PlacementState : IBuildingState
             return;
         }
 
+        //
+        if (GameManager.Instance.Currency)
+        {
+            GameManager.Instance.ModifyCurrency(towerDataBase.TowerList[selectedTowerIndex].TowerPrice);
+        }
+        //
+
         int index = objectPlacer.PlaceObject(towerDataBase.TowerList[selectedTowerIndex].TowerPrefab, grid.CellToWorld(gridPos), objectRotation);
 
 
