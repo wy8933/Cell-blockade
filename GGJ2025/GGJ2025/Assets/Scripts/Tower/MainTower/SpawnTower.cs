@@ -29,7 +29,7 @@ public class SpawnTower : BasicTowerInfo
             timer += Time.deltaTime;
             if (timer >= spawnDelay)
             {
-                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, this.transform));
+                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, transform.position, Quaternion.identity));
                 timer = 0;
             }
 
