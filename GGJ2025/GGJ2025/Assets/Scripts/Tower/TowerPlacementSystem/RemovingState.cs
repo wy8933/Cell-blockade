@@ -10,8 +10,7 @@ public class RemovingState : IBuildingState
     [Header("Tower Info")]
     //-1 means null there's isn't a tower selected
 
-    [SerializeField] private int selectedTowerIndex = -1;
-    [SerializeField] private int towerID;
+    [SerializeField] private int gameObjectIndex = -1;
 
     [Header("Tower Grid Info")]
     [SerializeField] private Grid grid;
@@ -53,13 +52,13 @@ public class RemovingState : IBuildingState
         }
         else
         {
-            selectedTowerIndex = selectedData.GetRepresentationIndex(gridPos);
-            if (selectedTowerIndex == -1)
+            gameObjectIndex = selectedData.GetRepresentationIndex(gridPos);
+            if (gameObjectIndex == -1)
             {
                 return;
             }
             selectedData.RemoveObjectAt(gridPos);
-            objectPlacer.RemoveObjectAt(selectedTowerIndex);
+            objectPlacer.RemoveObjectAt(gameObjectIndex);
         }
         Vector3 cellPos = grid.CellToWorld(gridPos);
         previewSystem.UpdatePosition(cellPos, CheckIfSelectionIsValid(gridPos));
@@ -78,6 +77,27 @@ public class RemovingState : IBuildingState
 
     public void OnAction(Vector3Int gridPos, Quaternion objectRotation)
     {
-        throw new NotImplementedException();
+        GridData selectedData = null;
+        if (towerData.CanPlaceObjectAt(gridPos, Vector2Int.one) == false)
+        {
+            selectedData = towerData;
+        }
+
+        if (selectedData == null)
+        {
+            //sounds
+        }
+        else
+        {
+            gameObjectIndex = selectedData.GetRepresentationIndex(gridPos);
+            if (gameObjectIndex == -1)
+            {
+                return;
+            }
+            selectedData.RemoveObjectAt(gridPos);
+            objectPlacer.RemoveObjectAt(gameObjectIndex);
+        }
+        Vector3 cellPos = grid.CellToWorld(gridPos);
+        previewSystem.UpdatePosition(cellPos, CheckIfSelectionIsValid(gridPos));
     }
 }

@@ -63,11 +63,11 @@ public class DirectTower : BaseTower
         {
             if (target != null)
             {
-
+                Debug.Log(target.transform.position);
                 if (targetedEnemy == target)
                 {
                     LaserHolder.SetActive(true);
-                    LaserHolder.transform.LookAt(new Vector3(target.transform.position.x, (target.transform.position.y + 1.0f), target.transform.position.z));
+                    LaserHolder.transform.LookAt(new Vector3(target.transform.position.x, (target.transform.position.y), target.transform.position.z));
                 }
                 //Debug.Log(target.transform.position);
             }

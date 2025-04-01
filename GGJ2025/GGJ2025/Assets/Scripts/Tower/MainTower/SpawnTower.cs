@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo
@@ -11,6 +12,8 @@ public class SpawnTower : BasicTowerInfo
     protected float spawnDelay = 0.5f;
 
     private float timer;
+
+    private List<Collider> collidersInTrigger = new List<Collider>();
 
     [SerializeField] protected GameObject spawnedAllyPrefab;
 
@@ -33,23 +36,30 @@ public class SpawnTower : BasicTowerInfo
         }
     }
 
-    private void AssignTarget(Transform target)
+    private void AssignTarget(Collider target)
     {
+        
         if (target != null)
         {
             if (target.tag == "Enemy")
             {
-                for (int x = 0; x < spawnedChildren.Count; x++)
+                foreach (Collider col in collidersInTrigger)
                 {
-                    if (target != null && spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform == Vector3.zero)
+                    for (int x = 0; x < spawnedChildren.Count; x++)
                     {
-                        spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform = target.position;
-                    }
-                    else
-                    {
-                        spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetTransform = Vector3.zero;
+                        if (spawnedChildren[x] == null)
+                        {
+                            spawnedChildren.RemoveAt(x);
+                            break;
+                        }
+                        if (spawnedChildren[x] != null)
+                        {
+                            spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetObject = target.gameObject;
+                        }
+
                     }
                 }
+                
             }
         }
 
@@ -58,6 +68,14 @@ public class SpawnTower : BasicTowerInfo
 
     private void OnTriggerStay(Collider other)
     {
-       AssignTarget(other.transform);
+       AssignTarget(other);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!collidersInTrigger.Contains(other)) // Avoid duplicates
+        {
+            collidersInTrigger.Add(other);
+        }
     }
 }

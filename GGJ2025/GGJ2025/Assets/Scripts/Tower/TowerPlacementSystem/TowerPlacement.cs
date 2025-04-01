@@ -28,7 +28,7 @@ public class TowerPlacement : MonoBehaviour
 
     [Header("Highlighting")]
     [SerializeField] private GameObject gridVisualiztion;
-    [SerializeField] private PreviewSystem preview;
+    [SerializeField] private PreviewSystem previewSystem;
     
     //[SerializeField] private GameObject cellIndicator;
     //[SerializeField] private Renderer previewRenderer;
@@ -68,16 +68,17 @@ public class TowerPlacement : MonoBehaviour
     /// </summary>
     public void StartPlacement(int ID)
     {
+        StopPlacement();
         gridVisualiztion.SetActive(true);
         //ID can be changed if needed remove the ID input and replace ID with selectedTowerIndex
-        buildingState = new PlacementState(objectPlacer, preview, ID, grid, towerDataBase, towerData);
+        buildingState = new PlacementState(objectPlacer, previewSystem, ID, grid, towerDataBase, towerData);
     }
 
     public void StartRemoving()
     {
         StopPlacement();
         gridVisualiztion.SetActive(true);
-        buildingState = new RemovingState(objectPlacer, preview, grid, towerData);
+        buildingState = new RemovingState(objectPlacer, previewSystem, grid, towerData);
 
         Debug.Log(buildingState);
     }
@@ -107,6 +108,8 @@ public class TowerPlacement : MonoBehaviour
         {
             return;
         }
+
+        Debug.Log(towerData);
 
         buildingState.OnAction(gridPos, towerRotation);
     }

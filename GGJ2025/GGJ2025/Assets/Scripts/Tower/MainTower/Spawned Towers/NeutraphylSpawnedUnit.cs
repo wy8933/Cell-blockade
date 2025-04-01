@@ -4,15 +4,15 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
 {
     private Collider _collider;
 
-    [SerializeField] private Vector3 _targetTransform = Vector3.zero;
+    [SerializeField] private GameObject _targetObject;
 
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float movementSpeed = 2.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public Vector3 TargetTransform
+    public GameObject TargetObject
     {
-        get { return _targetTransform; }
-        set { _targetTransform = value; }
+        get { return _targetObject; }
+        set { _targetObject = value; }
     }
 
     void Awake()
@@ -30,8 +30,8 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            Destroy(gameObject);
             DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, other.gameObject, 1, DamageType.None));
-            Destroy(this);
         }
         
     }
@@ -39,15 +39,19 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
     private void MoveTowardsTarget()
     {
         //This should be when the character starts roaming around
-        if (_targetTransform == Vector3.zero)
+        if (_targetObject.gameObject == null)
         {
             //not implomented 
             RoamingWalk();
         }
-        //THe character starts walking towards the enemy that its been assigned 
-        else if(_targetTransform != Vector3.zero)
+        else if (_targetObject != null && !_targetObject.activeSelf)
         {
-            transform.position += _targetTransform * movementSpeed * Time.deltaTime;
+            _targetObject = null;
+        }
+        //THe character starts walking towards the enemy that its been assigned 
+        else if (_targetObject != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _targetObject.transform.position, movementSpeed * Time.deltaTime);
         }
     }
 

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
     public bool isPowerUp;
 
+    public TextMeshProUGUI currencyText;
+
     public FloatReference Currency;
 
     public List<GameObject> CurrentEnemyList = new List<GameObject>();
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
         else {
             Destroy(gameObject);
         }
+        currencyText.text = Currency.Value.ToString();
     }
 
     /// <summary>
@@ -64,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void ModifyCurrency(float amount) 
     {
         Currency.Value += amount;
+        currencyText.text = Currency.Value.ToString();
     }
 
 
