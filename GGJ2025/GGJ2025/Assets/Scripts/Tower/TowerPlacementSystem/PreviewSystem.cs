@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PreviewSystem : MonoBehaviour
 {
-    [SerializeField] private float previewYOffset = 0.6f;
+    [SerializeField] private float previewYOffset = 0.06f;
 
     [SerializeField] private GameObject cellIndicator;
     [SerializeField] private GameObject previewObject;
 
     [SerializeField] private Material previewMaterialsPrefab;
-    private Material previewMaterialsInstance;
+    [SerializeField] private Material previewMaterialsInstance;
 
     private Renderer cellIndicatorRenderer;
     private void Start()
@@ -26,11 +26,12 @@ public class PreviewSystem : MonoBehaviour
     /// <param name="size"></param>
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
+        /*
         if (previewObject != null)
         {
             Destroy(previewObject);
         }
-
+        */
         previewObject = Instantiate(prefab);
         PreparePreview(previewObject);
         PrepareCursor(size);
@@ -57,7 +58,7 @@ public class PreviewSystem : MonoBehaviour
     private void PreparePreview(GameObject previewObject)
     {
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
-        previewObject.GetComponent<BaseTower>().enabled = false;
+        //previewObject.GetComponent<BaseTower>().enabled = false;
         foreach (Renderer renderer in renderers)
         {
             Material[] materials = renderer.materials;

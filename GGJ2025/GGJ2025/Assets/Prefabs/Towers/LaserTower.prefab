@@ -386,5 +386,5 @@ MonoBehaviour:
   RaycastDirectionSpace: 0
   Layers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   MaxDistance: 100

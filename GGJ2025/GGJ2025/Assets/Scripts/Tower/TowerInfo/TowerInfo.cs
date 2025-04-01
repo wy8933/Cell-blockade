@@ -17,10 +17,14 @@ public class TowerInfo : ScriptableObject
     [field: SerializeField] public int ID { get; private set; }
     //The length and width of the tower
     [field: SerializeField] public Vector2Int Size { get; private set; }
+    //The price of the tower
+    [field: SerializeField] public int TowerPrice { get; private set; }
     //the prefab of the tower that would be instantiated 
     [field: SerializeField] public GameObject TowerPrefab { get; private set; }
     //a quick description of the tower
     [field: SerializeField] public string TowerDescription { get; private set; }
+
     
+
 }
 
