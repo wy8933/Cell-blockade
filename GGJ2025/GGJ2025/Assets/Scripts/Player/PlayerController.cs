@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(float damage)
     {
+        Debug.Log("damage:" + Stats.CurrentHealth.Value);
         // deal damage and update UI
         Stats.CurrentHealth.Value -= (damage * (1-Stats.BlockChance.Value));
         HUDManager.Instance.SetHealth(Stats.CurrentHealth.Value);

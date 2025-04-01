@@ -15,6 +15,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpText;
     public void WriteAllStatsToUI(EntityStats playerStats)
     {
+        string twoLineInfo = $"{playerStats.CurrentHealth.Value}\n------\n{playerStats.MaxHealth.Value}";
+        hpText.text = twoLineInfo;
+
         if (statsText == null)
         {
             Debug.LogWarning("PlayerStatsTMPUI: No TextMeshProUGUI component assigned.");
@@ -48,10 +51,6 @@ public class HUDManager : MonoBehaviour
             $"Gold Drop Multiplier: {playerStats.OxygenDropMultiplier.Value}\n";
 
         statsText.text = statsInfo;
-
-        string twoLineInfo = $"{playerStats.CurrentHealth.Value}\n------\n{playerStats.MaxHealth.Value}";
-
-        hpText.text = twoLineInfo;
     }
 
     public void Awake()
