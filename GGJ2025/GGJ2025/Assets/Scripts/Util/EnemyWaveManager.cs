@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -29,6 +29,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     [Header("Wave Timing")]
     public float timeBetweenWaves = 5f;
+    private float currenTime;
 
     [Header("Spawner Settings")]
     public List<EnemySpawner> enemySpawners;
@@ -39,6 +40,7 @@ public class EnemyWaveManager : MonoBehaviour
     public delegate void OnWaveStart(int waveIndex);
     public event OnWaveStart WaveStarted;
 
+    public TextMeshProUGUI TimerText;
     private void Awake()
     {
         Instance = this;
@@ -47,6 +49,12 @@ public class EnemyWaveManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartWaveCoroutine());
+    }
+
+    public void Update()
+    {
+        currenTime -= Time.deltaTime;
+        TimerText.text = "Timer until next wave: "+currenTime;
     }
 
     /// <summary>
@@ -135,7 +143,11 @@ public class EnemyWaveManager : MonoBehaviour
             ShopManager.Instance.ShowShop();
         }
 
+        TimerText.gameObject.SetActive(true);
+        currenTime = timeBetweenWaves;
         yield return new WaitForSeconds(timeBetweenWaves);
+        TimerText.gameObject.SetActive(false);
+
         currentWaveIndex++;
         StartNextWave();
     }

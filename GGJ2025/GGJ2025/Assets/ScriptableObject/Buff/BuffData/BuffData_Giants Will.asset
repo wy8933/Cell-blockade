@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   maxStack: 1
   priority: 0
-  price: 0
+  price: 100
   rarity: 2
   tags: []
   isForever: 1

@@ -10,6 +10,7 @@ TagManager:
   - Ally
   - Tower
   - Effect
+  - DeadZone
   layers:
   - Default
   - TransparentFX

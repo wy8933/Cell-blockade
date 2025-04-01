@@ -232,4 +232,12 @@ public class PlayerController : MonoBehaviour
         TakeDamage(bubbleHealthDeduct);
         GainBubble(bubbleGainAmount);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DeadZone") {
+            TakeDamage(99999999999);
+            Die();
+        }
+    }
 }
