@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Wound : MonoBehaviour
@@ -6,6 +7,8 @@ public class Wound : MonoBehaviour
 
     public FloatReference MaxHealth;
     public FloatReference CurrentHealth;
+
+    public TextMeshProUGUI hpText;
 
     private void Start()
     {
@@ -23,6 +26,7 @@ public class Wound : MonoBehaviour
             enemy.Die();
             CurrentHealth.Value -= enemy.attackDamage;
             Debug.Log(CurrentHealth.Value);
+            hpText.text = "Current Core HP:" + CurrentHealth.Value;
             if (CurrentHealth.Value <= 0)
             {
                 GameManager.Instance.GameOver();

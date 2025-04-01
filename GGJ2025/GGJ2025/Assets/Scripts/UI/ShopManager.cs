@@ -17,7 +17,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TMP_Text currencyText;
 
     [Header("Buff Data")]
-    [SerializeField] private List<BuffData> availableBuffs;
     private List<BuffData> generatedBuffs = new List<BuffData>();
 
     [Header("Buff Grid UI")]
@@ -59,15 +58,10 @@ public class ShopManager : MonoBehaviour
     public void ShowShop()
     {
         generatedBuffs.Clear();
-        List<BuffData> buffPool = new List<BuffData>(availableBuffs);
-        int count = Mathf.Min(4, buffPool.Count);
-
         // Generate 4 unique buffs.
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < 4; i++)
         {
-            int randomIndex = Random.Range(0, buffPool.Count);
-            generatedBuffs.Add(buffPool[randomIndex]);
-            buffPool.RemoveAt(randomIndex);
+            generatedBuffs.Add(RewardManager.Instance.GetSingleBuff());
         }
 
         UpdateShopUI();
@@ -135,16 +129,12 @@ public class ShopManager : MonoBehaviour
     public void RerollShop()
     {
         generatedBuffs.Clear();
-        List<BuffData> buffPool = new List<BuffData>(availableBuffs);
-        int count = Mathf.Min(4, buffPool.Count);
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < 4; i++)
         {
-            int randomIndex = Random.Range(0, buffPool.Count);
-            generatedBuffs.Add(buffPool[randomIndex]);
-            buffPool.RemoveAt(randomIndex);
+            generatedBuffs.Add(RewardManager.Instance.GetSingleBuff());
         }
-
+        GameManager.Instance.ModifyCurrency(-10);
         UpdateShopUI();
     }
 

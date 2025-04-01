@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba747441a72cb2445ab780d9d899eab2, type: 3}
+  m_Name: BuffData_Poision
+  m_EditorClassIdentifier: 
+  id: 31043
+  buffName: Poision
+  description: Damages target per sec based on stacks
+  icon: {fileID: 0}
+  maxStack: 5
+  priority: 0
+  price: 0
+  rarity: 0
+  tags: []
+  isForever: 0
+  duration: 5
+  tickTime: 1
+  buffUpdateType: 0
+  buffRemoveStackType: 1
+  OnCreate: {fileID: 0}
+  OnRemove: {fileID: 0}
+  OnTick: {fileID: 0}
+  OnHit: {fileID: 0}
+  OnHurt: {fileID: 0}
+  OnKill: {fileID: 0}
+  OnDeath: {fileID: 0}
