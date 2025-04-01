@@ -18,15 +18,15 @@ MonoBehaviour:
   icon: {fileID: 0}
   maxStack: 999
   priority: 0
-  price: 10
-  rarity: 0
+  price: 50
+  rarity: 1
   tags: []
   isForever: 0
   duration: 5
   tickTime: 5
   buffUpdateType: 0
   buffRemoveStackType: 1
-  OnCreate: {fileID: 11400000, guid: 22bcba18c907bca40868ea0b432810d2, type: 2}
+  OnCreate: {fileID: 0}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 11400000, guid: ced404117af60544294d553a485b9cc1, type: 2}
   OnHit: {fileID: 0}

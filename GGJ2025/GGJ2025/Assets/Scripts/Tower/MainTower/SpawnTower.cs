@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo

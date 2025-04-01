@@ -20,7 +20,6 @@ public class HUDManager : MonoBehaviour
 
         if (statsText == null)
         {
-            Debug.LogWarning("PlayerStatsTMPUI: No TextMeshProUGUI component assigned.");
             return;
         }
 

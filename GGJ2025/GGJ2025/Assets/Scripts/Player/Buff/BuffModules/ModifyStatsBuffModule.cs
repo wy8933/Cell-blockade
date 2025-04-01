@@ -32,6 +32,10 @@ public class ModifyStatsBuffModule : BaseBuffModule
             player.Stats.SpeedMultiplier.Value *= (1 + stats.SpeedMultiplier);
             player.Stats.OxygenDropMultiplier.Value *= (1 + stats.OxygenDropMultiplier);
 
+            if (player.Stats.CurrentHealth.Value > player.Stats.MaxHealth.Value) {
+                player.Stats.CurrentHealth.Value = player.Stats.MaxHealth.Value;
+            }
+
             // Update the HUD with the new values
             HUDManager.Instance.SetMaxHealth(player.Stats.MaxHealth.Value);
             HUDManager.Instance.SetHealth(player.Stats.CurrentHealth.Value);
