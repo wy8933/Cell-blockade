@@ -32,7 +32,7 @@ public class TowerManager : MonoBehaviour
 
     public void EnterBuildingMode() 
     {
-        TowerPlacement.Instance.StartPlacement(selectedTowerIndex);
+        //TowerPlacement.Instance.StartPlacement(selectedTowerIndex);
         //TowerPlacement.Instance.HighlightTile();
         playerController.isBuildingMode = true;
     }

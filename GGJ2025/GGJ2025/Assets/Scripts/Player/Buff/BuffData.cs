@@ -15,6 +15,7 @@ public class BuffData : ScriptableObject
     public int price;
     public RarityLevel rarity;
     public List<string> tags;
+    public bool toPlayer;
 
     [Header("Time Information")]
     public bool isForever;

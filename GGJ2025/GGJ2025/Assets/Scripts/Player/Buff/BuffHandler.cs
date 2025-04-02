@@ -6,6 +6,7 @@ public class BuffHandler : MonoBehaviour
 {
     [SerializeField] private List<BuffInfo> _initialBuffs = new List<BuffInfo>();
     [SerializeField] private List<BuffInfo> _activeBuffs = new List<BuffInfo>();
+
     private BuffComparer _buffComparer = new BuffComparer();
 
     public List<BuffInfo> ActiveBuffs
@@ -185,7 +186,7 @@ public class BuffHandler : MonoBehaviour
     #endregion
 
     #region Helper Methods
-    private BuffInfo FindBuff(int buffId)
+    public BuffInfo FindBuff(int buffId)
     {
         return _activeBuffs.Find(b => b.buffData.id == buffId);
     }

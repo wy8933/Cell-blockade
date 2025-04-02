@@ -24,8 +24,18 @@ public class DamageManager : MonoBehaviour
         if (creatorBuffHandler) {
             foreach (var buffInfo in creatorBuffHandler.ActiveBuffs) {
                 buffInfo.target = targetBuffHandler.gameObject;
-                if (buffInfo.buffData.OnHit) { 
-                    buffInfo.buffData.OnHit.Apply(buffInfo,damageInfo);
+                
+                if (buffInfo.buffData.OnHit) {
+                    if (buffInfo.buffData.toPlayer)
+                    {
+                        BuffInfo tempBuffInfo = buffInfo;
+                        tempBuffInfo.target = GameManager.Instance.Player.gameObject;
+                        buffInfo.buffData.OnHit.Apply(tempBuffInfo, damageInfo);
+                    }
+                    else 
+                    {
+                        buffInfo.buffData.OnHit.Apply(buffInfo, damageInfo);
+                    }
                 }
                 
             }
@@ -45,6 +55,7 @@ public class DamageManager : MonoBehaviour
                 var enemy = damageInfo.target.GetComponent<BaseEnemy>();
                 if (enemy) { 
                     enemy.TakeDamage(damageInfo.damage);
+
                 }
             }
             else if (damageInfo.target.tag == "Player")

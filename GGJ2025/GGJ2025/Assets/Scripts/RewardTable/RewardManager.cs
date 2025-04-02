@@ -77,6 +77,16 @@ public class RewardManager : MonoBehaviour
             int index = Random.Range(0, possibleEntries.Count);
             var selectedEntry = possibleEntries[index];
             var reward = selectedEntry.Drop().FirstOrDefault();
+
+            if (GameManager.Instance.Player.gameObject.GetComponent<BuffHandler>().FindBuff(reward.id) != null) {
+
+                if (GameManager.Instance.Player.gameObject.GetComponent<BuffHandler>().FindBuff(reward.id).currentStack >= reward.maxStack)
+                {
+                    // TODO: Optimize this method
+                    return GetSingleBuff();
+                }
+            }
+
             return reward as BuffData;
         }
 

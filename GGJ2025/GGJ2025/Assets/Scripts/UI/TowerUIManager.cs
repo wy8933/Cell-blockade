@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TowerUIManager : MonoBehaviour
 {
+    public TowerUIManager Instance; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +15,10 @@ public class TowerUIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ChangeTowerUI(int change)
+    {
+
     }
 }

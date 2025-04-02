@@ -28,7 +28,7 @@ MonoBehaviour:
   buffRemoveStackType: 0
   OnCreate: {fileID: 0}
   OnRemove: {fileID: 0}
-  OnTick: {fileID: 0}
+  OnTick: {fileID: 11400000, guid: 2f36e8fbc5b7b574389845e864ceb47f, type: 2}
   OnHit: {fileID: 0}
   OnHurt: {fileID: 0}
   OnKill: {fileID: 0}

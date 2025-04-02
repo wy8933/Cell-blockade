@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo
@@ -29,7 +27,7 @@ public class SpawnTower : BasicTowerInfo
             timer += Time.deltaTime;
             if (timer >= spawnDelay)
             {
-                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, this.transform));
+                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, transform.position, Quaternion.identity));
                 timer = 0;
             }
 

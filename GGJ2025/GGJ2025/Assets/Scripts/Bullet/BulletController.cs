@@ -62,7 +62,7 @@ public class BulletController : MonoBehaviour
         {
             if (other.TryGetComponent(out BaseEnemy enemy))
             {
-                DamageInfo damageInfo = new DamageInfo(gameObject, other.gameObject, _damage, damageType);
+                DamageInfo damageInfo = new DamageInfo(GameManager.Instance.Player.gameObject, other.gameObject, _damage, damageType);
                 DamageManager.Instance.ManageDamage(damageInfo);
             }
             if (!isReleased)

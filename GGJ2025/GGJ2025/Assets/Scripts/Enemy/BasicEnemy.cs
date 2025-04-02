@@ -214,6 +214,9 @@ public class BasicEnemy : BaseEnemy
                     damageType: attackDamageType
                 );
                 DamageManager.Instance.ManageDamage(damageInfo);
+
+                //TODO: Replace this placeholder method to actually make the player can hit enemy when they are inside player or prevent enemy from go inside player.
+                Die();
             }
         }
         else
