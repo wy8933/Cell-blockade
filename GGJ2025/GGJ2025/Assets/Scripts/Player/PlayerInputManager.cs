@@ -147,7 +147,7 @@ public class PlayerInputManager : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="context"></param>
-    private void OnScrollUp(InputAction.CallbackContext context) { 
+    private void OnScroll(InputAction.CallbackContext context) { 
         //GameManager.Instance.Pause();
     }
 }
