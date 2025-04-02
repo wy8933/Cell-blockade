@@ -123,16 +123,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnSecondaryPreformed(InputAction.CallbackContext context)
     {
-        if (TowerPlacement.Instance.towerRotationDegrees < 270)
-        {
-            TowerPlacement.Instance.towerRotationDegrees += 90;
-        }
-        else
-        {
-            TowerPlacement.Instance.towerRotationDegrees = 0;
-        }
         
-        TowerPlacement.Instance.towerRotation = Quaternion.AngleAxis(TowerPlacement.Instance.towerRotationDegrees, Vector3.up);
     }
 
     /// <summary>

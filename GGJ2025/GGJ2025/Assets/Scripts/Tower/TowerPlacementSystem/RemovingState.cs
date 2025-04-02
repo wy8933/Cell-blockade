@@ -74,30 +74,4 @@ public class RemovingState : IBuildingState
         bool validity = CheckIfSelectionIsValid(gridPos);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPos), validity);
     }
-
-    public void OnAction(Vector3Int gridPos, Quaternion objectRotation)
-    {
-        GridData selectedData = null;
-        if (towerData.CanPlaceObjectAt(gridPos, Vector2Int.one) == false)
-        {
-            selectedData = towerData;
-        }
-
-        if (selectedData == null)
-        {
-            //sounds
-        }
-        else
-        {
-            gameObjectIndex = selectedData.GetRepresentationIndex(gridPos);
-            if (gameObjectIndex == -1)
-            {
-                return;
-            }
-            selectedData.RemoveObjectAt(gridPos);
-            objectPlacer.RemoveObjectAt(gameObjectIndex);
-        }
-        Vector3 cellPos = grid.CellToWorld(gridPos);
-        previewSystem.UpdatePosition(cellPos, CheckIfSelectionIsValid(gridPos));
-    }
 }

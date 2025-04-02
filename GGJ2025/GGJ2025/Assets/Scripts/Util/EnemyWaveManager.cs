@@ -53,8 +53,9 @@ public class EnemyWaveManager : MonoBehaviour
 
     public void Update()
     {
+        // Ill move this to HUD manager later
         currenTime -= Time.deltaTime;
-        TimerText.text = "Timer until next wave: "+currenTime;
+        TimerText.text = "Timer until next wave: " + (int)currenTime;
     }
 
     /// <summary>

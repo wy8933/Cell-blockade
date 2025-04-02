@@ -95,6 +95,9 @@ MonoBehaviour:
   bubbleHealthDeduct: 0
   bubbleGainAmount: 0
   bubbleCost: 0
+  spawnedChildren: []
+  spawnLimit: 3
+  spawnedAllyPrefab: {fileID: 375159389764670612, guid: 47fd05c6e67e3274ca1e95f54960b73b, type: 3}
 --- !u!114 &2398571749776678511
 MonoBehaviour:
   m_ObjectHideFlags: 0

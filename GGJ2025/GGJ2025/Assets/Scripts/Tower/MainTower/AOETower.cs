@@ -3,18 +3,10 @@ using UnityEngine.VFX;
 
 public class AOETower : BaseTower
 {
-    //Not currently Done
-    [SerializeField] private GameObject LaserHolder;
 
-    [SerializeField] protected GameObject targetedEnemy;
+    [SerializeField] private ParticleSystem AOEAttackEffect;
 
-    [SerializeField] private VisualEffect laserEffect;
-
-    private void Start()
-    {
-        laserEffect.SetVector4("LaserColor", new Vector4(255, 0, 255, 1));
-
-    }
+    [SerializeField] protected FieldOfView fieldOfView;
 
     /// <summary>
     /// 
@@ -22,30 +14,17 @@ public class AOETower : BaseTower
     /// <param name="collision"></param>
     protected override void Attack(Collider collision)
     {
-        //Debug.Log(collision.tag);
-
         if (collision.tag == "Enemy")
         {
-            if (targetedEnemy == null)
+            if (fieldOfView.canSeeTarget)
             {
-                targetedEnemy = collision.gameObject;
-            }
-            else if (targetedEnemy != collision.gameObject)
-            {
-                targetedEnemy = collision.gameObject;
-            }
+                for (int x = 0; x < fieldOfView.targetRefs.Count; x++)
+                {
+                    DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, fieldOfView.targetRefs[x].gameObject, 2f, DamageType.None));
+                }
 
-            if (targetedEnemy == collision.gameObject)
-            {
-                DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 10, DamageType.None));
             }
-
-            Debug.Log("ITs in the area");
-        }
-
-        if (targetedEnemy != null && !targetedEnemy.activeSelf)
-        {
-            targetedEnemy = null;
+            
         }
     }
 
@@ -56,23 +35,13 @@ public class AOETower : BaseTower
     /// <param name="target"></param>
     protected override void ShowAttack(GameObject source, GameObject target)
     {
-        //Debug.Log(target);
-        if (target.tag == "Enemy")
+        if (fieldOfView.canSeeTarget)
         {
-            if (target != null)
-            {
-
-                if (targetedEnemy == target)
-                {
-                    LaserHolder.SetActive(true);
-                    LaserHolder.transform.LookAt(new Vector3(target.transform.position.x, (target.transform.position.y + 1.0f), target.transform.position.z));
-                }
-                //Debug.Log(target.transform.position);
-            }
+            AOEAttackEffect.Play();
         }
-        else if (targetedEnemy == null)
+        else
         {
-            LaserHolder.SetActive(false);
+            AOEAttackEffect.Stop();
         }
     }
 }

@@ -17,7 +17,11 @@ public class SpawnTower : BasicTowerInfo
 
     private void Update()
     {
-        SpawnHelperTower();
+        if (isTowerActive)
+        {
+            SpawnHelperTower();
+        }
+        
     }
 
     protected void SpawnHelperTower()

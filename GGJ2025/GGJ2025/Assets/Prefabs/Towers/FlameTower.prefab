@@ -271,6 +271,7 @@ MonoBehaviour:
   bubbleCost: 0
   fieldOfView: {fileID: 0}
   burstEffect: {fileID: 1429268158289080751}
+  targetedEnemy: {fileID: 0}
 --- !u!114 &4642238555378207943
 MonoBehaviour:
   m_ObjectHideFlags: 0

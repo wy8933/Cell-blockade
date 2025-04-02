@@ -9,6 +9,8 @@ public class IndirectTower : BaseTower
 
     [SerializeField] private ParticleSystem burstEffect;
 
+    [SerializeField] protected GameObject targetedEnemy;
+
     // Uses the collision to detect if the enemy is in the area then use the field of view script to check if its in te cone area
 
     private void Awake()
@@ -24,17 +26,35 @@ public class IndirectTower : BaseTower
     {
         if (collision.tag == "Enemy")
         {
-            if (fieldOfView.canSeeTarget)
+            if (targetedEnemy == null)
             {
-                for (int x = 0; x < fieldOfView.targetRefs.Count; x++)
-                {
-                    DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, fieldOfView.targetRefs[x].gameObject, 10, DamageType.None));
-                }
-                
+                targetedEnemy = collision.gameObject;
             }
-            
+            else if (targetedEnemy != collision.gameObject)
+            {
+                targetedEnemy = collision.gameObject;
+            }
+
+            if (targetedEnemy == collision.gameObject)
+            {
+                fieldOfView.gameObject.transform.LookAt(collision.transform.position);
+                burstEffect.gameObject.transform.LookAt(collision.transform.position);
+
+                if (fieldOfView.canSeeTarget)
+                {
+                    for (int x = 0; x < fieldOfView.targetRefs.Count; x++)
+                    {
+                        DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, fieldOfView.targetRefs[x].gameObject, 0.25f, DamageType.None));
+                    }
+
+                }
+            }
         }
 
+        if (targetedEnemy != null && !targetedEnemy.activeSelf)
+        {
+            targetedEnemy = null;
+        }
     }
 
     /// <summary>

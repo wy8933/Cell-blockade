@@ -10,9 +10,7 @@ public class TowerPlacement : MonoBehaviour
 {
     [Header("External Scripts")]
     [SerializeField] private ObjectPlacer objectPlacer;
-
     [SerializeField] private PlacementState placementState;
-
     [SerializeField] private IBuildingState buildingState;
 
     public static TowerPlacement Instance;
@@ -36,13 +34,8 @@ public class TowerPlacement : MonoBehaviour
     [Header("TowerPlacement")]
 
     [SerializeField] private TowerInfo towerDataBase;
-
     [SerializeField] private GridData towerData;
-
     [SerializeField] public int towerRotationDegrees;
-
-    [SerializeField] public Quaternion towerRotation;
-
     private Vector3Int lastDetectedPos = Vector3Int.zero;
 
     public void Awake()
@@ -112,7 +105,7 @@ public class TowerPlacement : MonoBehaviour
 
         Debug.Log(towerData);
 
-        buildingState.OnAction(gridPos, towerRotation);
+        buildingState.OnAction(gridPos);
     }
 
     public void HighlightTile()
