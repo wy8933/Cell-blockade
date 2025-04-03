@@ -8,6 +8,10 @@ public class AOETower : BaseTower
 
     [SerializeField] protected FieldOfView fieldOfView;
 
+    private void Awake()
+    {
+        fieldOfView = gameObject.GetComponentInChildren<FieldOfView>();
+    }
     /// <summary>
     /// 
     /// </summary>
