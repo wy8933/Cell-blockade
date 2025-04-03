@@ -40,6 +40,6 @@ MonoBehaviour:
   - <Name>k__BackingField: AOE
     <ID>k__BackingField: 5
     <Size>k__BackingField: {x: 1, y: 1}
-    <TowerPrice>k__BackingField: 350
+    <TowerPrice>k__BackingField: 200
     <TowerPrefab>k__BackingField: {fileID: 3429697527339959482, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
     <TowerDescription>k__BackingField: 
