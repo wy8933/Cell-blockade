@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Currency
   m_EditorClassIdentifier: 
   initialValue: 50
-  runtimeValue: 1000
+  runtimeValue: 50
   debugEnabled: 0
   saveOn: 1
   resetToInitialValue: 1

@@ -127,10 +127,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TowerSelection"",
+                    ""name"": ""TowerScroll"",
                     ""type"": ""PassThrough"",
                     ""id"": ""8a8eca0a-e59c-4217-a9fb-b561395fa33c"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Numbers"",
+                    ""type"": ""Button"",
+                    ""id"": ""8fc508c0-77e0-4d78-82ec-609f01c7ba3d"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -518,7 +527,73 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TowerSelection"",
+                    ""action"": ""TowerScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4b18760-6d90-494f-8271-4714ce3dda28"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdfec9db-f6e7-4846-b454-cc08ff135928"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""724bfb14-caf0-48f9-9170-b7009b76ac92"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a43bccf5-8f96-4d8b-9bad-8722c934a2b9"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd21f7b5-c2a7-489a-9fc2-c0830b54b79c"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd61d6c8-a9ac-426a-bd17-870722cb2a86"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Numbers"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1117,7 +1192,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_TowerSelection = m_Player.FindAction("TowerSelection", throwIfNotFound: true);
+        m_Player_TowerScroll = m_Player.FindAction("TowerScroll", throwIfNotFound: true);
+        m_Player_Numbers = m_Player.FindAction("Numbers", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1208,7 +1284,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_TowerSelection;
+    private readonly InputAction m_Player_TowerScroll;
+    private readonly InputAction m_Player_Numbers;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1224,7 +1301,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Next => m_Wrapper.m_Player_Next;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @TowerSelection => m_Wrapper.m_Player_TowerSelection;
+        public InputAction @TowerScroll => m_Wrapper.m_Player_TowerScroll;
+        public InputAction @Numbers => m_Wrapper.m_Player_Numbers;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1267,9 +1345,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @TowerSelection.started += instance.OnTowerSelection;
-            @TowerSelection.performed += instance.OnTowerSelection;
-            @TowerSelection.canceled += instance.OnTowerSelection;
+            @TowerScroll.started += instance.OnTowerScroll;
+            @TowerScroll.performed += instance.OnTowerScroll;
+            @TowerScroll.canceled += instance.OnTowerScroll;
+            @Numbers.started += instance.OnNumbers;
+            @Numbers.performed += instance.OnNumbers;
+            @Numbers.canceled += instance.OnNumbers;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1307,9 +1388,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @TowerSelection.started -= instance.OnTowerSelection;
-            @TowerSelection.performed -= instance.OnTowerSelection;
-            @TowerSelection.canceled -= instance.OnTowerSelection;
+            @TowerScroll.started -= instance.OnTowerScroll;
+            @TowerScroll.performed -= instance.OnTowerScroll;
+            @TowerScroll.canceled -= instance.OnTowerScroll;
+            @Numbers.started -= instance.OnNumbers;
+            @Numbers.performed -= instance.OnNumbers;
+            @Numbers.canceled -= instance.OnNumbers;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1503,7 +1587,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnNext(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnTowerSelection(InputAction.CallbackContext context);
+        void OnTowerScroll(InputAction.CallbackContext context);
+        void OnNumbers(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

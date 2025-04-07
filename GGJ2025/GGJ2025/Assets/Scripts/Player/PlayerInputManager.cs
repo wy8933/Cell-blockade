@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using static UnityEngine.Timeline.DirectorControlPlayable;
 
 [RequireComponent(typeof(PlayerInput), typeof(PlayerController))]
@@ -15,12 +16,18 @@ public class PlayerInputManager : MonoBehaviour
 
     [SerializeField] private TowerPlacement _towerPlacement;
 
+    [SerializeField] private TowerUIManager _towerUIManager;
+
     [Header("Input Action References")]
     [SerializeField] private InputActionReference _moveAction;
     [SerializeField] private InputActionReference _pauseAction;
 
     [SerializeField] private InputActionReference _primaryAction;
     [SerializeField] private InputActionReference _secondaryAction;
+
+    //This is used for tower selection
+    [SerializeField] private InputActionReference _numberAction;
+    [SerializeField] private InputActionReference _scrollingAction;
 
     private void Start()
     {
@@ -46,6 +53,10 @@ public class PlayerInputManager : MonoBehaviour
         _secondaryAction.action.performed += OnSecondaryPreformed;
 
         _pauseAction.action.performed += OnPausePerformed;
+
+        _numberAction.action.performed += OnNumberClick;
+
+        _scrollingAction.action.performed += OnScroll;
     }
 
     /// <summary>
@@ -64,6 +75,10 @@ public class PlayerInputManager : MonoBehaviour
         _primaryAction.action.canceled -= OnPrimaryCanceled;
 
         _secondaryAction.action.performed -= OnSecondaryPreformed;
+
+        _numberAction.action.performed -= OnNumberClick;
+        
+        _scrollingAction.action.performed -= OnScroll;
     }
 
     /// <summary>
@@ -91,6 +106,22 @@ public class PlayerInputManager : MonoBehaviour
     /// </summary>
     /// <param name="context"></param>
     private void OnPrimaryPreformed(InputAction.CallbackContext context) {
+        if (_player.isBuildingMode)
+        {
+            TowerPlacement.Instance.StopPlacement();
+        }
+            
+        if (_player.weaponType == WeaponType.ShotGun)
+        {
+            _player.Attack();
+        }
+        else
+        {
+            _player.isShooting = true;
+        }
+  
+        //This is a backup delete if not needed
+        /*
         if (!_player.isBuildingMode)
         {
             if (_player.weaponType == WeaponType.ShotGun)
@@ -102,10 +133,11 @@ public class PlayerInputManager : MonoBehaviour
                 _player.isShooting = true;
             }
         }
-        else if(_player.isBuildingMode)
+        else if (_player.isBuildingMode)
         {
             TowerPlacement.Instance.PlaceTower();
         }
+        */
     }
 
     /// <summary>
@@ -114,16 +146,29 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (!_player.isBuildingMode)
-        {
-            _player.isShooting = false;
+        _player.isShooting = false;
+    }
 
+    /// <summary>
+    /// When pressed if the mode is placing a tower it will plcae a tower, and
+    /// if removing a tower it will remove it
+    /// </summary>
+    /// <param name="context"></param>
+    private void OnSecondaryPreformed(InputAction.CallbackContext context)
+    {
+        if (_player.isBuildingMode)
+        {
+            TowerPlacement.Instance.PlaceTower();
         }
     }
 
-    private void OnSecondaryPreformed(InputAction.CallbackContext context)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name=""></param>
+    private void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        
+
     }
 
     /// <summary>
@@ -138,8 +183,31 @@ public class PlayerInputManager : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="context"></param>
-    private void OnScroll(InputAction.CallbackContext context) { 
-        //GameManager.Instance.Pause();
+    private void OnScroll(InputAction.CallbackContext context) {
+        Vector2 scroll = context.ReadValue<Vector2>();
+
+        if (scroll.y > 0)
+        {
+            Debug.Log("scroll up");
+        }
+        else if (scroll.y < 0)
+        {
+            Debug.Log("scroll down");
+        }
+    }
+
+    private void OnNumberClick(InputAction.CallbackContext context) 
+    {
+        _player.isBuildingMode = true;
+
+        Debug.Log(context.control);
+
+        var control = context.control;
+
+        if (control is KeyControl keyControl)
+        {
+           _towerUIManager.ChangeTowerUI(keyControl);
+        }
     }
 }
 

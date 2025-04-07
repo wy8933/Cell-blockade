@@ -105,10 +105,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TowerSelection",
+                    "name": "TowerScroll",
                     "type": "PassThrough",
                     "id": "8a8eca0a-e59c-4217-a9fb-b561395fa33c",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Numbers",
+                    "type": "Button",
+                    "id": "8fc508c0-77e0-4d78-82ec-609f01c7ba3d",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -496,7 +505,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TowerSelection",
+                    "action": "TowerScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4b18760-6d90-494f-8271-4714ce3dda28",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdfec9db-f6e7-4846-b454-cc08ff135928",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "724bfb14-caf0-48f9-9170-b7009b76ac92",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a43bccf5-8f96-4d8b-9bad-8722c934a2b9",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd21f7b5-c2a7-489a-9fc2-c0830b54b79c",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd61d6c8-a9ac-426a-bd17-870722cb2a86",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Numbers",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
