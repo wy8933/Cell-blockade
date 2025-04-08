@@ -77,7 +77,7 @@ public class EnemyWaveManager : MonoBehaviour
         if (currentWaveIndex >= waves.Count)
         {
             // Reset the wave index
-            currentWaveIndex = 0;
+            currentWaveIndex = waves.Count-1;
 
             // So there is at lease one number of enemy increased
             for (int i = 0; i < waves.Count; i++)
@@ -118,7 +118,7 @@ public class EnemyWaveManager : MonoBehaviour
 
             // Spawn from a random spawner
             EnemySpawner selectedSpawner = enemySpawners[Random.Range(0, enemySpawners.Count)];
-            selectedSpawner.SpawnEnemy();
+            selectedSpawner.SpawnEnemy(wave.enemyTypes[Random.Range(0, wave.enemyTypes.Length)]);
 
             yield return new WaitForSeconds(wave.spawnInterval);
         }
