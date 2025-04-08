@@ -186,6 +186,8 @@ public class PlayerInputManager : MonoBehaviour
     private void OnScroll(InputAction.CallbackContext context) {
         Vector2 scroll = context.ReadValue<Vector2>();
 
+        _towerUIManager.ScrollSelect(scroll);
+
         if (scroll.y > 0)
         {
             Debug.Log("scroll up");

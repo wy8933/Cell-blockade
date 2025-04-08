@@ -53,17 +53,27 @@ public class TowerUIManager : MonoBehaviour
                 break;
             case Key.Digit6:
                 Debug.Log("6");
-                TowerPlacement.Instance.StartRemoving();
+                SelectRemoveButton();
                 break;
         }
     }
 
-    private void SelectButton(int buttonNumberIndex)
+    public void SelectButton(int buttonNumberIndex)
     {
         ResetButtonColors();
-        towerSelectionButtons[buttonNumberIndex - 1].image.color = selectedColor;
-        TowerPlacement.Instance.StartPlacement(buttonNumberIndex);
         selectedButtonNumber = buttonNumberIndex;
+        towerSelectionButtons[selectedButtonNumber - 1].image.color = selectedColor;
+        TowerPlacement.Instance.StartPlacement(selectedButtonNumber);
+        
+    }
+
+    public void SelectRemoveButton()
+    {
+        ResetButtonColors();
+        selectedButtonNumber = 6;
+        towerSelectionButtons[selectedButtonNumber - 1].image.color = selectedColor;
+        TowerPlacement.Instance.StartRemoving();
+        
     }
 
     private void ResetButtonColors()
@@ -71,6 +81,31 @@ public class TowerUIManager : MonoBehaviour
         foreach (Button temp in towerSelectionButtons)
         {
             temp.image.color = oringalColor;
+        }
+    }
+
+    public void ScrollSelect(Vector2 scroll)
+    {
+        if (selectedButtonNumber == 0)
+        {
+            selectedButtonNumber = 1;
+        }
+        if (scroll.y > 0)
+        {
+            selectedButtonNumber += 1;
+            if (selectedButtonNumber > 6)
+            {
+                selectedButtonNumber = 1;
+            }
+            
+        }
+        else if (scroll.y < 0)
+        {
+            selectedButtonNumber -= 1;
+            if (selectedButtonNumber < 1)
+            {
+                selectedButtonNumber = 6;
+            }
         }
     }
 }
