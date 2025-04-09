@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Wave
@@ -30,6 +31,7 @@ public class EnemyWaveManager : MonoBehaviour
     [Header("Wave Timing")]
     public float timeBetweenWaves = 5f;
     public float currenTime;
+    [SerializeField] private GameObject skipWave;
 
     [Header("Spawner Settings")]
     public List<EnemySpawner> enemySpawners;
@@ -56,9 +58,18 @@ public class EnemyWaveManager : MonoBehaviour
         // Ill move this to HUD manager later
         if (currenTime > 0)
         {
-            currenTime -= Time.deltaTime;
+            currenTime -= Time.deltaTime;   
         }
-        
+
+        if (currenTime <= 0)
+        {
+            skipWave.SetActive(false);
+        }
+        else
+        {
+            skipWave.SetActive(true);
+        }
+
         TimerText.text = "Timer until next wave: " + (int)currenTime;
 
     }

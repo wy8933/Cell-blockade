@@ -24,7 +24,7 @@ public class TowerUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EnemyWaveManager.Instance.currenTime >= 0)
+        if (EnemyWaveManager.Instance.currenTime > 0)
         {
             TowerPlacement.Instance.isBuildingMode = true;
             _buttonHolder.SetActive(true);

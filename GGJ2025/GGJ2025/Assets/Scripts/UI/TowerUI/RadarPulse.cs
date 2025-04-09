@@ -6,6 +6,8 @@ public class RadarPulse : MonoBehaviour
 {
     RaycastHit hit;
 
+    private Transform player;
+
     private Transform pulseTransform;
 
     private float pulseSpeed;
@@ -20,7 +22,9 @@ public class RadarPulse : MonoBehaviour
 
     [Header("Radar Values")]
 
-    private RectTransform radarPanel;
+    [SerializeField] private RectTransform radarPanel;
+
+    [SerializeField] private GameObject pingPrefab;
 
     private void Awake()
     {
@@ -39,7 +43,12 @@ public class RadarPulse : MonoBehaviour
             {
                 if (hit.tag == "Enemy")
                 {
+                    Vector3 relativePos = hit.transform.position - player.position;
+                    Vector2 radarPos = new Vector2(relativePos.x, relativePos.z);
 
+                    GameObject ping = Instantiate(pingPrefab, radarPanel);
+                    ping.GetComponent<RectTransform>().anchoredPosition = radarPos;
+                    activePings.Add(ping);
                 }
             }
 
@@ -54,9 +63,10 @@ public class RadarPulse : MonoBehaviour
         {
             pulseCooldown -= Time.deltaTime;
 
-            if (pulseCooldown <= 0)
+            if (pulseCooldown <= 0f)
             {
                 isPulsing = true;
+                ClearPings();
             }
         }
 
@@ -66,7 +76,11 @@ public class RadarPulse : MonoBehaviour
 
     private void ClearPings()
     {
-
+        foreach (GameObject ping in activePings)
+        {
+            Destroy(ping);
+        }
+        activePings.Clear();
     }
 
     private void OnDrawGizmos()
