@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 15
-    Health: 15
+    MaxHealth: 25
+    Health: 25
     MovementSpeed: 3.5
     SprintSpeed: 0
     Resistance: 0
@@ -290,11 +290,11 @@ MonoBehaviour:
   audioSource: {fileID: 9203067772447950622}
   animator: {fileID: 0}
   currencyAmount: 10
+  attackDamage: 10
   detectionRadius: 2
   pathfindingMode: 0
   attackRange: 2
   attackCooldown: 1.5
-  attackDamage: 10
   attackDamageType: 0
   destructibleObjectCheckRate: 10
   checkDistance: 1
