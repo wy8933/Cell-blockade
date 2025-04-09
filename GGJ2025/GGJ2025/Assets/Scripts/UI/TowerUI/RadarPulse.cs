@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RadarPulse : MonoBehaviour
@@ -12,8 +14,13 @@ public class RadarPulse : MonoBehaviour
 
     private float pulseDelay;
     private float pulseCooldown;
-
     private bool isPulsing;
+
+    private List<GameObject> activePings = new List<GameObject>();
+
+    [Header("Radar Values")]
+
+    private RectTransform radarPanel;
 
     private void Awake()
     {
@@ -54,6 +61,11 @@ public class RadarPulse : MonoBehaviour
         }
 
         
+
+    }
+
+    private void ClearPings()
+    {
 
     }
 

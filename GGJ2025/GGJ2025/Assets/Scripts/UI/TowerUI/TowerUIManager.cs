@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TowerUIManager : MonoBehaviour
 {
 
-    [SerializeField] private TowerInfo towerDataBase;
+    [SerializeField] private GameObject _buttonHolder; 
 
     [SerializeField] private int currentTowerSelectedIndex;
 
@@ -24,7 +24,17 @@ public class TowerUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (EnemyWaveManager.Instance.currenTime >= 0)
+        {
+            TowerPlacement.Instance.isBuildingMode = true;
+            _buttonHolder.SetActive(true);
+        }
+        else
+        {
+            TowerPlacement.Instance.isBuildingMode = false;
+            _buttonHolder.SetActive(false);
+        }
+
     }
 
     public void ChangeTowerUI(KeyControl keyControl)
@@ -86,10 +96,7 @@ public class TowerUIManager : MonoBehaviour
 
     public void ScrollSelect(Vector2 scroll)
     {
-        if (selectedButtonNumber == 0)
-        {
-            selectedButtonNumber = 1;
-        }
+        //Debug.Log(scroll.y);
         if (scroll.y > 0)
         {
             selectedButtonNumber += 1;
@@ -97,7 +104,7 @@ public class TowerUIManager : MonoBehaviour
             {
                 selectedButtonNumber = 1;
             }
-            
+
         }
         else if (scroll.y < 0)
         {
@@ -106,6 +113,15 @@ public class TowerUIManager : MonoBehaviour
             {
                 selectedButtonNumber = 6;
             }
+        }
+
+        if (selectedButtonNumber != 6)
+        {
+            SelectButton(selectedButtonNumber);
+        }
+        else
+        {
+            SelectRemoveButton();
         }
     }
 }

@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour
     public WeaponType weaponType;
     public GameObject playerModel;
 
-    [Header("Build Mode")]
-    public bool isBuildingMode;
-
     [Header("Movement/Rotation")]
     public float maxSpeed;
     public Vector2 moveDirection;

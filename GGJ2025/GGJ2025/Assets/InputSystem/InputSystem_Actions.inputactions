@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkipWave",
+                    "type": "Button",
+                    "id": "62e3b478-b614-4eac-9703-10f69a076fef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -572,6 +581,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Numbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33572e74-55b3-4936-9c94-ca8c7d901dc1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipWave",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -143,6 +143,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipWave"",
+                    ""type"": ""Button"",
+                    ""id"": ""62e3b478-b614-4eac-9703-10f69a076fef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -594,6 +603,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33572e74-55b3-4936-9c94-ca8c7d901dc1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipWave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1194,6 +1214,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_TowerScroll = m_Player.FindAction("TowerScroll", throwIfNotFound: true);
         m_Player_Numbers = m_Player.FindAction("Numbers", throwIfNotFound: true);
+        m_Player_SkipWave = m_Player.FindAction("SkipWave", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1286,6 +1307,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_TowerScroll;
     private readonly InputAction m_Player_Numbers;
+    private readonly InputAction m_Player_SkipWave;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1303,6 +1325,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @TowerScroll => m_Wrapper.m_Player_TowerScroll;
         public InputAction @Numbers => m_Wrapper.m_Player_Numbers;
+        public InputAction @SkipWave => m_Wrapper.m_Player_SkipWave;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1351,6 +1374,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Numbers.started += instance.OnNumbers;
             @Numbers.performed += instance.OnNumbers;
             @Numbers.canceled += instance.OnNumbers;
+            @SkipWave.started += instance.OnSkipWave;
+            @SkipWave.performed += instance.OnSkipWave;
+            @SkipWave.canceled += instance.OnSkipWave;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1394,6 +1420,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Numbers.started -= instance.OnNumbers;
             @Numbers.performed -= instance.OnNumbers;
             @Numbers.canceled -= instance.OnNumbers;
+            @SkipWave.started -= instance.OnSkipWave;
+            @SkipWave.performed -= instance.OnSkipWave;
+            @SkipWave.canceled -= instance.OnSkipWave;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1589,6 +1618,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnTowerScroll(InputAction.CallbackContext context);
         void OnNumbers(InputAction.CallbackContext context);
+        void OnSkipWave(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

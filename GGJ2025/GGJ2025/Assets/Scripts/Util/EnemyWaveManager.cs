@@ -29,7 +29,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     [Header("Wave Timing")]
     public float timeBetweenWaves = 5f;
-    private float currenTime;
+    public float currenTime;
 
     [Header("Spawner Settings")]
     public List<EnemySpawner> enemySpawners;
@@ -54,8 +54,13 @@ public class EnemyWaveManager : MonoBehaviour
     public void Update()
     {
         // Ill move this to HUD manager later
-        currenTime -= Time.deltaTime;
+        if (currenTime > 0)
+        {
+            currenTime -= Time.deltaTime;
+        }
+        
         TimerText.text = "Timer until next wave: " + (int)currenTime;
+
     }
 
     /// <summary>

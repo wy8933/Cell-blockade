@@ -1328,7 +1328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 240572768}
   - component: {fileID: 240572771}
-  - component: {fileID: 240572770}
   - component: {fileID: 240572769}
   m_Layer: 0
   m_Name: TowerManager
@@ -1364,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f792f068d467464b9164c2c79833bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBuildingMode: 0
   objectPlacer: {fileID: 1854010969}
   grid: {fileID: 367840541}
   turretTilemap: {fileID: 1098594816}
@@ -1371,20 +1371,6 @@ MonoBehaviour:
   previewSystem: {fileID: 677950405}
   towerDataBase: {fileID: 11400000, guid: 78b386edd778c70499cdb41f77b1b004, type: 2}
   towerData: {fileID: 240572771}
-  towerRotationDegrees: 0
---- !u!114 &240572770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240572767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd95a9ef55b436468c05211315a7175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 212167510}
 --- !u!114 &240572771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5765,6 +5751,7 @@ MonoBehaviour:
   isWaveActive: 0
   enemyIncreaseFactor: 1.1
   timeBetweenWaves: 5
+  currenTime: 0
   enemySpawners:
   - {fileID: 0}
   - {fileID: 0}
@@ -5914,7 +5901,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 22.5, y: -268.2}
-  m_SizeDelta: {x: 72.752, y: 72.75201}
+  m_SizeDelta: {x: 72.752, y: 72.752014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603023631
 MonoBehaviour:
@@ -5928,7 +5915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c0783079790694bbbaaf70c950e855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerDataBase: {fileID: 0}
+  _buttonHolder: {fileID: 1767388641}
   currentTowerSelectedIndex: 0
   towerSelectionButtons:
   - {fileID: 287164144}
@@ -6320,6 +6307,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a48e793df76aeb428c656291c32a26d, type: 3}
+--- !u!1 &1717763216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717763217}
+  m_Layer: 0
+  m_Name: TestRadar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1717763217
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717763216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.824368}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.7358837, y: 1.1615015}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1720938425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6491,9 +6513,9 @@ RectTransform:
   - {fileID: 1261278620}
   m_Father: {fileID: 1603023630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1781242158
@@ -8309,3 +8331,4 @@ SceneRoots:
   - {fileID: 7832658917374380803}
   - {fileID: 1220480666492640625}
   - {fileID: 4830846629564288701}
+  - {fileID: 1717763217}

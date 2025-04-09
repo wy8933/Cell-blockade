@@ -14,8 +14,6 @@ public class PlayerInputManager : MonoBehaviour
 
     public Animator playerAnimator;
 
-    [SerializeField] private TowerPlacement _towerPlacement;
-
     [SerializeField] private TowerUIManager _towerUIManager;
 
     [Header("Input Action References")]
@@ -29,6 +27,8 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] private InputActionReference _numberAction;
     [SerializeField] private InputActionReference _scrollingAction;
 
+    //Wave Skip
+    [SerializeField] private InputActionReference _SpaceAction;
     private void Start()
     {
         _player = GetComponent<PlayerController>();
@@ -57,6 +57,8 @@ public class PlayerInputManager : MonoBehaviour
         _numberAction.action.performed += OnNumberClick;
 
         _scrollingAction.action.performed += OnScroll;
+
+        _SpaceAction.action.performed += OnWaveSkip;
     }
 
     /// <summary>
@@ -79,6 +81,8 @@ public class PlayerInputManager : MonoBehaviour
         _numberAction.action.performed -= OnNumberClick;
         
         _scrollingAction.action.performed -= OnScroll;
+
+        _SpaceAction.action.performed -= OnWaveSkip;
     }
 
     /// <summary>
@@ -106,9 +110,10 @@ public class PlayerInputManager : MonoBehaviour
     /// </summary>
     /// <param name="context"></param>
     private void OnPrimaryPreformed(InputAction.CallbackContext context) {
-        if (_player.isBuildingMode)
+        if (TowerPlacement.Instance.isBuildingMode)
         {
             TowerPlacement.Instance.StopPlacement();
+            TowerPlacement.Instance.isBuildingMode = false;
         }
             
         if (_player.weaponType == WeaponType.ShotGun)
@@ -119,25 +124,6 @@ public class PlayerInputManager : MonoBehaviour
         {
             _player.isShooting = true;
         }
-  
-        //This is a backup delete if not needed
-        /*
-        if (!_player.isBuildingMode)
-        {
-            if (_player.weaponType == WeaponType.ShotGun)
-            {
-                _player.Attack();
-            }
-            else
-            {
-                _player.isShooting = true;
-            }
-        }
-        else if (_player.isBuildingMode)
-        {
-            TowerPlacement.Instance.PlaceTower();
-        }
-        */
     }
 
     /// <summary>
@@ -156,7 +142,7 @@ public class PlayerInputManager : MonoBehaviour
     /// <param name="context"></param>
     private void OnSecondaryPreformed(InputAction.CallbackContext context)
     {
-        if (_player.isBuildingMode)
+        if (TowerPlacement.Instance.isBuildingMode)
         {
             TowerPlacement.Instance.PlaceTower();
         }
@@ -198,9 +184,13 @@ public class PlayerInputManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detects the inputs from numbers 1 - 6 and calls a method from towerUIManager 
+    /// </summary>
+    /// <param name="context"></param>
     private void OnNumberClick(InputAction.CallbackContext context) 
     {
-        _player.isBuildingMode = true;
+        TowerPlacement.Instance.isBuildingMode = true;
 
         Debug.Log(context.control);
 
@@ -210,6 +200,11 @@ public class PlayerInputManager : MonoBehaviour
         {
            _towerUIManager.ChangeTowerUI(keyControl);
         }
+    }
+
+    private void OnWaveSkip(InputAction.CallbackContext context)
+    {
+        EnemyWaveManager.Instance.currenTime = 0;
     }
 }
 
