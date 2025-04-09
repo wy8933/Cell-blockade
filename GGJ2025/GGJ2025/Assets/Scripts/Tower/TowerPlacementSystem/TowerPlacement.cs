@@ -8,6 +8,9 @@ using UnityEngine.Tilemaps;
 
 public class TowerPlacement : MonoBehaviour
 {
+    [Header("Build Mode")]
+    public bool isBuildingMode;
+
     [Header("External Scripts")]
     [SerializeField] private ObjectPlacer objectPlacer;
     [SerializeField] private PlacementState placementState;
@@ -35,7 +38,6 @@ public class TowerPlacement : MonoBehaviour
 
     [SerializeField] private TowerInfo towerDataBase;
     [SerializeField] private GridData towerData;
-    [SerializeField] public int towerRotationDegrees;
     private Vector3Int lastDetectedPos = Vector3Int.zero;
 
     public void Awake()
@@ -63,7 +65,6 @@ public class TowerPlacement : MonoBehaviour
     {
         StopPlacement();
         gridVisualiztion.SetActive(true);
-        TowerManager.Instance.EnterBuildingMode();
         //ID can be changed if needed remove the ID input and replace ID with selectedTowerIndex
         buildingState = new PlacementState(objectPlacer, previewSystem, ID, grid, towerDataBase, towerData);
     }
@@ -74,7 +75,7 @@ public class TowerPlacement : MonoBehaviour
         gridVisualiztion.SetActive(true);
         buildingState = new RemovingState(objectPlacer, previewSystem, grid, towerData);
 
-        Debug.Log(buildingState);
+        //Debug.Log(buildingState);
     }
 
     public void StopPlacement()
