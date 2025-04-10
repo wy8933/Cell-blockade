@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CoreMaxHealth
   m_EditorClassIdentifier: 
   initialValue: 1000
-  runtimeValue: 1000
+  runtimeValue: 1.1111112e+9
   debugEnabled: 0
   saveOn: 1
   resetToInitialValue: 0
