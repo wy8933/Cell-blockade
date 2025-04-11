@@ -43,6 +43,8 @@ public class EnemyWaveManager : MonoBehaviour
     public event OnWaveStart WaveStarted;
 
     public TextMeshProUGUI TimerText;
+
+    private IEnumerator _waitForNextWaveRoutine;
     private void Awake()
     {
         Instance = this;
@@ -50,6 +52,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void Start()
     {
+        _waitForNextWaveRoutine = WaitForNextWave();
         StartCoroutine(StartWaveCoroutine());
     }
 
@@ -73,6 +76,25 @@ public class EnemyWaveManager : MonoBehaviour
         TimerText.text = "Timer until next wave: " + (int)currenTime;
 
     }
+
+    /// <summary>
+    /// skit to the next wave
+    /// </summary>
+    public void SkipWave()
+    {
+        if (_waitForNextWaveRoutine != null)
+        {
+            StopCoroutine(_waitForNextWaveRoutine);
+            TimerText.gameObject.SetActive(false);
+            currentWaveIndex++;
+            StartNextWave();
+        }
+        else {
+            Debug.Log("no referencce");
+        }
+    }
+
+
 
     /// <summary>
     /// Pause for seconds and start the wave
@@ -140,7 +162,9 @@ public class EnemyWaveManager : MonoBehaviour
         }
 
         isWaveActive = false;
-        StartCoroutine(WaitForNextWave());
+
+        _waitForNextWaveRoutine = WaitForNextWave();
+        StartCoroutine(_waitForNextWaveRoutine);
     }
 
     /// <summary>
