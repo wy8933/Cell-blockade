@@ -56,6 +56,8 @@ public class TowerPlacement : MonoBehaviour
 
         towerData = new GridData();
 
+        gridVisualiztion.SetActive(false);
+
     }
 
     /// <summary>
