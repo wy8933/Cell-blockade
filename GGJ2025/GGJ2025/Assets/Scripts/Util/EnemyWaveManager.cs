@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,12 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
+public struct EnemySpawn
+{
+    public EnemyType enemyType;
+    public float chance;
+}
+
+[System.Serializable]
 public class Wave
 {
     public string waveName;
     public int baseEnemyCount;
     public float spawnInterval;
-    public EnemyType[] enemyTypes;
+    public List<EnemySpawn> enemyTypes;
     public bool isBossWave;
     public EnemyType bossType;
     public bool isBuffWave;
@@ -133,8 +141,20 @@ public class EnemyWaveManager : MonoBehaviour
             }
 
             // Spawn from a random spawner
-            EnemySpawner selectedSpawner = enemySpawners[Random.Range(0, enemySpawners.Count)];
-            selectedSpawner.SpawnEnemy(wave.enemyTypes[Random.Range(0, wave.enemyTypes.Length)]);
+            EnemySpawner selectedSpawner = enemySpawners[UnityEngine.Random.Range(0, enemySpawners.Count)];
+
+            float randomFloat = UnityEngine.Random.Range(0.0f,1.0f);
+            float currentChance = 0;
+
+            foreach (EnemySpawn value in wave.enemyTypes) {
+                currentChance += value.chance;
+
+                if (currentChance >= randomFloat)
+                {
+                    selectedSpawner.SpawnEnemy(value.enemyType);
+                    break; 
+                }
+            }
 
             yield return new WaitForSeconds(wave.spawnInterval);
         }
