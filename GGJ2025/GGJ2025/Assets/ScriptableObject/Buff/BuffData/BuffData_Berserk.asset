@@ -19,9 +19,8 @@ MonoBehaviour:
   maxStack: 1
   priority: 0
   price: 100
-  rarity: 3
+  rarity: 2
   tags: []
-  toPlayer: 0
   isForever: 1
   duration: 0
   tickTime: 0

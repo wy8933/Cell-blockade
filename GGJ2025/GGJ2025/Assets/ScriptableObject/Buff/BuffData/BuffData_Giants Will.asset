@@ -18,10 +18,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   maxStack: 1
   priority: 0
-  price: 75
+  price: 100
   rarity: 2
   tags: []
-  toPlayer: 0
   isForever: 1
   duration: 0
   tickTime: 0

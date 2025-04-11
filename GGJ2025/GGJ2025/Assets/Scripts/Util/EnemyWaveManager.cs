@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,19 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct EnemySpawn
-{
-    public EnemyType enemyType;
-    public float chance;
-}
-
-[System.Serializable]
 public class Wave
 {
     public string waveName;
     public int baseEnemyCount;
     public float spawnInterval;
-    public List<EnemySpawn> enemyTypes;
+    public EnemyType[] enemyTypes;
     public bool isBossWave;
     public EnemyType bossType;
     public bool isBuffWave;
@@ -51,8 +43,6 @@ public class EnemyWaveManager : MonoBehaviour
     public event OnWaveStart WaveStarted;
 
     public TextMeshProUGUI TimerText;
-
-    private IEnumerator _waitForNextWaveRoutine;
     private void Awake()
     {
         Instance = this;
@@ -60,7 +50,6 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void Start()
     {
-        _waitForNextWaveRoutine = WaitForNextWave();
         StartCoroutine(StartWaveCoroutine());
     }
 
@@ -84,25 +73,6 @@ public class EnemyWaveManager : MonoBehaviour
         TimerText.text = "Timer until next wave: " + (int)currenTime;
 
     }
-
-    /// <summary>
-    /// skit to the next wave
-    /// </summary>
-    public void SkipWave()
-    {
-        if (_waitForNextWaveRoutine != null)
-        {
-            StopCoroutine(_waitForNextWaveRoutine);
-            TimerText.gameObject.SetActive(false);
-            currentWaveIndex++;
-            StartNextWave();
-        }
-        else {
-            Debug.Log("no referencce");
-        }
-    }
-
-
 
     /// <summary>
     /// Pause for seconds and start the wave
@@ -163,28 +133,14 @@ public class EnemyWaveManager : MonoBehaviour
             }
 
             // Spawn from a random spawner
-            EnemySpawner selectedSpawner = enemySpawners[UnityEngine.Random.Range(0, enemySpawners.Count)];
-
-            float randomFloat = UnityEngine.Random.Range(0.0f,1.0f);
-            float currentChance = 0;
-
-            foreach (EnemySpawn value in wave.enemyTypes) {
-                currentChance += value.chance;
-
-                if (currentChance >= randomFloat)
-                {
-                    selectedSpawner.SpawnEnemy(value.enemyType);
-                    break; 
-                }
-            }
+            EnemySpawner selectedSpawner = enemySpawners[Random.Range(0, enemySpawners.Count)];
+            selectedSpawner.SpawnEnemy(wave.enemyTypes[Random.Range(0, wave.enemyTypes.Length)]);
 
             yield return new WaitForSeconds(wave.spawnInterval);
         }
 
         isWaveActive = false;
-
-        _waitForNextWaveRoutine = WaitForNextWave();
-        StartCoroutine(_waitForNextWaveRoutine);
+        StartCoroutine(WaitForNextWave());
     }
 
     /// <summary>

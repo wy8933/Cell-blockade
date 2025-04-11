@@ -25,6 +25,7 @@ public class Wound : MonoBehaviour
             BaseEnemy enemy = other.GetComponent<BaseEnemy>();
             enemy.Die();
             CurrentHealth.Value -= enemy.attackDamage;
+            Debug.Log(CurrentHealth.Value);
             hpText.text = "Current Core HP:" + CurrentHealth.Value;
             if (CurrentHealth.Value <= 0)
             {

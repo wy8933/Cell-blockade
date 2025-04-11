@@ -1,4 +1,3 @@
-using ObjectPoolings;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpawnEntityBuffModule", menuName = "BuffSystem/SpawnEntityBuffModule")]
@@ -11,9 +10,9 @@ public class SpawnEntityBuffModule : BaseBuffModule
     {
         for (int i =0; i< count; i++)
         {
-            var (objectInstance, enemyPool) = ObjectPooling.GetOrCreate(gameObject, buffInfo.creator.transform.position, buffInfo.creator.transform.rotation, "Enemies");
-            objectInstance.GetComponent<BaseEnemy>().InitEnemy(enemyPool);
+            Instantiate(gameObject);
         }
+        Debug.Log(123);
     }
 }
 
