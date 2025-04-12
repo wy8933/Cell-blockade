@@ -48,7 +48,7 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
         {
             _targetObject = null;
         }
-        //THe character starts walking towards the enemy that its been assigned 
+        //THe character starts _iswalking towards the enemy that its been assigned 
         else if (_targetObject != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, _targetObject.transform.position, movementSpeed * Time.deltaTime);

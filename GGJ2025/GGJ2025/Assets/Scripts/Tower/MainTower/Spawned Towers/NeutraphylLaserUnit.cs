@@ -16,10 +16,13 @@ public class NeutraphylLaserUnit : MonoBehaviour
     [SerializeField] private VisualEffect laserEffect;
 
     [Header("Random Walk")]
-    [SerializeField] private bool walking;
-
+    [SerializeField] private bool _iswalking;
     [SerializeField] private Vector3 spawnTowerLocation;
     [SerializeField] private float radius;
+
+    [SerializeField] private float waitTime;
+    [SerializeField] private bool hasTargetPoint;
+    [SerializeField] private float waitTimer;
 
     void Awake()
     {
@@ -34,13 +37,21 @@ public class NeutraphylLaserUnit : MonoBehaviour
 
     private void Update()
     {
-        if (walking)
+        if (_iswalking)
         {
             RoamingWalk();
         }
     }
 
     private void RoamingWalk()
+    {
+        if (!hasTargetPoint)
+        {
+
+        }
+    }
+
+    private void PickNewPoint()
     {
 
     }
@@ -78,7 +89,7 @@ public class NeutraphylLaserUnit : MonoBehaviour
             {
                 laserEffect.gameObject.SetActive(true);
                 DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, collision.gameObject, 1, DamageType.None));
-                walking = false;
+                _iswalking = false;
             }
 
             //Debug.Log("ITs in the area");
@@ -88,7 +99,7 @@ public class NeutraphylLaserUnit : MonoBehaviour
         {
             laserEffect.gameObject.SetActive(false);
             targetedEnemy = null;
-            walking = true;
+            _iswalking = true;
         }
     }
 
@@ -118,4 +129,6 @@ public class NeutraphylLaserUnit : MonoBehaviour
             LaserHolder.SetActive(false);
         }
     }
+
+
 }
