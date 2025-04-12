@@ -33,7 +33,6 @@ public class TowerUIManager : MonoBehaviour
         {
             TowerPlacement.Instance.isBuildingMode = false;
             _buttonHolder.SetActive(false);
-            TowerPlacement.Instance.StopPlacement();
         }
 
     }

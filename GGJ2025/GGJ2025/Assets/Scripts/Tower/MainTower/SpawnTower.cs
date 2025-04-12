@@ -11,6 +11,8 @@ public class SpawnTower : BasicTowerInfo
 
     private float timer;
 
+    private List<Collider> collidersInTrigger = new List<Collider>();
+
     [SerializeField] protected GameObject spawnedAllyPrefab;
 
     private void Update()
@@ -29,12 +31,53 @@ public class SpawnTower : BasicTowerInfo
             timer += Time.deltaTime;
             if (timer >= spawnDelay)
             {
-                GameObject tempObject = Instantiate(spawnedAllyPrefab, transform.position + new Vector3(1, 0.5f, 1), Quaternion.identity);
-                tempObject.GetComponent<NeutraphylLaserUnit>().SpawnTowerLocation = transform.position + new Vector3(1, 0.5f, 1);
-                spawnedChildren.Add(tempObject);
+                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, transform.position + new Vector3(1,0.5f,1), Quaternion.identity));
                 timer = 0;
             }
 
+        }
+    }
+
+    private void AssignTarget(Collider target)
+    {
+        
+        if (target != null)
+        {
+            if (target.tag == "Enemy")
+            {
+                foreach (Collider col in collidersInTrigger)
+                {
+                    for (int x = 0; x < spawnedChildren.Count; x++)
+                    {
+                        if (spawnedChildren[x] == null)
+                        {
+                            spawnedChildren.RemoveAt(x);
+                            break;
+                        }
+                        if (spawnedChildren[x] != null)
+                        {
+                            spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetObject = target.gameObject;
+                        }
+
+                    }
+                }
+                
+            }
+        }
+
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+       AssignTarget(other);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!collidersInTrigger.Contains(other)) // Avoid duplicates
+        {
+            collidersInTrigger.Add(other);
         }
     }
 }
