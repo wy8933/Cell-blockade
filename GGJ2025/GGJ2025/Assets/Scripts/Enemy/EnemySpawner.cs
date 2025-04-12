@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public void SpawnEnemy(EnemyType enemyType = EnemyType.germ1) {
         var (objectInstance, enemyPool) = ObjectPooling.GetOrCreate(enemyPrefabs[(int)enemyType], transform.position, transform.rotation, "Enemies");
-        Debug.Log(objectInstance.transform.position+":"+transform.position);
         objectInstance.GetComponent<BaseEnemy>().InitEnemy(enemyPool);
     }
 

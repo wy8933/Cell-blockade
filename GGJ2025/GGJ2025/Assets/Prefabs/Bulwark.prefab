@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25e402635ae120441a1d1f216cc6a0dd, type: 3}
       propertyPath: m_Name
-      value: Bulwark
+      value: TankGerm
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25e402635ae120441a1d1f216cc6a0dd, type: 3}
       propertyPath: m_Layer
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 50
-    Health: 50
+    MaxHealth: 30
+    Health: 30
     MovementSpeed: 2
     SprintSpeed: 0
     Resistance: 0

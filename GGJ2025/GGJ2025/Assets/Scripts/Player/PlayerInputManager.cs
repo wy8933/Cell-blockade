@@ -205,7 +205,6 @@ public class PlayerInputManager : MonoBehaviour
     private void OnWaveSkip(InputAction.CallbackContext context)
     {
         EnemyWaveManager.Instance.currenTime = 0;
-        EnemyWaveManager.Instance.SkipWave();
     }
 }
 

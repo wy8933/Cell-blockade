@@ -15,7 +15,7 @@ MonoBehaviour:
   moduleName: LifeSteal
   moduleType: 0
   stats:
-    CurrentHealth: 5
+    CurrentHealth: 25
     CurrentShield: 0
     MaxHealth: 0
     Resistance: 0
