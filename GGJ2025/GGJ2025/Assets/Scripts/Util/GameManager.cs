@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void ModifyCurrency(float amount) 
     {
         Currency.Value += amount;
-        currencyText.text = "Currency: " + Currency.Value.ToString();
+        currencyText.text = $"Currency: {((int)Currency.Value)}";
     }
 
 

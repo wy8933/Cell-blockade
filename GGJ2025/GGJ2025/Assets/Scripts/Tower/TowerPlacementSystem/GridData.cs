@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GridData : MonoBehaviour
 {
-    Dictionary<Vector3Int, PlacementData> placedObjects = new();
+    Dictionary<Vector3Int, PlacementData> placedObjects = new Dictionary<Vector3Int, PlacementData>();
 
     /// <summary>
     /// 

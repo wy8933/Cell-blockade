@@ -9,8 +9,8 @@ public class ObjectPlacer : MonoBehaviour
     public int PlaceObject(GameObject towerPrefab, Vector3 pos)
     {
         GameObject newObject = Instantiate(towerPrefab);
-        newObject.transform.position = pos; 
-
+        newObject.transform.position = pos;
+        newObject.GetComponent<BasicTowerInfo>().isTowerActive = true;
         placedGameObjects.Add(newObject);
 
         return placedGameObjects.Count - 1;
@@ -20,6 +20,7 @@ public class ObjectPlacer : MonoBehaviour
     {
         GameObject newObject = Instantiate(towerPrefab);
         newObject.transform.position = pos;
+        newObject.GetComponent<BasicTowerInfo>().isTowerActive = true;
         foreach (Transform child in newObject.transform)
         {
             child.rotation = rot;

@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.Rendering;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -14,9 +15,6 @@ public class PlayerController : MonoBehaviour
     public EntityStats Stats;
     public WeaponType weaponType;
     public GameObject playerModel;
-
-    [Header("Build Mode")]
-    public bool isBuildingMode;
 
     [Header("Movement/Rotation")]
     public float maxSpeed;
@@ -48,7 +46,10 @@ public class PlayerController : MonoBehaviour
         _playerRB = GetComponent<Rigidbody>();
         _playerRB.maxLinearVelocity = maxSpeed;
 
+        ResetStats();
+
         // Init the HUD UI
+        Stats.CurrentHealth.Value = Stats.MaxHealth.Value;
         HUDManager.Instance.SetMaxHealth(Stats.MaxHealth.Value);
         HUDManager.Instance.SetHealth(Stats.CurrentHealth.Value);
     }
@@ -193,6 +194,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Die()
     {
+        Stats.CurrentHealth.Value = 0;
+        HUDManager.Instance.SetHealth(0);
+        HUDManager.Instance.WriteAllStatsToUI(Stats);
         GameManager.Instance.GameOver();
     }
 
@@ -233,10 +237,30 @@ public class PlayerController : MonoBehaviour
         GainBubble(bubbleGainAmount);
     }
 
+    private void ResetStats()
+    {
+        Stats.MaxHealth.Value = Stats.MaxHealth.initialValue;
+        Stats.CurrentHealth.Value = Stats.CurrentHealth.initialValue;
+        Stats.MovementSpeed.Value = Stats.MovementSpeed.initialValue;
+        Stats.SprintSpeed.Value =  Stats.SprintSpeed.initialValue;
+        Stats.Resistance.Value = Stats.Resistance.initialValue;
+
+        Stats.CurrentShield.Value = Stats.CurrentShield.initialValue;
+        Stats.DamageReduction.Value = Stats.DamageReduction.initialValue;
+        Stats.BlockChance.Value = Stats.BlockChance.initialValue;
+
+        Stats.SlowResistance.Value = Stats.SlowResistance.initialValue;
+
+        Stats.AtkMultiplier.Value = (Stats.AtkMultiplier.initialValue);
+        Stats.DamageReductionMultiplier.Value = (Stats.DamageReductionMultiplier.initialValue);
+        Stats.ResistanceMultiplier.Value = (Stats.ResistanceMultiplier.initialValue);
+        Stats.SpeedMultiplier.Value = (Stats.SpeedMultiplier.initialValue);
+        Stats.OxygenDropMultiplier.Value = (Stats.OxygenDropMultiplier.initialValue);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "DeadZone") {
-            TakeDamage(99999999999);
             Die();
         }
     }

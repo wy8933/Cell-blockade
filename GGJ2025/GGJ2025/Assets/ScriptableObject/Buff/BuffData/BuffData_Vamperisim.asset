@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 31041
   buffName: Vamperisim
-  description: Heal 25 for every time you hit an enemy
+  description: Heal 5 for every time you hit an enemy
   icon: {fileID: 0}
   maxStack: 1
   priority: 0
-  price: 250
+  price: 100
   rarity: 3
   tags: []
+  toPlayer: 1
   isForever: 1
   duration: 0
   tickTime: 0

@@ -31,7 +31,7 @@ public class NeutraphylSpawnedUnit : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(gameObject);
-            DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, other.gameObject, 1, DamageType.None));
+            DamageManager.Instance.ManageDamage(new DamageInfo(gameObject, other.gameObject, 10, DamageType.None));
         }
         
     }
