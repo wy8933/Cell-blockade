@@ -56,6 +56,8 @@ public class TowerPlacement : MonoBehaviour
 
         towerData = new GridData();
 
+        gridVisualiztion.SetActive(false);
+
     }
 
     /// <summary>
@@ -71,11 +73,12 @@ public class TowerPlacement : MonoBehaviour
 
     public void StartRemoving()
     {
+
         StopPlacement();
         gridVisualiztion.SetActive(true);
         buildingState = new RemovingState(objectPlacer, previewSystem, grid, towerData);
 
-        //Debug.Log(buildingState);
+        Debug.Log(buildingState);
     }
 
     public void StopPlacement()
@@ -104,7 +107,7 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        Debug.Log(towerData);
+        //Debug.Log(towerData);
 
         buildingState.OnAction(gridPos);
     }

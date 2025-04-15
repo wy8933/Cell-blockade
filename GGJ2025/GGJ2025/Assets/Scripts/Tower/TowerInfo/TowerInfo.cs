@@ -23,8 +23,5 @@ public class TowerInfo : ScriptableObject
     [field: SerializeField] public GameObject TowerPrefab { get; private set; }
     //a quick description of the tower
     [field: SerializeField] public string TowerDescription { get; private set; }
-
-    
-
 }
 
