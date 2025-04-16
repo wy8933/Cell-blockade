@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 20010
   buffName: Attack Increase
   description: Increse Attack by 25%
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7f5dcf3bdb46de749a08d3ece8c910f4, type: 3}
   maxStack: 25
   priority: 0
   price: 25

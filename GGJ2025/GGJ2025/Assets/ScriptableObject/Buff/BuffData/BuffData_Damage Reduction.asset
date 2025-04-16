@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 10080
   buffName: Damage Reduction
   description: Add 5% to damage reduction
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b2b69ed50f857ce43bb6626a84622a52, type: 3}
   maxStack: 999
   priority: 0
   price: 50
