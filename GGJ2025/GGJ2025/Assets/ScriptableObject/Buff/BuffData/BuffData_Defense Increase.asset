@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 10050
   buffName: Defense Increase
   description: Increase layer defense by 5 per stack
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 683ec8316dfa07f429a27df4494cbe9b, type: 3}
   maxStack: 999
   priority: 0
   price: 25

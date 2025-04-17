@@ -15,12 +15,13 @@ MonoBehaviour:
   id: 31040
   buffName: God Mode
   description: Increase Health and Attack By 1000
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f7122ddfdc8fba64bb90b70dc39f3f58, type: 3}
   maxStack: 100
   priority: 0
   price: 1000
   rarity: 4
   tags: []
+  toPlayer: 0
   isForever: 1
   duration: 0
   tickTime: 0

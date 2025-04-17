@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 20030
   buffName: Movement Speed Increase
   description: Increase Speed By 5
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ad5051087fe89c9438c1dc9d66374a1c, type: 3}
   maxStack: 10
   priority: 0
   price: 25
