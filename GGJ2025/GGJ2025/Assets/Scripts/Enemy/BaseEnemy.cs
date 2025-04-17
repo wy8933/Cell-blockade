@@ -69,6 +69,10 @@ public class BaseEnemy : MonoBehaviour
         currentState = EnemyAIState.Chase;
         // For initialization, default to targeting the core.
         currentTarget = Wound.Instance.transform;
+
+        GetComponent<BuffHandler>().ActiveBuffs.Clear();
+        GetComponent<BuffHandler>().InitBuffs();
+
         ApplyScaling(EnemyWaveManager.Instance.enemyIncreaseFactor, EnemyWaveManager.Instance.currentWaveIndex);
         GameManager.Instance.CurrentEnemyList.Add(gameObject);
     }

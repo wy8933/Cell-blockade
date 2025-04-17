@@ -23,6 +23,7 @@ public class DamageManager : MonoBehaviour
 
         if (creatorBuffHandler) {
             foreach (var buffInfo in creatorBuffHandler.ActiveBuffs) {
+                buffInfo.creator = creatorBuffHandler.gameObject;
                 buffInfo.target = targetBuffHandler.gameObject;
                 
                 if (buffInfo.buffData.OnHit) {
