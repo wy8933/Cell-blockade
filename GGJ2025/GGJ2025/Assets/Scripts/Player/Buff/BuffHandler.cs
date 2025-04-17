@@ -18,16 +18,21 @@ public class BuffHandler : MonoBehaviour
     #region Core Buff Management
     private void Start()
     {
-        foreach (var buff in _initialBuffs)
-        {
-            AddBuff(buff);
-        }
+        InitBuffs();
     }
 
     private void Update()
     {
         ProcessBuffTicks();
         UpdateBuffDurations();
+    }
+
+    public void InitBuffs() 
+    {
+        foreach (var buff in _initialBuffs)
+        {
+            AddBuff(buff);
+        }
     }
 
     public void AddBuff(BuffInfo newBuff)
