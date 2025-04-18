@@ -54,6 +54,54 @@ MonoBehaviour:
     m_Localized: Bloqueo celular
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: "L\xE1ser\nCuesta 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: 'Burbuja
+
+      Cuesta 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: 'Bloquear
+
+      Cuesta 100'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: 'Convocar
+
+      Cuesta 250'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: 'AOE
+
+      Cuesta 150'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: Eliminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: 'HP central actual:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: Presione la barra espaciadora para omitir la ola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: 'Divisa:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: "Temporizador hasta la pr\xF3xima ola: "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

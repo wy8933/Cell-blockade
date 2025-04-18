@@ -54,6 +54,56 @@ MonoBehaviour:
     m_Localized: Bloqueio Celular
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: 'Laser
+
+      Custo 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: 'Bolha
+
+      Custo 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: 'Bloquear
+
+      Custo 100'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: 'Convocar
+
+      Custo 250'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: 'AOE
+
+      Custo 150'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: Remover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: "N\xFAcleo HP atual:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: "Pressione espa\xE7o para pular onda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: 'Moeda:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: "Temporizador at\xE9 a pr\xF3xima onda: "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

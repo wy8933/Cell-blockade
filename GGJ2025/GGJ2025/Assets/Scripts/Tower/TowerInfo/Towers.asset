@@ -22,7 +22,7 @@ MonoBehaviour:
   - <Name>k__BackingField: Flame
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
-    <TowerPrice>k__BackingField: 300
+    <TowerPrice>k__BackingField: 200
     <TowerPrefab>k__BackingField: {fileID: 1772718365916077745, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}
     <TowerDescription>k__BackingField: 
   - <Name>k__BackingField: Blocker
@@ -34,12 +34,12 @@ MonoBehaviour:
   - <Name>k__BackingField: Spawner
     <ID>k__BackingField: 4
     <Size>k__BackingField: {x: 1, y: 1}
-    <TowerPrice>k__BackingField: 350
+    <TowerPrice>k__BackingField: 250
     <TowerPrefab>k__BackingField: {fileID: 999884885488336165, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
     <TowerDescription>k__BackingField: 
   - <Name>k__BackingField: AOE
     <ID>k__BackingField: 5
     <Size>k__BackingField: {x: 1, y: 1}
-    <TowerPrice>k__BackingField: 200
+    <TowerPrice>k__BackingField: 150
     <TowerPrefab>k__BackingField: {fileID: 3429697527339959482, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
     <TowerDescription>k__BackingField: 

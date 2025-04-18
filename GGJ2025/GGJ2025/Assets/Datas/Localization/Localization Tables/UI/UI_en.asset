@@ -54,6 +54,56 @@ MonoBehaviour:
     m_Localized: Cell Blockade
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: 'Laser
+
+      Cost 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: 'Bubble
+
+      Cost 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: 'Block
+
+      Cost 100'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: 'Summon
+
+      Cost 250'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: 'AOE
+
+      Cost 150'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: Remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: 'Current Core HP:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: Press Space to Skip Wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: 'Currency:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: 'Timer until next wave: '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

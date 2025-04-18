@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo
@@ -31,53 +32,12 @@ public class SpawnTower : BasicTowerInfo
             timer += Time.deltaTime;
             if (timer >= spawnDelay)
             {
-                spawnedChildren.Add(Instantiate(spawnedAllyPrefab, transform.position + new Vector3(1,0.5f,1), Quaternion.identity));
+                GameObject temp = Instantiate(spawnedAllyPrefab, transform.position + new Vector3(1, 0.5f, 1), Quaternion.identity);
+                temp.GetComponent<NeutraphylLaserHelper>().ParentTransform = this.transform.position + new Vector3(1, 0, 1);
+                spawnedChildren.Add(temp);
                 timer = 0;
             }
 
-        }
-    }
-
-    private void AssignTarget(Collider target)
-    {
-        
-        if (target != null)
-        {
-            if (target.tag == "Enemy")
-            {
-                foreach (Collider col in collidersInTrigger)
-                {
-                    for (int x = 0; x < spawnedChildren.Count; x++)
-                    {
-                        if (spawnedChildren[x] == null)
-                        {
-                            spawnedChildren.RemoveAt(x);
-                            break;
-                        }
-                        if (spawnedChildren[x] != null)
-                        {
-                            spawnedChildren[x].GetComponent<NeutraphylSpawnedUnit>().TargetObject = target.gameObject;
-                        }
-
-                    }
-                }
-                
-            }
-        }
-
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-       AssignTarget(other);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!collidersInTrigger.Contains(other)) // Avoid duplicates
-        {
-            collidersInTrigger.Add(other);
         }
     }
 }
