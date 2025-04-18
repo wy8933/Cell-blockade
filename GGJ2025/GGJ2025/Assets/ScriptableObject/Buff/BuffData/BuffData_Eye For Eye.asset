@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 20050
   buffName: Eye For Eye
   description: Increase Attack by 200% but reduce Defense by 20
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: de9b3f660491fc54d8a8a9371315a846, type: 3}
   maxStack: 1
   priority: 0
   price: 100

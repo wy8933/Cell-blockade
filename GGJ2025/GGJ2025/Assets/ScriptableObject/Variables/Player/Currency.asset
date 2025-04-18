@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647fea2afaba2e94785bcc7fa7f917bd, type: 3}
   m_Name: Currency
   m_EditorClassIdentifier: 
-  initialValue: 10000
-  runtimeValue: 10000
-  debugEnabled: 0
+  initialValue: 0
+  runtimeValue: 48.07454
+  debugEnabled: 1
   saveOn: 1
   resetToInitialValue: 1

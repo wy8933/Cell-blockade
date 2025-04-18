@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 31042
   buffName: Berserk
   description: Decrease defense by 50 but increase attack by %50
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3893e9a403f6fea41b4e86edf543debe, type: 3}
   maxStack: 1
   priority: 0
   price: 100

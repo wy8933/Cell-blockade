@@ -289,7 +289,7 @@ MonoBehaviour:
   isReleased: 0
   audioSource: {fileID: 9203067772447950622}
   animator: {fileID: 0}
-  currencyAmount: 10
+  currencyAmount: 4
   attackDamage: 10
   detectionRadius: 2
   pathfindingMode: 0
