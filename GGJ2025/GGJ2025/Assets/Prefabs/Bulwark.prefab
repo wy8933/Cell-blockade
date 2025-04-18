@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 50
-    Health: 50
+    MaxHealth: 15
+    Health: 15
     MovementSpeed: 2
     SprintSpeed: 0
     Resistance: 0

@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public int bulletCount;
     public int shotGunAngleOffset;
 
+    
+
     void Start()
     {
         Time.timeScale = 1;
@@ -130,11 +132,11 @@ public class PlayerController : MonoBehaviour
                     ReduceBubble(shotGunBubbleCost);
                 }
                 break;
-            case WeaponType.RapidFire:
+            case WeaponType.Sniper:
+                shootCooldown = 1;
                 if (currentBubble >= bubbleCost)
                 {
                     SpawnBullet(0);
-                    ReduceBubble(bubbleCost);
                 }
                 break;
         }

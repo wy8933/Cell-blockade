@@ -4,7 +4,8 @@ public enum WeaponType
 {
     Scatter,
     RapidFire,
-    ShotGun
+    ShotGun,
+    Sniper
 }
 
 public enum TowerType
