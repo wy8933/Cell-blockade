@@ -6,8 +6,6 @@ public class NeutraphylLaserHelper : MonoBehaviour
 {
     private Collider _collider;
 
-    [SerializeField] private GameObject _targetObject;
-
     [SerializeField] private float movementSpeed = 2.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -24,12 +22,11 @@ public class NeutraphylLaserHelper : MonoBehaviour
     [SerializeField] private Vector3 _parentTransform;
     [SerializeField] private Vector3 targetPosition;
 
-    [SerializeField] private float wanderRadius;
     [SerializeField] private float speed;
     [SerializeField] private float arrivalThreshold;
 
     [SerializeField] private float waitTime;
-    [SerializeField] private float waitTimer = 0f;
+    [SerializeField] private float waitTimer;
 
     public Vector3 ParentTransform
     {
@@ -66,6 +63,7 @@ public class NeutraphylLaserHelper : MonoBehaviour
 
         Vector3 direction = (targetPosition - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
+        LaserHolder.transform.position = transform.position;
 
         if (Vector3.Distance(transform.position, targetPosition) < arrivalThreshold)
         {
@@ -135,7 +133,7 @@ public class NeutraphylLaserHelper : MonoBehaviour
         {
             if (target != null)
             {
-                Debug.Log(target.transform.position);
+                //Debug.Log(target.transform.position);
                 if (targetedEnemy == target)
                 {
                     LaserHolder.SetActive(true);

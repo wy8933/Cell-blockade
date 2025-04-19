@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class SpawnTower : BasicTowerInfo
@@ -33,7 +32,7 @@ public class SpawnTower : BasicTowerInfo
             if (timer >= spawnDelay)
             {
                 GameObject temp = Instantiate(spawnedAllyPrefab, transform.position + new Vector3(1, 0.5f, 1), Quaternion.identity);
-                temp.GetComponent<NeutraphylLaserHelper>().ParentTransform = this.transform.position + new Vector3(1, 0, 1);
+                temp.GetComponent<NeutraphylLaserHelper>().ParentTransform = this.transform.position + new Vector3(1, 0.5f, 1);
                 spawnedChildren.Add(temp);
                 timer = 0;
             }
