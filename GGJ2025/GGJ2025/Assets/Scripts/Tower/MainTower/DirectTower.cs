@@ -63,7 +63,7 @@ public class DirectTower : BaseTower
         {
             if (target != null)
             {
-                Debug.Log(target.transform.position);
+                //Debug.Log(target.transform.position);
                 if (targetedEnemy == target)
                 {
                     LaserHolder.SetActive(true);

@@ -54,6 +54,50 @@ MonoBehaviour:
     m_Localized: "Blokada kom\xF3rkowa"
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: 'Laser
+
+      Koszt 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: "Ba\u0144ka\nKoszt 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: 'Blok
+
+      Koszt 100'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: "Wezwa\u0107\nKoszt 250"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: "Obszar dzia\u0142ania\nKoszt 150"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: "Usun\u0105\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: 'Aktualne HP rdzenia:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: "Naci\u015Bnij spacj\u0119, aby pomin\u0105\u0107 fal\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: 'Waluta:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: "Minutnik do nast\u0119pnej fali: "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
