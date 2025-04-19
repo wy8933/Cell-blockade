@@ -51,6 +51,46 @@ MonoBehaviour:
     m_Key: text-game-title
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Key: ui-tower1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Key: ui-tower2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Key: ui-tower3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Key: ui-tower4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Key: ui-tower5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Key: ui-remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Key: ui-core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Key: ui-skipwave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Key: ui-currency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Key: ui-timer
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

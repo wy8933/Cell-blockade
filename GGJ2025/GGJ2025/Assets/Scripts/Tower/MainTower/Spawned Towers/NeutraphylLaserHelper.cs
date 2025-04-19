@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -5,15 +6,32 @@ public class NeutraphylLaserHelper : MonoBehaviour
 {
     private Collider _collider;
 
-    [SerializeField] private GameObject _targetObject;
-
     [SerializeField] private float movementSpeed = 2.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public GameObject TargetObject
+    [SerializeField] private GameObject LaserHolder;
+    [SerializeField] protected GameObject targetedEnemy;
+    [SerializeField] private VisualEffect laserEffect;
+
+    [Header("Walk Values")]
+
+    [SerializeField] private bool isWalking;
+
+    [SerializeField] private bool hasPoint;
+    [SerializeField] private float roamingRadius;
+    [SerializeField] private Vector3 _parentTransform;
+    [SerializeField] private Vector3 targetPosition;
+
+    [SerializeField] private float speed;
+    [SerializeField] private float arrivalThreshold;
+
+    [SerializeField] private float waitTime;
+    [SerializeField] private float waitTimer;
+
+    public Vector3 ParentTransform
     {
-        get { return _targetObject; }
-        set { _targetObject = value; }
+        get { return _parentTransform; }
+        set { _parentTransform = value; }
     }
 
     void Awake()
@@ -24,29 +42,50 @@ public class NeutraphylLaserHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (targetedEnemy == null)
+        {
+            RoamingWalk();
+        }
     }
 
 
     private void RoamingWalk()
     {
+        if (!hasPoint)
+        {
+            waitTimer -= Time.deltaTime;
+            if (waitTimer <= 0f)
+            {
+                PickNewPoint();
+            }
+            return;
+        }
 
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+        LaserHolder.transform.position = transform.position;
+
+        if (Vector3.Distance(transform.position, targetPosition) < arrivalThreshold)
+        {
+            hasPoint = false;
+            waitTimer = waitTime;
+        }
+    }
+
+
+    private void PickNewPoint()
+    {
+        Vector2 randomOffset = Random.insideUnitCircle * roamingRadius;
+        targetPosition = _parentTransform + new Vector3(randomOffset.x, 0, randomOffset.y);
+        hasPoint = true;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Enemy")
-        {
-           
-        }
+        Attack(other);
 
+        ShowAttack(gameObject, other.gameObject);
     }
-
-    [SerializeField] private GameObject LaserHolder;
-
-    [SerializeField] protected GameObject targetedEnemy;
-
-    [SerializeField] private VisualEffect laserEffect;
 
     /// <summary>
     /// An override of the Attack method that takes a collision as an input
@@ -94,7 +133,7 @@ public class NeutraphylLaserHelper : MonoBehaviour
         {
             if (target != null)
             {
-                Debug.Log(target.transform.position);
+                //Debug.Log(target.transform.position);
                 if (targetedEnemy == target)
                 {
                     LaserHolder.SetActive(true);

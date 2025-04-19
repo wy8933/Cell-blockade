@@ -54,6 +54,46 @@ MonoBehaviour:
     m_Localized: Blocus cellulaire
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: "Laser\nCo\xFBt 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: "Bulle\nCo\xFBt 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: "Bloc\nCo\xFBt 100"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: "Convoquer\nCo\xFBt 250"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: "AOE\nCo\xFBt 150"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: Retirer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: "HP de base actuel\_:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: Appuyez sur Espace pour sauter la vague
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: 'Devise:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: "Minuterie jusqu'\xE0 la prochaine vague\_: "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

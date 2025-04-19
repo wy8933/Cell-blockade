@@ -25,7 +25,7 @@ public class Wound : MonoBehaviour
             BaseEnemy enemy = other.GetComponent<BaseEnemy>();
             enemy.Die();
             CurrentHealth.Value -= enemy.attackDamage;
-            hpText.text = "Current Core HP:" + CurrentHealth.Value;
+            hpText.text = $"{CurrentHealth.Value}";
             if (CurrentHealth.Value <= 0)
             {
                 GameManager.Instance.GameOver();
