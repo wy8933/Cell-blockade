@@ -150,6 +150,11 @@ public class EnemyWaveManager : MonoBehaviour
         StartCoroutine(SpawnWaveEnemies(currentWave, scaledEnemyCount));
     }
 
+    public void IncreaseEnemyCount(int amount) 
+    {
+        _enemiesRemainingAlive += amount;
+    }
+
     /// <summary>
     /// Spawn the enemy in random enemy spawner
     /// </summary>
