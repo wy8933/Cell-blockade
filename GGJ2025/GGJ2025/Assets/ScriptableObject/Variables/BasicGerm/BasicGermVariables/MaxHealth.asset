@@ -17,6 +17,3 @@ MonoBehaviour:
   debugEnabled: 0
   saveOn: 1
   resetToInitialValue: 0
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
