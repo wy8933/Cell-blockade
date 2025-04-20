@@ -54,6 +54,54 @@ MonoBehaviour:
     m_Localized: Zellblockade
     m_Metadata:
       m_Items: []
+  - m_Id: 13774069047676928
+    m_Localized: 'Laser
+
+      Kostet 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619968
+    m_Localized: 'Blase
+
+      Kostet 200'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619969
+    m_Localized: 'Block
+
+      Kostet 100'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619970
+    m_Localized: "Beschw\xF6rung\nKostet 250"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619971
+    m_Localized: 'AOE
+
+      Kostet 150'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619972
+    m_Localized: Entfernen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619973
+    m_Localized: 'Aktuelle Kern-HP:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619974
+    m_Localized: "Dr\xFCcken Sie die Leertaste, um die Welle zu \xFCberspringen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619975
+    m_Localized: "W\xE4hrung:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13774069089619976
+    m_Localized: "Timer bis zur n\xE4chsten Welle: "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

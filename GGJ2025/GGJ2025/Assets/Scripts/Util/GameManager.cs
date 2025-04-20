@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         else {
             Destroy(gameObject);
         }
-        currencyText.text = "Currency: " + Currency.Value.ToString();
+        currencyText.text = $"{((int)Currency.Value)}";
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void ModifyCurrency(float amount) 
     {
         Currency.Value += amount;
-        currencyText.text = $"Currency: {((int)Currency.Value)}";
+        currencyText.text = $"{((int)Currency.Value)}";
     }
 
 
