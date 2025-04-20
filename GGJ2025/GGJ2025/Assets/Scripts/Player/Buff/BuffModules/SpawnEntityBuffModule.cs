@@ -14,6 +14,8 @@ public class SpawnEntityBuffModule : BaseBuffModule
             var (objectInstance, enemyPool) = ObjectPooling.GetOrCreate(gameObject, buffInfo.creator.transform.position, buffInfo.creator.transform.rotation, "Enemies");
             objectInstance.GetComponent<BaseEnemy>().InitEnemy(enemyPool);
         }
+
+        EnemyWaveManager.Instance.IncreaseEnemyCount(count);
     }
 }
 
