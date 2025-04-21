@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BuffData_Health Boost
   m_EditorClassIdentifier: 
   id: 10010
-  buffName: Health Boost
+  buffName: Health Increase
   description: Increase the player's max health by 10 per stack
   icon: {fileID: 21300000, guid: 18ea1477dae966241b3b47c9300a3b40, type: 3}
   maxStack: 999

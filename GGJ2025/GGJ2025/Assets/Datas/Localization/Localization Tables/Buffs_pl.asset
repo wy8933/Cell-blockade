@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Buffs_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 5207a5eb0b78e984da9c01f42f391049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 29738848256
+    m_Localized: Wzrost zdrowia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29797568512
+    m_Localized: "Zwi\u0119ksza maksymalne zdrowie gracza o 10 za ka\u017Cdy \u0142adunek"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762816
+    m_Localized: Wzrost Obrony
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762817
+    m_Localized: "Zwi\u0119ksza obron\u0119 gracza o 5 na stos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762818
+    m_Localized: "Zwi\u0119kszenie Tarczy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762819
+    m_Localized: "Zwi\u0119ksz maksymaln\u0105 tarcz\u0119 o 10"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762820
+    m_Localized: Regeneracja Tarczy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762821
+    m_Localized: "Regeneruje tarcz\u0119 o 1 co 5 sek"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762822
+    m_Localized: "Dodaj 5% do Odporno\u015Bci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762824
+    m_Localized: "Zwi\u0119ksza maksymalne zdrowie o 100, ale zmniejsza pr\u0119dko\u015B\u0107
+      ruchu o 50%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762825
+    m_Localized: "Zwi\u0119kszenie ataku"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762827
+    m_Localized: "Zwi\u0119kszenie szybko\u015Bci ruchu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762828
+    m_Localized: "Zwi\u0119ksz pr\u0119dko\u015B\u0107 o 25"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762829
+    m_Localized: Wampiryzm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762830
+    m_Localized: "Leczy 5% zadanych obra\u017Ce\u0144."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762833
+    m_Localized: Tryb Boga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762834
+    m_Localized: "Zwi\u0119ksza zdrowie i atak o 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762835
+    m_Localized: "Rozpraw si\u0119 z diab\u0142em"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762836
+    m_Localized: "Ustaw maksymalne zdrowie na 1, ale zwi\u0119ksz atak o 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762837
+    m_Localized: "Truj\u0105cy Pocisk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762838
+    m_Localized: "Ataki nak\u0142adaj\u0105 teraz \u0142adunek mikstury"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762839
+    m_Localized: "Spali\u0107 Pocisk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762840
+    m_Localized: "Ataki powoduj\u0105 teraz oparzenie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762841
+    m_Localized: "Mro\u017Any Pocisk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762842
+    m_Localized: "Ataki nak\u0142adaj\u0105 mr\xF3z"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762843
+    m_Localized: Trucizna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151424
+    m_Localized: "Zadaje celowi obra\u017Cenia na sekund\u0119 w oparciu o kumulacje"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151425
+    m_Localized: Oparzenie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151426
+    m_Localized: "Zadaje celowi 5 obra\u017Ce\u0144 na sekund\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151427
+    m_Localized: "Mr\xF3z"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151428
+    m_Localized: "Spowalnia cel o 10% na \u0142adunek"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151429
+    m_Localized: Chmura Trucizny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151430
+    m_Localized: "Je\u015Bli zatruty cel umrze, pojawia si\u0119 chmura trucizny."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151431
+    m_Localized: Eksplozja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151432
+    m_Localized: "Je\u015Bli spalony cel osi\u0105gnie maksymaln\u0105 liczb\u0119
+      \u0142adunk\xF3w spalonych, nast\u0119puje eksplozja"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151433
+    m_Localized: Snajper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151434
+    m_Localized: "Zmienia rodzaj ognia broni na pojedynczy strza\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151435
+    m_Localized: "Odbi\u0107 si\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151436
+    m_Localized: "Pociski b\u0119d\u0105 teraz odbija\u0107 si\u0119 od \u015Bcian
+      raz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151437
+    m_Localized: Rykoszet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151438
+    m_Localized: "Bulet odbije si\u0119 od jednego dodatkowego wroga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588121681920
+    m_Localized: "Op\xF3r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588159430656
+    m_Localized: Wola Giganta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453838610432
+    m_Localized: Regeneracja Zdrowia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999040
+    m_Localized: Regeneruje zdrowie gracza o 1 co 5 sekund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999041
+    m_Localized: "Zwi\u0119ksz atak o 25%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999042
+    m_Localized: Oko za oko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999043
+    m_Localized: "Zwi\u0119ksz atak o 200%, ale zmniejsz obron\u0119 o 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485306044416
+    m_Localized: "Sza\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485352181760
+    m_Localized: "Zmniejsz obron\u0119, ale zwi\u0119ksz atak"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

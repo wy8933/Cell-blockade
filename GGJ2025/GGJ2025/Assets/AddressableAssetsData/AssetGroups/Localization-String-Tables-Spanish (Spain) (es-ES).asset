@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70bc70d621f689343926f127d8c2e6a5
+    m_Address: Buffs_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d4219ceea448eb9438e3daebd8e8c93b
     m_Address: Shop_es-ES
     m_ReadOnly: 1

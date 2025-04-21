@@ -76,8 +76,18 @@ public class ShopManager : MonoBehaviour
             if (i < generatedBuffs.Count)
             {
                 BuffData buff = generatedBuffs[i];
-                buffNames[i].text = buff.buffName;
-                buffDescriptions[i].text = buff.description;
+
+                // Use buffName to build localization keys
+                string nameKey = buff.buffName + " - Name";
+                string descriptionKey = buff.buffName + " - Description";
+
+                // Fetch localized strings
+                string localizedName = LocalizationManager.Instance.GetLocalizedString("Buffs", nameKey);
+                string localizedDescription = LocalizationManager.Instance.GetLocalizedString("Buffs", descriptionKey);
+
+                // Set UI text
+                buffNames[i].text = localizedName;
+                buffDescriptions[i].text = localizedDescription;
                 buffIcons[i].sprite = buff.icon;
                 buffCosts[i].text = buff.price.ToString();
 
@@ -92,6 +102,7 @@ public class ShopManager : MonoBehaviour
             }
         }
     }
+
 
     public void PurchaseBuff(int index)
     {
