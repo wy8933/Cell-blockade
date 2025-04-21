@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Buffs_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 5207a5eb0b78e984da9c01f42f391049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 29738848256
+    m_Localized: Gesundheitssteigerung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29797568512
+    m_Localized: "Erh\xF6he die maximale Gesundheit des Spielers um 10 pro Stapel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762816
+    m_Localized: "Verteidigungserh\xF6hung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762817
+    m_Localized: "Erh\xF6he die Spielerverteidigung um 5 pro Stapel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762818
+    m_Localized: "Schilderh\xF6hung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762819
+    m_Localized: "Erh\xF6he den maximalen Schild um 10"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762820
+    m_Localized: Schildregeneration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762821
+    m_Localized: Regeneriert den Schild alle 5 Sek. um 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762822
+    m_Localized: Addiere 5 % zum Widerstand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762824
+    m_Localized: "Erh\xF6ht die maximale Gesundheit um 100, verringert jedoch die
+      Bewegungsgeschwindigkeit um 50 %."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762825
+    m_Localized: "Angriffserh\xF6hung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762827
+    m_Localized: "Erh\xF6hung der Bewegungsgeschwindigkeit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762828
+    m_Localized: "Erh\xF6he die Geschwindigkeit um 25"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762829
+    m_Localized: Vampirismus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762830
+    m_Localized: Heile 5 % des verursachten Schadens.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762833
+    m_Localized: Gott-Modus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762834
+    m_Localized: "Erh\xF6he Gesundheit und Angriff um 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762835
+    m_Localized: Deal mit dem Teufel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762836
+    m_Localized: "Setzen Sie die maximale Gesundheit auf 1, erh\xF6hen Sie jedoch
+      den Angriff um 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762837
+    m_Localized: Giftgeschoss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762838
+    m_Localized: Angriffe wenden jetzt einen Stapel Posion an
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762839
+    m_Localized: Kugel verbrennen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762840
+    m_Localized: Angriffe verursachen jetzt Brennen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762841
+    m_Localized: Frostkugel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762842
+    m_Localized: Angriffe wenden Frost an
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762843
+    m_Localized: Gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151424
+    m_Localized: "F\xFCgt dem Ziel pro Sekunde Schaden zu, basierend auf Stapeln"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151425
+    m_Localized: Brennen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151426
+    m_Localized: "F\xFCgt dem Ziel pro Sekunde 5 Schaden zu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151427
+    m_Localized: Frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151428
+    m_Localized: Verlangsamt das Ziel um 10 % pro Stapel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151429
+    m_Localized: Giftwolke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151430
+    m_Localized: Wenn ein vergiftetes Ziel stirbt, entsteht eine Giftwolke.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151431
+    m_Localized: Explosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151432
+    m_Localized: Wenn ein verbranntes Ziel die maximale Anzahl an Verbrennungen erreicht,
+      kommt es zu einer Explosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151433
+    m_Localized: "Scharfsch\xFCtze"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151434
+    m_Localized: "\xC4ndert die Feuerart der Waffe in einen Einzelschuss"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151435
+    m_Localized: Prallen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151436
+    m_Localized: "Kugeln prallen jetzt einmal von W\xE4nden ab"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151437
+    m_Localized: Abprallen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151438
+    m_Localized: "Bulet wird von einem zus\xE4tzlichen Feind abprallen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588121681920
+    m_Localized: Widerstand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588159430656
+    m_Localized: Der Wille des Riesen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453838610432
+    m_Localized: Gesundheitsregeneration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999040
+    m_Localized: Regeneriert die Gesundheit des Spielers alle 5 Sekunden um 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999041
+    m_Localized: "Angriff um 25 % erh\xF6hen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999042
+    m_Localized: "Auge f\xFCr Auge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999043
+    m_Localized: "Erh\xF6he den Angriff um 200 %, verringere aber die Verteidigung
+      um 200"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485306044416
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485352181760
+    m_Localized: "Verringert die Verteidigung, erh\xF6ht aber den Angriff"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

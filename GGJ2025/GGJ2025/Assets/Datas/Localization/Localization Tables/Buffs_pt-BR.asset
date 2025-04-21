@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Buffs_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: 5207a5eb0b78e984da9c01f42f391049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 29738848256
+    m_Localized: "Aumento da sa\xFAde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29797568512
+    m_Localized: "Aumenta a sa\xFAde m\xE1xima do jogador em 10 por pilha"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762816
+    m_Localized: Aumento de defesa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762817
+    m_Localized: Aumenta a defesa do jogador em 5 por pilha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762818
+    m_Localized: Aumento do Escudo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762819
+    m_Localized: "Aumentar o escudo m\xE1ximo em 10"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762820
+    m_Localized: "Regenera\xE7\xE3o de Escudo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762821
+    m_Localized: Regenera Escudo em 1 a cada 5 s
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762822
+    m_Localized: "Adicione 5% \xE0 Resist\xEAncia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762824
+    m_Localized: "Aumenta a sa\xFAde m\xE1xima em 100, mas reduz a velocidade de
+      movimento em 50%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762825
+    m_Localized: Aumento de ataque
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762827
+    m_Localized: Aumento da velocidade de movimento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762828
+    m_Localized: Aumentar a velocidade em 25
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762829
+    m_Localized: Vampiro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762830
+    m_Localized: Cure 5% do dano causado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762833
+    m_Localized: Modo Deus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762834
+    m_Localized: "Aumente a sa\xFAde e o ataque em 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762835
+    m_Localized: Lidar com o Diabo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762836
+    m_Localized: "Defina a sa\xFAde m\xE1xima para 1, mas aumente o ataque em 1000"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762837
+    m_Localized: Bala Venenosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762838
+    m_Localized: "Os ataques agora aplicam uma pilha de posi\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762839
+    m_Localized: Queimar bala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762840
+    m_Localized: Os ataques agora aplicam queimadura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762841
+    m_Localized: Bala de Gelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762842
+    m_Localized: Ataques aplicam gelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762843
+    m_Localized: Veneno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151424
+    m_Localized: Danifica o alvo por segundo com base nas pilhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151425
+    m_Localized: Queimar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151426
+    m_Localized: Causa dano ao alvo em 5 por segundo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151427
+    m_Localized: Geada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151428
+    m_Localized: Retarda o alvo em 10% por pilha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151429
+    m_Localized: Nuvem Venenosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151430
+    m_Localized: "Se um alvo envenenado morrer, uma nuvem de veneno aparecer\xE1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151431
+    m_Localized: "Explos\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151432
+    m_Localized: "Se um alvo queimado atingir o m\xE1ximo de pilhas de queimaduras,
+      ocorrer\xE1 uma explos\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151433
+    m_Localized: Atirador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151434
+    m_Localized: "Muda o tipo de disparo da arma para um \xFAnico tiro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151435
+    m_Localized: Quicar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151436
+    m_Localized: "As balas agora ir\xE3o ricochetear nas paredes uma vez"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151437
+    m_Localized: Ricochete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151438
+    m_Localized: "Bulet ir\xE1 ricochetear em um inimigo adicional"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588121681920
+    m_Localized: "Resist\xEAncia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588159430656
+    m_Localized: Vontade do Gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453838610432
+    m_Localized: "Regenera\xE7\xE3o de Sa\xFAde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999040
+    m_Localized: "Regenera a sa\xFAde do jogador em 1 a cada 5 segundos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999041
+    m_Localized: Aumentar o ataque em 25%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999042
+    m_Localized: Olho por olho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999043
+    m_Localized: Aumenta o Ataque em 200%, mas reduz a Defesa em 200
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485306044416
+    m_Localized: Furioso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485352181760
+    m_Localized: Diminuir Defesa, mas Aumentar Ataque
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
