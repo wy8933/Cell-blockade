@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Buffs_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 5207a5eb0b78e984da9c01f42f391049, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 29738848256
+    m_Localized: Health Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29797568512
+    m_Localized: Increase the player's max health by 10 per stack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762816
+    m_Localized: Defense Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762817
+    m_Localized: Increase player defense by 5 per stack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762818
+    m_Localized: Shield Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762819
+    m_Localized: Increse max Shield By 10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762820
+    m_Localized: Shield Regenerartion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762821
+    m_Localized: Regenerates Shield By 1 every 5 sec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762822
+    m_Localized: Add 5% to Resistence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762824
+    m_Localized: Increase Max health By 100 but reduces movement speed by 50%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762825
+    m_Localized: Attack Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762827
+    m_Localized: Movement Speed Increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762828
+    m_Localized: Increase Speed By 25
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762829
+    m_Localized: Vamperisim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762830
+    m_Localized: Heal 5% of damge dealt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762833
+    m_Localized: God Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762834
+    m_Localized: Increase Health and Attack By 1000
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762835
+    m_Localized: Deal With the Devil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762836
+    m_Localized: Set Max health to 1 But Increase Attack By 1000
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762837
+    m_Localized: Poision Bullet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762838
+    m_Localized: Attacks now apply a stack of posion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762839
+    m_Localized: Burn Bullet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762840
+    m_Localized: Attacks now apply burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762841
+    m_Localized: Frost Bullet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762842
+    m_Localized: Attacks apply frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29801762843
+    m_Localized: Poision
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151424
+    m_Localized: Damages target per sec based on stacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151425
+    m_Localized: Burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151426
+    m_Localized: Damages target by 5 per sec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151427
+    m_Localized: Frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151428
+    m_Localized: Slows target by 10% per stack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151429
+    m_Localized: Poision Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151430
+    m_Localized: If a poisioned target dies a cloud of poision spawns.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151431
+    m_Localized: Explosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151432
+    m_Localized: If a burned target reaches max burn stacks an explosion occures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151433
+    m_Localized: Sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151434
+    m_Localized: Changes weapon fire type to a single shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151435
+    m_Localized: Bounce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151436
+    m_Localized: Bullets will now bounce off of walls once
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151437
+    m_Localized: Ricochet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29810151438
+    m_Localized: Bulet will bounce off one aditional enemey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588121681920
+    m_Localized: Resistence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2588159430656
+    m_Localized: Giant's Will
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453838610432
+    m_Localized: Health Regenerartion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999040
+    m_Localized: Regenerates player's health by 1 every 5 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999041
+    m_Localized: Increse Attack by 25%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999042
+    m_Localized: Eye For Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3453846999043
+    m_Localized: Increase Attack by 200% but reduce Defense by 200
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485306044416
+    m_Localized: Berserk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485352181760
+    m_Localized: Decrese Defense but Attack increse
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
