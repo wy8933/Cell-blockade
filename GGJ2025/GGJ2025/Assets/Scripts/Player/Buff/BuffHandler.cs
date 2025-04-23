@@ -45,17 +45,14 @@ public class BuffHandler : MonoBehaviour
         if (existing != null)
         {
             HandleStacking(existing, clonedBuff);
-            InsertSorted(clonedBuff);
-            ExecuteModule(existing.buffData.OnCreate, clonedBuff);
-            return;
         }
         else
         {
             existing = clonedBuff;
-            InsertSorted(clonedBuff);
-            ExecuteModule(existing.buffData.OnCreate, clonedBuff);
         }
 
+        InsertSorted(clonedBuff);
+        ExecuteModule(existing.buffData.OnCreate, clonedBuff);
     }
 
     private BuffInfo CloneBuff(BuffInfo source)
@@ -78,7 +75,7 @@ public class BuffHandler : MonoBehaviour
         if (existing.currentStack >= existing.buffData.maxStack) return;
 
         existing.currentStack++;
-        ExecuteModule(existing.buffData.OnCreate, existing);
+        //ExecuteModule(existing.buffData.OnCreate, existing);
 
         switch (existing.buffData.buffUpdateType)
         {
