@@ -101,6 +101,7 @@ public class ShopManager : MonoBehaviour
                 buffButtons[i].gameObject.SetActive(false);
             }
         }
+        GameManager.Instance.currencyText.text = $"{((int)GameManager.Instance.Currency.Value)}";
     }
 
 
@@ -139,6 +140,10 @@ public class ShopManager : MonoBehaviour
     }
     public void RerollShop()
     {
+        if (GameManager.Instance.Currency.Value <= 9) {
+            return;
+        }
+
         generatedBuffs.Clear();
 
         for (int i = 0; i < 4; i++)

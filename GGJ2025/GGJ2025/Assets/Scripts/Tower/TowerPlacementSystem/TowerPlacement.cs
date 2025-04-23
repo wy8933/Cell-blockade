@@ -49,7 +49,6 @@ public class TowerPlacement : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         StopPlacement();
