@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Pause()
     {
+
+        Currency.Value = 0;
         isPaused = !isPaused;
 
         if (isPaused)

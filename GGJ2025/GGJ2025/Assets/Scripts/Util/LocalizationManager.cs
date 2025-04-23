@@ -15,7 +15,6 @@ public class LocalizationManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

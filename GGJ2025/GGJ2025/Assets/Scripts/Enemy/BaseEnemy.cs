@@ -23,6 +23,8 @@ public class BaseEnemy : MonoBehaviour
     public float currencyAmount = 10;
     public int attackDamage = 10;
 
+    public bool CountAsTotalEnemy;
+
     [Header("Pathfinding Settings")]
     public float detectionRadius = 2.0f;
     public PathfindingMode pathfindingMode = PathfindingMode.AlwaysPlayer;
@@ -134,7 +136,11 @@ public class BaseEnemy : MonoBehaviour
             audioSource.Play();
             GetComponent<BuffHandler>().TriggerAllOnDeath();
             isReleased = true;
-            EnemyWaveManager.Instance.EnemyDefeated();
+            if (CountAsTotalEnemy)
+            {
+
+                EnemyWaveManager.Instance.EnemyDefeated();
+            }
             pool.Release(gameObject);
             GameManager.Instance.ModifyCurrency(currencyAmount);
             GameManager.Instance.CurrentEnemyList.Remove(gameObject);

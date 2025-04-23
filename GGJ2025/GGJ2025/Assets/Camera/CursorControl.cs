@@ -17,7 +17,6 @@ public class CursorControl : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 
