@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CoreCurrentHealth
   m_EditorClassIdentifier: 
   initialValue: 1000
-  runtimeValue: 1000
+  runtimeValue: 970
   debugEnabled: 0
   saveOn: 1
-  resetToInitialValue: 0
+  resetToInitialValue: 1

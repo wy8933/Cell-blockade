@@ -16,4 +16,4 @@ MonoBehaviour:
   runtimeValue: 1000
   debugEnabled: 0
   saveOn: 1
-  resetToInitialValue: 0
+  resetToInitialValue: 1
