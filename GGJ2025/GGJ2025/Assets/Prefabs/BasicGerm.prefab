@@ -291,6 +291,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   currencyAmount: 2
   attackDamage: 10
+  CountAsTotalEnemy: 1
   detectionRadius: 2
   pathfindingMode: 2
   attackRange: 2

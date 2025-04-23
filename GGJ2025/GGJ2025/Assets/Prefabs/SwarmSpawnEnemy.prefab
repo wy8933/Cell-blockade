@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25e402635ae120441a1d1f216cc6a0dd, type: 3}
       propertyPath: m_Name
-      value: SwarmGerm
+      value: SwarmSpawnEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25e402635ae120441a1d1f216cc6a0dd, type: 3}
       propertyPath: m_Layer
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    MaxHealth: 10
-    Health: 10
+    MaxHealth: 5
+    Health: 5
     MovementSpeed: 3.5
     SprintSpeed: 0
     Resistance: 0
@@ -289,11 +289,10 @@ MonoBehaviour:
   isReleased: 0
   audioSource: {fileID: 9203067772447950622}
   animator: {fileID: 0}
-  currencyAmount: 4
+  currencyAmount: 0
   attackDamage: 10
-  CountAsTotalEnemy: 1
   detectionRadius: 2
-  pathfindingMode: 0
+  pathfindingMode: 2
   attackRange: 2
   attackCooldown: 1.5
   attackDamageType: 0
@@ -317,13 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff29b8ab937e494db6a3fe47ddccd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialBuffs:
-  - buffData: {fileID: 11400000, guid: 29d029513cfb80f4e860f81399efa4c6, type: 2}
-    creator: {fileID: 792196502952518451}
-    target: {fileID: 792196502952518451}
-    currentStack: 1
-    durationTimer: 0
-    tickTimer: 0
+  _initialBuffs: []
   _activeBuffs: []
 --- !u!82 &9203067772447950622
 AudioSource:
