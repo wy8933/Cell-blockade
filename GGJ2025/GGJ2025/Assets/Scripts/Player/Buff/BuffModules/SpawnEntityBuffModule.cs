@@ -15,7 +15,6 @@ public class SpawnEntityBuffModule : BaseBuffModule
             objectInstance.GetComponent<BaseEnemy>().InitEnemy(enemyPool);
         }
 
-        EnemyWaveManager.Instance.IncreaseEnemyCount(count);
     }
 }
 
