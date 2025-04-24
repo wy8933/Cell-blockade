@@ -104,6 +104,10 @@ MonoBehaviour:
     m_Localized: "Temporizador at\xE9 a pr\xF3xima onda: "
     m_Metadata:
       m_Items: []
+  - m_Id: 16035315851644928
+    m_Localized: 'Onda atual:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -104,6 +104,10 @@ MonoBehaviour:
     m_Localized: 'Timer until next wave: '
     m_Metadata:
       m_Items: []
+  - m_Id: 16035315851644928
+    m_Localized: 'Current Wave :'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

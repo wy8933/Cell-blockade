@@ -94,6 +94,10 @@ MonoBehaviour:
     m_Localized: "Minuterie jusqu'\xE0 la prochaine vague\_: "
     m_Metadata:
       m_Items: []
+  - m_Id: 16035315851644928
+    m_Localized: "Vague actuelle\_:"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
