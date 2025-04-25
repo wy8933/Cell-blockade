@@ -102,6 +102,10 @@ MonoBehaviour:
     m_Localized: "Temporizador hasta la pr\xF3xima ola: "
     m_Metadata:
       m_Items: []
+  - m_Id: 16035315851644928
+    m_Localized: 'Ola actual:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

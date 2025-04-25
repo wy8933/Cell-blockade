@@ -58,6 +58,7 @@ public class TowerUIManager : MonoBehaviour
                 Debug.Log("4");
                 SelectButton(4);
                 break;
+                /*
             case Key.Digit5:
                 Debug.Log("5");
                 SelectButton(5);
@@ -66,6 +67,7 @@ public class TowerUIManager : MonoBehaviour
                 Debug.Log("6");
                 SelectRemoveButton();
                 break;
+                */
         }
     }
 
@@ -101,7 +103,7 @@ public class TowerUIManager : MonoBehaviour
         if (scroll.y > 0)
         {
             selectedButtonNumber += 1;
-            if (selectedButtonNumber > 6)
+            if (selectedButtonNumber > towerSelectionButtons.Count)
             {
                 selectedButtonNumber = 1;
             }
@@ -112,7 +114,7 @@ public class TowerUIManager : MonoBehaviour
             selectedButtonNumber -= 1;
             if (selectedButtonNumber < 1)
             {
-                selectedButtonNumber = 6;
+                selectedButtonNumber = towerSelectionButtons.Count;
             }
         }
 

@@ -5767,6 +5767,7 @@ MonoBehaviour:
   timerHolder: {fileID: 0}
   TimerText: {fileID: 1652814116}
   TextforTimer: {fileID: 0}
+  textforWave: {fileID: 0}
 --- !u!114 &1443469544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8137,6 +8138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Helper
       objectReference: {fileID: 0}
+    - target: {fileID: 375159389764670612, guid: 47fd05c6e67e3274ca1e95f54960b73b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2438166593028122567, guid: 47fd05c6e67e3274ca1e95f54960b73b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.508
@@ -8224,7 +8229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2438166593028122567, guid: fc14ec505bf34574cb88648ee2bb4087, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.43
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 2438166593028122567, guid: fc14ec505bf34574cb88648ee2bb4087, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8232,7 +8237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2438166593028122567, guid: fc14ec505bf34574cb88648ee2bb4087, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.724
+      value: 3.282
       objectReference: {fileID: 0}
     - target: {fileID: 2438166593028122567, guid: fc14ec505bf34574cb88648ee2bb4087, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8336,7 +8341,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5299669017878520814, guid: fd3cd5f0eaf6f3c49be5410e74c15187, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd3cd5f0eaf6f3c49be5410e74c15187, type: 3}
@@ -8352,6 +8358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AOE
       objectReference: {fileID: 0}
+    - target: {fileID: 4712382786687453724, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f871741e92e92084289165c7094b8ee9, type: 2}
     - target: {fileID: 4851628704067025704, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -8393,7 +8403,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6060282144922467698, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1bd95377acd0c47b89b16318b88355, type: 3}
@@ -8574,6 +8585,10 @@ PrefabInstance:
       propertyPath: spawnedAllyPrefab
       value: 
       objectReference: {fileID: 1281241352}
+    - target: {fileID: 2887844053401081451, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bdc0b5bdd377def45868dc46f0dab496, type: 2}
     - target: {fileID: 3509226360120720407, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8581,6 +8596,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3509226360120720407, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
+    - {fileID: 3680376225875736510, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60dc3d2c47e1fc745b327495d4d175d3, type: 3}
@@ -8717,9 +8733,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.24
       objectReference: {fileID: 0}
+    - target: {fileID: 4698229417328058150, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 71ef7e4fa40efba479dc74c782dcde13, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2077789721881880992, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}
+    - {fileID: 2748777794387112972, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17a6d427b48abe94697e4b491862a7a4, type: 3}

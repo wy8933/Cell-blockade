@@ -53,6 +53,7 @@ public class EnemyWaveManager : MonoBehaviour
     public GameObject timerHolder;
     public TextMeshProUGUI TimerText;
     public TextMeshProUGUI TextforTimer;
+    public TextMeshProUGUI textforWave;
 
     private IEnumerator _waitForNextWaveRoutine;
     private void Awake()
@@ -135,6 +136,8 @@ public class EnemyWaveManager : MonoBehaviour
                 waves[i].baseEnemyCount += 1;
             }
         }
+
+        textforWave.text = $"{currentWaveIndex + 1}";
 
         Wave currentWave = waves[currentWaveIndex];
 
